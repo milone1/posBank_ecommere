@@ -7,6 +7,7 @@ import 'package:flutter_usb_printer/flutter_usb_printer.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
+import 'package:posbank_flutter/widget/otherDetailsDivider.dart';
 import 'package:provider/provider.dart';
 
 class CreditCardsPage extends StatefulWidget {
@@ -82,33 +83,128 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
-
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
-            _title(title: "INGRESE EL MEDIO DE PAGO"),
+            SizedBox(
+              height: 20,
+            ),
             _buildCreditCard(
-                color: Color(0xFF090943),
-                cardExpiration: "08/2022",
-                cardHolder: "ERICK MILAN",
-                cardNumber: "1111 1111 1111 1111"),
-            _buildCreditCard(
-                color: Color(0xFF151414),
-                cardExpiration: "05/2024",
-                cardHolder: "PEPE PEREZ",
-                cardNumber: "2222 2222 2222 2222"),
-            _buildCreditCard(
-                color: Color(0xFFAD1212),
-                cardExpiration: "25/2024",
-                cardHolder: "JUAN SAVAGE",
-                cardNumber: "3333 3333 3333 3333"),
-            _buildCreditCard(
+                height: height,
                 color: Color(0xFF2DA1F4),
                 cardExpiration: "15/2024",
                 cardHolder: "JUAN JUANITO",
                 cardNumber: "4444 4444 4444 4444"),
+            OtherDetailsDivider(),
+            Container(
+              child: Text("Ingrese los datos de Pago"),
+            ),
+            OtherDetailsDivider(),
+            Container(
+              child: Column(
+                children: [
+                  Text("Titular de la tarjeta"),
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Ej E. Milan',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            OtherDetailsDivider(),
+            Container(
+              child: Column(
+                children: [
+                  Text("Titular de la tarjeta"),
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'xxxx xxxx xxxx xxxx',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            OtherDetailsDivider(),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(4),
+                    child: Column(
+                      children: [
+                        Text("Fecha d Vencimiento"),
+                        TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'MM/YY',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(4),
+                    child: Column(
+                      children: [
+                        Text("CVV"),
+                        TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'EJ. 123',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            OtherDetailsDivider(),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: InkWell(
+                onTap: () {
+                  _printer("1234 1234 1234 1234", "Juan Perez");
+                },
+                child: Container(
+                  width: 10,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF2DA1F4),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, spreadRadius: 3),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    "PAGAR",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -117,12 +213,13 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
   InkWell _buildCreditCard(
       {required Color color,
+      required double height,
       required String cardNumber,
       required String cardHolder,
       required String cardExpiration}) {
     return InkWell(
       onTap: () {
-        print(dbHelper);
+        print(height >= 800 ? 200 : 300);
         _printer(cardNumber, cardHolder);
       },
       child: Card(
@@ -132,7 +229,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           borderRadius: BorderRadius.circular(14),
         ),
         child: Container(
-          height: 300,
+          height: (height < 1000? 200 : 300),
           padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
