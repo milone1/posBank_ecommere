@@ -7,10 +7,12 @@ import 'package:provider/provider.dart';
 
 class Products extends StatelessWidget {
   DBHelper? dbHelper = DBHelper();
+
   @override
   Widget build(BuildContext context) {
     final Orientation orientation = MediaQuery.of(context).orientation;
-
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Row(children: [
       LimitedBox(
         maxWidth: 250,
@@ -20,9 +22,10 @@ class Products extends StatelessWidget {
           child: Container(
         margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
         child: GridView.count(
-          crossAxisCount: 2,
+          crossAxisCount: height < 1000 ? 4 : 5,
           primary: false,
           crossAxisSpacing: 10.0,
+          scrollDirection: Axis.horizontal,
           mainAxisSpacing: 15.0,
           childAspectRatio: 0.8,
           children: <Widget>[
@@ -105,21 +108,22 @@ class Products extends StatelessWidget {
           child: Column(
             children: [
               Hero(
-                  tag: imgPath,
-                  child: Container(
-                    width: width * 0.2,
-                    height: height * 0.1,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(imgPath), fit: BoxFit.contain)),
-                  )),
+                tag: imgPath,
+                child: Container(
+                  width: width * 0.9,
+                  height: height * 0.11,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(imgPath), fit: BoxFit.contain)),
+                ),
+              ),
               SizedBox(
                 height: 7.0,
               ),
               Text(
                 name,
                 style: TextStyle(
-                  fontSize: width * 0.06,
+                  fontSize: 20,
                   color: Color(
                     (0xFFCC8053),
                   ),
@@ -132,7 +136,8 @@ class Products extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     color: Color(0xFFEBEBEB),
                   ),
-                  height: height * 0.03,
+                  height: height * 0.025,
+                  width: width * 0.18,
                   child: Text(
                     's/' + price.toString() + '.00',
                     style: TextStyle(color: Color(0xFF575E67), fontSize: 20.0),

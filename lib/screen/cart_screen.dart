@@ -18,10 +18,12 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   DBHelper? dbHelper = DBHelper();
-
+  
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     _getData() async {
       List<Cart> response;
       return response = await cart.getData();
@@ -343,12 +345,13 @@ class _CartScreenState extends State<CartScreen> {
             OtherDetailsDivider(),
             Consumer<CartProvider>(builder: (context, value, child) {
               return Container(
+                width: width * 0.8,
                 decoration: BoxDecoration(
-                  color: Colors.blue[300],
+                  color: Colors.blue,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ReusableWidget(
                       title: 'Total: ',
@@ -380,21 +383,28 @@ class ReusableWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            SizedBox(
+              width: 10,
+            ),
             Text(
               title,
               style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.w500,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             Text(
               value.toString(),
               style: TextStyle(
                 fontSize: 50,
-                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
-            )
+            ),
+            SizedBox(
+              width: 10,
+            ),
           ],
         ),
       ),

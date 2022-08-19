@@ -37,6 +37,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           .printText("                                    \r\n");
       await flutterUsbPrinter
           .printText("                                    \r\n");
+          await flutterUsbPrinter
+          .printText("                                    \r\n");
+      await flutterUsbPrinter
+          .printText("                                    \r\n");
+      await flutterUsbPrinter
+          .printText("                                    \r\n");
+      await flutterUsbPrinter
+          .printText("                                    \r\n");
       await flutterUsbPrinter
           .printText("                ACURIO              \r\n");
       await flutterUsbPrinter.printText("                              \r\n");
@@ -75,6 +83,15 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       await flutterUsbPrinter.printText("TOTAL:              S/310.00  \r\n");
       await flutterUsbPrinter.printText("                              \r\n");
       await flutterUsbPrinter.printText("                              \r\n");
+      await flutterUsbPrinter
+          .printText("                                    \r\n");
+      await flutterUsbPrinter
+          .printText("                                    \r\n");
+      await flutterUsbPrinter
+          .printText("                                    \r\n");
+      await flutterUsbPrinter
+          .printText("                                    \r\n");
+          
     } on PlatformException {
       //response = 'Failed to get platform version.';
     }
@@ -178,9 +195,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               child: InkWell(
                 onTap: () {
                   _printer("1234 1234 1234 1234", "Juan Perez");
+                  Navigator.pushNamed(context, '/');
                 },
                 child: Container(
-                  width: 10,
+                  width: 150,
                   height: 40,
                   decoration: BoxDecoration(
                     color: Color(0xFF2DA1F4),
@@ -221,6 +239,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       onTap: () {
         print(height >= 800 ? 200 : 300);
         _printer(cardNumber, cardHolder);
+        Navigator.pushNamed(context, '/');
       },
       child: Card(
         elevation: 4.0,
