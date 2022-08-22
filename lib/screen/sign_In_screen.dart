@@ -15,7 +15,9 @@ class _SignInScreenState extends State<SignInScreen> {
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/backgroundCal.gif"), fit: BoxFit.cover),
+                image: AssetImage("images/backgroundCal.gif"), 
+                fit: BoxFit.fill
+            ),
           ),
           child: Container(
             child: SingleChildScrollView(
@@ -29,7 +31,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Text(
                     'ACURIO',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.grey,
                       fontSize: MediaQuery.of(context).size.width * 0.2,
                       fontWeight: FontWeight.bold,
                       shadows: [

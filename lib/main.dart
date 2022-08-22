@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
-import 'package:posbank_flutter/screen/cart_screen.dart';
 import 'package:posbank_flutter/screen/credit_cards.dart';
 import 'package:posbank_flutter/screen/sign_In_screen.dart';
 import 'package:posbank_flutter/screen/product_list.dart';
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Lato'),
-          initialRoute: '/products',
+          initialRoute: '/',
           routes: {
             '/': (context) => SignInScreen(),
             '/products': (context) => ProductListScreen(),

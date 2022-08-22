@@ -66,11 +66,6 @@ class _CartScreenState extends State<CartScreen> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Container(
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-
-                                          )
-                                        ),
                                         child: Image.asset(
                                             width: 120,
                                             height: 50,
@@ -188,22 +183,13 @@ class _CartScreenState extends State<CartScreen> {
                                                   dbHelper!
                                                       .updateQuantity(
                                                     Cart(
-                                                      id: snapshot
-                                                          .data![index].id,
-                                                      productId: snapshot
-                                                          .data![index].id!
-                                                          .toString(),
-                                                      productName: snapshot
-                                                          .data![index]
-                                                          .productName!,
-                                                      initialPrice: snapshot
-                                                          .data![index]
-                                                          .initialPrice!,
+                                                      id: snapshot.data![index].id,
+                                                      productId: snapshot.data![index].id!.toString(),
+                                                      productName: snapshot.data![index].productName!,
+                                                      initialPrice: snapshot.data![index].initialPrice!,
                                                       productPrice: newPrice,
                                                       quantity: quantity,
-                                                      category: snapshot
-                                                          .data![index]
-                                                          .category,
+                                                      category: snapshot.data![index].category,
                                                       unitTag: snapshot
                                                           .data![index].unitTag
                                                           .toString(),
@@ -232,20 +218,21 @@ class _CartScreenState extends State<CartScreen> {
                                           ),
                                         ),
                                       ),
-                                      InkWell(
-                                        onTap: () {
-                                          dbHelper!.delete(
-                                              snapshot.data![index].id!);
-                                          cart.removerCounter();
-                                          cart.removeTotalPrice(double.parse(
-                                              snapshot.data![index].productPrice
-                                                  .toString()));
-                                        },
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
+                                      // ignore: avoid_unnecessary_containers
+                                      
+                                        InkWell(
+                                          onTap: () async{
+                                            await dbHelper!.delete(snapshot.data![index].id!);
+                                            cart.removerCounter();
+                                            cart.removeTotalPrice(double.parse(snapshot.data![index].productPrice.toString()));
+                                          },
+                                          // ignore: prefer_const_constructors
+                                          child: Icon(
+                                            Icons.delete,
+                                            color: Colors.red,
+                                          ),
                                         ),
-                                      ),
+                                      
                                     ],
                                   )
                                 ],
@@ -278,7 +265,7 @@ class _CartScreenState extends State<CartScreen> {
                     children: [
                       ReusableWidget(
                         title: 'Total a pagar: ',
-                        value: r'$' + value.getTotalPrice().toStringAsFixed(2),
+                        value: r's/' + value.getTotalPrice().toStringAsFixed(2),
                       ),
                     ],
                   ),
