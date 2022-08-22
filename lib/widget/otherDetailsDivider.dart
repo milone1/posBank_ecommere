@@ -11,7 +11,7 @@ class _OtherDetailsDividerState extends State<OtherDetailsDivider> {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: Divider(
-        color: Colors.grey.withOpacity(0.4),
+        color: Colors.grey.withOpacity(0.2),
         thickness: 0.5,
         indent: 16,
         endIndent: 16,

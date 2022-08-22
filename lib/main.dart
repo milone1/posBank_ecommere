@@ -22,12 +22,11 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Lato'),
-          initialRoute: '/',
+          initialRoute: '/credit',
           routes: {
             '/': (context) => SignInScreen(),
-            '/products': (context) => const ProductListScreen(),
+            '/products': (context) => ProductListScreen(),
             '/credit':(context) => CreditCardsPage(),
-            '/cart': (context) => CartScreen(),
           },
         );
       }),

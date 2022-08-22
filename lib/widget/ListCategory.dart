@@ -27,8 +27,8 @@ class ListCategory extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     Provider.of<CartProvider>(context);
     return Container(
-      width: 100,
-      height: 500,
+      width: 150,
+      height: 650,
       child: ListView.builder(
         itemCount: categories.length,
         itemBuilder: (context, index) {

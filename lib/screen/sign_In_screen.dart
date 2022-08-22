@@ -15,8 +15,7 @@ class _SignInScreenState extends State<SignInScreen> {
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/background.jpg"),
-                fit: BoxFit.cover),
+                image: AssetImage("images/backgroundCal.gif"), fit: BoxFit.cover),
           ),
           child: Container(
             decoration: BoxDecoration(
@@ -81,13 +80,21 @@ class _SignInScreenState extends State<SignInScreen> {
                                   )
                                 ]),
                             child: Center(
-                              child: Text(
-                                'Para Pedir',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * 0.05,
-                                ),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    "images/tray.png",
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                                  Text(
+                                    'Para Pedir',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: MediaQuery.of(context).size.width*0.05,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -117,17 +124,25 @@ class _SignInScreenState extends State<SignInScreen> {
                                   )
                                 ]),
                             child: Center(
-                              child: Text(
-                                'Para LLevar',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * 0.05,
-                                ),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    "images/bug.png",
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                                  Text(
+                                    'Para LLevar',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ),
+                        ),  
                       ],
                     ),
                   ),

@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
+import 'package:posbank_flutter/components/products.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
@@ -19,84 +21,59 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   FlutterUsbPrinter flutterUsbPrinter = FlutterUsbPrinter();
   bool connected = false;
   DBHelper? dbHelper = DBHelper();
+  List<Cart> minimal = [];
 
   @override
   initState() {
+    getData();
     flutterUsbPrinter.connect(1155, 41014);
   }
 
-  _printer(cardNumber, cardHolder) async {
-    String numero = cardNumber.toString();
-    String nombre = cardHolder.toString();
-    try {
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-          await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                ACURIO              \r\n");
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter
-          .printText("PRODUCTOS: CANTIDAD: PRECIO_uni: TOTAL:\r\n");
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter
-          .printText("Arroza Chauda    1  s/14.50  s/14.50\r\n");
-      await flutterUsbPrinter
-          .printText("Pierna de Pollo  2  s/14.50  s/29.00\r\n");
-      await flutterUsbPrinter
-          .printText("Ceviche          1  s/14.50  s/14.50\r\n");
-      await flutterUsbPrinter
-          .printText("Vino de Mesa     1  s/14.50  s/14.50\r\n");
-      await flutterUsbPrinter
-          .printText("Agua de Mesa     1  s/12.00  s/12.00\r\n");
-      await flutterUsbPrinter
-          .printText("Chocolate        1  s/11.50  s/11.50\r\n");
-      await flutterUsbPrinter
-          .printText("Helado           1  s/10.50  s/10.50\r\n");
-      await flutterUsbPrinter
-          .printText("Pizza            1  s/15.00  s/15.00\r\n");
-      await flutterUsbPrinter
-          .printText("Sashimi          1  s/14.50  s/14.50\r\n");
-      await flutterUsbPrinter
-          .printText("Tocino           1  s/14.50  s/14.50\r\n");
-      await flutterUsbPrinter
-          .printText("Taco             1  s/13.50  s/13.50\r\n");
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter.printText("Nombre del Cliente    $nombre \r\n");
-      await flutterUsbPrinter.printText('Numero De la Tarjeta: $numero \r\n');
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter.printText("TOTAL:              S/310.00  \r\n");
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter.printText("                              \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-      await flutterUsbPrinter
-          .printText("                                    \r\n");
-          
-    } on PlatformException {
-      //response = 'Failed to get platform version.';
-    }
+  getData() async {
+    List<Cart>? auxProd = await dbHelper?.getCartList();
+    setState(() {
+      minimal = auxProd!;
+    });
   }
 
+  _printer(cardNumber, cardHolder, total) async {
+    String numero = cardNumber.toString();
+    String nombre = cardHolder.toString();
+    var data = Uint8List.fromList(utf8.encode("Productos Intereses Intereses Intereses Productos Intereses Intereses Intereses"));
+    var productos = Uint8List.fromList(utf8.encode(cardHolder +"     :     " +cardNumber));
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("+----------------------------------------+");
+    await flutterUsbPrinter.printText("|              ACURIO-RESTAURANTS        |");
+    await flutterUsbPrinter.printText("+----------------------------------------+");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("PRODUCTOS:  CANTIDAD:  PRECIO_uni:  TOTAL:");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    for (int index = 0; index < minimal.length; index++) {
+        await flutterUsbPrinter.printText(minimal[index].productName.toString()+":"+ "   "+minimal[index].quantity.toString()+"   "+"s/ "+minimal[index].initialPrice.toString()+".00"+"   "+"s/"+minimal[index].productPrice.toString()+".00"+'\r\n');
+      }
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("+----------------------------------------+");
+    await flutterUsbPrinter.printText("Nombre del Cliente:   $nombre         \r\n");
+    await flutterUsbPrinter.printText('Numero De la Tarjeta: $numero         \r\n');
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText('TOTAL:               s/ $total${0} \r\n');
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+  }
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
@@ -113,6 +90,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             _buildCreditCard(
                 height: height,
                 color: Color(0xFF2DA1F4),
+                cart: cart,
                 cardExpiration: "15/2024",
                 cardHolder: "JUAN JUANITO",
                 cardNumber: "4444 4444 4444 4444"),
@@ -194,7 +172,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               padding: EdgeInsets.all(20),
               child: InkWell(
                 onTap: () {
-                  _printer("1234 1234 1234 1234", "Juan Perez");
+                  // _printer();
+                  _printer("1234 1234 1234 1234", "Juan Perez",
+                      cart.getTotalPrice());
                   Navigator.pushNamed(context, '/');
                 },
                 child: Container(
@@ -229,16 +209,19 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     );
   }
 
-  InkWell _buildCreditCard(
-      {required Color color,
-      required double height,
-      required String cardNumber,
-      required String cardHolder,
-      required String cardExpiration}) {
+  InkWell _buildCreditCard({
+    required Color color,
+    required double height,
+    required String cardNumber,
+    required String cardHolder,
+    required CartProvider cart,
+    required String cardExpiration,
+  }) {
     return InkWell(
       onTap: () {
-        print(height >= 800 ? 200 : 300);
-        _printer(cardNumber, cardHolder);
+        // print(height >= 800 ? 200 : 300);
+        // _printer();
+        _printer(cardNumber, cardHolder, cart.getTotalPrice());
         Navigator.pushNamed(context, '/');
       },
       child: Card(
@@ -248,7 +231,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           borderRadius: BorderRadius.circular(14),
         ),
         child: Container(
-          height: (height < 1000? 200 : 300),
+          height: (height < 1000 ? 200 : 300),
           padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
