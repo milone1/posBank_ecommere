@@ -7,6 +7,7 @@ import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/screen/cart_screen.dart';
+import 'package:posbank_flutter/widget/carrousel.dart';
 import 'package:provider/provider.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -26,16 +27,17 @@ class _ProductListScreenState extends State<ProductListScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            ListCarrousel(),
             Products(),
             Expanded(
               child: Container(
                 width: width,
-                height: height * 0.20,
+                height: height * 0.30,
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(
                       color: Colors.grey, 
-                      width: 5
+                      width: 1
                     ),
                   ),
                 ),

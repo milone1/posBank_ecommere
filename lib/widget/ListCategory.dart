@@ -28,7 +28,7 @@ class ListCategory extends StatelessWidget {
     Provider.of<CartProvider>(context);
     return Container(
       width: 150,
-      height: 650,
+      height: 550,
       child: ListView.builder(
         itemCount: categories.length,
         itemBuilder: (context, index) {

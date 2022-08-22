@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Lato'),
-          initialRoute: '/',
+          initialRoute: '/products',
           routes: {
             '/': (context) => SignInScreen(),
             '/products': (context) => ProductListScreen(),

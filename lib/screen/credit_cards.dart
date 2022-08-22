@@ -9,6 +9,7 @@ import 'package:posbank_flutter/components/products.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
+import 'package:posbank_flutter/widget/carrousel.dart';
 import 'package:posbank_flutter/widget/otherDetailsDivider.dart';
 import 'package:provider/provider.dart';
 
@@ -87,6 +88,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             SizedBox(
               height: 20,
             ),
+            ListCarrousel(),
+            Text(
+              "¡INCREIBLES OFERTAS!",
+              style: TextStyle(
+                fontSize: 45,
+              ),
+              textAlign: TextAlign.center,
+            ),
             _buildCreditCard(
                 height: height,
                 color: Color(0xFF2DA1F4),
@@ -110,7 +119,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             Container(
               child: Column(
                 children: [
-                  Text("Titular de la tarjeta:"),
+                  Text("Titular de la tarjeta:",
+                  style: TextStyle(
+                    fontSize: 20,
+                    ),
+                  ),
                   TextField(
                     obscureText: true,
                     decoration: InputDecoration(
@@ -125,7 +138,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             Container(
               child: Column(
                 children: [
-                  Text("Número de la Tarjeta: "),
+                  Text("Número de la Tarjeta: ",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
                   TextField(
                     obscureText: true,
                     decoration: InputDecoration(
@@ -145,7 +162,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       padding: EdgeInsets.all(4),
                       child: Column(
                         children: [
-                          Text("Fecha de Vencimiento"),
+                          Text("Fecha de Vencimiento:",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                          ),
                           TextField(
                             obscureText: true,
                             decoration: InputDecoration(
@@ -162,7 +183,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       padding: EdgeInsets.all(4),
                       child: Column(
                         children: [
-                          Text("CVV"),
+                          Text("CVV",
+                          style: TextStyle(
+                            fontSize: 20
+                            ),
+                          ),
                           TextField(
                             obscureText: true,
                             decoration: InputDecoration(
@@ -181,7 +206,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             Container(
               width: 90,
               child: Padding(
-                padding: EdgeInsets.all(250),
+                padding: EdgeInsets.only(left: 250, right: 250, top: 50),
                 child: InkWell(
                   onTap: () {
                     // _printer();
@@ -239,7 +264,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         ),
         child: Container(
           height: (height < 1000 ? 200 : 300),
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0, top: 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

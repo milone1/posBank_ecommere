@@ -13,14 +13,14 @@ class ReusableWidget extends StatelessWidget {
         Navigator.pushNamed(context, '/credit');
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               title,
               style: TextStyle(
-                fontSize: 35,
+                fontSize: 30,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
               ),
@@ -28,7 +28,7 @@ class ReusableWidget extends StatelessWidget {
             Text(
               value.toString(),
               style: TextStyle(
-                fontSize: 50,
+                fontSize: 48,
                 color: Colors.black,
               ),
             )

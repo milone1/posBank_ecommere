@@ -26,7 +26,7 @@ class _CartScreenState extends State<CartScreen> {
     double height = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(3.0),
       child: Column(
         children: [
           FutureBuilder(
@@ -39,8 +39,8 @@ class _CartScreenState extends State<CartScreen> {
                       child: Column(
                         children: [
                           Image(
-                            width: 250,
-                            height: 210,
+                            width: 180,
+                            height: 140,
                             image: AssetImage('images/empty_cart.png'),
                           ),
                           Text('El carrito esta vacío 😌',
@@ -55,22 +55,28 @@ class _CartScreenState extends State<CartScreen> {
                         itemBuilder: (context, index) {
                           return Card(
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(2.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Image.asset(
-                                          width: width * 0.20,
-                                          height: 100,
-                                          snapshot.data![index].image
-                                              .toString()),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+
+                                          )
+                                        ),
+                                        child: Image.asset(
+                                            width: 120,
+                                            height: 50,
+                                            snapshot.data![index].image
+                                                .toString()),
+                                      ),
                                       Text(
                                         snapshot.data![index].productName
                                             .toString(),
@@ -256,23 +262,26 @@ class _CartScreenState extends State<CartScreen> {
                 );
               },
             ),
-          OtherDetailsDivider(),
           Consumer<CartProvider>(
             builder: (context, value, child) {
-              return Container(
-                width: width * 0.8,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ReusableWidget(
-                      title: 'Total a pagar: ',
-                      value: r'$' + value.getTotalPrice().toStringAsFixed(2),
-                    ),
-                  ],
+              return Padding(
+                padding: EdgeInsets.only(top: 2),
+                child: Container(
+                  width: width * 0.45,
+                  height: 35,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ReusableWidget(
+                        title: 'Total a pagar: ',
+                        value: r'$' + value.getTotalPrice().toStringAsFixed(2),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
@@ -294,17 +303,14 @@ class ReusableWidget extends StatelessWidget {
         Navigator.pushNamed(context, '/credit');
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SizedBox(
-              width: 10,
-            ),
             Text(
               title,
               style: TextStyle(
-                fontSize: 35,
+                fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
@@ -312,13 +318,10 @@ class ReusableWidget extends StatelessWidget {
             Text(
               value.toString(),
               style: TextStyle(
-                fontSize: 50,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
-            ),
-            SizedBox(
-              width: 10,
             ),
           ],
         ),
