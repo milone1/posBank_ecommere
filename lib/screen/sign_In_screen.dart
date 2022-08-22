@@ -18,19 +18,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 image: AssetImage("images/backgroundCal.gif"), fit: BoxFit.cover),
           ),
           child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.red.shade500.withOpacity(0.1),
-                  Colors.blueGrey.shade900.withOpacity(0.8),
-                  Colors.white.withOpacity(0.1),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
             child: SingleChildScrollView(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.1,
@@ -52,7 +43,15 @@ class _SignInScreenState extends State<SignInScreen> {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
-                    height: 450,
+                    height: 250,
+                  ),
+                  Image.asset(
+                      "images/favicon.ico",
+                    width: 150,
+                    height: 150,
+                  ),
+                  SizedBox(
+                    height: 250,
                   ),
                   Container(
                     child: Row(

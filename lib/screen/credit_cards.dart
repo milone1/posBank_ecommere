@@ -83,7 +83,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       body: Container(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
-          children: <Widget>[
+          children: [
             SizedBox(
               height: 20,
             ),
@@ -93,21 +93,29 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cart: cart,
                 cardExpiration: "15/2024",
                 cardHolder: "JUAN JUANITO",
-                cardNumber: "4444 4444 4444 4444"),
+                cardNumber: "9584 6587 7412 5698"),
             OtherDetailsDivider(),
-            Container(
-              child: Text("Ingrese los datos de Pago"),
+            Center(
+              child: Container(
+                child: Text(
+                  "INGRESE SUS DATOS",
+                  style: TextStyle(
+                    fontSize: 30.0,
+                  ),
+                ),
+            
+              ),
             ),
             OtherDetailsDivider(),
             Container(
               child: Column(
                 children: [
-                  Text("Titular de la tarjeta"),
+                  Text("Titular de la tarjeta:"),
                   TextField(
                     obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Ej E. Milan',
+                      labelText: 'E. Milan',
                     ),
                   ),
                 ],
@@ -117,88 +125,87 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             Container(
               child: Column(
                 children: [
-                  Text("Titular de la tarjeta"),
+                  Text("Número de la Tarjeta: "),
                   TextField(
                     obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'xxxx xxxx xxxx xxxx',
+                      labelText: '9632 8524 4521 3625',
                     ),
                   ),
                 ],
               ),
             ),
             OtherDetailsDivider(),
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(4),
-                    child: Column(
-                      children: [
-                        Text("Fecha d Vencimiento"),
-                        TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'MM/YY',
+            Container(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Column(
+                        children: [
+                          Text("Fecha de Vencimiento"),
+                          TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: '06/05',
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(4),
-                    child: Column(
-                      children: [
-                        Text("CVV"),
-                        TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'EJ. 123',
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Column(
+                        children: [
+                          Text("CVV"),
+                          TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: '562',
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             OtherDetailsDivider(),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: InkWell(
-                onTap: () {
-                  // _printer();
-                  _printer("1234 1234 1234 1234", "Juan Perez",
-                      cart.getTotalPrice());
-                  Navigator.pushNamed(context, '/');
-                },
-                child: Container(
-                  width: 150,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2DA1F4),
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 1,
+            Container(
+              width: 90,
+              child: Padding(
+                padding: EdgeInsets.all(250),
+                child: InkWell(
+                  onTap: () {
+                    // _printer();
+                    _printer("1234 1234 1234 1234", "Juan Perez",
+                        cart.getTotalPrice());
+                    Navigator.pushNamed(context, '/');
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xFF2DA1F4),
+                      boxShadow: [
+                        BoxShadow(color: Colors.grey, spreadRadius: 3),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    boxShadow: [
-                      BoxShadow(color: Colors.grey, spreadRadius: 3),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    "PAGAR",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                    child: Text(
+                      "PAGAR",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
