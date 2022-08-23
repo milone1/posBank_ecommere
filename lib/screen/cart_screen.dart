@@ -47,8 +47,8 @@ class _CartScreenState extends State<CartScreen> {
                       child: Column(
                         children: [
                           Image(
-                            width: 180,
-                            height: 140,
+                            width: 170,
+                            height: 120,
                             image: AssetImage('images/empty_cart.png'),
                           ),
                           Text('El carrito esta vacío 😌',
@@ -289,10 +289,10 @@ class _CartScreenState extends State<CartScreen> {
           Consumer<CartProvider>(
             builder: (context, value, child) {
               return Padding(
-                padding: EdgeInsets.only(top: 2),
+                padding: EdgeInsets.all(0),
                 child: Container(
                   width: width * 0.35,
-                  height: 35,
+                  height: 30,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(15),
@@ -357,14 +357,14 @@ class ReusableWidget extends StatelessWidget {
         }
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
+        padding: const EdgeInsets.all(0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
               title,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
@@ -372,7 +372,7 @@ class ReusableWidget extends StatelessWidget {
             Text(
               value.toString(),
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),

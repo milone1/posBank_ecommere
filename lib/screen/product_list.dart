@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:animate_do/animate_do.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/components/products.dart';
@@ -41,7 +42,12 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     ),
                   ),
                 ),
-                child: CartScreen(),
+                child: BounceInUp(
+                  child: CartScreen(),
+                  duration: Duration(
+                    seconds: 2
+                  ),
+                ),
               ),
             ),
           ],

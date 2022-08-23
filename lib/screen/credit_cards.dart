@@ -220,98 +220,102 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             Container(
               child: Row(
                 children: [
-                  BounceInLeft(
-                    child: Expanded(
+                  
+                    Expanded(
                       child: Padding(
                         padding: EdgeInsets.all(4),
                         child: Column(
                           children: [
-                            Text(
-                              "Fecha de Vencimiento:",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xFFCC8053),
-                                fontWeight: FontWeight.bold,
+                            BounceInUp(
+                              child: Text(
+                                "Fecha de Vencimiento:",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xFFCC8053),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                            TextFormField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                border: UnderlineInputBorder(),
-                                labelText: '06/05',
+                            BounceInLeft(
+                              child: TextFormField(
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  border: UnderlineInputBorder(),
+                                  labelText: '06/05',
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    duration: Duration(
-                      seconds: 1
-                    ),
-                  ),
-                  BounceInRight(
-                    child: Expanded(
+                  
+                 
+                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.all(4),
                         child: Column(
                           children: [
-                            Text(
-                              "CVV:",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xFFCC8053),
-                                fontWeight: FontWeight.bold,
+                            BounceInUp(
+                              child: Text(
+                                "CVV:",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xFFCC8053),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                            TextFormField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                border: UnderlineInputBorder(),
-                                labelText: '562',
+                            BounceInRight(
+                              child: TextFormField(
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  border: UnderlineInputBorder(),
+                                  labelText: '562',
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    duration: Duration(
-                      seconds: 1,
-                    ),
-                  ),
+                  
                 ],
               ),
             ),
             OtherDetailsDivider(),
-            Container(
-              width: 90,
-              child: Padding(
-                padding: EdgeInsets.only(left: 250, right: 250, top: 50),
-                child: InkWell(
-                  onTap: () {
-                      _printer("4754 6587 7412 5698", "E. MILAN", cart.getTotalPrice());
-                      Navigator.pushNamed(context, '/');
-                  },
-                  child: Container(
-                    height: 35,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF2DA1F4),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3), 
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      "PAGAR:",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+            Swing(
+              child: Container(
+                width: 90,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 250, right: 250, top: 50),
+                  child: InkWell(
+                    onTap: () {
+                        _printer("4754 6587 7412 5698", "E. MILAN", cart.getTotalPrice());
+                        Navigator.pushNamed(context, '/');
+                    },
+                    child: Container(
+                      height: 35,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF2DA1F4),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3), 
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      textAlign: TextAlign.center,
+                      child: Text(
+                        "PAGAR:",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
