@@ -37,9 +37,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     });
   }
 
+  getTotalPrice() {
+    final cart = Provider.of<CartProvider>(context);
+  }
+
   _printer(cardNumber, cardHolder, total) async {
     String numero = cardNumber.toString();
     String nombre = cardHolder.toString();
+    String totalSpacing = total+"           ".toString();
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
@@ -54,20 +59,35 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     for (int index = 0; index < minimal.length; index++) {
-        String? productoName = minimal[index].productName;
-        int? productoCantidad = minimal[index].quantity;
-        await flutterUsbPrinter.printText((productoName!+"                       ").substring(0,15)+
-        productoCantidad.toString()+"     "+"s/ "+minimal[index].initialPrice.toString()
-        +".00"+"     "+"s/"+minimal[index].productPrice.toString()+".00"+'\r\n');
-      }
+      String? productoName = minimal[index].productName;
+      int? productoCantidad = minimal[index].quantity;
+      await flutterUsbPrinter.printText(
+          (productoName!+"                       ").substring(0, 15) +
+              productoCantidad.toString() +
+              "     " +
+              "s/ " +
+              minimal[index].initialPrice.toString() +
+              ".00" +
+              "     " +
+              "s/" +
+              minimal[index].productPrice.toString() +
+              ".00" +
+              '\r\n');
+    }
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("+----------------------------------------+");
+    await flutterUsbPrinter.printText("|   TOTAL:     "+totalSpacing.substring(0,7).toString()+"                    |");
+    await flutterUsbPrinter.printText("+----------------------------------------+");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("------------------------------------------");
     await flutterUsbPrinter.printText("Nombre del Cliente:   $nombre         \r\n");
     await flutterUsbPrinter.printText('Numero De la Tarjeta: $numero         \r\n');
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText('TOTAL:                   s/ $total${0}\r\n');
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
@@ -77,6 +97,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
   }
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
@@ -114,16 +135,16 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     fontSize: 30.0,
                   ),
                 ),
-            
               ),
             ),
             OtherDetailsDivider(),
             Container(
               child: Column(
                 children: [
-                  Text("Titular de la tarjeta:",
-                  style: TextStyle(
-                    fontSize: 20,
+                  Text(
+                    "Titular de la tarjeta:",
+                    style: TextStyle(
+                      fontSize: 20,
                     ),
                   ),
                   TextField(
@@ -140,7 +161,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             Container(
               child: Column(
                 children: [
-                  Text("Número de la Tarjeta: ",
+                  Text(
+                    "Número de la Tarjeta: ",
                     style: TextStyle(
                       fontSize: 20,
                     ),
@@ -164,10 +186,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       padding: EdgeInsets.all(4),
                       child: Column(
                         children: [
-                          Text("Fecha de Vencimiento:",
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
+                          Text(
+                            "Fecha de Vencimiento:",
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
                           ),
                           TextField(
                             obscureText: true,
@@ -185,10 +208,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       padding: EdgeInsets.all(4),
                       child: Column(
                         children: [
-                          Text("CVV",
-                          style: TextStyle(
-                            fontSize: 20
-                            ),
+                          Text(
+                            "CVV",
+                            style: TextStyle(fontSize: 20),
                           ),
                           TextField(
                             obscureText: true,
@@ -212,9 +234,63 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 child: InkWell(
                   onTap: () {
                     // _printer();
-                    _printer("1234 1234 1234 1234", "Juan Perez",
-                        cart.getTotalPrice());
-                    Navigator.pushNamed(context, '/');
+                    if (minimal.length > 0) {
+                      _printer("1234 1234 1234 1234", "Juan Perez", cart.getTotalPrice());
+                      Navigator.pushNamed(context, '/');
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  "images/error.png",
+                                  height: 200,
+                                  width: 200,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  "CARRITO VACIO",
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: [
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                border: Border.all(
+                                  color: Colors.blue,
+                                )
+                              ),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/products');
+                                },
+                                child: Text(
+                                  "IR A LA TIENDA",
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 20.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            
+                          ],
+                        ),
+                      );
+                    }
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -266,7 +342,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         ),
         child: Container(
           height: (height < 1000 ? 200 : 300),
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0, top: 5),
+          padding: const EdgeInsets.only(
+              left: 16.0, right: 16.0, bottom: 22.0, top: 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'dart:ui';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,6 +25,13 @@ class _CartScreenState extends State<CartScreen> {
     final cart = Provider.of<CartProvider>(context);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    _deleteProduct(id, price) async{
+      await dbHelper!.delete(id);
+      cart.removerCounter();
+      cart.removeTotalPrice(await double.parse(price),
+      );
+    }
 
     return Padding(
       padding: const EdgeInsets.all(3.0),
@@ -60,34 +68,29 @@ class _CartScreenState extends State<CartScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
-                                      Container(
-                                        child: Image.asset(
+                                      Image.asset(
                                             width: 120,
                                             height: 50,
-                                            snapshot.data![index].image
-                                                .toString()),
-                                      ),
-                                      Text(
-                                        snapshot.data![index].productName
-                                            .toString(),
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black,
+                                            snapshot.data![index].image.toString(),
+                                          ),
+                                      Container(
+                                        width: 150,
+                                        child: Text(
+                                          (snapshot.data![index].productName!+"             ").substring(0,15).toString(),
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black,
+                                          ),
                                         ),
                                       ),
                                       Text(
-                                        "s/ " +
-                                            snapshot.data![index].productPrice
-                                                .toString() +
-                                            ".00",
+                                        "s/ "+snapshot.data![index].productPrice.toString()+".00",
                                         style: TextStyle(
                                             fontSize: 16,
-                                            fontWeight: FontWeight.w500),
+                                            fontWeight: FontWeight.w500
+                                        ),
                                       ),
                                       Container(
                                         margin: EdgeInsets.all(5.0),
@@ -96,65 +99,47 @@ class _CartScreenState extends State<CartScreen> {
                                         decoration: BoxDecoration(
                                             color: Colors.blue,
                                             borderRadius:
-                                                BorderRadius.circular(7)),
+                                                BorderRadius.circular(7),
+                                              ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(6.0),
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               InkWell(
                                                 onTap: () {
-                                                  int quantity = snapshot
-                                                      .data![index].quantity!;
-                                                  int price = snapshot
-                                                      .data![index]
-                                                      .initialPrice!;
+                                                  int quantity = snapshot.data![index].quantity!;
+                                                  int price = snapshot.data![index].initialPrice!;
                                                   quantity--;
-                                                  int? newPrice =
-                                                      price * quantity;
+                                                  int? newPrice = price * quantity;
                                                   if (quantity > 0) {
-                                                    dbHelper!
-                                                        .updateQuantity(Cart(
-                                                            id: snapshot
-                                                                .data![index]
-                                                                .id!,
-                                                            productId: snapshot
-                                                                .data![index]
-                                                                .id!
-                                                                .toString(),
-                                                            productName: snapshot
-                                                                .data![index]
-                                                                .productName!,
-                                                            initialPrice: snapshot
-                                                                .data![index]
-                                                                .initialPrice!,
-                                                            productPrice:
-                                                                newPrice,
+                                                    dbHelper!.updateQuantity(
+                                                      Cart(
+                                                            id: snapshot.data![index].id!,
+                                                            productId: snapshot.data![index].id!.toString(),
+                                                            productName: snapshot.data![index].productName!,
+                                                            initialPrice: snapshot.data![index].initialPrice!,
+                                                            productPrice: newPrice,
                                                             quantity: quantity,
-                                                            category: snapshot
-                                                                .data![index]
-                                                                .category,
-                                                            unitTag: snapshot
-                                                                .data![index]
-                                                                .unitTag
-                                                                .toString(),
-                                                            image: snapshot
-                                                                .data![index]
-                                                                .image
-                                                                .toString()))
+                                                            category: snapshot.data![index].category,
+                                                            unitTag: snapshot.data![index].unitTag.toString(),
+                                                            image: snapshot.data![index].image.toString(),
+                                                            ),
+                                                          )
                                                         .then((value) {
                                                       newPrice = 0;
                                                       quantity = 0;
                                                       cart.removeTotalPrice(
-                                                          double.parse(snapshot
-                                                              .data![index]
-                                                              .initialPrice!
-                                                              .toString()));
-                                                    }).onError((error,
-                                                            stackTrace) {
-                                                      print(error.toString());
-                                                    });
+                                                          double.parse(snapshot.data![index].initialPrice!.toString(),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).onError(
+                                                      (error, stackTrace) {
+                                                      print(error.toString()
+                                                        );
+                                                      },
+                                                    );
                                                   }
                                                 },
                                                 child: Icon(
@@ -163,8 +148,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 ),
                                               ),
                                               Text(
-                                                snapshot.data![index].quantity
-                                                    .toString(),
+                                                snapshot.data![index].quantity.toString(),
                                                 style: TextStyle(
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.w500,
@@ -172,16 +156,11 @@ class _CartScreenState extends State<CartScreen> {
                                               ),
                                               InkWell(
                                                 onTap: () {
-                                                  int quantity = snapshot
-                                                      .data![index].quantity!;
-                                                  int price = snapshot
-                                                      .data![index]
-                                                      .initialPrice!;
+                                                  int quantity = snapshot.data![index].quantity!;
+                                                  int price = snapshot.data![index].initialPrice!;
                                                   quantity++;
-                                                  int? newPrice =
-                                                      price * quantity;
-                                                  dbHelper!
-                                                      .updateQuantity(
+                                                  int? newPrice = price * quantity;
+                                                  dbHelper!.updateQuantity(
                                                     Cart(
                                                       id: snapshot.data![index].id,
                                                       productId: snapshot.data![index].id!.toString(),
@@ -190,24 +169,22 @@ class _CartScreenState extends State<CartScreen> {
                                                       productPrice: newPrice,
                                                       quantity: quantity,
                                                       category: snapshot.data![index].category,
-                                                      unitTag: snapshot
-                                                          .data![index].unitTag
-                                                          .toString(),
-                                                      image: snapshot
-                                                          .data![index].image
-                                                          .toString(),
+                                                      unitTag: snapshot.data![index].unitTag.toString(),
+                                                      image: snapshot.data![index].image.toString(),
                                                     ),
-                                                  )
-                                                      .then((value) {
+                                                  ).then((value) {
                                                     newPrice = 0;
                                                     quantity = 0;
                                                     cart.addTotalPrice(
-                                                        double.parse(snapshot
-                                                            .data![index]
-                                                            .initialPrice!
-                                                            .toString()));
-                                                  }).onError((error,
-                                                          stackTrace) {});
+                                                        double.parse(snapshot.data![index].initialPrice.toString()
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).onError(
+                                                    (error,stackTrace) {
+
+                                                    },
+                                                  );
                                                 },
                                                 child: Icon(
                                                   Icons.add,
@@ -221,10 +198,34 @@ class _CartScreenState extends State<CartScreen> {
                                       // ignore: avoid_unnecessary_containers
                                       
                                         InkWell(
-                                          onTap: () async{
-                                            await dbHelper!.delete(snapshot.data![index].id!);
-                                            cart.removerCounter();
-                                            cart.removeTotalPrice(double.parse(snapshot.data![index].productPrice.toString()));
+                                          onTap: () {
+                                              _deleteProduct(snapshot.data![index].id!,snapshot.data![index].productPrice.toString(),
+                                              );
+                                            showDialog(context: context, builder: (context) => AlertDialog(
+                                              title: Container(
+                                                child: Column(
+                                                  children: [
+                                                    Image.asset(
+                                                      width: 150,
+                                                      height: 150,
+                                                      "images/check.png",
+                                                    ),
+                                                    SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    Text(
+                                                      "Producto eliminado correctamente.",
+                                                      style: TextStyle(
+                                                        fontSize: 25,
+                                                        color: Colors.black,
+                                                      ),
+                                                      textAlign: TextAlign.center,
+                                                    ),
+                                                  ],
+                                                ),
+                                                ),
+                                              ),
+                                            ); 
                                           },
                                           // ignore: prefer_const_constructors
                                           child: Icon(
@@ -244,8 +245,26 @@ class _CartScreenState extends State<CartScreen> {
                     );
                   }
                 }
-                return CircularProgressIndicator(
-                  color: Colors.black,
+                return Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Cargando...",
+                            style: TextStyle(
+                            fontSize: 25.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      CircularProgressIndicator(
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
                 );
               },
             ),
@@ -265,7 +284,7 @@ class _CartScreenState extends State<CartScreen> {
                     children: [
                       ReusableWidget(
                         title: 'Total a pagar: ',
-                        value: r's/' + value.getTotalPrice().toStringAsFixed(2),
+                        value: r's/' + value.getTotalPrice().toString()+"0",
                       ),
                     ],
                   ),
@@ -287,7 +306,37 @@ class ReusableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/credit');
+        print('value:'+value);
+        if(value == 's/0.00') {
+           showDialog(
+            context: context, 
+            builder: (context) => AlertDialog(
+              title: Container(
+              child: Column(
+              children: [
+                Image.asset(
+                  width: 150,
+                  height: 150,
+                  "images/error.png",
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Agregue productos al carrito.",
+                  style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,),
+                  textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ); 
+        } else {
+          Navigator.pushNamed(context, '/credit');
+        }
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),

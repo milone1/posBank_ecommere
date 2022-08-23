@@ -57,7 +57,7 @@ class Products extends StatelessWidget {
                     _buildCard("Sashimi", 13, 11, 11, 11, 'images/sashimi.png', context),
                     _buildCard("Sopa India", 21, 29, 29, 29, 'images/sopaIndia.png', context),
                     _buildCard("Sidra", 14, 16, 16, 16, 'images/Sidra.png', context),
-                    _buildCard("Pepsi", 7, 17, 17, 17, 'images/pepsi.png', context),
+                    _buildCard("Pepsi", 17, 17, 17, 17, 'images/pepsi.png', context),
                     _buildCard("Martini", 21, 18, 18, 18, 'images/martini.png', context),
                     _buildCard("Heineken", 17, 22, 22, 22, 'images/heineken.png', context),
                     _buildCard("Fresa", 19, 19, 19, 19, 'images/fresa.png', context),
@@ -87,8 +87,7 @@ class Products extends StatelessWidget {
       padding: EdgeInsets.all(2.0),
       child: InkWell(
         onTap: () {
-          dbHelper!
-              .insert(
+          dbHelper!.insert(
             Cart(
                 id: id,
                 productId: idProduct.toString(),
