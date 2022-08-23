@@ -16,6 +16,7 @@ class Products extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         left: 10.0,
+        top: 8.0,
       ),
       child: Row(
         children: [
@@ -84,7 +85,7 @@ class Products extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.all(2.0),
+      padding: EdgeInsets.all(5.0),
       child: InkWell(
         onTap: () {
           dbHelper!.insert(
@@ -125,8 +126,9 @@ class Products extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                   color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: 3.0,
-                  blurRadius: 5.0),
+                  spreadRadius: 5,
+                  blurRadius: 7
+              ),
             ],
             color: Colors.white,
           ),
@@ -148,9 +150,7 @@ class Products extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: Color(
-                    (0xFFCC8053),
-                  ),
+                  color: Color(0xFFCC8053),
                 ),
               ),
               Padding(

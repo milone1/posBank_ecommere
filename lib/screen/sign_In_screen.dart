@@ -31,12 +31,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   Text(
                     'ACURIO',
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.white,
                       fontSize: MediaQuery.of(context).size.width * 0.2,
                       fontWeight: FontWeight.bold,
                       shadows: [
                         BoxShadow(
-                          color: Colors.deepOrange,
+                          color: Color(0xFF045BF1),
                           offset: Offset(5, 10),
                           blurRadius: 10,
                         ),

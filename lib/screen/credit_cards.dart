@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:ffi';
 import 'dart:typed_data';
-
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
@@ -12,6 +12,7 @@ import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/carrousel.dart';
 import 'package:posbank_flutter/widget/otherDetailsDivider.dart';
 import 'package:provider/provider.dart';
+import 'package:animate_do/animate_do.dart';
 
 class CreditCardsPage extends StatefulWidget {
   @override
@@ -37,25 +38,20 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     });
   }
 
-  getTotalPrice() {
-    final cart = Provider.of<CartProvider>(context);
-  }
-
   _printer(cardNumber, cardHolder, total) async {
     String numero = cardNumber.toString();
     String nombre = cardHolder.toString();
-    String totalSpacing = total+"           ".toString();
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("+----------------------------------------+");
-    await flutterUsbPrinter.printText("|              ACURIO-RESTAURANTS        |");
-    await flutterUsbPrinter.printText("+----------------------------------------+");
+    await flutterUsbPrinter.printText("+----------------------------------------+\r\n");
+    await flutterUsbPrinter.printText("|              ACURIO-RESTAURANTS        |\r\n");
+    await flutterUsbPrinter.printText("+----------------------------------------+\r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("PRODUCTOS:  CANTIDAD:  PRECIO_uni:  TOTAL:");
+    await flutterUsbPrinter.printText("PRODUCTOS:  CANTIDAD:  PRECIO_uni:  TOTAL:\r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     for (int index = 0; index < minimal.length; index++) {
@@ -79,7 +75,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("+----------------------------------------+");
-    await flutterUsbPrinter.printText("|   TOTAL:     "+totalSpacing.substring(0,7).toString()+"                    |");
+    await flutterUsbPrinter.printText('|   TOTAL:                 s/$total 0    |\r\n');
     await flutterUsbPrinter.printText("+----------------------------------------+");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
@@ -105,122 +101,181 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
+        color: Color(0xFFEBEBEB),
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
             SizedBox(
               height: 20,
             ),
-            ListCarrousel(),
-            Text(
-              "¡INCREIBLES OFERTAS!",
-              style: TextStyle(
-                fontSize: 45,
+            Container(
+              child: Column(
+                children: [
+                  ListCarrousel(),
+                ],
               ),
-              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              width: 50.0,
+            ),
+            BounceInLeft(
+              child: Text(
+                "¡INCREÍBLES OFERTAS!",
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  fontSize: 50,
+                  color: Color(0xFFCC8053),
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              duration: Duration(
+                seconds: 1,
+              ),
             ),
             _buildCreditCard(
                 height: height,
                 color: Color(0xFF2DA1F4),
                 cart: cart,
-                cardExpiration: "15/2024",
-                cardHolder: "JUAN JUANITO",
-                cardNumber: "9584 6587 7412 5698"),
+                cardExpiration: "06/05",
+                cardHolder: "E. MILAN",
+                cardNumber: "4754 6587 7412 5698"),
             OtherDetailsDivider(),
-            Center(
-              child: Container(
-                child: Text(
-                  "INGRESE SUS DATOS",
-                  style: TextStyle(
-                    fontSize: 30.0,
+            BounceInRight(
+              child: Center(
+                child: Container(
+                  child: Text(
+                    "INGRESE SUS DATOS:",
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      color: Color(0xFFCC8053),
+                      fontWeight: FontWeight.bold
+                    ),
                   ),
                 ),
               ),
-            ),
-            OtherDetailsDivider(),
-            Container(
-              child: Column(
-                children: [
-                  Text(
-                    "Titular de la tarjeta:",
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'E. Milan',
-                    ),
-                  ),
-                ],
+              duration: Duration(
+                seconds: 1,
               ),
             ),
             OtherDetailsDivider(),
-            Container(
-              child: Column(
-                children: [
-                  Text(
-                    "Número de la Tarjeta: ",
-                    style: TextStyle(
-                      fontSize: 20,
+            BounceInLeft(
+              child: Container(
+                child: Column(
+                  children: [
+                    Text(
+                      "Titular de la tarjeta:",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFFCC8053),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: '9632 8524 4521 3625',
+                    Container(
+                      width: width * 0.50,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(),
+                          labelText: 'E. Milan',
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+              ),
+              duration: Duration(
+                seconds: 1,
+              ),
+            ),
+            OtherDetailsDivider(),
+            BounceInRight(
+              child: Container(
+                child: Column(
+                  children: [
+                    Text(
+                      "Número de la Tarjeta: ",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFFCC8053),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Container(
+                      width: width * 0.50,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          border: UnderlineInputBorder(),
+                          labelText: '4754 6587 7412 5698',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              duration: Duration(
+                seconds: 1
               ),
             ),
             OtherDetailsDivider(),
             Container(
               child: Row(
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.all(4),
-                      child: Column(
-                        children: [
-                          Text(
-                            "Fecha de Vencimiento:",
-                            style: TextStyle(
-                              fontSize: 20,
+                  BounceInLeft(
+                    child: Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(4),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Fecha de Vencimiento:",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Color(0xFFCC8053),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: '06/05',
+                            TextFormField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                border: UnderlineInputBorder(),
+                                labelText: '06/05',
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
+                    duration: Duration(
+                      seconds: 1
+                    ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.all(4),
-                      child: Column(
-                        children: [
-                          Text(
-                            "CVV",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          TextField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: '562',
+                  BounceInRight(
+                    child: Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(4),
+                        child: Column(
+                          children: [
+                            Text(
+                              "CVV:",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Color(0xFFCC8053),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                            TextFormField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                border: UnderlineInputBorder(),
+                                labelText: '562',
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                    ),
+                    duration: Duration(
+                      seconds: 1,
                     ),
                   ),
                 ],
@@ -233,75 +288,24 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 padding: EdgeInsets.only(left: 250, right: 250, top: 50),
                 child: InkWell(
                   onTap: () {
-                    // _printer();
-                    if (minimal.length > 0) {
-                      _printer("1234 1234 1234 1234", "Juan Perez", cart.getTotalPrice());
+                      _printer("4754 6587 7412 5698", "E. MILAN", cart.getTotalPrice());
                       Navigator.pushNamed(context, '/');
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Padding(
-                            padding: EdgeInsets.all(5),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  "images/error.png",
-                                  height: 200,
-                                  width: 200,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  "CARRITO VACIO",
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.black,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          ),
-                          actions: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                border: Border.all(
-                                  color: Colors.blue,
-                                )
-                              ),
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/products');
-                                },
-                                child: Text(
-                                  "IR A LA TIENDA",
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            
-                          ],
-                        ),
-                      );
-                    }
                   },
                   child: Container(
+                    height: 35,
                     decoration: BoxDecoration(
                       color: Color(0xFF2DA1F4),
                       boxShadow: [
-                        BoxShadow(color: Colors.grey, spreadRadius: 3),
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3), 
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                        ),
                       ],
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      "PAGAR",
+                      "PAGAR:",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -319,7 +323,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     );
   }
 
-  InkWell _buildCreditCard({
+  Spin _buildCreditCard({
     required Color color,
     required double height,
     required String cardNumber,
@@ -327,50 +331,52 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     required CartProvider cart,
     required String cardExpiration,
   }) {
-    return InkWell(
-      onTap: () {
-        // print(height >= 800 ? 200 : 300);
-        // _printer();
-        _printer(cardNumber, cardHolder, cart.getTotalPrice());
-        Navigator.pushNamed(context, '/');
-      },
-      child: Card(
-        elevation: 4.0,
-        color: color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-        ),
-        child: Container(
-          height: (height < 1000 ? 200 : 300),
-          padding: const EdgeInsets.only(
-              left: 16.0, right: 16.0, bottom: 22.0, top: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              _buildLogosBlock(),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Text(
-                  '$cardNumber',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 21,
-                      fontFamily: 'CourrierPrime'),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  _buildDetailsBlock(
-                    label: 'CARDHOLDER',
-                    value: cardHolder,
+    return Spin(
+      child: InkWell( 
+        onTap: () {
+          // print(height >= 800 ? 200 : 300);
+          // _printer();
+          _printer(cardNumber, cardHolder, cart.getTotalPrice());
+          Navigator.pushNamed(context, '/');
+        },
+        child: Card(
+          elevation: 4.0,
+          color: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Container(
+            height: (height < 1000 ? 200 : 300),
+            padding: const EdgeInsets.only(
+                left: 16.0, right: 16.0, bottom: 22.0, top: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                _buildLogosBlock(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: Text(
+                    '$cardNumber',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 21,
+                        fontFamily: 'CourrierPrime'),
                   ),
-                  _buildDetailsBlock(
-                      label: 'VALID THRU', value: cardExpiration),
-                ],
-              ),
-            ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    _buildDetailsBlock(
+                      label: 'CARDHOLDER',
+                      value: cardHolder,
+                    ),
+                    _buildDetailsBlock(
+                        label: 'VALID THRU', value: cardExpiration),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -384,21 +390,21 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       children: <Widget>[
         Image.asset(
           "images/contact_less.png",
-          height: 20,
-          width: 18,
+          height: 30,
+          width: 28,
         ),
         Text(
           "BANCO BBVA",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 25,
             color: Colors.white,
             fontWeight: FontWeight.w700,
           ),
         ),
         Image.asset(
           "images/mastercard.png",
-          height: 50,
-          width: 50,
+          height: 70,
+          width: 70,
         ),
       ],
     );
@@ -412,12 +418,18 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         Text(
           '$label',
           style: TextStyle(
-              color: Colors.grey, fontSize: 9, fontWeight: FontWeight.bold),
+              color: Color(0xFFCACACA), 
+              fontSize: 15, 
+              fontWeight: FontWeight.bold
+          ),
         ),
         Text(
           '$value',
           style: TextStyle(
-              color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+              color: Colors.white, 
+              fontSize: 15, 
+              fontWeight: FontWeight.bold
+          ),
         )
       ],
     );
