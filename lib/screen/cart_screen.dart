@@ -34,7 +34,7 @@ class _CartScreenState extends State<CartScreen> {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: const EdgeInsets.all(1.0),
       child: Column(
         children: [
           FutureBuilder(
@@ -48,7 +48,7 @@ class _CartScreenState extends State<CartScreen> {
                         children: [
                           Image(
                             width: 170,
-                            height: 120,
+                            height: 150,
                             image: AssetImage('images/empty_cart.png'),
                           ),
                           Text('El carrito esta vacío 😌',
@@ -63,17 +63,16 @@ class _CartScreenState extends State<CartScreen> {
                         itemBuilder: (context, index) {
                           return Card(
                             child: Padding(
-                              padding: const EdgeInsets.all(2.0),
+                              padding: const EdgeInsets.all(1.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15.0),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.grey.withOpacity(0.6),
+                                          color: Colors.grey.withOpacity(0.4),
                                             spreadRadius: 6,
                                             blurRadius: 8
                                             ),
@@ -216,7 +215,9 @@ class _CartScreenState extends State<CartScreen> {
                                             onTap: () {
                                                 _deleteProduct(snapshot.data![index].id!,snapshot.data![index].productPrice.toString(),
                                                 );
-                                              showDialog(context: context, builder: (context) => AlertDialog(
+                                              showDialog(
+                                                context: context,
+                                                builder: (context) => AlertDialog(
                                                 title: Container(
                                                   child: Column(
                                                     children: [
@@ -239,6 +240,7 @@ class _CartScreenState extends State<CartScreen> {
                                                     ],
                                                   ),
                                                   ),
+                                                  
                                                 ),
                                               ); 
                                             },
@@ -292,7 +294,7 @@ class _CartScreenState extends State<CartScreen> {
                 padding: EdgeInsets.all(0),
                 child: Container(
                   width: width * 0.35,
-                  height: 30,
+                  height: 50,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(15),
@@ -364,7 +366,7 @@ class ReusableWidget extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
@@ -372,7 +374,7 @@ class ReusableWidget extends StatelessWidget {
             Text(
               value.toString(),
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),

@@ -36,9 +36,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       fontWeight: FontWeight.bold,
                       shadows: [
                         BoxShadow(
-                          color: Color(0xFF045BF1),
                           offset: Offset(5, 10),
                           blurRadius: 10,
+                          color: Colors.blue.withOpacity(0.6),  
+                          spreadRadius: 8,
                         ),
                       ],
                     ),
@@ -47,10 +48,21 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(
                     height: 250,
                   ),
-                  Image.asset(
-                      "images/favicon.ico",
-                    width: 150,
-                    height: 150,
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white.withOpacity(0.2),
+                          blurRadius: 2,
+                          spreadRadius: 3,
+                        ),
+                      ],
+                    ),
+                    child: Image.asset(
+                        "images/favicon.ico",
+                      width: 150,
+                      height: 150,
+                    ),
                   ),
                   SizedBox(
                     height: 250,
@@ -75,9 +87,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black87,
+                                    color: Colors.white.withOpacity(0.4),
                                     offset: Offset(3, 3),
-                                    blurRadius: 3,
+                                    spreadRadius: 8,
+                                    blurRadius: 8,
                                   )
                                 ]),
                             child: Center(
@@ -91,6 +104,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Text(
                                     'Para Pedir',
                                     style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                       fontSize: MediaQuery.of(context).size.width*0.05,
                                     ),
@@ -119,9 +133,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black87,
+                                    color: Colors.white.withOpacity(0.4),
                                     offset: Offset(3, 3),
-                                    blurRadius: 3,
+                                    spreadRadius: 8,
+                                    blurRadius: 8,
                                   )
                                 ]),
                             child: Center(
@@ -135,6 +150,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Text(
                                     'Para LLevar',
                                     style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                       fontSize: MediaQuery.of(context).size.width * 0.05,
                                     ),

@@ -19,8 +19,12 @@ class ListCategory extends StatelessWidget {
     {'name': 'BEBIDAS', 'iconPath': 'images/iconDrink.png', 'category': '2'},
     {'name': 'SOPAS', 'iconPath': 'images/iconSoup.png', 'category': '4'},
     {'name': 'POSTRES', 'iconPath': 'images/iconSweet.png', 'category': '5'},
+    {'name': 'TODOS', 'iconPath': 'images/todo.png', 'category': 'all'},
+    {'name': 'CARNES', 'iconPath': 'images/iconMeet.png', 'category': '1'},
+    {'name': 'BEBIDAS', 'iconPath': 'images/iconDrink.png', 'category': '2'},
+    {'name': 'SOPAS', 'iconPath': 'images/iconSoup.png', 'category': '4'},
+    {'name': 'POSTRES', 'iconPath': 'images/iconSweet.png', 'category': '5'},
     ];
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -28,7 +32,7 @@ class ListCategory extends StatelessWidget {
     Provider.of<CartProvider>(context);
     return Container(
       width: 150,
-      height: 550,
+      height: 720,
       child: ListView.builder(
         itemCount: categories.length,
         itemBuilder: (context, index) {
@@ -37,25 +41,24 @@ class ListCategory extends StatelessWidget {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.4),
+                    color: Colors.grey.withOpacity(0.3),
                     spreadRadius: 3.0,
                     blurRadius: 7.0
                 ),
               ],
               color: Colors.white,
               borderRadius: BorderRadius.circular(50),
-              border: Border.all(color: Colors.black),
             ),
             child: InkWell(
               onTap: () {
                 print(categories[index]['category']);
               },
-              child: Column(
+              child: Row(
                 children: [
                   Container(
                     child: Image.asset(
                       categories[index]['iconPath'],
-                      width: 60,
+                      width: 50,
                       height: 40,
                     ),
                   ),
@@ -63,7 +66,7 @@ class ListCategory extends StatelessWidget {
                     categories[index]["name"],
                     style: TextStyle(
                         color: Color(0xFFCC8053),
-                        fontSize: 20,
+                        fontSize: 15,
                         fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,
                   ),

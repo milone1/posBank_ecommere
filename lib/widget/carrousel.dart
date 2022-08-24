@@ -11,12 +11,12 @@ class ListCarrousel extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     Provider.of<CartProvider>(context);
     return Container(
-      width: width * 0.75,
+      width: width,
       height: height * 0.18,
       child: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(2.0) 
+            padding: const EdgeInsets.all(1) 
           ),
           CarouselSlider(
             items: [

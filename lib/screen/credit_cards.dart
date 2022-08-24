@@ -49,11 +49,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter.printText("+----------------------------------------+\r\n");
     await flutterUsbPrinter.printText("|              ACURIO-RESTAURANTS        |\r\n");
     await flutterUsbPrinter.printText("+----------------------------------------+\r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("PRODUCTOS:  CANTIDAD:  PRECIO_uni:  TOTAL:\r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter.printText("                                          \r\n");
+    await flutterUsbPrinter.printText("                                          \r\n");
+    await flutterUsbPrinter.printText("PRODUCTOS:   CANTIDAD:   PRECIO:    TOTAL:\r\n");
+    await flutterUsbPrinter.printText("                                          \r\n");
+    await flutterUsbPrinter.printText("                                          \r\n");
     for (int index = 0; index < minimal.length; index++) {
       String? productoName = minimal[index].productName;
       int? productoCantidad = minimal[index].quantity;
@@ -61,11 +61,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           (productoName!+"                       ").substring(0, 15) +
               productoCantidad.toString() +
               "     " +
-              "s/ " +
+              "S/ " +
               minimal[index].initialPrice.toString() +
               ".00" +
               "     " +
-              "s/" +
+              "S/" +
               minimal[index].productPrice.toString() +
               ".00" +
               '\r\n');
@@ -75,7 +75,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("+----------------------------------------+");
-    await flutterUsbPrinter.printText('|   TOTAL:                 s/$total 0    |\r\n');
+    await flutterUsbPrinter.printText('|   TOTAL:                 S/$total 0    |\r\n');
     await flutterUsbPrinter.printText("+----------------------------------------+");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
@@ -295,20 +295,21 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         Navigator.pushNamed(context, '/');
                     },
                     child: Container(
+                      alignment: Alignment.center,
                       height: 35,
                       decoration: BoxDecoration(
                         color: Color(0xFF2DA1F4),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.3), 
+                            color: Colors.grey.withOpacity(0.5), 
                             spreadRadius: 5,
-                            blurRadius: 7,
+                            blurRadius: 9,
                           ),
                         ],
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        "PAGAR:",
+                        "PAGAR",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,

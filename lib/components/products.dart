@@ -17,7 +17,7 @@ class Products extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         left: 10.0,
-        top: 8.0,
+        top: 1.0,
       ),
       child: Row(
         children: [
@@ -33,7 +33,7 @@ class Products extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.only(
-                top: 20,
+                top: 2,
                 left: 10,
                 bottom: 10,
               ),
@@ -173,10 +173,9 @@ class Products extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Color(0xFFEBEBEB),
                   ),
                   child: Text(
-                    's/' + price.toString() + '.00',
+                    'S/' + price.toString() + '.00',
                     style: TextStyle(
                       color: Color(0xFF575E67), 
                       fontSize: 15
