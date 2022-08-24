@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:ui';
@@ -11,6 +12,7 @@ import 'package:posbank_flutter/widget/ListCategory.dart';
 import 'package:posbank_flutter/widget/otherDetailsDivider.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CartScreen extends StatefulWidget {
   @override
@@ -48,10 +50,10 @@ class _CartScreenState extends State<CartScreen> {
                         children: [
                           Image(
                             width: 170,
-                            height: 150,
+                            height: 130,
                             image: AssetImage('images/empty_cart.png'),
                           ),
-                          Text('El carrito esta vacío 😌',
+                          Text('El carrito esta vacío',
                               style: Theme.of(context).textTheme.headline5),
                         ],
                       ),
@@ -99,7 +101,7 @@ class _CartScreenState extends State<CartScreen> {
                                           ),
                                         ),
                                         Text(
-                                          "s/ "+snapshot.data![index].productPrice.toString()+".00",
+                                          "S/ "+snapshot.data![index].productPrice.toString()+".00",
                                           style: TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
@@ -215,36 +217,17 @@ class _CartScreenState extends State<CartScreen> {
                                             onTap: () {
                                                 _deleteProduct(snapshot.data![index].id!,snapshot.data![index].productPrice.toString(),
                                                 );
-                                              showDialog(
-                                                context: context,
-                                                builder: (context) => AlertDialog(
-                                                title: Container(
-                                                  child: Column(
-                                                    children: [
-                                                      Image.asset(
-                                                        width: 150,
-                                                        height: 150,
-                                                        "images/check.png",
-                                                      ),
-                                                      SizedBox(
-                                                        height: 20,
-                                                      ),
-                                                      Text(
-                                                        "Producto eliminado correctamente.",
-                                                        style: TextStyle(
-                                                          fontSize: 25,
-                                                          color: Colors.black,
-                                                        ),
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  ),
-                                                  
-                                                ),
-                                              ); 
+                                              Fluttertoast.showToast(
+                                                msg: "Eliminado Correctamente",
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                webPosition: "bottom",
+                                                gravity: ToastGravity.CENTER,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor: Colors.red,
+                                                textColor: Colors.white,
+                                                fontSize: 14.0
+                                              );
                                             },
-                                            // ignore: prefer_const_constructors
                                             child: Icon(
                                               Icons.delete,
                                               color: Colors.red,
@@ -337,7 +320,7 @@ class ReusableWidget extends StatelessWidget {
                 Image.asset(
                   width: 150,
                   height: 150,
-                  "images/error.png",
+                  "images/sad.png",
                 ),
                 SizedBox(
                   height: 20,

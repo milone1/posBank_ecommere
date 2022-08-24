@@ -39,6 +39,9 @@ class ListCategory extends StatelessWidget {
           return Container(
             margin: EdgeInsets.all(5),
             decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black
+              ),
               boxShadow: [
                 BoxShadow(
                     color: Colors.grey.withOpacity(0.3),
@@ -47,19 +50,19 @@ class ListCategory extends StatelessWidget {
                 ),
               ],
               color: Colors.white,
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(25),
             ),
             child: InkWell(
               onTap: () {
                 print(categories[index]['category']);
               },
-              child: Row(
+              child: Column(
                 children: [
                   Container(
                     child: Image.asset(
                       categories[index]['iconPath'],
                       width: 50,
-                      height: 40,
+                      height: 50,
                     ),
                   ),
                   Text(

@@ -38,6 +38,9 @@ dependencies:
   auto_size_text: ^3.0.0
   carousel_slider: ^4.1.1
   animate_do: ^2.1.0
+  fluttertoast: ^8.0.9
+  flutter_hooks: ^0.18.5+1
+  flutter_swiper: ^1.1.6
 
 dev_dependencies:
   flutter_test:

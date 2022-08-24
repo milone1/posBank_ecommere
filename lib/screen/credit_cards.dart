@@ -75,7 +75,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("+----------------------------------------+");
-    await flutterUsbPrinter.printText('|   TOTAL:                 S/$total 0    |\r\n');
+    await flutterUsbPrinter.printText('|   TOTAL:                 S/$total      |\r\n');
     await flutterUsbPrinter.printText("+----------------------------------------+");
     await flutterUsbPrinter.printText("                                      \r\n");
     await flutterUsbPrinter.printText("                                      \r\n");

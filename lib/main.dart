@@ -17,10 +17,9 @@ class MyApp extends StatelessWidget {
       create: (_) => CartProvider(),
       child: Builder(builder: (BuildContext context) {
         return MaterialApp(
-          title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Lato'),
-          initialRoute: '/',
+          initialRoute: '/products',
           routes: {
             '/': (context) => SignInScreen(),
             '/products': (context) => ProductListScreen(),
