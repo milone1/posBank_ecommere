@@ -293,8 +293,8 @@ class _CartScreenState extends State<CartScreen> {
               return Padding(
                 padding: EdgeInsets.all(0),
                 child: Container(
-                  width: width * 0.35,
-                  height: 50,
+                  width: width * 0.50,
+                  height: 70,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(15),
@@ -303,7 +303,7 @@ class _CartScreenState extends State<CartScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ReusableWidget(
-                        title: 'Total a pagar: ',
+                        title: 'TOTAL A PAGAR: ',
                         value: r's/' + value.getTotalPrice().toString()+"0",
                       ),
                     ],
@@ -345,7 +345,7 @@ class ReusableWidget extends StatelessWidget {
                 Text(
                   "Agregue productos al carrito.",
                   style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 30,
                   color: Colors.black,),
                   textAlign: TextAlign.center,
                     ),
@@ -367,14 +367,14 @@ class ReusableWidget extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: 25,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
             Text(
               value.toString(),
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 35,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),

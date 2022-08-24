@@ -15,9 +15,8 @@ class _SignInScreenState extends State<SignInScreen> {
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/backgroundCal.gif"), 
-                fit: BoxFit.fill
-            ),
+                image: AssetImage("images/backgroundCal.gif"),
+                fit: BoxFit.fill),
           ),
           child: Container(
             child: SingleChildScrollView(
@@ -28,44 +27,21 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.1,
                   ),
-                  Text(
-                    'ACURIO',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: MediaQuery.of(context).size.width * 0.2,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        BoxShadow(
-                          offset: Offset(5, 10),
-                          blurRadius: 10,
-                          color: Colors.blue.withOpacity(0.6),  
-                          spreadRadius: 8,
-                        ),
-                      ],
-                    ),
-                    textAlign: TextAlign.center,
+                  Image.asset(
+                    "images/infomatica.png",
+                    width: 200,
+                    height: 200,
                   ),
                   SizedBox(
-                    height: 250,
+                    height: 200,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.white.withOpacity(0.2),
-                          blurRadius: 2,
-                          spreadRadius: 3,
-                        ),
-                      ],
-                    ),
-                    child: Image.asset(
-                        "images/favicon.ico",
-                      width: 150,
-                      height: 150,
-                    ),
+                  Image.asset(
+                    "images/Tanta_logo.png",
+                    width: 350,
+                    height: 250,
                   ),
                   SizedBox(
-                    height: 250,
+                    height: 200,
                   ),
                   Container(
                     child: Row(
@@ -106,7 +82,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
-                                      fontSize: MediaQuery.of(context).size.width*0.05,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.05,
                                     ),
                                   ),
                                 ],
@@ -152,14 +130,16 @@ class _SignInScreenState extends State<SignInScreen> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
-                                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.05,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
                           ),
-                        ),  
+                        ),
                       ],
                     ),
                   ),
