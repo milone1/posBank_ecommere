@@ -208,7 +208,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                               height: 50,
                                             ),
                                             SizedBox(
-                                              width: 50,
+                                              width: 20,
                                             ),
                                             Text(
                                               minimal[index]
@@ -295,49 +295,42 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   width: width * 0.40,
                   height: height * 0.45,
                   child: Column(
-                    children: [Text("DATOS:")],
+                    children: [
+                      Text("DATOS:"),
+                      InkWell(
+                        onTap: () {
+                          _printer("4754 6587 7412 5698", "E. MILAN",cart.getTotalPrice());
+                          Navigator.pushNamed(context, '/');
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF2DA1F4),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 9,
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            "PAGAR",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
-            ),
-            Swing(
-              child: Container(
-                width: 90,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 250, right: 250, top: 50),
-                  child: InkWell(
-                    onTap: () {
-                      _printer("4754 6587 7412 5698", "E. MILAN",
-                          cart.getTotalPrice());
-                      Navigator.pushNamed(context, '/');
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 35,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF2DA1F4),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 9,
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        "PAGAR",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
             ),
           ],
         ),
@@ -356,8 +349,6 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     return Spin(
       child: InkWell(
         onTap: () {
-          // print(height >= 800 ? 200 : 300);
-          // _printer();
           _printer(cardNumber, cardHolder, cart.getTotalPrice());
           Navigator.pushNamed(context, '/');
         },

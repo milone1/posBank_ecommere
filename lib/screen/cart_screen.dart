@@ -20,7 +20,7 @@ class _CartScreenState extends State<CartScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    _deleteProduct(id, price) async{
+    _deleteProduct(id, price) async {
       await dbHelper!.delete(id);
       cart.removerCounter();
       cart.removeTotalPrice(await double.parse(price),

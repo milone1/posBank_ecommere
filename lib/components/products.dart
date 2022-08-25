@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
+import 'package:posbank_flutter/utils/category.dart';
 import 'package:posbank_flutter/widget/ListAdd.dart';
 import 'package:posbank_flutter/widget/ListCategory.dart';
 import 'package:posbank_flutter/widget/ListChips.dart';
@@ -17,6 +18,7 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    double category = Provider.of<CartProvider>(context) as double;
     return Padding(
       padding: EdgeInsets.only(
         left: 10.0,
@@ -48,6 +50,9 @@ class Products extends StatelessWidget {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 20,
                     children: <Widget>[
+                      Consumer<CartProvider>(
+                        builder: (context, prueba, _ ) => Text(prueba.category),
+                      ),
                       _buildCard("Arroz Chaufa", 21, 1, 1, 1,
                           "images/bacon.png", context),
                       _buildCard("Ensalada pollo", 12, 27, 27, 27,
@@ -264,7 +269,8 @@ class Products extends StatelessWidget {
                                 backgroundColor: Colors.green,
                                 textColor: Colors.white,
                                 fontSize: 14.0);
-                            dbHelper!.insert(
+                            dbHelper!
+                                .insert(
                               Cart(
                                   id: id,
                                   productId: idProduct.toString(),
@@ -304,7 +310,8 @@ class Products extends StatelessWidget {
                 Container(
                   width: width,
                   height: height * 0.10,
-                  decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: ListAdd(),
                 ),
               ],
@@ -350,9 +357,9 @@ class Products extends StatelessWidget {
               SizedBox(
                 width: width * 0.30,
                 child: Text(
-                    "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que " +
-                    "probablemente resulta rico y apetitoso, agradable y grato al paladar. " +
-                    "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
+                  "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que " +
+                      "probablemente resulta rico y apetitoso, agradable y grato al paladar. " +
+                      "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,

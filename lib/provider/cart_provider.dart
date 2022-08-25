@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CartProvider with ChangeNotifier {
   DBHelper db = DBHelper();
   int _counter = 0;
+  String category = '';
   int get counter => _counter;
-
   double _totalPrice = 0.00;
   double get totalPrice => _totalPrice;
 
