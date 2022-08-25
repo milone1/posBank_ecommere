@@ -13,12 +13,10 @@ import 'package:provider/provider.dart';
 
 class Products extends StatelessWidget {
   DBHelper? dbHelper = DBHelper();
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double category = Provider.of<CartProvider>(context) as double;
     return Padding(
       padding: EdgeInsets.only(
         left: 10.0,
@@ -50,9 +48,6 @@ class Products extends StatelessWidget {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 20,
                     children: <Widget>[
-                      Consumer<CartProvider>(
-                        builder: (context, prueba, _ ) => Text(prueba.category),
-                      ),
                       _buildCard("Arroz Chaufa", 21, 1, 1, 1,
                           "images/bacon.png", context),
                       _buildCard("Ensalada pollo", 12, 27, 27, 27,
@@ -214,8 +209,6 @@ class Products extends StatelessWidget {
                     top: 10.0,
                   ),
                   child: Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.blue)),
                     width: width,
                     height: 100,
                     child: Row(
@@ -310,8 +303,6 @@ class Products extends StatelessWidget {
                 Container(
                   width: width,
                   height: height * 0.10,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: ListAdd(),
                 ),
               ],

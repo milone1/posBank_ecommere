@@ -19,6 +19,11 @@ class CartProvider with ChangeNotifier {
     return await _cart;
   }
 
+  void _setCategory(String catego) async {
+    this.category = catego;
+    notifyListeners();
+  }
+
   void _setPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('cart_item', _counter);

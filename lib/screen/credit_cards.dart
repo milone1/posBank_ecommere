@@ -172,9 +172,12 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cardNumber: "4754 6587 7412 5698"),
             OtherDetailsDivider(),
             Text(
-              "RESUMEN DE TU ORDEN:    " + cart.getTotalPrice().toString(),
+              "RESUMEN DE TU ORDEN:    " +
+                  "S/  " +
+                  cart.getTotalPrice().toString() +
+                  "0",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
@@ -189,7 +192,30 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     child: Column(
                       children: [
                         minimal.length < 0
-                            ? const Text("Vacio")
+                            ? Expanded(
+                                child: Container(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Cargando...",
+                                        style: TextStyle(
+                                          fontSize: 25.0,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 25,
+                                      ),
+                                      CircularProgressIndicator(
+                                        color: Colors.black,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
                             : Expanded(
                                 child: ListView.builder(
                                   itemCount: minimal.length,
@@ -299,7 +325,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       Text("DATOS:"),
                       InkWell(
                         onTap: () {
-                          _printer("4754 6587 7412 5698", "E. MILAN",cart.getTotalPrice());
+                          _printer("4754 6587 7412 5698", "E. MILAN",
+                              cart.getTotalPrice());
                           Navigator.pushNamed(context, '/');
                         },
                         child: Container(

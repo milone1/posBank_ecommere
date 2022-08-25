@@ -29,6 +29,19 @@ class _ProductListScreenState extends State<ProductListScreen> {
         child: Column(
           children: [
             ListCarrousel(),
+            Consumer<CartProvider>(
+              builder: (context, prueba, _) => Center(
+                child: Text(
+                  prueba.category.toString(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
             Products(),
             Expanded(
               child: Container(
@@ -36,17 +49,12 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 height: height * 0.35,
                 decoration: BoxDecoration(
                   border: Border(
-                    top: BorderSide(
-                      color: Colors.grey, 
-                      width: 1
-                    ),
+                    top: BorderSide(color: Colors.grey, width: 1),
                   ),
                 ),
                 child: BounceInUp(
                   child: CartScreen(),
-                  duration: Duration(
-                    seconds: 2
-                  ),
+                  duration: Duration(seconds: 2),
                 ),
               ),
             ),
