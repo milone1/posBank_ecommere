@@ -6,6 +6,7 @@ import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/ListAdd.dart';
 import 'package:posbank_flutter/widget/ListCategory.dart';
+import 'package:posbank_flutter/widget/ListChips.dart';
 import 'package:provider/provider.dart';
 
 class Products extends StatelessWidget {
@@ -120,7 +121,7 @@ class Products extends StatelessWidget {
   }
 
   Widget _buildCard(String name, int price, int id, int idProduct, int category,
-      String imgPath, context) {
+    String imgPath, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
@@ -128,37 +129,6 @@ class Products extends StatelessWidget {
       child: InkWell(
         onTap: () {
           _mySheet(name, price, id, idProduct, category, imgPath, context);
-          // dbHelper!.insert(
-          //   Cart(
-          //       id: id,
-          //       productId: idProduct.toString(),
-          //       productName: name,
-          //       initialPrice: price,
-          //       productPrice: price,
-          //       quantity: 1,
-          //       unitTag: price.toString(),
-          //       image: imgPath,
-          //       category: ''),
-          // )
-          //     .then((value) {
-          //   cart.addTotalPrice(double.parse(price.toString()));
-          //   cart.addCounter();
-
-          //   final snackBar = SnackBar(
-          //     backgroundColor: Colors.green,
-          //     content: Text('Producto agregado correctamente'),
-          //     duration: Duration(seconds: 1),
-          //   );
-
-          //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          // }).onError((error, stackTrace) {
-          //   print("error" + error.toString());
-          //   final snackBar = SnackBar(
-          //       backgroundColor: Colors.red,
-          //       content: Text('El producto ya existe en el carrito'),
-          //       duration: Duration(seconds: 1));
-          //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          // });
         },
         child: Container(
           decoration: BoxDecoration(
@@ -213,11 +183,11 @@ class Products extends StatelessWidget {
     );
   }
 
-  _mySheet(String name, int price, int id, int idProduct, int category,
-      String imgPath, context) {
+  _mySheet(String name, int price, int id, int idProduct, int category,String imgPath, context) {
     final cart = Provider.of<CartProvider>(context, listen: false);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.white,
@@ -232,119 +202,99 @@ class Products extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
+                _modalHead(name, imgPath, context),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 10.0,
+                  ),
+                  child: Container(
+                    decoration:BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blue
+                      )
+                    ),
+                    width: width,
+                    height: 100,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "AGREGAR",
+                        ),
+                        Text(
+                          "QUITAR",
+                        ),
+                        Text(
+                          "ESPECIFICACIONES",
+                        ),
+                        Text(
+                          "OTROS",
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                ListChips(),
                 Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        imgPath,
-                        height: 250,
-                        width: 250,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 20.0,
+                    ),
+                    child: Container(
+                      width: width * 0.35,
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.4),
+                              spreadRadius: 5,
+                              blurRadius: 7),
+                        ],
+                        color: Colors.blue,
                       ),
-                      Column(
-                        children: <Widget>[
-                          Text(
-                            name,
+                      child: Center(
+                        child: InkWell(
+                          onTap: () {
+                            Fluttertoast.showToast(
+                                msg: "Agregado Correctamente",
+                                toastLength: Toast.LENGTH_SHORT,
+                                webPosition: "bottom",
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.green,
+                                textColor: Colors.white,
+                                fontSize: 14.0);
+                            dbHelper!
+                                .insert(
+                              Cart(
+                                  id: id,
+                                  productId: idProduct.toString(),
+                                  productName: name,
+                                  initialPrice: price,
+                                  productPrice: price,
+                                  quantity: 1,
+                                  unitTag: price.toString(),
+                                  image: imgPath,
+                                  category: ''),
+                            )
+                                .then(
+                              (value) {
+                                cart.addTotalPrice(double.parse(price.toString()));
+                                cart.addCounter();
+                              },
+                            );
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            "+ AGREGAR AL CARRITO",
                             style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFFCC8053),
-                            ),
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
-                          Container(
-                            width: 400,
-                            height: 180,
-                            child: Text(
-                              "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que " +
-                                  "probablemente resulta rico y apetitoso, agradable y grato al paladar. " +
-                                  "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.black, 
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: width,
-                  height: 100,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "AGREGAR",
-                      ),
-                      Text(
-                        "QUITAR",
-                      ),
-                      Text(
-                        "ESPECIFICACIONES",
-                      ),
-                      Text(
-                        "OTROS",
-                      ),
-                    ],
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    width: width * 0.35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.4),
-                            spreadRadius: 5,
-                            blurRadius: 7),
-                      ],
-                      color: Colors.blue,
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        Fluttertoast.showToast(
-                            msg: "Agregado Correctamente",
-                            toastLength: Toast.LENGTH_SHORT,
-                            webPosition: "bottom",
-                            gravity: ToastGravity.CENTER,
-                            timeInSecForIosWeb: 1,
-                            backgroundColor: Colors.green,
-                            textColor: Colors.white,
-                            fontSize: 14.0);
-                        dbHelper!
-                            .insert(
-                          Cart(
-                              id: id,
-                              productId: idProduct.toString(),
-                              productName: name,
-                              initialPrice: price,
-                              productPrice: price,
-                              quantity: 1,
-                              unitTag: price.toString(),
-                              image: imgPath,
-                              category: ''),
-                        )
-                            .then(
-                          (value) {
-                            cart.addTotalPrice(double.parse(price.toString()));
-                            cart.addCounter();
-                          },
-                        );
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        "+ AGREGAR AL CARRITO",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ),
@@ -354,99 +304,10 @@ class Products extends StatelessWidget {
                 ),
                 Container(
                   width: width,
-                  height: height * 0.30,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black
-                    )
-                  ),
+                  height: height * 0.10,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
                   child: ListAdd(),
-                  // child: ListWheelScrollView(
-                  //   itemExtent: 250, 
-                  //   children: [
-                  //     Container(
-                  //       decoration: BoxDecoration(
-                  //         border: Border.all(
-                  //           color: Colors.black
-                  //         )
-                  //       ),
-                  //       child: Row(
-                  //         mainAxisAlignment: MainAxisAlignment.center,
-                  //         crossAxisAlignment: CrossAxisAlignment.center,
-                  //         children: [
-                  //             Image.asset(
-                  //             "images/cafe.png",
-                  //             height: 90, 
-                  //             width: 90,
-                  //             ),
-                  //             Text(
-                  //               ""
-                  //             )
-                  //         ],
-                  //       )
-                  //     ),
-                  //     Container(
-                  //       decoration: BoxDecoration(
-                  //         border: Border.all(
-                  //           color: Colors.black
-                  //         )
-                  //       ),
-                  //       child: Image.asset(
-                  //         "images/cafe.png",
-                  //         height: 90, 
-                  //         width: 90,
-                  //       ),
-                  //     ),
-                  //     Container(
-                  //       decoration: BoxDecoration(
-                  //         border: Border.all(
-                  //           color: Colors.black
-                  //         )
-                  //       ),
-                  //       child: Image.asset(
-                  //         "images/cafe.png",
-                  //         height: 90, 
-                  //         width: 90,
-                  //       ),
-                  //     ),
-                  //     Container(
-                  //       decoration: BoxDecoration(
-                  //         border: Border.all(
-                  //           color: Colors.black
-                  //         )
-                  //       ),
-                  //       child: Image.asset(
-                  //         "images/cafe.png",
-                  //         height: 90, 
-                  //         width: 90,
-                  //       ),
-                  //     ),
-                  //     Container(
-                  //       decoration: BoxDecoration(
-                  //         border: Border.all(
-                  //           color: Colors.black
-                  //         )
-                  //       ),
-                  //       child: Image.asset(
-                  //         "images/cafe.png",
-                  //         height: 90, 
-                  //         width: 90,
-                  //       ),
-                  //     ),
-                  //     Container(
-                  //       decoration: BoxDecoration(
-                  //         border: Border.all(
-                  //           color: Colors.black
-                  //         )
-                  //       ),
-                  //       child: Image.asset(
-                  //         "images/cafe.png",
-                  //         height: 90, 
-                  //         width: 90,
-                  //       ),
-                  //     ),
-                  //   ]
-                  // ),
                 ),
               ],
             ),
@@ -455,4 +316,50 @@ class Products extends StatelessWidget {
       },
     );
   }
+
+  Widget _modalHead(String name, String imgPath, context){
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            imgPath,
+            height: 300,
+            width: 300,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                name,
+                style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFCC8053),
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                width: width * 0.30,
+                child: Text(
+                  "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que " +
+                      "probablemente resulta rico y apetitoso, agradable y grato al paladar. " +
+                      "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  ),
+                  maxLines: 5,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  } 
 }
