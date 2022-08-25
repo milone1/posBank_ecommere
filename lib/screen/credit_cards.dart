@@ -191,31 +191,27 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     height: height * 0.45,
                     child: Column(
                       children: [
-                        minimal.length < 0
-                            ? Expanded(
-                                child: Container(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Cargando...",
-                                        style: TextStyle(
-                                          fontSize: 25.0,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 25,
-                                      ),
-                                      CircularProgressIndicator(
-                                        color: Colors.black,
-                                      ),
-                                    ],
+                        minimal.length <= 0
+                            ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Cargando...",
+                                  style: TextStyle(
+                                    fontSize: 25.0,
+                                    color: Colors.black,
                                   ),
                                 ),
-                              )
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                CircularProgressIndicator(
+                                  color: Colors.black,
+                                ),
+                              ],
+                            )
                             : Expanded(
                                 child: ListView.builder(
                                   itemCount: minimal.length,
@@ -321,8 +317,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   width: width * 0.40,
                   height: height * 0.45,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("DATOS:"),
                       InkWell(
                         onTap: () {
                           _printer("4754 6587 7412 5698", "E. MILAN",

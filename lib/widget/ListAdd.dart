@@ -9,7 +9,7 @@ class ListAdd extends StatelessWidget {
 
     return Wrap(
       children: [
-        Text("asd"),
+        Text("Contenido..."),
       ],
     );
   }
