@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/screen/credit_cards.dart';
 import 'package:posbank_flutter/screen/sign_In_screen.dart';
@@ -7,6 +8,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 }
 
 class MyApp extends StatelessWidget {
@@ -19,11 +21,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Lato'),
-          initialRoute: '/products',
+          initialRoute: '/credit',
           routes: {
             '/': (context) => SignInScreen(),
             '/products': (context) => ProductListScreen(),
-            '/credit':(context) => CreditCardsPage(),
+            '/credit': (context) => CreditCardsPage(),
           },
         );
       }),

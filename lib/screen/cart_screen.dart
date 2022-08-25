@@ -1,17 +1,9 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:typed_data';
-import 'dart:ui';
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
-import 'package:posbank_flutter/widget/ListCategory.dart';
-import 'package:posbank_flutter/widget/otherDetailsDivider.dart';
 import 'package:provider/provider.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CartScreen extends StatefulWidget {
@@ -49,8 +41,8 @@ class _CartScreenState extends State<CartScreen> {
                       child: Column(
                         children: [
                           Image(
-                            width: 170,
-                            height: 130,
+                            width: 250,
+                            height: 200,
                             image: AssetImage('images/empty_cart.png'),
                           ),
                           Text('El carrito esta vacío',
@@ -274,13 +266,13 @@ class _CartScreenState extends State<CartScreen> {
           Consumer<CartProvider>(
             builder: (context, value, child) {
               return Padding(
-                padding: EdgeInsets.all(0),
+                padding: EdgeInsets.all(10.0),
                 child: Container(
                   width: width * 0.50,
-                  height: 70,
+                  height: 70.0,
                   decoration: BoxDecoration(
                     color: Colors.blue,
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

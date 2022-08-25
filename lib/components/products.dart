@@ -7,6 +7,7 @@ import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/ListAdd.dart';
 import 'package:posbank_flutter/widget/ListCategory.dart';
 import 'package:posbank_flutter/widget/ListChips.dart';
+import 'package:posbank_flutter/widget/ListDropDown.dart';
 import 'package:provider/provider.dart';
 
 class Products extends StatelessWidget {
@@ -14,7 +15,6 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Orientation orientation = MediaQuery.of(context).orientation;
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
@@ -41,9 +41,9 @@ class Products extends StatelessWidget {
               child: BounceInRight(
                 child: Container(
                   width: width - 100,
-                  height: height * 0.60,
+                  height: height * 0.55,
                   child: GridView.count(
-                    crossAxisCount: 6,
+                    crossAxisCount: 5,
                     scrollDirection: Axis.horizontal,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 20,
@@ -121,7 +121,7 @@ class Products extends StatelessWidget {
   }
 
   Widget _buildCard(String name, int price, int id, int idProduct, int category,
-    String imgPath, context) {
+      String imgPath, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
@@ -146,8 +146,8 @@ class Products extends StatelessWidget {
               Hero(
                 tag: 'dash',
                 child: Container(
-                  width: 60,
-                  height: 60,
+                  width: 80,
+                  height: 80,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(imgPath), fit: BoxFit.contain),
@@ -183,7 +183,8 @@ class Products extends StatelessWidget {
     );
   }
 
-  _mySheet(String name, int price, int id, int idProduct, int category,String imgPath, context) {
+  _mySheet(String name, int price, int id, int idProduct, int category,
+      String imgPath, context) {
     final cart = Provider.of<CartProvider>(context, listen: false);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -208,11 +209,8 @@ class Products extends StatelessWidget {
                     top: 10.0,
                   ),
                   child: Container(
-                    decoration:BoxDecoration(
-                      border: Border.all(
-                        color: Colors.blue
-                      )
-                    ),
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.blue)),
                     width: width,
                     height: 100,
                     child: Row(
@@ -235,6 +233,7 @@ class Products extends StatelessWidget {
                   ),
                 ),
                 ListChips(),
+                ListDropDown(),
                 Center(
                   child: Padding(
                     padding: EdgeInsets.only(
@@ -265,8 +264,7 @@ class Products extends StatelessWidget {
                                 backgroundColor: Colors.green,
                                 textColor: Colors.white,
                                 fontSize: 14.0);
-                            dbHelper!
-                                .insert(
+                            dbHelper!.insert(
                               Cart(
                                   id: id,
                                   productId: idProduct.toString(),
@@ -280,7 +278,8 @@ class Products extends StatelessWidget {
                             )
                                 .then(
                               (value) {
-                                cart.addTotalPrice(double.parse(price.toString()));
+                                cart.addTotalPrice(
+                                    double.parse(price.toString()));
                                 cart.addCounter();
                               },
                             );
@@ -305,8 +304,7 @@ class Products extends StatelessWidget {
                 Container(
                   width: width,
                   height: height * 0.10,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black)),
+                  decoration: BoxDecoration(border: Border.all(color: Colors.black)),
                   child: ListAdd(),
                 ),
               ],
@@ -317,7 +315,7 @@ class Products extends StatelessWidget {
     );
   }
 
-  Widget _modalHead(String name, String imgPath, context){
+  Widget _modalHead(String name, String imgPath, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Center(
@@ -325,10 +323,17 @@ class Products extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(
-            imgPath,
-            height: 300,
-            width: 300,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              BackButton(),
+              Image.asset(
+                imgPath,
+                height: 300,
+                width: 300,
+              ),
+            ],
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -345,9 +350,9 @@ class Products extends StatelessWidget {
               SizedBox(
                 width: width * 0.30,
                 child: Text(
-                  "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que " +
-                      "probablemente resulta rico y apetitoso, agradable y grato al paladar. " +
-                      "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
+                    "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que " +
+                    "probablemente resulta rico y apetitoso, agradable y grato al paladar. " +
+                    "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
@@ -361,5 +366,5 @@ class Products extends StatelessWidget {
         ],
       ),
     );
-  } 
+  }
 }

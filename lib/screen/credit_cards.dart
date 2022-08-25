@@ -1,11 +1,6 @@
-import 'dart:convert';
-import 'dart:ffi';
-import 'dart:typed_data';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
-import 'package:posbank_flutter/components/products.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
@@ -41,24 +36,37 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   _printer(cardNumber, cardHolder, total) async {
     String numero = cardNumber.toString();
     String nombre = cardHolder.toString();
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("+----------------------------------------+\r\n");
-    await flutterUsbPrinter.printText("|              ACURIO-RESTAURANTS        |\r\n");
-    await flutterUsbPrinter.printText("+----------------------------------------+\r\n");
-    await flutterUsbPrinter.printText("                                          \r\n");
-    await flutterUsbPrinter.printText("                                          \r\n");
-    await flutterUsbPrinter.printText("PRODUCTOS:   CANTIDAD:   PRECIO:    TOTAL:\r\n");
-    await flutterUsbPrinter.printText("                                          \r\n");
-    await flutterUsbPrinter.printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("+----------------------------------------+\r\n");
+    await flutterUsbPrinter
+        .printText("|              ACURIO-RESTAURANTS        |\r\n");
+    await flutterUsbPrinter
+        .printText("+----------------------------------------+\r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("PRODUCTOS:   CANTIDAD:   PRECIO:    TOTAL:\r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
     for (int index = 0; index < minimal.length; index++) {
       String? productoName = minimal[index].productName;
       int? productoCantidad = minimal[index].quantity;
       await flutterUsbPrinter.printText(
-          (productoName!+"                       ").substring(0, 15) +
+          (productoName! + "                       ").substring(0, 15) +
               productoCantidad.toString() +
               "     " +
               "S/ " +
@@ -70,28 +78,50 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               ".00" +
               '\r\n');
     }
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("+----------------------------------------+");
-    await flutterUsbPrinter.printText('|   TOTAL:                 S/$total      |\r\n');
-    await flutterUsbPrinter.printText("+----------------------------------------+");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("------------------------------------------");
-    await flutterUsbPrinter.printText("Nombre del Cliente:   $nombre         \r\n");
-    await flutterUsbPrinter.printText('Numero De la Tarjeta: $numero         \r\n');
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("+----------------------------------------+");
+    await flutterUsbPrinter
+        .printText('|   TOTAL:                 S/$total      |\r\n');
+    await flutterUsbPrinter
+        .printText("+----------------------------------------+");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("------------------------------------------");
+    await flutterUsbPrinter
+        .printText("Nombre del Cliente:   $nombre         \r\n");
+    await flutterUsbPrinter
+        .printText('Numero De la Tarjeta: $numero         \r\n');
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
   }
 
   @override
@@ -141,149 +171,135 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cardHolder: "E. MILAN",
                 cardNumber: "4754 6587 7412 5698"),
             OtherDetailsDivider(),
-            BounceInRight(
-              child: Center(
-                child: Container(
-                  child: Text(
-                    "INGRESE SUS DATOS:",
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Color(0xFFCC8053),
-                      fontWeight: FontWeight.bold
-                    ),
+            Text(
+              "RESUMEN DE TU ORDEN:    " + cart.getTotalPrice().toString(),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            OtherDetailsDivider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    width: width * 0.40,
+                    height: height * 0.45,
+                    child: Column(
+                      children: [
+                        minimal.length < 0
+                            ? const Text("Vacio")
+                            : Expanded(
+                                child: ListView.builder(
+                                  itemCount: minimal.length,
+                                  itemBuilder: ((context, index) {
+                                    return Card(
+                                      elevation: 10,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: ExpansionTile(
+                                        title: Row(
+                                          children: [
+                                            Image.asset(
+                                              minimal[index].image.toString(),
+                                              width: 50,
+                                              height: 50,
+                                            ),
+                                            SizedBox(
+                                              width: 50,
+                                            ),
+                                            Text(
+                                              minimal[index]
+                                                  .productName
+                                                  .toString(),
+                                            ),
+                                          ],
+                                        ),
+                                        subtitle: Text(
+                                          "S/" +
+                                              minimal[index]
+                                                  .productPrice
+                                                  .toString() +
+                                              ".00",
+                                          textAlign: TextAlign.end,
+                                        ),
+                                        children: [
+                                          OtherDetailsDivider(),
+                                          Text("ESPECIFICACIONES"),
+                                          OtherDetailsDivider(),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 5.0),
+                                            child: Row(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Text("Con Extra de queso"),
+                                                    Image.asset(
+                                                      "images/cheese.png",
+                                                      width: 40,
+                                                      height: 40,
+                                                    )
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text("Sin cebolla"),
+                                                    Image.asset(
+                                                      "images/onion.png",
+                                                      width: 40,
+                                                      height: 40,
+                                                    )
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 5.0),
+                                            child: Row(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Text("Con Extra de queso"),
+                                                    Image.asset(
+                                                      "images/cheese.png",
+                                                      width: 40,
+                                                      height: 40,
+                                                    )
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text("Sin cebolla"),
+                                                    Image.asset(
+                                                      "images/onion.png",
+                                                      width: 40,
+                                                      height: 40,
+                                                    )
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ),
+                              )
+                      ],
+                    )),
+                Container(
+                  width: width * 0.40,
+                  height: height * 0.45,
+                  child: Column(
+                    children: [Text("DATOS:")],
                   ),
                 ),
-              ),
-              duration: Duration(
-                seconds: 1,
-              ),
+              ],
             ),
-            OtherDetailsDivider(),
-            BounceInLeft(
-              child: Container(
-                child: Column(
-                  children: [
-                    Text(
-                      "Titular de la tarjeta:",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color(0xFFCC8053),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Container(
-                      width: width * 0.50,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: UnderlineInputBorder(),
-                          labelText: 'E. Milan',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              duration: Duration(
-                seconds: 1,
-              ),
-            ),
-            OtherDetailsDivider(),
-            BounceInRight(
-              child: Container(
-                child: Column(
-                  children: [
-                    Text(
-                      "Número de la Tarjeta: ",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color(0xFFCC8053),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Container(
-                      width: width * 0.50,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: UnderlineInputBorder(),
-                          labelText: '4754 6587 7412 5698',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              duration: Duration(
-                seconds: 1
-              ),
-            ),
-            OtherDetailsDivider(),
-            Container(
-              child: Row(
-                children: [
-                  
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.all(4),
-                        child: Column(
-                          children: [
-                            BounceInUp(
-                              child: Text(
-                                "Fecha de Vencimiento:",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color(0xFFCC8053),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            BounceInLeft(
-                              child: TextFormField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: UnderlineInputBorder(),
-                                  labelText: '06/05',
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  
-                 
-                     Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.all(4),
-                        child: Column(
-                          children: [
-                            BounceInUp(
-                              child: Text(
-                                "CVV:",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color(0xFFCC8053),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            BounceInRight(
-                              child: TextFormField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: UnderlineInputBorder(),
-                                  labelText: '562',
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  
-                ],
-              ),
-            ),
-            OtherDetailsDivider(),
             Swing(
               child: Container(
                 width: 90,
@@ -291,8 +307,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   padding: EdgeInsets.only(left: 250, right: 250, top: 50),
                   child: InkWell(
                     onTap: () {
-                        _printer("4754 6587 7412 5698", "E. MILAN", cart.getTotalPrice());
-                        Navigator.pushNamed(context, '/');
+                      _printer("4754 6587 7412 5698", "E. MILAN",
+                          cart.getTotalPrice());
+                      Navigator.pushNamed(context, '/');
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -301,7 +318,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         color: Color(0xFF2DA1F4),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5), 
+                            color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 5,
                             blurRadius: 9,
                           ),
@@ -337,7 +354,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     required String cardExpiration,
   }) {
     return Spin(
-      child: InkWell( 
+      child: InkWell(
         onTap: () {
           // print(height >= 800 ? 200 : 300);
           // _printer();
@@ -423,18 +440,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         Text(
           '$label',
           style: TextStyle(
-              color: Color(0xFFCACACA), 
-              fontSize: 15, 
-              fontWeight: FontWeight.bold
-          ),
+              color: Color(0xFFCACACA),
+              fontSize: 15,
+              fontWeight: FontWeight.bold),
         ),
         Text(
           '$value',
           style: TextStyle(
-              color: Colors.white, 
-              fontSize: 15, 
-              fontWeight: FontWeight.bold
-          ),
+              color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
         )
       ],
     );

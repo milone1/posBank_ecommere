@@ -33,7 +33,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             Expanded(
               child: Container(
                 width: width,
-                height: height * 0.30,
+                height: height * 0.35,
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(
