@@ -219,14 +219,10 @@ class Products extends StatelessWidget {
                         Text(
                           "ESPECIFICACIONES",
                         ),
-                        Text(
-                          "OTROS",
-                        ),
                       ],
                     ),
                   ),
                 ),
-                ListChips(),
                 ListDropDown(),
                 Center(
                   child: Padding(
@@ -292,14 +288,6 @@ class Products extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: height * 0.08,
-                ),
-                Container(
-                  width: width,
-                  height: height * 0.10,
-                  child: ListAdd(),
                 ),
               ],
             ),

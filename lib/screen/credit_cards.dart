@@ -172,10 +172,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cardNumber: "4754 6587 7412 5698"),
             OtherDetailsDivider(),
             Text(
-              "RESUMEN DE TU ORDEN:    " +
-                  "S/  " +
-                  cart.getTotalPrice().toString() +
-                  "0",
+              "RESUMEN DE TU ORDEN:    ",
               style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
@@ -189,129 +186,106 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 Container(
                     width: width * 0.40,
                     height: height * 0.45,
-                    child: Column(
-                      children: [
-                        minimal.length <= 0
-                            ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Cargando...",
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 25,
-                                ),
-                                CircularProgressIndicator(
-                                  color: Colors.black,
-                                ),
-                              ],
-                            )
-                            : Expanded(
-                                child: ListView.builder(
-                                  itemCount: minimal.length,
-                                  itemBuilder: ((context, index) {
-                                    return Card(
-                                      elevation: 10,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          minimal.length <= 0
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Cargando...",
+                                      style: TextStyle(
+                                        fontSize: 25.0,
+                                        color: Colors.black,
                                       ),
-                                      child: ExpansionTile(
-                                        title: Row(
+                                    ),
+                                    SizedBox(
+                                      width: 25,
+                                    ),
+                                    CircularProgressIndicator(
+                                      color: Colors.black,
+                                    ),
+                                  ],
+                                )
+                              : Expanded(
+                                  child: ListView.builder(
+                                    itemCount: minimal.length,
+                                    itemBuilder: ((context, index) {
+                                      return Card(
+                                        elevation: 10,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: ExpansionTile(
+                                          title: Row(
+                                            children: [
+                                              Image.asset(
+                                                minimal[index].image.toString(),
+                                                width: 50,
+                                                height: 50,
+                                              ),
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Text(
+                                                minimal[index]
+                                                    .productName
+                                                    .toString(),
+                                              ),
+                                            ],
+                                          ),
+                                          subtitle: Text(
+                                            "S/" +
+                                                minimal[index]
+                                                    .productPrice
+                                                    .toString() +
+                                                ".00",
+                                            textAlign: TextAlign.end,
+                                          ),
                                           children: [
-                                            Image.asset(
-                                              minimal[index].image.toString(),
-                                              width: 50,
-                                              height: 50,
-                                            ),
-                                            SizedBox(
-                                              width: 20,
-                                            ),
-                                            Text(
-                                              minimal[index]
-                                                  .productName
-                                                  .toString(),
+                                            OtherDetailsDivider(),
+                                            Text("ESPECIFICACIONES"),
+                                            OtherDetailsDivider(),
+                                            Padding(
+                                              padding:
+                                                  EdgeInsets.only(left: 5.0),
+                                              child: Row(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                          "Con Extra de queso"),
+                                                      Image.asset(
+                                                        "images/cheese.png",
+                                                        width: 40,
+                                                        height: 40,
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Text("Sin cebolla"),
+                                                      Image.asset(
+                                                        "images/onion.png",
+                                                        width: 40,
+                                                        height: 40,
+                                                      )
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
-                                        subtitle: Text(
-                                          "S/" +
-                                              minimal[index]
-                                                  .productPrice
-                                                  .toString() +
-                                              ".00",
-                                          textAlign: TextAlign.end,
-                                        ),
-                                        children: [
-                                          OtherDetailsDivider(),
-                                          Text("ESPECIFICACIONES"),
-                                          OtherDetailsDivider(),
-                                          Padding(
-                                            padding: EdgeInsets.only(left: 5.0),
-                                            child: Row(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text("Con Extra de queso"),
-                                                    Image.asset(
-                                                      "images/cheese.png",
-                                                      width: 40,
-                                                      height: 40,
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Text("Sin cebolla"),
-                                                    Image.asset(
-                                                      "images/onion.png",
-                                                      width: 40,
-                                                      height: 40,
-                                                    )
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(left: 5.0),
-                                            child: Row(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text("Con Extra de queso"),
-                                                    Image.asset(
-                                                      "images/cheese.png",
-                                                      width: 40,
-                                                      height: 40,
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Text("Sin cebolla"),
-                                                    Image.asset(
-                                                      "images/onion.png",
-                                                      width: 40,
-                                                      height: 40,
-                                                    )
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }),
-                                ),
-                              )
-                      ],
+                                      );
+                                    }),
+                                  ),
+                                )
+                        ],
+                      ),
                     )),
                 Container(
                   width: width * 0.40,
@@ -328,7 +302,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         },
                         child: Container(
                           alignment: Alignment.center,
-                          height: 35,
+                          height: 55,
                           decoration: BoxDecoration(
                             color: Color(0xFF2DA1F4),
                             boxShadow: [
@@ -341,7 +315,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
-                            "PAGAR",
+                            "PAGAR " +
+                                "S/  " +
+                                cart.getTotalPrice().toString() +
+                                "0",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 24,

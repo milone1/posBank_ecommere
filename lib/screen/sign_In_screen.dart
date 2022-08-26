@@ -24,13 +24,18 @@ class _SignInScreenState extends State<SignInScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Image.asset(
+                        "images/infomatica.png",
+                        width: 100,
+                        height: 100,
+                      ),
+                    ],
+                  ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.1,
-                  ),
-                  Image.asset(
-                    "images/infomatica.png",
-                    width: 200,
-                    height: 200,
                   ),
                   SizedBox(
                     height: 200,
@@ -142,6 +147,16 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ],
                     ),
+                  ),
+                  SizedBox(
+                    height: 150,
+                  ),
+                  Text(
+                    "© Copyrigth 2022 by Milone",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
