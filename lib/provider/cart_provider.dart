@@ -50,9 +50,9 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  double getTotalPrice() {
+  Future<double> getTotalPrice() async{
     _getPrefItems();
-    return _totalPrice;
+    return await _totalPrice;
   }
 
   void addCounter() {
