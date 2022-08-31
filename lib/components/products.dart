@@ -5,18 +5,47 @@ import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/utils/category.dart';
-import 'package:posbank_flutter/widget/ListAdd.dart';
 import 'package:posbank_flutter/widget/ListCategory.dart';
-import 'package:posbank_flutter/widget/ListChips.dart';
 import 'package:posbank_flutter/widget/ListDropDown.dart';
 import 'package:provider/provider.dart';
 
 class Products extends StatelessWidget {
   DBHelper? dbHelper = DBHelper();
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    List products = [
+      { 'name': 'Arroz Chaufa',   'price': 21, 'id': 1,  'idProduct': 1,  'category': 1,  'imgPath': "images/bacon.png"},
+      { 'name': "Ensalada pollo", 'price': 12, 'id': 27, 'idProduct':27,  'category': 27, 'imgPath': 'images/polloSano.png'},
+      { 'name': "Pasta",          'price': 18, 'id': 15, 'idProduct': 15, 'category': 15, 'imgPath': "images/tallarin.png"},
+      { 'name': "Ensalada Atun",  'price': 15, 'id': 25, 'idProduct': 25, 'category': 25, 'imgPath': "images/atun.png"},
+      { 'name': "Alitas pollo",   'price': 15, 'id': 26, 'idProduct': 26, 'category': 26, 'imgPath': "images/alitas.png"},
+      { 'name': "Filete de Res",  'price': 18, 'id': 2,  'idProduct': 2,  'category': 2,  'imgPath': "images/fileteRes.png"},
+      { 'name': "Chorizo",        'price': 21, 'id': 13, 'idProduct': 13, 'category': 13, 'imgPath': "images/chorizo.png"},
+      { 'name': "Tocino",         'price': 14, 'id': 3,  'idProduct': 3,  'category': 3,  'imgPath': "images/tocino.png"},
+      { 'name': "Pizza",          'price': 22, 'id': 6,  'idProduct': 6,  'category': 6,  'imgPath': "images/pizza.png"},
+      { 'name': "Taco",           'price': 12, 'id': 7,  'idProduct': 7,  'category': 7,  'imgPath': "images/taco.png"},
+      { 'name': "Hamburguer",     'price': 14, 'id': 8,  'idProduct': 8,  'category': 8,  'imgPath': "images/hamburguer.png"},
+      { 'name': "Sopa Toscana",   'price': 15, 'id': 28, 'idProduct': 28, 'category': 28, 'imgPath': "images/sopaToscana.png"},
+      { 'name': "Curry",          'price': 15, 'id': 20, 'idProduct': 20, 'category': 20, 'imgPath': "images/curry.png"},
+      { 'name': "Sopa Ramen",     'price': 12, 'id': 4,  'idProduct': 4,  'category': 4,  'imgPath': "images/soup.png"},
+      { 'name': "Sopa Todu",      'price': 11, 'id': 5,  'idProduct': 5,  'category': 5,  'imgPath': "images/Todu.png"},
+      { 'name': "Sashimi",        'price': 13, 'id': 11, 'idProduct': 11, 'category': 11, 'imgPath': "images/sashimi.png"},
+      { 'name': "Sopa India",     'price': 21, 'id': 29, 'idProduct': 29, 'category': 29, 'imgPath': "images/sopaIndia.png"},
+      { 'name': "Sidra",          'price': 14, 'id': 16, 'idProduct': 16, 'category': 16, 'imgPath': "images/Sidra.png"},
+      { 'name': "Pepsi",          'price': 17, 'id': 17, 'idProduct': 17, 'category': 17, 'imgPath': "images/pepsi.png"},
+      { 'name': "Martini",        'price': 21, 'id': 18, 'idProduct': 18, 'category': 18, 'imgPath': "images/martini.png"},
+      { 'name': "Heineken",       'price': 17, 'id': 22, 'idProduct': 22, 'category': 22, 'imgPath': "images/heineken.png"},
+      { 'name': "Fresa",          'price': 19, 'id': 19, 'idProduct': 19, 'category': 19, 'imgPath': "images/fresa.png"},
+      { 'name': "Vodka",          'price': 10, 'id': 10, 'idProduct': 10, 'category': 10, 'imgPath': "images/vodkaRojo.png"},
+      { 'name': "Cafe",           'price': 10, 'id': 24, 'idProduct': 24, 'category': 24, 'imgPath': "images/cafe.png"},
+      { 'name': "Vino de Mesa",   'price': 11, 'id': 9,  'idProduct': 9, 'category': 9,   'imgPath': "images/vinoMesa.png"},
+      { 'name': "Helado",         'price': 13, 'id': 12, 'idProduct': 12, 'category': 12, 'imgPath': "images/Helado.png"},
+      { 'name': "Chocolate",      'price': 18, 'id': 14, 'idProduct': 14, 'category': 14, 'imgPath': "images/chocolate.png"},
+      { 'name': "Te de Manzana",  'price': 17, 'id': 21, 'idProduct': 21, 'category': 21, 'imgPath': "images/manzana.png"},
+    ];
     return Padding(
       padding: EdgeInsets.only(
         left: 10.0,
@@ -42,42 +71,28 @@ class Products extends StatelessWidget {
                 child: Container(
                   width: width - 100,
                   height: height * 0.55,
-                  child: GridView.count(
-                    crossAxisCount: 5,
+                  child: GridView.builder(
+                    itemCount: products.length,
                     scrollDirection: Axis.horizontal,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 20,
-                    children: <Widget>[
-                      _buildCard("Arroz Chaufa", 21, 1, 1, 1,"images/bacon.png", context),
-                      _buildCard("Ensalada pollo", 12, 27, 27, 27,'images/polloSano.png', context),
-                      _buildCard("Pasta", 18, 15, 15, 15, 'images/tallarin.png',context),
-                      _buildCard("Ensalada Atun", 15, 25, 25, 25,'images/atun.png', context),
-                      _buildCard("Alitas pollo", 15, 26, 26, 26,'images/alitas.png', context),
-                      _buildCard("Filete de Res", 18, 2, 2, 2,"images/fileteRes.png", context),
-                      _buildCard("Chorizo", 21, 13, 13, 13,'images/chorizo.png', context),
-                      _buildCard("Tocino", 14, 3, 3, 3, 'images/tocino.png', context),
-                      _buildCard("Pizza", 22, 6, 6, 6, 'images/pizza.png', context),
-                      _buildCard("Taco", 12, 7, 7, 7, 'images/taco.png', context),
-                      _buildCard("Hamburguer", 14, 8, 8, 8,'images/hamburguer.png', context),
-                      _buildCard("Sopa Toscana", 15, 28, 28, 28,'images/sopaToscana.png', context),
-                      _buildCard("Curry", 15, 20, 20, 20, 'images/curry.png', context),
-                      _buildCard("Sopa Ramen", 12, 4, 4, 4, 'images/soup.png',context),
-                      _buildCard("Sopa Todu", 11, 5, 5, 5, 'images/Todu.png', context),
-                      _buildCard("Sashimi", 13, 11, 11, 11,'images/sashimi.png', context),
-                      _buildCard("Sopa India", 21, 29, 29, 29,'images/sopaIndia.png', context),
-                      _buildCard("Sidra", 14, 16, 16, 16, 'images/Sidra.png', context),
-                      _buildCard("Pepsi", 17, 17, 17, 17, 'images/pepsi.png', context),
-                      _buildCard("Martini", 21, 18, 18, 18,'images/martini.png', context),
-                      _buildCard("Heineken", 17, 22, 22, 22,'images/heineken.png', context),
-                      _buildCard("Fresa", 19, 19, 19, 19, 'images/fresa.png', context),
-                      _buildCard("Vodka", 10, 10, 10, 10,'images/vodkaRojo.png', context),
-                      _buildCard("Capuchino", 11, 23, 23, 23,'images/capuchino.png', context),
-                      _buildCard("Cafe", 10, 24, 24, 24, 'images/cafe.png', context),
-                      _buildCard("Vino de Mesa", 11, 9, 9, 9,'images/vinoMesa.png', context),
-                      _buildCard("Helado", 13, 12, 12, 12, 'images/Helado.png',context),
-                      _buildCard("Chocolate", 18, 14, 14, 14,'images/chocolate.png', context),
-                      _buildCard("Te de Manzana", 17, 21, 21, 21,'images/manzana.png', context),
-                    ],
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 5,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      // if(false){
+                        return _buildCard(
+                          products[index]['name'],
+                          products[index]['price'],
+                          products[index]['id'],
+                          products[index]['idProduct'],
+                          products[index]['category'],
+                          products[index]['imgPath'],
+                          context,
+                        );
+                      // );
+                      // } else {
+                      //   return Text("asd");
+                      // }
+                    },
                   ),
                 ),
                 duration: Duration(
@@ -106,9 +121,9 @@ class Products extends StatelessWidget {
             borderRadius: BorderRadius.circular(15.0),
             boxShadow: [
               BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 5,
+                blurRadius: 7,
               ),
             ],
             color: Colors.white,

@@ -12,8 +12,6 @@ class ListCategory extends StatefulWidget {
 class _ListCategoryState extends State<ListCategory> {
   @override
   Widget build(BuildContext context) {
-    final categoriesInfo = Provider.of<CartProvider>(context);
-    var categorySelected = '';
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
@@ -22,7 +20,9 @@ class _ListCategoryState extends State<ListCategory> {
       child: Container(
           child: ListWheelScrollView(
         onSelectedItemChanged: (index) => {
-          setState(() => {categoriesInfo.category = categoriesList[index].value}),
+          // ignore: avoid_print
+          print(categoriesList[index].value.toString())
+          // setState(() => {categoriesInfo.category = categoriesList[index].value}),
         },
         physics: FixedExtentScrollPhysics(),
         itemExtent: 100,

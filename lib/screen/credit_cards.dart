@@ -34,12 +34,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   }
 
   _printer(cardNumber, cardHolder, total) async {
-    dbHelper?.deleteDb(Cart(id: 1, productId: "", productName: "", initialPrice: 0, productPrice: 0, quantity: 1, unitTag: "1", image: 'images/iconDrink.png', category: ''));
     String numero = cardNumber.toString();
     String nombre = cardHolder.toString();
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
-    await flutterUsbPrinter.printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
+    await flutterUsbPrinter
+        .printText("                                      \r\n");
     await flutterUsbPrinter
         .printText("                                      \r\n");
     await flutterUsbPrinter
@@ -294,8 +296,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          _printer("4754 6587 7412 5698", "E. MILAN",
-                              cart.getTotalPrice());
+                          _printer("4754 6587 7412 5698", "E. MILAN", cart.getTotalPrice());
                           Navigator.pushNamed(context, '/');
                         },
                         child: Container(
@@ -315,7 +316,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                           child: Text(
                             "PAGAR " +
                                 "S/  " +
-                                cart.totalPrice.toString()+
+                                cart.totalPrice.toString() +
                                 "0",
                             style: TextStyle(
                               color: Colors.white,

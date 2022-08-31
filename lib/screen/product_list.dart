@@ -1,24 +1,16 @@
-import 'dart:convert';
-import 'dart:typed_data';
+
 import 'package:animate_do/animate_do.dart';
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/components/products.dart';
-import 'package:posbank_flutter/db/db_helper.dart';
-import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/screen/cart_screen.dart';
 import 'package:posbank_flutter/widget/carrousel.dart';
 import 'package:provider/provider.dart';
-
 class ProductListScreen extends StatefulWidget {
   @override
   _ProductListScreenState createState() => _ProductListScreenState();
 }
-
 class _ProductListScreenState extends State<ProductListScreen> {
-  DBHelper? dbHelper = DBHelper();
-
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
@@ -30,9 +22,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
           children: [
             ListCarrousel(),
             Consumer<CartProvider>(
-              builder: (context, prueba, _) => Center(
+              builder: (context, prueba,_) => Center(
                 child: Text(
-                  prueba.category.toString(),
+                  "Categorias",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
