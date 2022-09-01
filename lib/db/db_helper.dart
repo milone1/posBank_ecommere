@@ -17,7 +17,7 @@ class DBHelper {
 
   initDatabase() async {
     io.Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, 'cart.db');
+    String path = join(documentDirectory.path, 'basketCart.db');
     var db = await openDatabase(
       path,
       version: 1,

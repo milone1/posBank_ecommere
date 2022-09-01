@@ -290,43 +290,43 @@ class _CartScreenState extends State<CartScreen> {
                   );
                 }
               }
-              return Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        Image(
-                          width: 200,
-                          height: 180,
-                          image: AssetImage('images/empty_cart.png'),
-                        ),
-                        Text('El carrito esta vacío',
-                            style: Theme.of(context).textTheme.headline5),
-                      ],
-                    ),
-              );
-              // return Expanded(
-              //   child: Container(
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       crossAxisAlignment: CrossAxisAlignment.center,
-              //       children: [
-              //         Text(
-              //           "Cargando...",
-              //           style: TextStyle(
-              //             fontSize: 25.0,
-              //             color: Colors.black,
+              // return Align(
+              //       alignment: Alignment.center,
+              //       child: Column(
+              //         children: [
+              //           Image(
+              //             width: 200,
+              //             height: 180,
+              //             image: AssetImage('images/empty_cart.png'),
               //           ),
-              //         ),
-              //         SizedBox(
-              //           width: 25,
-              //         ),
-              //         CircularProgressIndicator(
-              //           color: Colors.black,
-              //         ),
-              //       ],
-              //     ),
-              //   ),
+              //           Text('El carrito esta vacío',
+              //               style: Theme.of(context).textTheme.headline5),
+              //         ],
+              //       ),
               // );
+              return Expanded(
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Cargando...",
+                        style: TextStyle(
+                          fontSize: 25.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      CircularProgressIndicator(
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
+                ),
+              );
             },
           ),
           Consumer<CartProvider>(
