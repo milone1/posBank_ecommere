@@ -17,6 +17,6 @@ List<Categories> categoriesList = [
   Categories(5, "MARISCOS",  'marisco', 'images/iconMar.png'),
   Categories(6, "SOPAS",     'sopa', 'images/iconSoup.png'),
   Categories(7, "POSTRES",   'postre', 'images/iceCream.png'),
-  Categories(8, "ALCOHOLES", 'alcohol', 'images/iconDrink.png'),
+  Categories(8, "ALCOHOL", 'alcohol', 'images/iconDrink.png'),
   Categories(9, "PIZZAS",    'pizza', 'images/italian.png'),
 ];
