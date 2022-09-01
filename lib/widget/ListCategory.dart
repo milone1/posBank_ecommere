@@ -1,10 +1,12 @@
-import 'package:flutter/foundation.dart';
+// ignore_for_file: file_names, depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/utils/category.dart';
 import 'package:provider/provider.dart';
 
 class ListCategory extends StatefulWidget {
+  const ListCategory({Key? key}) : super(key: key);
   @override
   State<ListCategory> createState() => _ListCategoryState();
 }
@@ -12,19 +14,16 @@ class ListCategory extends StatefulWidget {
 class _ListCategoryState extends State<ListCategory> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final categoriesInfo = Provider.of<CartProvider>(context);
-    return Container(
+    return SizedBox(
       width: 150,
       height: height * 0.50,
-      child: Container(
-          child: ListWheelScrollView(
+      child: ListWheelScrollView(
         onSelectedItemChanged: (index) => {
-          setState(() => {categoriesInfo.category = categoriesList[index].value}),
-          print(categoriesList[index].value),
+          setState(
+              () => {categoriesInfo.category = categoriesList[index].value})
         },
-        physics: FixedExtentScrollPhysics(),
         itemExtent: 100,
         useMagnifier: true,
         magnification: 1.5,
@@ -41,7 +40,7 @@ class _ListCategoryState extends State<ListCategory> {
                 ),
                 Text(
                   categoriesList[index].title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 10,
                     color: Color(0xFFCC8053),
                     fontWeight: FontWeight.bold,
@@ -52,7 +51,7 @@ class _ListCategoryState extends State<ListCategory> {
             ),
           ),
         ],
-      )),
+      ),
     );
   }
 }

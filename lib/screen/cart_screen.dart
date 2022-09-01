@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, avoid_print, use_key_in_widget_constructors
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
@@ -7,7 +9,10 @@ import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CartScreen extends StatefulWidget {
+  const CartScreen({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _CartScreenState createState() => _CartScreenState();
 }
 
@@ -18,13 +23,12 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
 
     _deleteProduct(id, price) async {
       await dbHelper!.delete(id);
       cart.removerCounter();
       cart.removeTotalPrice(
-        await double.parse(price),
+        double.parse(price),
       );
     }
 
@@ -41,7 +45,7 @@ class _CartScreenState extends State<CartScreen> {
                     alignment: Alignment.center,
                     child: Column(
                       children: [
-                        Image(
+                        const Image(
                           width: 200,
                           height: 180,
                           image: AssetImage('images/empty_cart.png'),
@@ -82,32 +86,32 @@ class _CartScreenState extends State<CartScreen> {
                                         height: 50,
                                         snapshot.data![index].image.toString(),
                                       ),
-                                      Container(
+                                      SizedBox(
                                         width: 150,
                                         child: Text(
-                                          (snapshot.data![index].productName! +
-                                                  "             ")
+                                          ("${snapshot.data![index].productName!}             ")
                                               .substring(0, 15)
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 20,
                                               color: Color(0xFFCC8053),
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
                                       Text(
+                                        // ignore: prefer_interpolation_to_compose_strings
                                         "S/ " +
                                             snapshot.data![index].productPrice
                                                 .toString() +
                                             ".00",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500,
                                           color: Color(0xFF575E67),
                                         ),
                                       ),
                                       Container(
-                                        margin: EdgeInsets.all(5.0),
+                                        margin: const EdgeInsets.all(5.0),
                                         height: 35,
                                         width: 100,
                                         decoration: BoxDecoration(
@@ -180,7 +184,7 @@ class _CartScreenState extends State<CartScreen> {
                                                     );
                                                   }
                                                 },
-                                                child: Icon(
+                                                child: const Icon(
                                                   Icons.remove,
                                                   color: Colors.white,
                                                 ),
@@ -188,7 +192,7 @@ class _CartScreenState extends State<CartScreen> {
                                               Text(
                                                 snapshot.data![index].quantity
                                                     .toString(),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.w500,
                                                     color: Colors.white),
@@ -245,7 +249,7 @@ class _CartScreenState extends State<CartScreen> {
                                                     (error, stackTrace) {},
                                                   );
                                                 },
-                                                child: Icon(
+                                                child: const Icon(
                                                   Icons.add,
                                                   color: Colors.white,
                                                 ),
@@ -273,7 +277,7 @@ class _CartScreenState extends State<CartScreen> {
                                               textColor: Colors.white,
                                               fontSize: 14.0);
                                         },
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         ),
@@ -305,26 +309,24 @@ class _CartScreenState extends State<CartScreen> {
               //       ),
               // );
               return Expanded(
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Cargando...",
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 25,
-                      ),
-                      CircularProgressIndicator(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Cargando...",
+                      style: TextStyle(
+                        fontSize: 25.0,
                         color: Colors.black,
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    CircularProgressIndicator(
+                      color: Colors.black,
+                    ),
+                  ],
                 ),
               );
             },
@@ -332,7 +334,7 @@ class _CartScreenState extends State<CartScreen> {
           Consumer<CartProvider>(
             builder: (context, value, child) {
               return Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Container(
                   width: width * 0.50,
                   height: 70.0,
@@ -345,6 +347,7 @@ class _CartScreenState extends State<CartScreen> {
                     children: [
                       ReusableWidget(
                         title: 'TOTAL A PAGAR: ',
+                        // ignore: prefer_interpolation_to_compose_strings
                         value: r's/' +cart.totalPrice.toString()+"0",
                       ),
                     ],
@@ -367,32 +370,30 @@ class ReusableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print('value:' + value);
+        print('value:$value');
         if (value == 's/0.00') {
           showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: Container(
-                child: Column(
-                  children: [
-                    Image.asset(
-                      width: 150,
-                      height: 150,
-                      "images/sad.png",
+              title: Column(
+                children: [
+                  Image.asset(
+                    width: 150,
+                    height: 150,
+                    "images/sad.png",
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Agregue productos al carrito.",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.black,
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Agregue productos al carrito.",
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.black,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
           );
@@ -407,7 +408,7 @@ class ReusableWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -415,7 +416,7 @@ class ReusableWidget extends StatelessWidget {
             ),
             Text(
               value.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,

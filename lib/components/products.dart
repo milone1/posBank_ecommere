@@ -1,16 +1,20 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
-import 'package:posbank_flutter/utils/category.dart';
 import 'package:posbank_flutter/widget/ListCategory.dart';
 import 'package:posbank_flutter/widget/ListDropDown.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class Products extends StatelessWidget {
   DBHelper? dbHelper = DBHelper();
+
+  Products({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -108,7 +112,7 @@ class Products extends StatelessWidget {
 
     return Consumer<CartProvider>(
       builder: (context, prueba, _) => Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           left: 10.0,
           top: 1.0,
         ),
@@ -117,25 +121,29 @@ class Products extends StatelessWidget {
             LimitedBox(
               maxWidth: 350,
               child: BounceInLeft(
-                child: ListCategory(),
-                duration: Duration(seconds: 2),
+                duration: const Duration(seconds: 2),
+                child: const ListCategory(),
               ),
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 2,
                   left: 10,
                   bottom: 10,
                 ),
                 child: BounceInRight(
-                  child: Container(
+                  // ignore: prefer_const_constructors
+                  duration: Duration(
+                    seconds: 2,
+                  ),
+                  child: SizedBox(
                     width: width - 100,
                     height: height * 0.55,
                     child: GridView.builder(
                       itemCount: prueba.category == "" ? products.length : 10,
                       scrollDirection: Axis.horizontal,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 5,
                       ),
                       itemBuilder: (BuildContext context, index) {
@@ -152,20 +160,17 @@ class Products extends StatelessWidget {
                         } else {
                           var listCategory = products.where((element) => element['category'] == prueba.category).toList();
                             return _buildCard(
-                            products[index]['name'],
-                            products[index]['price'],
-                            products[index]['id'],
-                            products[index]['idProduct'],
-                            products[index]['category'],
-                            products[index]['imgPath'],
+                            listCategory[index]['name'],
+                            listCategory[index]['price'],
+                            listCategory[index]['id'],
+                            listCategory[index]['idProduct'],
+                            listCategory[index]['category'],
+                            listCategory[index]['imgPath'],
                             context,
                           );
                         }
                       },
                     ),
-                  ),
-                  duration: Duration(
-                    seconds: 2,
                   ),
                 ),
               ),
@@ -178,10 +183,8 @@ class Products extends StatelessWidget {
 
   Widget _buildCard(String name, int price, int id, int idProduct, String category,
       String imgPath, context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(5.0),
       child: InkWell(
         onTap: () {
           _mySheet(name, price, id, idProduct, category, imgPath, context);
@@ -213,14 +216,14 @@ class Products extends StatelessWidget {
               ),
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFFCC8053),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 6,
                 ),
                 child: Container(
@@ -228,8 +231,8 @@ class Products extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: Text(
-                    'S/' + price.toString() + '.00',
-                    style: TextStyle(color: Color(0xFF575E67), fontSize: 15),
+                    'S/$price.00',
+                    style: const TextStyle(color: Color(0xFF575E67), fontSize: 15),
                   ),
                 ),
               ),
@@ -249,7 +252,7 @@ class Products extends StatelessWidget {
     showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
         top: Radius.circular(32),
       )),
@@ -262,15 +265,15 @@ class Products extends StatelessWidget {
               children: [
                 _modalHead(name, imgPath, context),
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     top: 10.0,
                   ),
-                  child: Container(
+                  child: SizedBox(
                     width: width,
                     height: 100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
+                      children: const [
                         Text(
                           "AGREGAR",
                         ),
@@ -287,7 +290,7 @@ class Products extends StatelessWidget {
                 ListDropDown(),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 20.0,
                     ),
                     child: Container(
@@ -337,7 +340,7 @@ class Products extends StatelessWidget {
                             );
                             Navigator.pop(context);
                           },
-                          child: Text(
+                          child: const Text(
                             "+ AGREGAR AL CARRITO",
                             style: TextStyle(
                                 color: Colors.white,
@@ -360,7 +363,6 @@ class Products extends StatelessWidget {
 
   Widget _modalHead(String name, String imgPath, context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -370,7 +372,7 @@ class Products extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              BackButton(),
+              const BackButton(),
               Image.asset(
                 imgPath,
                 height: 300,
@@ -383,7 +385,7 @@ class Products extends StatelessWidget {
             children: <Widget>[
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFFCC8053),
@@ -392,10 +394,10 @@ class Products extends StatelessWidget {
               ),
               SizedBox(
                 width: width * 0.30,
-                child: Text(
-                  "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que " +
-                      "probablemente resulta rico y apetitoso, agradable y grato al paladar. " +
-                      "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
+                child: const Text(
+                  "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que " 
+                  "probablemente resulta rico y apetitoso, agradable y grato al paladar. " 
+                  "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,

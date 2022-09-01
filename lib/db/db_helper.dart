@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
@@ -11,8 +13,7 @@ class DBHelper {
     if (_db != null) {
       return _db!;
     }
-
-    _db = await initDatabase();
+    return _db = await initDatabase();
   }
 
   initDatabase() async {

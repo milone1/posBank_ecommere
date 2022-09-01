@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class ListDropDown extends StatelessWidget {
-  var _bebida = ["Galonera de chicha x 2L", "Galonera de Naranja x 2L"];
-  var _pan = ["Pan baguettino", "Pan Ciabatta", "Pan Ciabatta"];
-  var _tamal = ["Tamal de Chancho", "Tamal de Pollo"];
-  String _titleBebidas = "BEBIDAS";
-  String _titlePan = "PAN";
-  String _titleTamal = "TAMAL";
+  final _bebida = ["Galonera de chicha x 2L", "Galonera de Naranja x 2L"];
+  final _pan = ["Pan baguettino", "Pan Ciabatta", "Pan Ciabatta"];
+  final _tamal = ["Tamal de Chancho", "Tamal de Pollo"];
+  final String _titleBebidas = "BEBIDAS";
+  final String _titlePan = "PAN";
+  final String _titleTamal = "TAMAL";
+
+  ListDropDown({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [

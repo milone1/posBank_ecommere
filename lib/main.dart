@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
@@ -23,9 +25,9 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(fontFamily: 'Lato'),
           initialRoute: '/',
           routes: {
-            '/': (context) => SignInScreen(),
-            '/products': (context) => ProductListScreen(),
-            '/credit': (context) => CreditCardsPage(),
+            '/': (context) => const SignInScreen(),
+            '/products': (context) => const ProductListScreen(),
+            '/credit': (context) => const CreditCardsPage(),
           },
         );
       }),

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Categories {
   late final int id;
   late final String title;

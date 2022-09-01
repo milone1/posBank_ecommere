@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
@@ -7,10 +9,12 @@ import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/carrousel.dart';
 import 'package:posbank_flutter/widget/otherDetailsDivider.dart';
 import 'package:provider/provider.dart';
-import 'package:animate_do/animate_do.dart';
 
 class CreditCardsPage extends StatefulWidget {
+  const CreditCardsPage({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _CreditCardsPageState createState() => _CreditCardsPageState();
 }
 
@@ -22,6 +26,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
   @override
   initState() {
+    super.initState();
     getData();
     flutterUsbPrinter.connect(1155, 41014);
   }
@@ -66,6 +71,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       String? productoName = minimal[index].productName;
       int? productoCantidad = minimal[index].quantity;
       await flutterUsbPrinter.printText(
+          // ignore: prefer_interpolation_to_compose_strings
           (productoName! + "                       ").substring(0, 15) +
               productoCantidad.toString() +
               "     " +
@@ -131,27 +137,30 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
-        color: Color(0xFFEBEBEB),
+        color: const Color(0xFFEBEBEB),
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Container(
-              child: Column(
-                children: [
-                  ListCarrousel(),
-                ],
-              ),
+            Column(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                const ListCarrousel(),
+              ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 50.0,
             ),
             BounceInLeft(
-              child: Text(
+              duration: const Duration(
+                seconds: 1,
+              ),
+              child: const Text(
                 "¡INCREÍBLES OFERTAS!",
-                style: TextStyle(
+                // ignore: unnecessary_const
+                style: const TextStyle(
                   decoration: TextDecoration.underline,
                   fontSize: 50,
                   color: Color(0xFFCC8053),
@@ -159,52 +168,51 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              duration: Duration(
-                seconds: 1,
-              ),
             ),
             _buildCreditCard(
                 height: height,
-                color: Color(0xFF2DA1F4),
+                color: const Color(0xFF2DA1F4),
                 cart: cart,
                 cardExpiration: "06/05",
                 cardHolder: "E. MILAN",
                 cardNumber: "4754 6587 7412 5698"),
-            OtherDetailsDivider(),
-            Text(
+            const OtherDetailsDivider(),
+            const Text(
               "RESUMEN DE TU ORDEN:    ",
-              style: TextStyle(
+              // ignore: unnecessary_const
+              style: const TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
-            OtherDetailsDivider(),
+            const OtherDetailsDivider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                     width: width * 0.40,
                     height: height * 0.45,
                     child: Center(
                       child: Column(
                         children: [
-                          minimal.length <= 0
+                          minimal.isEmpty
                               ? Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
+                                  // ignore: prefer_const_literals_to_create_immutables
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Cargando...",
                                       style: TextStyle(
                                         fontSize: 25.0,
                                         color: Colors.black,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 25,
                                     ),
-                                    CircularProgressIndicator(
+                                    const CircularProgressIndicator(
                                       color: Colors.black,
                                     ),
                                   ],
@@ -227,7 +235,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                                 width: 50,
                                                 height: 50,
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 20,
                                               ),
                                               Text(
@@ -238,25 +246,22 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                             ],
                                           ),
                                           subtitle: Text(
-                                            "S/" +
-                                                minimal[index]
-                                                    .productPrice
-                                                    .toString() +
-                                                ".00",
+                                            "S/${minimal[index]
+                                                    .productPrice}.00",
                                             textAlign: TextAlign.end,
                                           ),
                                           children: [
-                                            OtherDetailsDivider(),
-                                            Text("ESPECIFICACIONES"),
-                                            OtherDetailsDivider(),
+                                            const OtherDetailsDivider(),
+                                            const Text("ESPECIFICACIONES"),
+                                            const OtherDetailsDivider(),
                                             Padding(
                                               padding:
-                                                  EdgeInsets.only(left: 5.0),
+                                                  const EdgeInsets.only(left: 5.0),
                                               child: Row(
                                                 children: [
                                                   Row(
                                                     children: [
-                                                      Text(
+                                                      const Text(
                                                           "Con Extra de queso"),
                                                       Image.asset(
                                                         "images/cheese.png",
@@ -267,7 +272,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                                   ),
                                                   Row(
                                                     children: [
-                                                      Text("Sin cebolla"),
+                                                      const Text("Sin cebolla"),
                                                       Image.asset(
                                                         "images/onion.png",
                                                         width: 40,
@@ -287,7 +292,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                         ],
                       ),
                     )),
-                Container(
+                SizedBox(
                   width: width * 0.40,
                   height: height * 0.45,
                   child: Column(
@@ -303,7 +308,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                           alignment: Alignment.center,
                           height: 55,
                           decoration: BoxDecoration(
-                            color: Color(0xFF2DA1F4),
+                            color: const Color(0xFF2DA1F4),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
@@ -314,11 +319,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
-                            "PAGAR " +
-                                "S/  " +
-                                cart.totalPrice.toString() +
-                                "0",
-                            style: TextStyle(
+                            "PAGAR S/  ${cart.totalPrice}0",
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -370,8 +372,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Text(
-                    '$cardNumber',
-                    style: TextStyle(
+                    cardNumber,
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 21,
                         fontFamily: 'CourrierPrime'),
@@ -406,7 +408,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           height: 30,
           width: 28,
         ),
-        Text(
+        const Text(
           "BANCO BBVA",
           style: TextStyle(
             fontSize: 25,
@@ -429,30 +431,18 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          '$label',
-          style: TextStyle(
+          label,
+          style: const TextStyle(
               color: Color(0xFFCACACA),
               fontSize: 15,
               fontWeight: FontWeight.bold),
         ),
         Text(
-          '$value',
-          style: TextStyle(
+          value,
+          style: const TextStyle(
               color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
         )
       ],
-    );
-  }
-
-  Text _title({required String title}) {
-    return Text(
-      '$title',
-      style: TextStyle(
-        fontSize: 40,
-        fontWeight: FontWeight.w800,
-        decoration: TextDecoration.underline,
-      ),
-      textAlign: TextAlign.center,
     );
   }
 }

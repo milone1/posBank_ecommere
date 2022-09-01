@@ -1,9 +1,10 @@
+// ignore_for_file: file_names
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ReusableWidget extends StatelessWidget {
   final String title, value;
+  // ignore: use_key_in_widget_constructors
   const ReusableWidget({required this.title, required this.value});
 
   @override
@@ -19,7 +20,7 @@ class ReusableWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
@@ -27,7 +28,7 @@ class ReusableWidget extends StatelessWidget {
             ),
             Text(
               value.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 48,
                 color: Colors.black,
               ),
