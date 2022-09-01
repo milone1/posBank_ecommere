@@ -1,4 +1,3 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/components/products.dart';
@@ -24,7 +23,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             Consumer<CartProvider>(
               builder: (context, prueba,_) => Center(
                 child: Text(
-                  "Categorias",
+                  prueba.category,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,

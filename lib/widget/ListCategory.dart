@@ -14,15 +14,15 @@ class _ListCategoryState extends State<ListCategory> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final categoriesInfo = Provider.of<CartProvider>(context);
     return Container(
       width: 150,
       height: height * 0.50,
       child: Container(
           child: ListWheelScrollView(
         onSelectedItemChanged: (index) => {
-          // ignore: avoid_print
-          print(categoriesList[index].value.toString())
-          // setState(() => {categoriesInfo.category = categoriesList[index].value}),
+          setState(() => {categoriesInfo.category = categoriesList[index].value}),
+          print(categoriesList[index].value),
         },
         physics: FixedExtentScrollPhysics(),
         itemExtent: 100,

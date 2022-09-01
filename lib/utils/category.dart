@@ -10,11 +10,13 @@ class Categories {
 }
 
 List<Categories> categoriesList = [
-  Categories(1, "TODO", '', 'images/todo.png'),
-  Categories(2, "BEBIDAS", 'BEBIDA', 'images/aguaDeMesa.png'),
-  Categories(3, "COMIDAS", 'COMIDAS', 'images/atun.png'),
-  Categories(4, "CAFES", 'CAFES', 'images/cafe.png'),
-  Categories(5, "MARISCOS", 'MARISCOS', 'images/iconMar.png'),
-  Categories(6, "SOPAS", 'SOPAS', 'images/iconSoup.png'),
-  Categories(7, "POSTRES", 'POSTRES', 'images/iceCream.png'),
+  Categories(1, "TODO",      '', 'images/todo.png'),
+  Categories(3, "COMIDAS",   'comida', 'images/atun.png'),
+  Categories(4, "CARNES",    'carne', 'images/carne.png'),
+  Categories(2, "BEBIDAS",   'bebida', 'images/aguaDeMesa.png'),
+  Categories(5, "MARISCOS",  'marisco', 'images/iconMar.png'),
+  Categories(6, "SOPAS",     'sopa', 'images/iconSoup.png'),
+  Categories(7, "POSTRES",   'postre', 'images/iceCream.png'),
+  Categories(8, "ALCOHOLES", 'alcohol', 'images/iconDrink.png'),
+  Categories(9, "PIZZAS",    'pizza', 'images/italian.png'),
 ];
