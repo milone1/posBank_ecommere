@@ -51,7 +51,7 @@ class _CartScreenState extends State<CartScreen> {
                           image: AssetImage('images/empty_cart.png'),
                         ),
                         Text('El carrito esta vacío',
-                            style: Theme.of(context).textTheme.headline5),
+                            style: Theme.of(context).textTheme.headlineSmall),
                       ],
                     ),
                   );

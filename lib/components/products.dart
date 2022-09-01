@@ -110,37 +110,38 @@ class Products extends StatelessWidget {
       { 'name': "Kebab",          'price': 25, 'id': 67, 'idProduct': 67, 'category':"marisco", 'imgPath': "images/kebab.png"},
     ];
 
-    return Consumer<CartProvider>(
-      builder: (context, prueba, _) => Padding(
-        padding: const EdgeInsets.only(
-          left: 10.0,
-          top: 1.0,
-        ),
-        child: Row(
-          children: [
-            LimitedBox(
-              maxWidth: 350,
-              child: BounceInLeft(
-                duration: const Duration(seconds: 2),
-                child: const ListCategory(),
-              ),
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 10.0,
+        top: 1.0,
+      ),
+      child: Row(
+        children: [
+          LimitedBox(
+            maxWidth: 350,
+            child: BounceInLeft(
+              duration: const Duration(seconds: 2),
+              child: const ListCategory(),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 2,
-                  left: 10,
-                  bottom: 10,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 2,
+                left: 10,
+                bottom: 10,
+              ),
+              child: BounceInRight(
+                // ignore: prefer_const_constructors
+                duration: Duration(
+                  seconds: 2,
                 ),
-                child: BounceInRight(
-                  // ignore: prefer_const_constructors
-                  duration: Duration(
-                    seconds: 2,
-                  ),
-                  child: SizedBox(
-                    width: width - 100,
-                    height: height * 0.55,
-                    child: GridView.builder(
+                child: SizedBox(
+                  width: width - 100,
+                  height: height * 0.55,
+                  child: Consumer<CartProvider>(
+                    builder: (context, prueba, _ ) =>
+                    GridView.builder(
                       itemCount: prueba.category == "" ? products.length : 10,
                       scrollDirection: Axis.horizontal,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -175,8 +176,8 @@ class Products extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -204,7 +205,7 @@ class Products extends StatelessWidget {
           child: Column(
             children: [
               Hero(
-                tag: 'dash',
+                tag: '',
                 child: Container(
                   width: 80,
                   height: 80,
