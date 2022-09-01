@@ -1,13 +1,13 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/carrousel.dart';
 import 'package:posbank_flutter/widget/otherDetailsDivider.dart';
+// ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 
 class CreditCardsPage extends StatefulWidget {
@@ -38,7 +38,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     });
   }
 
-  _printer(cardNumber, cardHolder, total) async {
+  _printer(cardNumber, cardHolder, total, CartProvider cart) async {
     String numero = cardNumber.toString();
     String nombre = cardHolder.toString();
     await flutterUsbPrinter
@@ -128,6 +128,22 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         .printText("                                      \r\n");
     await flutterUsbPrinter
         .printText("                                      \r\n");
+    //* Line delete element to db.
+    for (int index = 0; index < minimal.length; index++) {
+      await dbHelper!.deleteDb(Cart(
+        category: minimal[index].category,
+        initialPrice: minimal[index].initialPrice,
+        id: minimal[index].id,
+        productId: minimal[index].productId,
+        productName: minimal[index].productName,
+        productPrice: minimal[index].productPrice,
+        quantity: minimal[index].quantity,
+        unitTag: minimal[index].unitTag,
+        image: minimal[index].image,
+      ));
+    }
+    // ignore: await_only_futures
+    await cart.getTotalPrice();
   }
 
   @override
@@ -154,19 +170,19 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               width: 50.0,
             ),
             BounceInLeft(
-              duration: const Duration(
-                seconds: 1,
-              ),
+              // ignore: sort_child_properties_last
               child: const Text(
                 "¡INCREÍBLES OFERTAS!",
-                // ignore: unnecessary_const
-                style: const TextStyle(
+                style: TextStyle(
                   decoration: TextDecoration.underline,
                   fontSize: 50,
                   color: Color(0xFFCC8053),
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
+              ),
+              duration: const Duration(
+                seconds: 1,
               ),
             ),
             _buildCreditCard(
@@ -179,8 +195,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             const OtherDetailsDivider(),
             const Text(
               "RESUMEN DE TU ORDEN:    ",
-              // ignore: unnecessary_const
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),
@@ -202,9 +217,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   // ignore: prefer_const_literals_to_create_immutables
                                   children: [
-                                    const Text(
+                                    // ignore: prefer_const_constructors
+                                    Text(
                                       "Cargando...",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 25.0,
                                         color: Colors.black,
                                       ),
@@ -246,8 +262,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                             ],
                                           ),
                                           subtitle: Text(
-                                            "S/${minimal[index]
-                                                    .productPrice}.00",
+                                            "S/${minimal[index].productPrice}.00",
                                             textAlign: TextAlign.end,
                                           ),
                                           children: [
@@ -255,13 +270,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                             const Text("ESPECIFICACIONES"),
                                             const OtherDetailsDivider(),
                                             Padding(
-                                              padding:
-                                                  const EdgeInsets.only(left: 5.0),
+                                              padding: const EdgeInsets.only(
+                                                  left: 5.0),
                                               child: Row(
                                                 children: [
                                                   Row(
                                                     children: [
-                                                      const Text(
+                                                      // ignore: prefer_const_constructors
+                                                      Text(
                                                           "Con Extra de queso"),
                                                       Image.asset(
                                                         "images/cheese.png",
@@ -301,7 +317,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          _printer("4754 6587 7412 5698", "E. MILAN", cart.getTotalPrice());
+                          _printer("4754 6587 7412 5698", "E. MILAN",
+                              cart.getTotalPrice(), cart);
                           Navigator.pushNamed(context, '/');
                         },
                         child: Container(
@@ -351,7 +368,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     return Spin(
       child: InkWell(
         onTap: () {
-          _printer(cardNumber, cardHolder, cart.getTotalPrice());
+          _printer(cardNumber, cardHolder, cart.getTotalPrice(), cart);
           Navigator.pushNamed(context, '/');
         },
         child: Card(

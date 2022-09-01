@@ -1,7 +1,7 @@
-// ignore_for_file: depend_on_referenced_packages
 import 'package:flutter/cupertino.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
+// ignore: depend_on_referenced_packages
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CartProvider with ChangeNotifier {
@@ -18,6 +18,11 @@ class CartProvider with ChangeNotifier {
   Future<List<Cart>> getData() async {
     _cart = db.getCartList();
     return _cart;
+  }
+
+  void setCategory(String category) {
+    category = category;
+    notifyListeners();
   }
 
   void _setPrefItems() async {
@@ -47,8 +52,12 @@ class CartProvider with ChangeNotifier {
   }
 
   double getTotalPrice() {
-    _getPrefItems();
+    if (getData().toString().isEmpty) {
+      _getPrefItems();
+      return _totalPrice = 0;
+    } else {
     return _totalPrice;
+    }
   }
 
   void addCounter() {
