@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({Key? key}) : super(key: key);
   @override
-  // ignore: library_private_types_in_public_api
   _ProductListScreenState createState() => _ProductListScreenState();
 }
 class _ProductListScreenState extends State<ProductListScreen> {
@@ -25,7 +24,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
             Consumer<CartProvider>(
               builder: (context, prueba,_) => Center(
                 child: Text(
-                  prueba.category,
+                  prueba.category.toUpperCase(),
+                  // "¡ELIGE LO QUE MAS TE GUSTE!".toUpperCase(),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 20,
