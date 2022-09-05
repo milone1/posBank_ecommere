@@ -1,9 +1,5 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
@@ -43,11 +39,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   }
 
   _printer(cardNumber, cardHolder, total, CartProvider cart) async {
-    String numero = cardNumber.toString();
     String nombre = cardHolder.toString();
-
-    await flutterUsbPrinter
-        .printText("                                          \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
     await flutterUsbPrinter
@@ -55,7 +47,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter
         .printText("           Restaurante La Estacion        \r\n");
     await flutterUsbPrinter
-        .printText("            R.U.C.: 11111111111           \r\n");
+        .printText("            R.U.C.: 20552103816           \r\n");
     await flutterUsbPrinter
         .printText("   Pan. Sur Km 18.5 Chorrillos-Lima       \r\n");
     await flutterUsbPrinter
@@ -105,21 +97,21 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter
         .printText("------------------------------------------\r\n");
     await flutterUsbPrinter
-        .printText(" Producto:   Cantidad:   P.uni:    Total  \r\n");
+        .printText(" PRODUCTO:   CANTIDAD:   P.UNI:    TOTAL  \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
     for (int index = 0; index < minimal.length; index++) {
       String? productoName = minimal[index].productName;
       int? productoCantidad = minimal[index].quantity;
       await flutterUsbPrinter.printText(
           // ignore: prefer_interpolation_to_compose_strings
-          (productoName! + "                       ").substring(0, 15) +
-              productoCantidad.toString() +
-              "     " +
-              "S/ " +
-              minimal[index].initialPrice.toString() +
+          (
+            productoName! + "                       ").substring(0, 15) +
+            productoCantidad.toString() +"     " +
+            "S/ " + minimal[index].initialPrice.toString() +
               ".00" +
               "     " +
-              "S/" +
-              minimal[index].productPrice.toString() +
+              "S/" +minimal[index].productPrice.toString() +
               ".00" +
               '\r\n');
     }
@@ -154,7 +146,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter
         .printText("                                          \r\n");
     await flutterUsbPrinter
-        .printText("         ¡GRACIAS POR SU VISITA!          \r\n");
+        .printText("          GRACIAS POR SU VISITA           \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
     await flutterUsbPrinter
@@ -165,6 +157,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         .printText(" venta electronica, consulte su documento \r\n");
     await flutterUsbPrinter
         .printText(" en www.fegrupoespinoza.com               \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
     await flutterUsbPrinter
@@ -318,7 +312,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                                   width: 20,
                                                 ),
                                                 Text(minimal[index]
-                                                    .category
+                                                    .productName
                                                     .toString()),
                                               ],
                                             ),
@@ -412,8 +406,12 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                                       const EdgeInsets.only(
                                                           left: 5.0),
                                                   child: Column(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
                                                     children: [
                                                       Row(
                                                         children: [

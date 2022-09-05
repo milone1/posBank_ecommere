@@ -485,7 +485,7 @@ class Products extends StatelessWidget {
         'imgPath': "images/whisky.png"
       },
       {
-        'name': "Coñac",
+        'name': "Conac",
         'price': 85,
         'id': 96,
         'idProduct': 96,
@@ -702,15 +702,15 @@ class Products extends StatelessWidget {
                       ),
                       itemBuilder: (BuildContext context, index) {
                         // if (prueba.category == "") {
-                          return _buildCard(
-                            products[index]['name'],
-                            products[index]['price'],
-                            products[index]['id'],
-                            products[index]['idProduct'],
-                            products[index]['category'],
-                            products[index]['imgPath'],
-                            context,
-                          );
+                        return _buildCard(
+                          products[index]['name'],
+                          products[index]['price'],
+                          products[index]['id'],
+                          products[index]['idProduct'],
+                          products[index]['category'],
+                          products[index]['imgPath'],
+                          context,
+                        );
                         // } else {
                         //   List listCategory = products
                         //       .where((element) =>
@@ -816,7 +816,7 @@ class Products extends StatelessWidget {
       context: context,
       builder: (context) {
         return SizedBox(
-          height: height * 0.7,
+          height: height * 0.37,
           child: Center(
             child: Column(
               children: [

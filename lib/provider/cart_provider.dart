@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 // ignore: depend_on_referenced_packages
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CartProvider with ChangeNotifier {
   DBHelper db = DBHelper();
@@ -40,8 +39,8 @@ class CartProvider with ChangeNotifier {
     return _totalPrice = 0;
   }
 
-  void addCounter() async{
-    await _counter++;
+  void addCounter() {
+    _counter++;
     notifyListeners();
   }
 
