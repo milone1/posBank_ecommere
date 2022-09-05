@@ -20,9 +20,10 @@ class _ListCategoryState extends State<ListCategory> {
       width: 150,
       height: height * 0.50,
       child: ListWheelScrollView(
+        physics: const FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
           setState(
-              () => {categoriesInfo.category = categoriesList[index].value})
+              () => {categoriesList[index].value = categoriesInfo.category})
         },
         itemExtent: 100,
         useMagnifier: true,

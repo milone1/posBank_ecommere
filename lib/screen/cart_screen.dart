@@ -346,7 +346,7 @@ class _CartScreenState extends State<CartScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ReusableWidget(
-                        title: 'TOTAL A PAGAR: ',
+                        title: 'IR AL CARRITO: ',
                         // ignore: prefer_interpolation_to_compose_strings
                         value: r's/' +cart.totalPrice.toString()+"0",
                       ),

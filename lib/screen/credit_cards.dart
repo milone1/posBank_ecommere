@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
@@ -41,32 +45,67 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   _printer(cardNumber, cardHolder, total, CartProvider cart) async {
     String numero = cardNumber.toString();
     String nombre = cardHolder.toString();
-    await flutterUsbPrinter
-        .printText("                                      \r\n");
-    await flutterUsbPrinter
-        .printText("                                      \r\n");
-    await flutterUsbPrinter
-        .printText("                                      \r\n");
-    await flutterUsbPrinter
-        .printText("                                      \r\n");
-    await flutterUsbPrinter
-        .printText("                                      \r\n");
-    await flutterUsbPrinter
-        .printText("+----------------------------------------+\r\n");
-    await flutterUsbPrinter
-        .printText("|              ACURIO-RESTAURANTS        |\r\n");
-    await flutterUsbPrinter
-        .printText("+----------------------------------------+\r\n");
+
     await flutterUsbPrinter
         .printText("                                          \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
     await flutterUsbPrinter
-        .printText("PRODUCTOS:   CANTIDAD:   PRECIO:    TOTAL:\r\n");
+        .printText("               Almeyda S.A.               \r\n");
+    await flutterUsbPrinter
+        .printText("           Restaurante La Estacion        \r\n");
+    await flutterUsbPrinter
+        .printText("            R.U.C.: 11111111111           \r\n");
+    await flutterUsbPrinter
+        .printText("   Pan. Sur Km 18.5 Chorrillos-Lima       \r\n");
+    await flutterUsbPrinter
+        .printText("         2583150 - 971626721              \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("       BOLETA DE VENTA ELECTRONICA        \r\n");
+    await flutterUsbPrinter
+        .printText("             B014-00000921                \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("------------------------------------------\r\n");
+    await flutterUsbPrinter
+        .printText(" Cliente       : $nombre                  \r\n");
+    await flutterUsbPrinter
+        .printText(" DNI           : 54447887                 \r\n");
+    await flutterUsbPrinter
+        .printText(" Direccion     : Fransisco Zela SN Urb    \r\n");
+    await flutterUsbPrinter
+        .printText("------------------------------------------\r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText(" Pedido        : 2200000212               \r\n");
+    await flutterUsbPrinter
+        .printText(" Fecha Emision : 10/08/2022 11:57:00a.m   \r\n");
+    await flutterUsbPrinter
+        .printText(" Tipo          : Para Llevar              \r\n");
+    await flutterUsbPrinter
+        .printText(" Local         : SIN UNIDAD NEGOCIO       \r\n");
+    await flutterUsbPrinter
+        .printText(" Caja          : 001 - MASTER             \r\n");
+    await flutterUsbPrinter
+        .printText(" Mesero        : Gean Carlos              \r\n");
+    await flutterUsbPrinter
+        .printText(" Tipo moneda   : Soles                    \r\n");
+    await flutterUsbPrinter
+        .printText(" Mesa          : 1                        \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("------------------------------------------\r\n");
+    await flutterUsbPrinter
+        .printText(" Producto:   Cantidad:   P.uni:    Total  \r\n");
     for (int index = 0; index < minimal.length; index++) {
       String? productoName = minimal[index].productName;
       int? productoCantidad = minimal[index].quantity;
@@ -85,49 +124,61 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               '\r\n');
     }
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("------------------------------------------\r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("         Op. Gravadas   S/. :       26.72 \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("         Op. Inafecta   S/. :        0.00 \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("        Op. Exonerado   S/. :        0.00 \r\n");
     await flutterUsbPrinter
-        .printText("+----------------------------------------+");
+        .printText("      Total Descuento   S/. :        0.00 \r\n");
     await flutterUsbPrinter
-        .printText('|   TOTAL:                 S/$total      |\r\n');
+        .printText("           IGV 18.00%   S/. :        4.81 \r\n");
     await flutterUsbPrinter
-        .printText("+----------------------------------------+");
+        .printText("           RECA 9.26%   S/. :        2.47 \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("               ICBPER   S/. :        0.00 \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("        Importe Total   S/. :       34.00 \r\n");
     await flutterUsbPrinter
-        .printText("------------------------------------------");
+        .printText("                                          \r\n");
     await flutterUsbPrinter
-        .printText("Nombre del Cliente:   $nombre         \r\n");
+        .printText("------------------------------------------\r\n");
     await flutterUsbPrinter
-        .printText('Numero De la Tarjeta: $numero         \r\n');
+        .printText("                                          \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText(" Forma de Pago      : AL CONTADO          \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText(" Tipo de Pago                             \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("                                          \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("         ¡GRACIAS POR SU VISITA!          \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("                                          \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText(" Autorizado mediante resolucion Nro. 018- \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText(" 005-0002243 representacion de boleta de  \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText(" venta electronica, consulte su documento \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText(" en www.fegrupoespinoza.com               \r\n");
     await flutterUsbPrinter
-        .printText("                                      \r\n");
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
+    await flutterUsbPrinter
+        .printText("                                          \r\n");
     //* Line delete element to db.
     for (int index = 0; index < minimal.length; index++) {
       await dbHelper!.deleteDb(Cart(
@@ -191,124 +242,298 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cardHolder: "E. MILAN",
                 cardNumber: "4754 6587 7412 5698"),
             const OtherDetailsDivider(),
-            const Text(
-              "RESUMEN DE TU ORDEN:    ",
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
+            Row(
+              children: <Widget>[
+                const BackButton(),
+                SizedBox(
+                  width: width * 0.15,
+                ),
+                const Text(
+                  "RESUMEN DE TU ORDEN: ",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             const OtherDetailsDivider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                    width: width * 0.40,
-                    height: height * 0.45,
-                    child: Center(
-                      child: Column(
-                        children: [
-                          minimal.isEmpty
-                              ? Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  // ignore: prefer_const_literals_to_create_immutables
-                                  children: [
-                                    // ignore: prefer_const_constructors
-                                    Text(
-                                      "Cargando...",
-                                      style: const TextStyle(
-                                        fontSize: 25.0,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 25,
-                                    ),
-                                    const CircularProgressIndicator(
+                  width: width * 0.50,
+                  height: height * 0.30,
+                  child: Center(
+                    child: Column(
+                      children: [
+                        minimal.isEmpty
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                // ignore: prefer_const_literals_to_create_immutables
+                                children: [
+                                  // ignore: prefer_const_constructors
+                                  Text(
+                                    "Cargando...",
+                                    style: const TextStyle(
+                                      fontSize: 25.0,
                                       color: Colors.black,
                                     ),
-                                  ],
-                                )
-                              : Expanded(
-                                  child: ListView.builder(
-                                    itemCount: minimal.length,
-                                    itemBuilder: ((context, index) {
-                                      return Card(
-                                        elevation: 10,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: ExpansionTile(
-                                          title: Row(
+                                  ),
+                                  const SizedBox(
+                                    width: 25,
+                                  ),
+                                  const CircularProgressIndicator(
+                                    color: Colors.black,
+                                  ),
+                                ],
+                              )
+                            : Expanded(
+                                child: ListView.builder(
+                                  itemCount: minimal.length,
+                                  itemBuilder: ((context, index) => minimal[
+                                                      index]
+                                                  .category ==
+                                              'bebida' ||
+                                          minimal[index].category == 'alcohol'
+                                      ? Card(
+                                          elevation: 10,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: ExpansionTile(
+                                            title: Row(
+                                              children: [
+                                                Image.asset(
+                                                  minimal[index]
+                                                      .image
+                                                      .toString(),
+                                                  width: 50,
+                                                  height: 50,
+                                                ),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(minimal[index]
+                                                    .category
+                                                    .toString()),
+                                              ],
+                                            ),
+                                            subtitle: Text(
+                                              "S/${minimal[index].productPrice}.00",
+                                              textAlign: TextAlign.end,
+                                            ),
                                             children: [
-                                              Image.asset(
-                                                minimal[index].image.toString(),
-                                                width: 50,
-                                                height: 50,
-                                              ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                minimal[index]
-                                                    .productName
-                                                    .toString(),
+                                              const OtherDetailsDivider(),
+                                              const Text("ESPECIFICACIONES"),
+                                              const OtherDetailsDivider(),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 5.0),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Row(
+                                                          children: [
+                                                            const Text(
+                                                                "Con Hielo "),
+                                                            const SizedBox(
+                                                              width: 5,
+                                                            ),
+                                                            Image.asset(
+                                                              "images/hielo.png",
+                                                              width: 40,
+                                                              height: 40,
+                                                            )
+                                                          ],
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 20,
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            const Text(
+                                                                "En Copa"),
+                                                            Image.asset(
+                                                              "images/copa.png",
+                                                              width: 40,
+                                                              height: 40,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ],
                                           ),
-                                          subtitle: Text(
-                                            "S/${minimal[index].productPrice}.00",
-                                            textAlign: TextAlign.end,
+                                        )
+                                      : Card(
+                                          elevation: 10,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
                                           ),
-                                          children: [
-                                            const OtherDetailsDivider(),
-                                            const Text("ESPECIFICACIONES"),
-                                            const OtherDetailsDivider(),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 5.0),
-                                              child: Row(
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      // ignore: prefer_const_constructors
-                                                      Text(
-                                                          "Con Extra de queso"),
-                                                      Image.asset(
-                                                        "images/cheese.png",
-                                                        width: 40,
-                                                        height: 40,
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      const Text("Sin cebolla"),
-                                                      Image.asset(
-                                                        "images/onion.png",
-                                                        width: 40,
-                                                        height: 40,
-                                                      )
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                          child: ExpansionTile(
+                                            title: Row(
+                                              children: [
+                                                Image.asset(
+                                                  minimal[index]
+                                                      .image
+                                                      .toString(),
+                                                  width: 50,
+                                                  height: 50,
+                                                ),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(
+                                                  minimal[index]
+                                                      .productName
+                                                      .toString(),
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                      );
-                                    }),
-                                  ),
-                                )
-                        ],
-                      ),
-                    )),
+                                            subtitle: Text(
+                                              "S/${minimal[index].productPrice}.00",
+                                              textAlign: TextAlign.end,
+                                            ),
+                                            children: [
+                                              const OtherDetailsDivider(),
+                                              const Text("ESPECIFICACIONES"),
+                                              const OtherDetailsDivider(),
+                                              Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 5.0),
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              const Text(
+                                                                  "Extra queso"),
+                                                              const SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Image.asset(
+                                                                "images/cheese.png",
+                                                                width: 40,
+                                                                height: 40,
+                                                              )
+                                                            ],
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 20,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              const Text(
+                                                                  "Sin cebolla"),
+                                                              const SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Image.asset(
+                                                                "images/onion.png",
+                                                                width: 40,
+                                                                height: 40,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              const Text(
+                                                                  "Extra pepinillo"),
+                                                              const SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Image.asset(
+                                                                "images/pickle.png",
+                                                                width: 40,
+                                                                height: 40,
+                                                              )
+                                                            ],
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 20,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              const Text(
+                                                                  "Sin Champiñones"),
+                                                              const SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Image.asset(
+                                                                "images/garlic.png",
+                                                                width: 40,
+                                                                height: 40,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              const Text(
+                                                                  "Extra queso"),
+                                                              const SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Image.asset(
+                                                                "images/cheese.png",
+                                                                width: 40,
+                                                                height: 40,
+                                                              )
+                                                            ],
+                                                          ),
+                                                          const SizedBox(
+                                                            width: 20,
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              const Text(
+                                                                  "Extra aceituna"),
+                                                              const SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                              Image.asset(
+                                                                "images/olive.png",
+                                                                width: 40,
+                                                                height: 40,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  )),
+                                            ],
+                                          ),
+                                        )),
+                                ),
+                              ),
+                      ],
+                    ),
+                  ),
+                ),
                 SizedBox(
                   width: width * 0.40,
-                  height: height * 0.45,
+                  height: height * 0.10,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,

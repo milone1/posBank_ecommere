@@ -662,13 +662,6 @@ class Products extends StatelessWidget {
       },
     ];
 
-    getCategory(prueba) {
-      List<dynamic> listCategory = products
-          .where((element) => element['category'] == prueba.category)
-          .toList();
-      return listCategory;
-    }
-
     return Padding(
       padding: const EdgeInsets.only(
         left: 10.0,
@@ -700,15 +693,15 @@ class Products extends StatelessWidget {
                   height: height * 0.55,
                   child: Consumer<CartProvider>(
                     builder: (context, prueba, _) => GridView.builder(
-                      // itemCount: products.length,
-                      itemCount: prueba.category != "" ? 10 : products.length,
+                      itemCount: products.length,
+                      // itemCount: prueba.category != "" ? 10 : products.length,
                       scrollDirection: Axis.horizontal,
                       // ignore: prefer_const_constructors
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 5,
                       ),
                       itemBuilder: (BuildContext context, index) {
-                        if (prueba.category == "") {
+                        // if (prueba.category == "") {
                           return _buildCard(
                             products[index]['name'],
                             products[index]['price'],
@@ -718,18 +711,21 @@ class Products extends StatelessWidget {
                             products[index]['imgPath'],
                             context,
                           );
-                        } else {
-                          List listCategory = getCategory(prueba);
-                          return _buildCard(
-                            listCategory[index]['name'],
-                            listCategory[index]['price'],
-                            listCategory[index]['id'],
-                            listCategory[index]['idProduct'],
-                            listCategory[index]['category'],
-                            listCategory[index]['imgPath'],
-                            context,
-                          );
-                        }
+                        // } else {
+                        //   List listCategory = products
+                        //       .where((element) =>
+                        //           element['category'] == prueba.category)
+                        //       .toList();
+                        //   return _buildCard(
+                        //     listCategory[index]['name'],
+                        //     listCategory[index]['price'],
+                        //     listCategory[index]['id'],
+                        //     listCategory[index]['idProduct'],
+                        //     listCategory[index]['category'],
+                        //     listCategory[index]['imgPath'],
+                        //     context,
+                        //   );
+                        // }
                       },
                     ),
                   ),
@@ -810,7 +806,6 @@ class Products extends StatelessWidget {
     final cart = Provider.of<CartProvider>(context, listen: false);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
     showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.white,
@@ -826,29 +821,6 @@ class Products extends StatelessWidget {
             child: Column(
               children: [
                 _modalHead(name, imgPath, context),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 10.0,
-                  ),
-                  child: SizedBox(
-                    width: width,
-                    height: 100,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
-                        Text(
-                          "AGREGAR",
-                        ),
-                        Text(
-                          "QUITAR",
-                        ),
-                        Text(
-                          "ESPECIFICACIONES",
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
                 ListDropDown(),
                 Center(
                   child: Padding(
@@ -891,7 +863,7 @@ class Products extends StatelessWidget {
                                   quantity: 1,
                                   unitTag: price.toString(),
                                   image: imgPath,
-                                  category: ''),
+                                  category: category.toString()),
                             )
                                 .then(
                               (value) {

@@ -22,7 +22,7 @@ class ListDropDown extends StatelessWidget {
               value: a,
               child: Row(
                 children: [
-                  Radio(value: 0, groupValue: 0, onChanged: (_) {}),
+                  Checkbox(value: true, onChanged: (_){}),
                   Text(a),
                 ],
               ),
@@ -37,7 +37,7 @@ class ListDropDown extends StatelessWidget {
               value: a,
               child: Row(
                 children: [
-                  Radio(value: 2, groupValue: 2, onChanged: (_) {}),
+                  Checkbox(value: true, onChanged: (_){}),
                   Text(a),
                 ],
               ),
@@ -52,7 +52,7 @@ class ListDropDown extends StatelessWidget {
               value: a,
               child: Row(
                 children: [
-                  Radio(value: 0, groupValue: 0, onChanged: (_) {}),
+                  Checkbox(value: false, onChanged: (_){}),
                   Text(a),
                 ],
               ),
