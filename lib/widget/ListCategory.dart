@@ -12,7 +12,6 @@ class ListCategory extends StatefulWidget {
 }
 
 class _ListCategoryState extends State<ListCategory> {
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -21,6 +20,7 @@ class _ListCategoryState extends State<ListCategory> {
       width: 150,
       height: height * 0.50,
       child: ListWheelScrollView(
+        
         physics: const FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
           setState(

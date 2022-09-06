@@ -290,8 +290,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                   itemBuilder: ((context, index) => minimal[
                                                       index]
                                                   .category ==
-                                              'bebida' ||
-                                          minimal[index].category == 'alcohol'
+                                              'bebidas' ||
+                                          minimal[index].category == 'alcoholes'
                                       ? Card(
                                           elevation: 10,
                                           shape: RoundedRectangleBorder(
