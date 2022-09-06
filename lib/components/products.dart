@@ -1,5 +1,4 @@
 // ignore_for_file: depend_on_referenced_packages
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -9,7 +8,6 @@ import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/ListCategory.dart';
 import 'package:posbank_flutter/widget/ListDropDown.dart';
 import 'package:provider/provider.dart';
-
 // ignore: must_be_immutable
 class Products extends StatelessWidget {
   DBHelper? dbHelper = DBHelper();
@@ -25,7 +23,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 1,
         'idProduct': 1,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/bacon.png"
       },
       {
@@ -33,7 +31,7 @@ class Products extends StatelessWidget {
         'price': 12,
         'id': 27,
         'idProduct': 27,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': 'images/polloSano.png'
       },
       {
@@ -41,7 +39,7 @@ class Products extends StatelessWidget {
         'price': 18,
         'id': 15,
         'idProduct': 15,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/tallarin.png"
       },
       {
@@ -49,7 +47,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 25,
         'idProduct': 25,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/atun.png"
       },
       {
@@ -57,7 +55,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 54,
         'idProduct': 54,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/tallarin.png"
       },
       {
@@ -65,7 +63,7 @@ class Products extends StatelessWidget {
         'price': 17,
         'id': 68,
         'idProduct': 68,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/arrozFrito.png"
       },
       {
@@ -73,7 +71,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 69,
         'idProduct': 69,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/spaggetiChino.png"
       },
       {
@@ -81,7 +79,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 70,
         'idProduct': 70,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/cangrejoFrito.png"
       },
       {
@@ -89,7 +87,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 71,
         'idProduct': 71,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/shirataki.png"
       },
       {
@@ -97,7 +95,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 72,
         'idProduct': 72,
-        'category': "comida",
+        'category': "comidas",
         'imgPath': "images/takikomi.png"
       },
       {
@@ -105,7 +103,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 26,
         'idProduct': 26,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/alitas.png"
       },
       {
@@ -113,7 +111,7 @@ class Products extends StatelessWidget {
         'price': 18,
         'id': 2,
         'idProduct': 2,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/fileteRes.png"
       },
       {
@@ -121,7 +119,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 13,
         'idProduct': 13,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/chorizo.png"
       },
       {
@@ -129,7 +127,7 @@ class Products extends StatelessWidget {
         'price': 14,
         'id': 3,
         'idProduct': 3,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/tocino.png"
       },
       {
@@ -137,7 +135,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 50,
         'idProduct': 50,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/salchicha.png"
       },
       {
@@ -145,7 +143,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 73,
         'idProduct': 73,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/conejo.png"
       },
       {
@@ -153,7 +151,7 @@ class Products extends StatelessWidget {
         'price': 25,
         'id': 74,
         'idProduct': 74,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/carneMolida.png"
       },
       {
@@ -161,7 +159,7 @@ class Products extends StatelessWidget {
         'price': 23,
         'id': 75,
         'idProduct': 75,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/parrillaCarne.png"
       },
       {
@@ -169,7 +167,7 @@ class Products extends StatelessWidget {
         'price': 27,
         'id': 76,
         'idProduct': 76,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/cecina.png"
       },
       {
@@ -177,15 +175,15 @@ class Products extends StatelessWidget {
         'price': 31,
         'id': 77,
         'idProduct': 77,
-        'category': "carne",
+        'category': "carnes",
         'imgPath': "images/maotai.png"
       },
       {
-        'name': "Pizza",
+        'name': "Pizza Roja",
         'price': 22,
         'id': 6,
         'idProduct': 6,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/pizza.png"
       },
       {
@@ -193,7 +191,7 @@ class Products extends StatelessWidget {
         'price': 12,
         'id': 7,
         'idProduct': 7,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/taco.png"
       },
       {
@@ -201,7 +199,7 @@ class Products extends StatelessWidget {
         'price': 14,
         'id': 8,
         'idProduct': 8,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/hamburguer.png"
       },
       {
@@ -209,7 +207,7 @@ class Products extends StatelessWidget {
         'price': 31,
         'id': 51,
         'idProduct': 51,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/italian.png"
       },
       {
@@ -217,7 +215,7 @@ class Products extends StatelessWidget {
         'price': 24,
         'id': 52,
         'idProduct': 52,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/siciliana.png"
       },
       {
@@ -225,7 +223,7 @@ class Products extends StatelessWidget {
         'price': 14,
         'id': 78,
         'idProduct': 78,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/taco2.png"
       },
       {
@@ -233,7 +231,7 @@ class Products extends StatelessWidget {
         'price': 24,
         'id': 79,
         'idProduct': 79,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/burrito.png"
       },
       {
@@ -241,7 +239,7 @@ class Products extends StatelessWidget {
         'price': 24,
         'id': 80,
         'idProduct': 80,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/quesadilla.png"
       },
       {
@@ -249,7 +247,7 @@ class Products extends StatelessWidget {
         'price': 24,
         'id': 81,
         'idProduct': 81,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/enchilada.png"
       },
       {
@@ -257,7 +255,7 @@ class Products extends StatelessWidget {
         'price': 24,
         'id': 82,
         'idProduct': 82,
-        'category': "pizza",
+        'category': "pizzas",
         'imgPath': "images/sandwich.png"
       },
       {
@@ -265,7 +263,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 28,
         'idProduct': 28,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/sopaToscana.png"
       },
       {
@@ -273,7 +271,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 20,
         'idProduct': 20,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/curry.png"
       },
       {
@@ -281,7 +279,7 @@ class Products extends StatelessWidget {
         'price': 12,
         'id': 4,
         'idProduct': 4,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/soup.png"
       },
       {
@@ -289,7 +287,7 @@ class Products extends StatelessWidget {
         'price': 11,
         'id': 5,
         'idProduct': 5,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/Todu.png"
       },
       {
@@ -297,7 +295,7 @@ class Products extends StatelessWidget {
         'price': 13,
         'id': 11,
         'idProduct': 11,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/sashimi.png"
       },
       {
@@ -305,7 +303,7 @@ class Products extends StatelessWidget {
         'price': 13,
         'id': 83,
         'idProduct': 83,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/thukpaRamen.png"
       },
       {
@@ -313,7 +311,7 @@ class Products extends StatelessWidget {
         'price': 25,
         'id': 84,
         'idProduct': 84,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/misua.png"
       },
       {
@@ -321,7 +319,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 85,
         'idProduct': 85,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/albondiga.png"
       },
       {
@@ -329,7 +327,7 @@ class Products extends StatelessWidget {
         'price': 36,
         'id': 86,
         'idProduct': 86,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/tomYum.png"
       },
       {
@@ -337,7 +335,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 87,
         'idProduct': 87,
-        'category': "sopa",
+        'category': "sopas",
         'imgPath': "images/bunBo.png"
       },
       {
@@ -345,7 +343,7 @@ class Products extends StatelessWidget {
         'price': 14,
         'id': 16,
         'idProduct': 16,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/Sidra.png"
       },
       {
@@ -353,7 +351,7 @@ class Products extends StatelessWidget {
         'price': 17,
         'id': 17,
         'idProduct': 17,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/pepsi.png"
       },
       {
@@ -361,7 +359,7 @@ class Products extends StatelessWidget {
         'price': 17,
         'id': 21,
         'idProduct': 21,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/manzana.png"
       },
       {
@@ -369,7 +367,7 @@ class Products extends StatelessWidget {
         'price': 19,
         'id': 19,
         'idProduct': 19,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/fresa.png"
       },
       {
@@ -377,7 +375,7 @@ class Products extends StatelessWidget {
         'price': 10,
         'id': 24,
         'idProduct': 24,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/cafe.png"
       },
       {
@@ -385,7 +383,7 @@ class Products extends StatelessWidget {
         'price': 14,
         'id': 88,
         'idProduct': 88,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/cocaCola.png"
       },
       {
@@ -393,7 +391,7 @@ class Products extends StatelessWidget {
         'price': 15,
         'id': 89,
         'idProduct': 89,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/fanta.png"
       },
       {
@@ -401,7 +399,7 @@ class Products extends StatelessWidget {
         'price': 17,
         'id': 90,
         'idProduct': 90,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/cocaColaZero.png"
       },
       {
@@ -409,7 +407,7 @@ class Products extends StatelessWidget {
         'price': 18,
         'id': 91,
         'idProduct': 91,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/fantaLimon.png"
       },
       {
@@ -417,7 +415,7 @@ class Products extends StatelessWidget {
         'price': 14,
         'id': 92,
         'idProduct': 92,
-        'category': "bebida",
+        'category': "bebidas",
         'imgPath': "images/teChai.png"
       },
       {
@@ -425,7 +423,7 @@ class Products extends StatelessWidget {
         'price': 11,
         'id': 9,
         'idProduct': 9,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/vinoMesa.png"
       },
       {
@@ -433,7 +431,7 @@ class Products extends StatelessWidget {
         'price': 10,
         'id': 10,
         'idProduct': 10,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/vodkaRojo.png"
       },
       {
@@ -441,7 +439,7 @@ class Products extends StatelessWidget {
         'price': 17,
         'id': 22,
         'idProduct': 22,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/heineken.png"
       },
       {
@@ -449,7 +447,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 18,
         'idProduct': 18,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/martini.png"
       },
       {
@@ -457,7 +455,7 @@ class Products extends StatelessWidget {
         'price': 25,
         'id': 53,
         'idProduct': 53,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/cocaRon.png"
       },
       {
@@ -465,7 +463,7 @@ class Products extends StatelessWidget {
         'price': 75,
         'id': 93,
         'idProduct': 93,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/champan.png"
       },
       {
@@ -473,7 +471,7 @@ class Products extends StatelessWidget {
         'price': 65,
         'id': 94,
         'idProduct': 94,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/vino.png"
       },
       {
@@ -481,7 +479,7 @@ class Products extends StatelessWidget {
         'price': 55,
         'id': 95,
         'idProduct': 95,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/whisky.png"
       },
       {
@@ -489,7 +487,7 @@ class Products extends StatelessWidget {
         'price': 85,
         'id': 96,
         'idProduct': 96,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/coñac.png"
       },
       {
@@ -497,7 +495,7 @@ class Products extends StatelessWidget {
         'price': 95,
         'id': 97,
         'idProduct': 97,
-        'category': "alcohol",
+        'category': "alcoholes",
         'imgPath': "images/margarita.png"
       },
       {
@@ -505,7 +503,7 @@ class Products extends StatelessWidget {
         'price': 18,
         'id': 14,
         'idProduct': 14,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/chocolate.png"
       },
       {
@@ -513,7 +511,7 @@ class Products extends StatelessWidget {
         'price': 13,
         'id': 12,
         'idProduct': 12,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/Helado.png"
       },
       {
@@ -521,7 +519,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 55,
         'idProduct': 55,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/tarta.png"
       },
       {
@@ -529,7 +527,7 @@ class Products extends StatelessWidget {
         'price': 52,
         'id': 56,
         'idProduct': 56,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/croissant.png"
       },
       {
@@ -537,7 +535,7 @@ class Products extends StatelessWidget {
         'price': 41,
         'id': 57,
         'idProduct': 57,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/kebab.png"
       },
       {
@@ -545,7 +543,7 @@ class Products extends StatelessWidget {
         'price': 41,
         'id': 98,
         'idProduct': 98,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/tartaHuevo.png"
       },
       {
@@ -553,7 +551,7 @@ class Products extends StatelessWidget {
         'price': 25,
         'id': 99,
         'idProduct': 99,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/tartaLimon.png"
       },
       {
@@ -561,7 +559,7 @@ class Products extends StatelessWidget {
         'price': 34,
         'id': 100,
         'idProduct': 100,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/galletas.png"
       },
       {
@@ -569,7 +567,7 @@ class Products extends StatelessWidget {
         'price': 32,
         'id': 101,
         'idProduct': 101,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/galletasChocolate.png"
       },
       {
@@ -577,7 +575,7 @@ class Products extends StatelessWidget {
         'price': 14,
         'id': 102,
         'idProduct': 102,
-        'category': "postre",
+        'category': "postres",
         'imgPath': "images/tostada.png"
       },
       {
@@ -585,7 +583,7 @@ class Products extends StatelessWidget {
         'price': 32,
         'id': 58,
         'idProduct': 58,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/dish.png"
       },
       {
@@ -593,7 +591,7 @@ class Products extends StatelessWidget {
         'price': 32,
         'id': 59,
         'idProduct': 59,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/crayfish.png"
       },
       {
@@ -601,7 +599,7 @@ class Products extends StatelessWidget {
         'price': 41,
         'id': 60,
         'idProduct': 60,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/sushiCantonese.png"
       },
       {
@@ -609,7 +607,7 @@ class Products extends StatelessWidget {
         'price': 31,
         'id': 61,
         'idProduct': 61,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/shrimp.png"
       },
       {
@@ -617,7 +615,7 @@ class Products extends StatelessWidget {
         'price': 41,
         'id': 62,
         'idProduct': 62,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/crab.png"
       },
       {
@@ -625,7 +623,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 63,
         'idProduct': 63,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/tempura.png"
       },
       {
@@ -633,7 +631,7 @@ class Products extends StatelessWidget {
         'price': 11,
         'id': 64,
         'idProduct': 64,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/thai.png"
       },
       {
@@ -641,7 +639,7 @@ class Products extends StatelessWidget {
         'price': 21,
         'id': 65,
         'idProduct': 65,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/eelRice.png"
       },
       {
@@ -649,7 +647,7 @@ class Products extends StatelessWidget {
         'price': 17,
         'id': 66,
         'idProduct': 66,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/domburi.png"
       },
       {
@@ -657,10 +655,12 @@ class Products extends StatelessWidget {
         'price': 25,
         'id': 67,
         'idProduct': 67,
-        'category': "marisco",
+        'category': "mariscos",
         'imgPath': "images/kebab.png"
       },
     ];
+
+    final prueba = Provider.of<CartProvider>(context);
 
     return Padding(
       padding: const EdgeInsets.only(
@@ -691,17 +691,16 @@ class Products extends StatelessWidget {
                 child: SizedBox(
                   width: width - 100,
                   height: height * 0.55,
-                  child: Consumer<CartProvider>(
-                    builder: (context, prueba, _) => GridView.builder(
-                      itemCount: products.length,
-                      // itemCount: prueba.category != "" ? 10 : products.length,
+                  child: GridView.builder(
+                      // itemCount: products.length,
+                      itemCount: prueba.category != "" ? 10 : products.length,
                       scrollDirection: Axis.horizontal,
                       // ignore: prefer_const_constructors
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 5,
                       ),
                       itemBuilder: (BuildContext context, index) {
-                        // if (prueba.category == "") {
+                        if (prueba.category == "") {
                         return _buildCard(
                           products[index]['name'],
                           products[index]['price'],
@@ -711,24 +710,24 @@ class Products extends StatelessWidget {
                           products[index]['imgPath'],
                           context,
                         );
-                        // } else {
-                        //   List listCategory = products
-                        //       .where((element) =>
-                        //           element['category'] == prueba.category)
-                        //       .toList();
-                        //   return _buildCard(
-                        //     listCategory[index]['name'],
-                        //     listCategory[index]['price'],
-                        //     listCategory[index]['id'],
-                        //     listCategory[index]['idProduct'],
-                        //     listCategory[index]['category'],
-                        //     listCategory[index]['imgPath'],
-                        //     context,
-                        //   );
-                        // }
+                        } else {
+                          List listCategory = products
+                              .where((element) =>
+                                  element['category'] == prueba.category)
+                              .toList();
+                          return _buildCard(
+                            listCategory[index]['name'],
+                            listCategory[index]['price'],
+                            listCategory[index]['id'],
+                            listCategory[index]['idProduct'],
+                            listCategory[index]['category'],
+                            listCategory[index]['imgPath'],
+                            context,
+                          );
+                        }
                       },
                     ),
-                  ),
+                  
                 ),
               ),
             ),

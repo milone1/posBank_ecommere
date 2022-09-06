@@ -8,32 +8,33 @@ import 'package:posbank_flutter/screen/cart_screen.dart';
 import 'package:posbank_flutter/widget/carrousel.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
+
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({Key? key}) : super(key: key);
   @override
   _ProductListScreenState createState() => _ProductListScreenState();
 }
+
 class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final prueba = Provider.of<CartProvider>(context);
+
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
             const ListCarrousel(),
-            Consumer<CartProvider>(
-              builder: (context, prueba,_) => Center(
-                child: Text(
-                  prueba.category.toUpperCase(),
-                  // "¡ELIGE LO QUE MAS TE GUSTE!".toUpperCase(),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+            Center(
+              child: Text(
+                prueba.category.toString().toUpperCase(),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

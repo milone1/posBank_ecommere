@@ -19,6 +19,11 @@ class CartProvider with ChangeNotifier {
     return _cart;
   }
 
+  void setCategory(String categorySelected) {
+    category = categorySelected;
+    notifyListeners();
+  }
+
   void addTotalPrice(double productPrice) {
     _totalPrice = _totalPrice + productPrice;
     notifyListeners();
