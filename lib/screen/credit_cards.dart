@@ -45,9 +45,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter
         .printText("               Almeyda S.A.               \r\n");
     await flutterUsbPrinter
-        .printText("           Restaurante La Estacion        \r\n");
+        .printText("           Restaurante La Infomatica      \r\n");
     await flutterUsbPrinter
-        .printText("            R.U.C.: 20552103816           \r\n");
+        .printText("            R.U.C.: 11111111111           \r\n");
     await flutterUsbPrinter
         .printText("   Pan. Sur Km 18.5 Chorrillos-Lima       \r\n");
     await flutterUsbPrinter

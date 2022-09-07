@@ -19,7 +19,7 @@ class Products extends StatelessWidget {
 
     List products = [
       {
-        'name': 'Arroz Chaufa',
+        'name': 'Combo Chaufa',
         'price': 21,
         'id': 1,
         'idProduct': 1,
@@ -27,7 +27,7 @@ class Products extends StatelessWidget {
         'imgPath': "images/bacon.png"
       },
       {
-        'name': "Ensalada pollo",
+        'name': "Combo Pollo",
         'price': 12,
         'id': 27,
         'idProduct': 27,
@@ -35,7 +35,7 @@ class Products extends StatelessWidget {
         'imgPath': 'images/polloSano.png'
       },
       {
-        'name': "Pasta",
+        'name': " Combo Pasta",
         'price': 18,
         'id': 15,
         'idProduct': 15,
@@ -43,7 +43,7 @@ class Products extends StatelessWidget {
         'imgPath': "images/tallarin.png"
       },
       {
-        'name': "Ensalada Atun",
+        'name': "Combo Atun",
         'price': 15,
         'id': 25,
         'idProduct': 25,

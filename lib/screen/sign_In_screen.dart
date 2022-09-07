@@ -30,9 +30,9 @@ class _SignInScreenState extends State<SignInScreen> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
+                  // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    Image.asset(
-                      "images/infomatica.png",
+                    const SizedBox(
                       width: 100,
                       height: 100,
                     ),
@@ -45,7 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 200,
                 ),
                 Image.asset(
-                  "images/Tanta_logo.png",
+                  "images/infomatica.png",
                   width: 350,
                   height: 250,
                 ),
@@ -154,7 +154,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 150,
                 ),
                 const Text(
-                  "© Copyrigth 2022 by Milone",
+                  "© Copyrigth 2022 by Infomatica",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 15.0,
