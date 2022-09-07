@@ -23,7 +23,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     double width = MediaQuery.of(context).size.width;
-
+    final prueba = Provider.of<CartProvider>(context);
     _deleteProduct(id, price) async {
       await dbHelper!.delete(id);
       cart.removerCounter();
@@ -41,11 +41,13 @@ class _CartScreenState extends State<CartScreen> {
             builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
-                  return Align(
+                  if(width > 700) {
+                    return Align(
                     alignment: Alignment.center,
                     child: Column(
                       children: [
                         const Image(
+                          fit: BoxFit.contain,
                           width: 200,
                           height: 160,
                           image: AssetImage('images/empty_cart.png'),
@@ -55,6 +57,23 @@ class _CartScreenState extends State<CartScreen> {
                       ],
                     ),
                   );
+                  } else {
+                    return Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      children: [
+                        const Image(
+                          fit: BoxFit.contain,
+                          width: 200,
+                          height: 70,
+                          image: AssetImage('images/empty_cart.png'),
+                        ),
+                        Text('El carrito esta vacío',
+                            style: Theme.of(context).textTheme.headlineSmall),
+                      ],
+                    ),
+                  );
+                  }
                 } else {
                   return Expanded(
                     child: ListView.builder(
@@ -294,20 +313,6 @@ class _CartScreenState extends State<CartScreen> {
                   );
                 }
               }
-              // return Align(
-              //       alignment: Alignment.center,
-              //       child: Column(
-              //         children: [
-              //           Image(
-              //             width: 200,
-              //             height: 180,
-              //             image: AssetImage('images/empty_cart.png'),
-              //           ),
-              //           Text('El carrito esta vacío',
-              //               style: Theme.of(context).textTheme.headline5),
-              //         ],
-              //       ),
-              // );
               return Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -331,30 +336,38 @@ class _CartScreenState extends State<CartScreen> {
               );
             },
           ),
-          Consumer<CartProvider>(
-            builder: (context, value, child) {
-              return Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  width: width * 0.50,
-                  height: 70.0,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ReusableWidget(
-                        title: 'IR AL CARRITO: ',
-                        // ignore: prefer_interpolation_to_compose_strings
-                        value: r's/' +cart.totalPrice.toString()+"0",
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const BackButton(),
+              Consumer<CartProvider>(
+                builder: (context, value, child) {
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      width: width > 700 ? width * 0.50: width * 0.60,
+                      height: 70.0,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(15.0),
                       ),
-                    ],
-                  ),
-                ),
-              );
-            },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ReusableWidget(
+                            title: 'IR AL CARRITO: ',
+                            // ignore: prefer_interpolation_to_compose_strings
+                            value: r's/' +cart.totalPrice.toString()+"0",
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+              Image.asset( prueba.state=="ParaSalon"? 'images/tray.png': 'images/bug.png', width: width * 0.10,),
+            ],
           ),
         ],
       ),

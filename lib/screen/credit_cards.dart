@@ -105,13 +105,15 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       int? productoCantidad = minimal[index].quantity;
       await flutterUsbPrinter.printText(
           // ignore: prefer_interpolation_to_compose_strings
-          (
-            productoName! + "                       ").substring(0, 15) +
-            productoCantidad.toString() +"     " +
-            "S/ " + minimal[index].initialPrice.toString() +
+          (productoName! + "                       ").substring(0, 15) +
+              productoCantidad.toString() +
+              "     " +
+              "S/ " +
+              minimal[index].initialPrice.toString() +
               ".00" +
               "     " +
-              "S/" +minimal[index].productPrice.toString() +
+              "S/" +
+              minimal[index].productPrice.toString() +
               ".00" +
               '\r\n');
     }
@@ -240,7 +242,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               children: <Widget>[
                 const BackButton(),
                 SizedBox(
-                  width: width * 0.15,
+                  width: width > 700 ? width * 0.15 : width * 0.10,
                 ),
                 const Text(
                   "RESUMEN DE TU ORDEN: ",
@@ -287,10 +289,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                             : Expanded(
                                 child: ListView.builder(
                                   itemCount: minimal.length,
-                                  itemBuilder: ((context, index) => minimal[
-                                                      index]
-                                                  .category ==
-                                              'bebidas' ||
+                                  itemBuilder: (
+                                    (context, index) => minimal[index]
+                                      .category == 'bebidas' ||
                                           minimal[index].category == 'alcoholes'
                                       ? Card(
                                           elevation: 10,
@@ -488,12 +489,12 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                                           Row(
                                                             children: [
                                                               const Text(
-                                                                  "Extra queso"),
+                                                                  "Extra Picante"),
                                                               const SizedBox(
                                                                 width: 5,
                                                               ),
                                                               Image.asset(
-                                                                "images/cheese.png",
+                                                                "images/chili.png",
                                                                 width: 40,
                                                                 height: 40,
                                                               )
@@ -513,68 +514,78 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                                                 "images/olive.png",
                                                                 width: 40,
                                                                 height: 40,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  )),
+                                                  ),
+                                                ],
+                                              ),
                                             ],
                                           ),
-                                        )),
+                                        ],
+                                      )
+                                    ),
+                                  ],
                                 ),
-                              ),
+                              )
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: width * 0.40,
-                  height: height * 0.10,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          _printer("4754 6587 7412 5698", "Oscar Melero",
-                              cart.getTotalPrice(), cart);
-                          cart.setPriceTotal();
-                          Navigator.pushNamed(context, '/');
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          height: 55,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF2DA1F4),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 9,
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            "PAGAR S/  ${cart.totalPrice}0",
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                //* boton pay
+                _buttonPayToCard()
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buttonPayToCard() {
+    final cart = Provider.of<CartProvider>(context);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return SizedBox(
+      width: width * 0.40,
+      height: height * 0.10,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          InkWell(
+            onTap: () {
+              _printer("4754 6587 7412 5698", "Oscar Melero",
+                  cart.getTotalPrice(), cart);
+              cart.setPriceTotal();
+              Navigator.pushNamed(context, '/');
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: 55,
+              decoration: BoxDecoration(
+                color: const Color(0xFF2DA1F4),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 9,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                "PAGAR S/  ${cart.totalPrice}0",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

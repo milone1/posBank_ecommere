@@ -10,7 +10,7 @@ class ListDropDown extends StatelessWidget {
   final String _titlePan = "PAN";
   final String _titleTamal = "TAMAL";
 
-  ListDropDown({Key? key}) : super(key: key);
+  ListDropDown(String category, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(

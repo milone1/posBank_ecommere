@@ -1,18 +1,17 @@
 // ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-
+import 'package:posbank_flutter/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
-
   @override
   // ignore: library_private_types_in_public_api
   _SignInScreenState createState() => _SignInScreenState();
 }
-
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
+    final categoriesInfo = Provider.of<CartProvider>(context);
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -33,9 +32,14 @@ class _SignInScreenState extends State<SignInScreen> {
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     const SizedBox(
+                      width: 200,
+                      height: 200,
+                    ),
+                    Image.asset(
+                      "images/infomatica.png",
                       width: 100,
                       height: 100,
-                    ),
+                    )
                   ],
                 ),
                 SizedBox(
@@ -45,7 +49,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 200,
                 ),
                 Image.asset(
-                  "images/infomatica.png",
+                  "images/logoRestaurante.png",
                   width: 350,
                   height: 250,
                 ),
@@ -58,6 +62,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, '/products');
+                        setState(
+                            () => {categoriesInfo.setState("ParaSalon")}
+                          );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.4,
@@ -86,13 +93,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                 height: 100,
                               ),
                               Text(
-                                'Para Pedir',
+                                'Para Salon',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                   fontSize:
-                                      MediaQuery.of(context).size.width *
-                                          0.05,
+                                      MediaQuery.of(context).size.width * 0.05,
                                 ),
                               ),
                             ],
@@ -106,6 +112,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, '/products');
+                        setState(
+                            () => {categoriesInfo.setState("ParaLlevar")});
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.4,
@@ -139,8 +147,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                   fontSize:
-                                      MediaQuery.of(context).size.width *
-                                          0.05,
+                                      MediaQuery.of(context).size.width * 0.05,
                                 ),
                               ),
                             ],

@@ -10,6 +10,7 @@ class CartProvider with ChangeNotifier {
   String category = "";
   double _totalPrice = 0.0;
   double get totalPrice => _totalPrice;
+  String state = "";
 
   late Future<List<Cart>> _cart;
   Future<List<Cart>> get cart => _cart;
@@ -23,6 +24,12 @@ class CartProvider with ChangeNotifier {
     category = categorySelected;
     notifyListeners();
   }
+
+  void setState(String newState){
+    state = newState;
+    notifyListeners();
+  }
+
 
   void addTotalPrice(double productPrice) {
     _totalPrice = _totalPrice + productPrice;

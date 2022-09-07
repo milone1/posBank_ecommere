@@ -6,17 +6,14 @@ import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/ListCategory.dart';
-import 'package:posbank_flutter/widget/ListDropDown.dart';
 import 'package:provider/provider.dart';
+
 // ignore: must_be_immutable
 class Products extends StatelessWidget {
   DBHelper? dbHelper = DBHelper();
   Products({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     List products = [
       {
         'name': 'Combo Chaufa',
@@ -660,8 +657,6 @@ class Products extends StatelessWidget {
       },
     ];
 
-    final prueba = Provider.of<CartProvider>(context);
-
     return Padding(
       padding: const EdgeInsets.only(
         left: 10.0,
@@ -676,63 +671,70 @@ class Products extends StatelessWidget {
               child: const ListCategory(),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 2,
-                left: 10,
-                bottom: 10,
+          //* carts
+          _carts(products, context),
+        ],
+      ),
+    );
+  }
+
+  Widget _carts(List products, context) {
+    final prueba = Provider.of<CartProvider>(context);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 2,
+          left: 10,
+          bottom: 10,
+        ),
+        child: BounceInRight(
+          // ignore: prefer_const_constructors
+          duration: Duration(
+            seconds: 2,
+          ),
+          child: SizedBox(
+            width: width - 100,
+            height: height * 0.55,
+            child: GridView.builder(
+              // itemCount: products.length,
+              itemCount: prueba.category != "" ? 10 : products.length,
+              scrollDirection: Axis.horizontal,
+              // ignore: prefer_const_constructors
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: width > 700 ? 5 : 4,
               ),
-              child: BounceInRight(
-                // ignore: prefer_const_constructors
-                duration: Duration(
-                  seconds: 2,
-                ),
-                child: SizedBox(
-                  width: width - 100,
-                  height: height * 0.55,
-                  child: GridView.builder(
-                      // itemCount: products.length,
-                      itemCount: prueba.category != "" ? 10 : products.length,
-                      scrollDirection: Axis.horizontal,
-                      // ignore: prefer_const_constructors
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5,
-                      ),
-                      itemBuilder: (BuildContext context, index) {
-                        if (prueba.category == "") {
-                        return _buildCard(
-                          products[index]['name'],
-                          products[index]['price'],
-                          products[index]['id'],
-                          products[index]['idProduct'],
-                          products[index]['category'],
-                          products[index]['imgPath'],
-                          context,
-                        );
-                        } else {
-                          List listCategory = products
-                              .where((element) =>
-                                  element['category'] == prueba.category)
-                              .toList();
-                          return _buildCard(
-                            listCategory[index]['name'],
-                            listCategory[index]['price'],
-                            listCategory[index]['id'],
-                            listCategory[index]['idProduct'],
-                            listCategory[index]['category'],
-                            listCategory[index]['imgPath'],
-                            context,
-                          );
-                        }
-                      },
-                    ),
-                  
-                ),
-              ),
+              itemBuilder: (BuildContext context, index) {
+                if (prueba.category == "") {
+                  return _buildCard(
+                    products[index]['name'],
+                    products[index]['price'],
+                    products[index]['id'],
+                    products[index]['idProduct'],
+                    products[index]['category'],
+                    products[index]['imgPath'],
+                    context,
+                  );
+                } else {
+                  List listCategory = products
+                      .where(
+                          (element) => element['category'] == prueba.category)
+                      .toList();
+                  return _buildCard(
+                    listCategory[index]['name'],
+                    listCategory[index]['price'],
+                    listCategory[index]['id'],
+                    listCategory[index]['idProduct'],
+                    listCategory[index]['category'],
+                    listCategory[index]['imgPath'],
+                    context,
+                  );
+                }
+              },
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -805,6 +807,17 @@ class Products extends StatelessWidget {
     final cart = Provider.of<CartProvider>(context, listen: false);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    final _carnes = [
+      "Sellado",
+      "Rojo Ingles",
+      "Termino Medio",
+      "Tres Cuartos",
+      "Bien Cocido"
+    ];
+
+    final _bebidas = ["Helada", "Sin Helar"];
+
     showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.white,
@@ -814,83 +827,214 @@ class Products extends StatelessWidget {
       )),
       context: context,
       builder: (context) {
-        return SizedBox(
-          height: height * 0.37,
-          child: Center(
-            child: Column(
-              children: [
-                _modalHead(name, imgPath, context),
-                ListDropDown(),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20.0,
+        if (category == 'bebidas' || category == 'carnes') {
+          if (category == 'carnes') {
+            return SizedBox(
+              height: height * 0.45,
+              child: Center(
+                child: Column(
+                  children: [
+                    _modalHead(name, imgPath, context),
+                    DropdownButton(
+                      items: _carnes.map((String a) {
+                        return DropdownMenuItem(
+                          value: a,
+                          child: Row(
+                            children: [
+                              Checkbox(value: true, onChanged: (_) {}),
+                              Text(a),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (_) {},
+                      hint: const Text("Especificaciones"),
                     ),
-                    child: Container(
-                      width: width * 0.35,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.4),
-                              spreadRadius: 5,
-                              blurRadius: 7),
-                        ],
-                        color: Colors.blue,
+                    //* Boton Agregar
+                    _buttonAddCart(
+                        name, price, id, idProduct, category, imgPath, context),
+                  ],
+                ),
+              ),
+            );
+          } else {
+            return SizedBox(
+              height: height * 0.45,
+              child: Center(
+                child: Column(
+                  children: [
+                    _modalHead(name, imgPath, context),
+                    DropdownButton(
+                      items: _bebidas.map((String a) {
+                        return DropdownMenuItem(
+                          value: a,
+                          child: Row(
+                            children: [
+                              Checkbox(value: true, onChanged: (_) {}),
+                              Text(a),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (_) {},
+                      hint: const Text("Especificaciones"),
+                    ),
+                    //* Seccion de Pago
+                    _sectionPay(
+                        name, price, id, idProduct, category, imgPath, context),
+                  ],
+                ),
+              ),
+            );
+          }
+        } else {
+          return SizedBox(
+            height: height * 0.45,
+            child: Center(
+              child: Column(
+                children: [
+                  _modalHead(name, imgPath, context),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 20.0,
                       ),
-                      child: Center(
-                        child: InkWell(
-                          onTap: () {
-                            Fluttertoast.showToast(
-                                msg: "Agregado Correctamente",
-                                toastLength: Toast.LENGTH_SHORT,
-                                webPosition: "bottom",
-                                gravity: ToastGravity.CENTER,
-                                timeInSecForIosWeb: 1,
-                                backgroundColor: Colors.green,
-                                textColor: Colors.white,
-                                fontSize: 14.0);
-                            dbHelper!
-                                .insert(
-                              Cart(
-                                  id: id,
-                                  productId: idProduct.toString(),
-                                  productName: name,
-                                  initialPrice: price,
-                                  productPrice: price,
-                                  quantity: 1,
-                                  unitTag: price.toString(),
-                                  image: imgPath,
-                                  category: category.toString()),
-                            )
-                                .then(
-                              (value) {
-                                cart.addTotalPrice(
-                                    double.parse(price.toString()));
-                                cart.addCounter();
-                              },
-                            );
-                            Navigator.pop(context);
-                          },
-                          child: const Text(
-                            "+ AGREGAR AL CARRITO",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
+                      child: Container(
+                        width: width * 0.35,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.0),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                spreadRadius: 5,
+                                blurRadius: 7),
+                          ],
+                          color: Colors.blue,
+                        ),
+                        child: Center(
+                          child: InkWell(
+                            onTap: () {
+                              Fluttertoast.showToast(
+                                  msg: "Agregado Correctamente",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  webPosition: "bottom",
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.green,
+                                  textColor: Colors.white,
+                                  fontSize: 14.0);
+                              dbHelper!
+                                  .insert(
+                                Cart(
+                                    id: id,
+                                    productId: idProduct.toString(),
+                                    productName: name,
+                                    initialPrice: price,
+                                    productPrice: price,
+                                    quantity: 1,
+                                    unitTag: price.toString(),
+                                    image: imgPath,
+                                    category: category.toString()),
+                              )
+                                  .then(
+                                (value) {
+                                  cart.addTotalPrice(
+                                      double.parse(price.toString()));
+                                  cart.addCounter();
+                                },
+                              );
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "+ AGREGAR AL CARRITO",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Widget _buttonAddCart(String name, int price, int id, int idProduct,
+      String category, String imgPath, context) {
+    final cart = Provider.of<CartProvider>(context, listen: false);
+    double width = MediaQuery.of(context).size.width;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 20.0,
+        ),
+        child: Container(
+          width: width * 0.35,
+          height: 50.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: 5,
+                  blurRadius: 7),
+            ],
+            color: Colors.blue,
+          ),
+          child: Center(
+            child: InkWell(
+              onTap: () {
+                Fluttertoast.showToast(
+                    msg: "Agregado Correctamente",
+                    toastLength: Toast.LENGTH_SHORT,
+                    webPosition: "bottom",
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                    fontSize: 14.0);
+                dbHelper!
+                    .insert(
+                  Cart(
+                      id: id,
+                      productId: idProduct.toString(),
+                      productName: name,
+                      initialPrice: price,
+                      productPrice: price,
+                      quantity: 1,
+                      unitTag: price.toString(),
+                      image: imgPath,
+                      category: category.toString()),
+                )
+                    .then(
+                  (value) {
+                    cart.addTotalPrice(double.parse(price.toString()));
+                    cart.addCounter();
+                  },
+                );
+                Navigator.pop(context);
+              },
+              child: const Text(
+                "+ AGREGAR AL CARRITO",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
@@ -908,8 +1052,8 @@ class Products extends StatelessWidget {
               const BackButton(),
               Image.asset(
                 imgPath,
-                height: 300,
-                width: 300,
+                height: 270,
+                width: 270,
               ),
             ],
           ),
@@ -936,12 +1080,82 @@ class Products extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 15,
                   ),
-                  maxLines: 5,
+                  maxLines: 6,
                 ),
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _sectionPay(String name, int price, int id, int idProduct,
+    String category, String imgPath, context) {
+    final cart = Provider.of<CartProvider>(context, listen: false);
+    double width = MediaQuery.of(context).size.width;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 20.0,
+        ),
+        child: Container(
+          width: width * 0.35,
+          height: 50.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: 5,
+                  blurRadius: 7),
+            ],
+            color: Colors.blue,
+          ),
+          child: Center(
+            child: InkWell(
+              onTap: () {
+                Fluttertoast.showToast(
+                    msg: "Agregado Correctamente",
+                    toastLength: Toast.LENGTH_SHORT,
+                    webPosition: "bottom",
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                    fontSize: 14.0);
+                dbHelper!
+                    .insert(
+                  Cart(
+                      id: id,
+                      productId: idProduct.toString(),
+                      productName: name,
+                      initialPrice: price,
+                      productPrice: price,
+                      quantity: 1,
+                      unitTag: price.toString(),
+                      image: imgPath,
+                      category: category.toString()),
+                )
+                    .then(
+                  (value) {
+                    cart.addTotalPrice(double.parse(price.toString()));
+                    cart.addCounter();
+                  },
+                );
+                Navigator.pop(context);
+              },
+              child: const Text(
+                "+ AGREGAR AL CARRITO",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
