@@ -47,7 +47,7 @@ class _CartScreenState extends State<CartScreen> {
                       children: [
                         const Image(
                           width: 200,
-                          height: 180,
+                          height: 160,
                           image: AssetImage('images/empty_cart.png'),
                         ),
                         Text('El carrito esta vacío',

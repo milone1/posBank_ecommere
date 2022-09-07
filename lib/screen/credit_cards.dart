@@ -126,7 +126,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     await flutterUsbPrinter
         .printText("      Total Descuento   S/. :        0.00 \r\n");
     await flutterUsbPrinter
-        .printText("           IGV 18.00%   S/. :        4.81 \r\n");
+        .printText("           IGV 10.00%   S/. :        4.81 \r\n");
     await flutterUsbPrinter
         .printText("           RECA 9.26%   S/. :        2.47 \r\n");
     await flutterUsbPrinter
@@ -233,7 +233,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 color: const Color(0xFF2DA1F4),
                 cart: cart,
                 cardExpiration: "06/05",
-                cardHolder: "E. MILAN",
+                cardHolder: "Oscar Melero",
                 cardNumber: "4754 6587 7412 5698"),
             const OtherDetailsDivider(),
             Row(
@@ -538,7 +538,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          _printer("4754 6587 7412 5698", "E. MILAN",
+                          _printer("4754 6587 7412 5698", "Oscar Melero",
                               cart.getTotalPrice(), cart);
                           cart.setPriceTotal();
                           Navigator.pushNamed(context, '/');
