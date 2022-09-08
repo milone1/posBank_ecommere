@@ -1,11 +1,13 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:posbank_flutter/provider/cart_provider.dart';
+//* screens
 import 'package:posbank_flutter/screen/credit_cards.dart';
 import 'package:posbank_flutter/screen/sign_In_screen.dart';
 import 'package:posbank_flutter/screen/product_list.dart';
+//* providers
 import 'package:provider/provider.dart';
+import 'package:posbank_flutter/provider/cart_provider.dart';
 void main() {
   runApp(const MyApp());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
@@ -20,6 +22,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Lato'),
+          //* routes of app
           initialRoute: '/',
           routes: {
             '/': (context) => const SignInScreen(),

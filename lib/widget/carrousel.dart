@@ -1,14 +1,12 @@
 // ignore_for_file: depend_on_referenced_packages
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+//* providers
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:provider/provider.dart';
 
 class ListCarrousel extends StatelessWidget {
   const ListCarrousel({Key? key}) : super(key: key);
-
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

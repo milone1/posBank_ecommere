@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
 // ignore: depend_on_referenced_packages
-
 class CartProvider with ChangeNotifier {
   DBHelper db = DBHelper();
   int _counter = 0;

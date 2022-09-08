@@ -1,12 +1,18 @@
 // ignore_for_file: depend_on_referenced_packages
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+//* animations
+import 'package:animate_do/animate_do.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
+//* databases
 import 'package:posbank_flutter/db/db_helper.dart';
+//* models
 import 'package:posbank_flutter/model/cart_model.dart';
+//* providers
 import 'package:posbank_flutter/provider/cart_provider.dart';
-import 'package:posbank_flutter/widget/ListCategory.dart';
 import 'package:provider/provider.dart';
+//* list of category Widget
+import 'package:posbank_flutter/widget/ListCategory.dart';
 
 // ignore: must_be_immutable
 class Products extends StatelessWidget {
@@ -808,7 +814,7 @@ class Products extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    final _carnes = [
+    const carnes = [
       "Sellado",
       "Rojo Ingles",
       "Termino Medio",
@@ -816,7 +822,7 @@ class Products extends StatelessWidget {
       "Bien Cocido"
     ];
 
-    final _bebidas = ["Helada", "Sin Helar"];
+    const bebidas = ["Helada", "Sin Helar"];
 
     showModalBottomSheet(
       isScrollControlled: true,
@@ -836,7 +842,7 @@ class Products extends StatelessWidget {
                   children: [
                     _modalHead(name, imgPath, context),
                     DropdownButton(
-                      items: _carnes.map((String a) {
+                      items: carnes.map((String a) {
                         return DropdownMenuItem(
                           value: a,
                           child: Row(
@@ -865,12 +871,15 @@ class Products extends StatelessWidget {
                   children: [
                     _modalHead(name, imgPath, context),
                     DropdownButton(
-                      items: _bebidas.map((String a) {
+                      items: bebidas.map((String a) {
                         return DropdownMenuItem(
                           value: a,
                           child: Row(
                             children: [
-                              Checkbox(value: true, onChanged: (_) {}),
+                              Checkbox(
+                                value: true, 
+                                onChanged: (_) {}
+                              ),
                               Text(a),
                             ],
                           ),
@@ -936,8 +945,7 @@ class Products extends StatelessWidget {
                                     unitTag: price.toString(),
                                     image: imgPath,
                                     category: category.toString()),
-                              )
-                                  .then(
+                              ).then(
                                 (value) {
                                   cart.addTotalPrice(
                                       double.parse(price.toString()));
@@ -1072,9 +1080,12 @@ class Products extends StatelessWidget {
               SizedBox(
                 width: width * 0.30,
                 child: const Text(
-                  "Tiene sabor, obviamente, y podemos añadir que tiene buen sabor, así que "
-                  "probablemente resulta rico y apetitoso, agradable y grato al paladar. "
-                  "Puede estar bien sazonado, ser picante, ácido, amargo, o podría ser dulce. ",
+                  "Tiene sabor, obviamente, y podemos añadir "
+                  "que tiene buen sabor, así que "
+                  "probablemente resulta rico y apetitoso, "
+                  "agradable y grato al paladar. "
+                  "Puede estar bien sazonado, ser picante, "
+                  "ácido, amargo, o podría ser dulce. ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,

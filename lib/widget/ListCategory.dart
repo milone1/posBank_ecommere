@@ -23,6 +23,7 @@ class _ListCategoryState extends State<ListCategory> {
         
         physics: const FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
+          //* funcion set  category in provider on change in list view
           setState(
               () => {categoriesInfo.setCategory(categoriesList[index].value)})
         },

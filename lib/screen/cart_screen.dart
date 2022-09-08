@@ -18,7 +18,6 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   DBHelper? dbHelper = DBHelper();
-
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
@@ -376,14 +375,14 @@ class _CartScreenState extends State<CartScreen> {
 }
 
 class ReusableWidget extends StatelessWidget {
-  final String title, value;
   const ReusableWidget({required this.title, required this.value});
+  final String title, value;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print('value:$value');
+        // print('value:$value');
         if (value == 's/0.00') {
           showDialog(
             context: context,
