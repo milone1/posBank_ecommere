@@ -15,7 +15,7 @@ class _ListCategoryState extends State<ListCategory> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    final categoriesInfo = Provider.of<CartProvider>(context);
+    final cart = Provider.of<CartProvider>(context);
     return SizedBox(
       width: 150,
       height: height * 0.50,
@@ -25,7 +25,7 @@ class _ListCategoryState extends State<ListCategory> {
         onSelectedItemChanged: (index) => {
           //* funcion set  category in provider on change in list view
           setState(
-              () => {categoriesInfo.setCategory(categoriesList[index].value)})
+              () => {cart.setCategory(categoriesList[index].value)})
         },
         itemExtent: 100,
         useMagnifier: true,

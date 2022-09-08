@@ -723,8 +723,7 @@ class Products extends StatelessWidget {
                     context,
                   );
                 } else {
-                  List listCategory = products
-                      .where(
+                  List listCategory = products.where(
                           (element) => element['category'] == prueba.category)
                       .toList();
                   return _buildCard(
@@ -774,7 +773,8 @@ class Products extends StatelessWidget {
                   height: 80,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(imgPath), fit: BoxFit.contain),
+                      image: AssetImage(imgPath), 
+                      fit: BoxFit.contain),
                   ),
                 ),
               ),
@@ -797,7 +797,10 @@ class Products extends StatelessWidget {
                   child: Text(
                     'S/$price.00',
                     style:
-                        const TextStyle(color: Color(0xFF575E67), fontSize: 15),
+                        const TextStyle(
+                          color: Color(0xFF575E67), 
+                          fontSize: 15,
+                    ),
                   ),
                 ),
               ),
@@ -813,13 +816,12 @@ class Products extends StatelessWidget {
     final cart = Provider.of<CartProvider>(context, listen: false);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
     const carnes = [
       "Sellado",
       "Rojo Ingles",
       "Termino Medio",
       "Tres Cuartos",
-      "Bien Cocido"
+      "Bien Cocido",
     ];
 
     const bebidas = ["Helada", "Sin Helar"];
@@ -830,7 +832,8 @@ class Products extends StatelessWidget {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
         top: Radius.circular(32),
-      )),
+        ),
+      ),
       context: context,
       builder: (context) {
         if (category == 'bebidas' || category == 'carnes') {
@@ -847,7 +850,11 @@ class Products extends StatelessWidget {
                           value: a,
                           child: Row(
                             children: [
-                              Checkbox(value: true, onChanged: (_) {}),
+                              Checkbox(
+                                value: false, 
+                                onChanged: (_) {
+                                }
+                              ),
                               Text(a),
                             ],
                           ),
@@ -877,20 +884,22 @@ class Products extends StatelessWidget {
                           child: Row(
                             children: [
                               Checkbox(
-                                value: true, 
+                                value: false, 
                                 onChanged: (_) {}
                               ),
                               Text(a),
-                            ],
-                          ),
-                        );
-                      }).toList(),
+                              ],
+                            ),
+                          );
+                        },
+                      ).toList(),
                       onChanged: (_) {},
                       hint: const Text("Especificaciones"),
                     ),
                     //* Seccion de Pago
                     _sectionPay(
-                        name, price, id, idProduct, category, imgPath, context),
+                        name, price, id, idProduct, category, imgPath, context
+                    ),
                   ],
                 ),
               ),
@@ -917,7 +926,8 @@ class Products extends StatelessWidget {
                             BoxShadow(
                                 color: Colors.grey.withOpacity(0.4),
                                 spreadRadius: 5,
-                                blurRadius: 7),
+                                blurRadius: 7,
+                              ),
                           ],
                           color: Colors.blue,
                         ),
@@ -977,7 +987,7 @@ class Products extends StatelessWidget {
   }
 
   Widget _buttonAddCart(String name, int price, int id, int idProduct,
-      String category, String imgPath, context) {
+    String category, String imgPath, context) {
     final cart = Provider.of<CartProvider>(context, listen: false);
     double width = MediaQuery.of(context).size.width;
     return Center(
@@ -1135,8 +1145,7 @@ class Products extends StatelessWidget {
                     backgroundColor: Colors.green,
                     textColor: Colors.white,
                     fontSize: 14.0);
-                dbHelper!
-                    .insert(
+                dbHelper!.insert(
                   Cart(
                       id: id,
                       productId: idProduct.toString(),
@@ -1147,8 +1156,7 @@ class Products extends StatelessWidget {
                       unitTag: price.toString(),
                       image: imgPath,
                       category: category.toString()),
-                )
-                    .then(
+                ).then(
                   (value) {
                     cart.addTotalPrice(double.parse(price.toString()));
                     cart.addCounter();
@@ -1161,7 +1169,8 @@ class Products extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                  ),
                 textAlign: TextAlign.center,
               ),
             ),
