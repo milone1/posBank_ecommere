@@ -1,6 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages, avoid_print, use_key_in_widget_constructors
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 //* model
 import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/widget/delete_cart.dart';
@@ -33,7 +32,7 @@ class _CartScreenState extends State<CartScreen> {
             builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
-                  return EmptyCart();
+                  return const EmptyCart();
                 } else {
                   return Expanded(
                     child: ListView.builder(

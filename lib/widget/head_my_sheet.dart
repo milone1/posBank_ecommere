@@ -3,13 +3,11 @@ class HeadmySheet extends StatelessWidget {
   const HeadmySheet({
     Key? key,
     required this.name,
-    required this.imgPath,
-    required this.context,
+    required this.imgPath
   }) : super(key: key);
 
   final String name;
   final String imgPath;
-  final context;
 
   @override
   Widget build(BuildContext context) {

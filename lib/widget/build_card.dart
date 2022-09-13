@@ -97,8 +97,6 @@ class BuildCard extends StatelessWidget {
       "Bien Cocido",
     ];
 
-    const bebidas = ["Helada", "Sin Helar"];
-
     showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.white,
@@ -114,7 +112,7 @@ class BuildCard extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                HeadmySheet(name: name, imgPath: imgPath, context: context),
+                HeadmySheet(name: name, imgPath: imgPath),
                 DropdownButton(
                   items: carnes.map((String a) {
                     return DropdownMenuItem(

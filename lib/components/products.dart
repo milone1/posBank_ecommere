@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 //* animations
 import 'package:animate_do/animate_do.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
-//* providers
-import 'package:provider/provider.dart';
-
 // ignore: must_be_immutable
 class Products extends StatefulWidget {
   const Products({Key? key}) : super(key: key);

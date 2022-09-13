@@ -12,6 +12,8 @@ class ProductsProvider with ChangeNotifier {
     var uri = Uri.parse('https://pokeapi.co/api/v2/');
     final http.Response response = await http.get(uri);
     final Map<String, dynamic> decodeData = json.decode(response.body);
+    // ignore: avoid_print
+    print(decodeData);
     //* nombre = decodeData.results;
     //* notifyListeners();
   }

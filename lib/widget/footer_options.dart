@@ -29,11 +29,11 @@ class FooterOptions extends StatelessWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
+              children: const <Widget>[
                 ReusableWidget(
                   title: 'IR AL CARRITO: ',
                   // ignore: prefer_interpolation_to_compose_strings
-                  value: r's/' + 'cart.totalPrice.toString()' + "0",
+                  value: r's/''cart.totalPrice.toString()' "0",
                 ),
               ],
             ),

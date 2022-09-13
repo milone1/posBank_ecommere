@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 // ignore: depend_on_referenced_packages
-import 'package:posbank_flutter/provider/provider.dart';
-
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
   @override
