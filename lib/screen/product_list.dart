@@ -1,13 +1,16 @@
 // ignore_for_file: library_private_types_in_public_api
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+//* components
 import 'package:posbank_flutter/components/products.dart';
-import 'package:posbank_flutter/provider/cart_provider.dart';
-import 'package:posbank_flutter/screen/cart_screen.dart';
-import 'package:posbank_flutter/widget/carrousel.dart';
+//* screens
+import 'package:posbank_flutter/screen/screens.dart';
+//* widgets
+import 'package:posbank_flutter/widget/widgets.dart';
+//* providers
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
+import 'package:posbank_flutter/provider/category_provider.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({Key? key}) : super(key: key);
@@ -20,8 +23,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    final prueba = Provider.of<CartProvider>(context);
-
+    final category = Provider.of<CategoryProvider>(context).category;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -29,7 +31,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             const ListCarrousel(),
             Center(
               child: Text(
-                prueba.category.toString().toUpperCase(),
+                category.toString().toUpperCase(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 20,
@@ -38,7 +40,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 ),
               ),
             ),
-            Products(),
+            const Products(),
             Expanded(
               child: Container(
                 width: width,

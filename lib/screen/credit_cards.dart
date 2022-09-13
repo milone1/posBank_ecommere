@@ -2,11 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
-import 'package:posbank_flutter/db/db_helper.dart';
 import 'package:posbank_flutter/model/cart_model.dart';
-import 'package:posbank_flutter/provider/cart_provider.dart';
-import 'package:posbank_flutter/widget/carrousel.dart';
-import 'package:posbank_flutter/widget/otherDetailsDivider.dart';
+import 'package:posbank_flutter/provider/provider.dart';
+import 'package:posbank_flutter/widget/widgets.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 
@@ -21,22 +19,20 @@ class CreditCardsPage extends StatefulWidget {
 class _CreditCardsPageState extends State<CreditCardsPage> {
   FlutterUsbPrinter flutterUsbPrinter = FlutterUsbPrinter();
   bool connected = false;
-  DBHelper? dbHelper = DBHelper();
   List<Cart> minimal = [];
 
   @override
   initState() {
     super.initState();
-    getData();
     flutterUsbPrinter.connect(1155, 41014);
   }
 
-  getData() async {
-    List<Cart>? auxProd = await dbHelper?.getCartList();
-    setState(() {
-      minimal = auxProd!;
-    });
-  }
+  // getData() async {
+  //   List<Cart>? auxProd = await dbHelper?.getCartList();
+  //   setState(() {
+  //     minimal = auxProd!;
+  //   });
+  // }
 
   _printer(cardNumber, cardHolder, total, CartProvider cart) async {
     String nombre = cardHolder.toString();
@@ -100,23 +96,23 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         .printText(" PRODUCTO:   CANTIDAD:   P.UNI:    TOTAL  \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
-    for (int index = 0; index < minimal.length; index++) {
-      String? productoName = minimal[index].productName;
-      int? productoCantidad = minimal[index].quantity;
-      await flutterUsbPrinter.printText(
-          // ignore: prefer_interpolation_to_compose_strings
-          (productoName! + "                       ").substring(0, 15) +
-              productoCantidad.toString() +
-              "     " +
-              "S/ " +
-              minimal[index].initialPrice.toString() +
-              ".00" +
-              "     " +
-              "S/" +
-              minimal[index].productPrice.toString() +
-              ".00" +
-              '\r\n');
-    }
+    // for (int index = 0; index < minimal.length; index++) {
+    //   String? productoName = minimal[index].productName;
+    //   int? productoCantidad = minimal[index].quantity;
+    //   await flutterUsbPrinter.printText(
+    //       // ignore: prefer_interpolation_to_compose_strings
+    //       (productoName + "                       ").substring(0, 15) +
+    //           productoCantidad.toString() +
+    //           "     " +
+    //           "S/ " +
+    //           minimal[index].initialPrice.toString() +
+    //           ".00" +
+    //           "     " +
+    //           "S/" +
+    //           minimal[index].productPrice.toString() +
+    //           ".00" +
+    //           '\r\n');
+    // }
     await flutterUsbPrinter
         .printText("------------------------------------------\r\n");
     await flutterUsbPrinter
@@ -175,20 +171,6 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         .printText("                                          \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
-    //* Line delete element to db.
-    for (int index = 0; index < minimal.length; index++) {
-      await dbHelper!.deleteDb(Cart(
-        category: minimal[index].category,
-        initialPrice: minimal[index].initialPrice,
-        id: minimal[index].id,
-        productId: minimal[index].productId,
-        productName: minimal[index].productName,
-        productPrice: minimal[index].productPrice,
-        quantity: minimal[index].quantity,
-        unitTag: minimal[index].unitTag,
-        image: minimal[index].image,
-      ));
-    }
   }
 
   @override
@@ -206,16 +188,17 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               height: 20,
             ),
             Column(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                const ListCarrousel(),
+              children: const <Widget>[
+                ListCarrousel(),
               ],
             ),
             const SizedBox(
               width: 50.0,
             ),
             BounceInLeft(
-              // ignore: sort_child_properties_last
+              duration: const Duration(
+                seconds: 1,
+              ),
               child: const Text(
                 "¡INCREÍBLES OFERTAS!",
                 style: TextStyle(
@@ -226,9 +209,6 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              duration: const Duration(
-                seconds: 1,
-              ),
             ),
             _buildCreditCard(
                 height: height,
@@ -238,22 +218,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cardHolder: "Oscar Melero",
                 cardNumber: "4754 6587 7412 5698"),
             const OtherDetailsDivider(),
-            Row(
-              children: <Widget>[
-                const BackButton(),
-                SizedBox(
-                  width: width > 700 ? width * 0.15 : width * 0.10,
-                ),
-                const Text(
-                  "RESUMEN DE TU ORDEN: ",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+            HeaderSection(width: width),
             const OtherDetailsDivider(),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -265,35 +230,13 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     child: Column(
                       children: [
                         minimal.isEmpty
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                // ignore: prefer_const_literals_to_create_immutables
-                                children: [
-                                  // ignore: prefer_const_constructors
-                                  Text(
-                                    "Cargando...",
-                                    style: const TextStyle(
-                                      fontSize: 25.0,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 25,
-                                  ),
-                                  const CircularProgressIndicator(
-                                    color: Colors.black,
-                                  ),
-                                ],
-                              )
+                            ? const CircularCharger()
                             : Expanded(
                                 child: ListView.builder(
                                   itemCount: minimal.length,
                                   itemBuilder: (
-                                    (context, index) => minimal[index]
-                                      .category == 'bebidas' ||
-                                          minimal[index].category == 'alcoholes'
-                                      ? Card(
+                                    (context, index) => 
+                                      Card(
                                           elevation: 10,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
@@ -368,163 +311,6 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                                             ],
                                           ),
                                         )
-                                      : Card(
-                                          elevation: 10,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: ExpansionTile(
-                                            title: Row(
-                                              children: [
-                                                Image.asset(
-                                                  minimal[index]
-                                                      .image
-                                                      .toString(),
-                                                  width: 50,
-                                                  height: 50,
-                                                ),
-                                                const SizedBox(
-                                                  width: 20,
-                                                ),
-                                                Text(
-                                                  minimal[index]
-                                                      .productName
-                                                      .toString(),
-                                                ),
-                                              ],
-                                            ),
-                                            subtitle: Text(
-                                              "S/${minimal[index].productPrice}.00",
-                                              textAlign: TextAlign.end,
-                                            ),
-                                            children: [
-                                              const OtherDetailsDivider(),
-                                              const Text("ESPECIFICACIONES"),
-                                              const OtherDetailsDivider(),
-                                              Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 5.0),
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Row(
-                                                        children: [
-                                                          Row(
-                                                            children: [
-                                                              const Text(
-                                                                  "Extra queso"),
-                                                              const SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Image.asset(
-                                                                "images/cheese.png",
-                                                                width: 40,
-                                                                height: 40,
-                                                              )
-                                                            ],
-                                                          ),
-                                                          const SizedBox(
-                                                            width: 20,
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              const Text(
-                                                                  "Sin cebolla"),
-                                                              const SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Image.asset(
-                                                                "images/onion.png",
-                                                                width: 40,
-                                                                height: 40,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Row(
-                                                            children: [
-                                                              const Text(
-                                                                  "Extra pepinillo"),
-                                                              const SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Image.asset(
-                                                                "images/pickle.png",
-                                                                width: 40,
-                                                                height: 40,
-                                                              )
-                                                            ],
-                                                          ),
-                                                          const SizedBox(
-                                                            width: 20,
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              const Text(
-                                                                  "Sin Champiñones"),
-                                                              const SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Image.asset(
-                                                                "images/garlic.png",
-                                                                width: 40,
-                                                                height: 40,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Row(
-                                                            children: [
-                                                              const Text(
-                                                                  "Extra Picante"),
-                                                              const SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Image.asset(
-                                                                "images/chili.png",
-                                                                width: 40,
-                                                                height: 40,
-                                                              )
-                                                            ],
-                                                          ),
-                                                          const SizedBox(
-                                                            width: 20,
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              const Text(
-                                                                  "Extra aceituna"),
-                                                              const SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Image.asset(
-                                                                "images/olive.png",
-                                                                width: 40,
-                                                                height: 40,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      )
-                                    ),
-                                  ],
-                                ),
-                              )
                             ),
                           ),
                         ),
