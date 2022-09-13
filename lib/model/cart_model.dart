@@ -1,10 +1,10 @@
 class Cart {
-  int id;
+  String id;
   String productName;
-  double productPrice;
-  int quantity;
+  String productPrice;
+  String quantity;
   String image;
-  int category;
+  String category;
 
   Cart(
       {required this.id,
@@ -14,21 +14,21 @@ class Cart {
       required this.image,
       required this.category});
 
-  factory Cart.fromJson(Map<dynamic, dynamic> json) {
-    return Cart(
-        id: json['id'],
-        productName: json["productName"],
-        productPrice: json["productPrice"],
-        quantity: json["quantity"],
-        category: json["category"],
-        image: json["image"]);
-  }
-  dynamic toJson() => {
-        'id': id,
-        'productName': productName,
-        'productPrice': productPrice,
-        'quantity': quantity,
-        'category': category,
-        'image': image
-      };
+  // factory Cart.fromJson(Map<String,dynamic> json) {
+  //   return Cart(
+  //       id: json['id'],
+  //       productName: json["productName"],
+  //       productPrice: json["productPrice"],
+  //       quantity: json["quantity"],
+  //       category: json["category"],
+  //       image: json["image"]);
+  // }
+  // dynamic toJson() => {
+  //       'id': id,
+  //       'productName': productName,
+  //       'productPrice': productPrice,
+  //       'quantity': quantity,
+  //       'category': category,
+  //       'image': image
+  //     };
 }

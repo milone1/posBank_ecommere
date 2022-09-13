@@ -14,9 +14,9 @@ class BuildCard extends StatelessWidget {
 
   //* final String name;
   final String name; 
-  final int price;
-  final int id; 
-  final int idProduct;
+  final String price;
+  final String id; 
+  final String idProduct;
   final String category; 
   final String imgPath; 
 
@@ -44,7 +44,7 @@ class BuildCard extends StatelessWidget {
           child: Column(
             children: [
               Hero(
-                tag: id.toString(),
+                tag: 2,
                 child: Container(
                   width: 80,
                   height: 80,
@@ -85,7 +85,7 @@ class BuildCard extends StatelessWidget {
       ),
     );
   }
-  _mySheet(String name, int price, int id, int idProduct, String category,
+  _mySheet(String name, String price, String id, String idProduct, String category,
       String imgPath, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -129,7 +129,15 @@ class BuildCard extends StatelessWidget {
                   hint: const Text("Especificaciones"),
                 ),
                 //* Boton Agregar
-                AddToCart(width: width),
+                AddToCart(
+                  width: width,
+                  name: name, 
+                  price: price, 
+                  id: id,
+                  imgPath: imgPath, 
+                  idProduct: idProduct, 
+                  category: category,
+                ),
               ],
             ),
           ),

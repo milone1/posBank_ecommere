@@ -13,7 +13,7 @@ class DeleteCart extends StatelessWidget {
   //* final String name;
   final String nameofproduct; 
   final String imagen; 
-  final double price;
+  final String price;
 
   @override
   Widget build(BuildContext context) {

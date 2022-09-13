@@ -23,6 +23,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final canal = Provider.of<CanalProvider>(context);
     double width = MediaQuery.of(context).size.width;
+    final cart = Provider.of<CartProvider>(context).cart;
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: Column(
@@ -41,7 +42,7 @@ class _CartScreenState extends State<CartScreen> {
                         return DeleteCart(
                           nameofproduct: snapshot.data![index].productName,
                           imagen: snapshot.data![index].image,
-                          price: snapshot.data![index].productPrice, 
+                          price: snapshot.data![index].productPrice,
                         );
                       },
                     ),

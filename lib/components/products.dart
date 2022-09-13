@@ -699,9 +699,9 @@ class _ProductsState extends State<Products> {
                       // if (category.category == "") {
                       return BuildCard(
                           name: products[index]['name'],
-                          price: products[index]['price'],
-                          id: products[index]['id'],
-                          idProduct: products[index]['idProduct'],
+                          price: products[index]['price'].toString(),
+                          id: products[index]['id'].toString(),
+                          idProduct: products[index]['idProduct'].toString(),
                           category: products[index]['category'],
                           imgPath: products[index]['imgPath'],
                           );

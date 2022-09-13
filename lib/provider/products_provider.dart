@@ -9,11 +9,13 @@ class ProductsProvider with ChangeNotifier {
   }
 
   getData() async {
-    var uri = Uri.parse('https://pokeapi.co/api/v2/');
+    var uri = Uri.parse('https://pokeapi.co/api/v2/pokemon/');
     final http.Response response = await http.get(uri);
     final Map<String, dynamic> decodeData = json.decode(response.body);
     // ignore: avoid_print
-    print(decodeData);
+    print("Results");
+    // ignore: avoid_print
+    print(decodeData['results']);
     //* nombre = decodeData.results;
     //* notifyListeners();
   }
