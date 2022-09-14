@@ -13,12 +13,16 @@ class EmptyCart extends StatelessWidget {
         children: const <Widget>[
           Image(
             fit: BoxFit.contain,
-            width: 200,
-            height: 70,
+            width: 500,
+            height: 160,
             image: AssetImage('images/empty_cart.png'),
           ),
           Text(
             'El carrito esta vacío',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),

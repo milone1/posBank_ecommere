@@ -3,20 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ProductsProvider with ChangeNotifier {
-  //* List<model> nombre = [];
+  String baseURL = 'http://192.168.3.228:81/api/';
+  List products = [];
+  List groups = [];
   ProductsProvider() {
     getData();
+    getGroup();
   }
 
   getData() async {
-    var uri = Uri.parse('https://pokeapi.co/api/v2/pokemon/');
+    var uri = Uri.parse('$baseURL/producto');
     final http.Response response = await http.get(uri);
-    final Map<String, dynamic> decodeData = json.decode(response.body);
-    // ignore: avoid_print
-    print("Results");
-    // ignore: avoid_print
-    print(decodeData['results']);
-    //* nombre = decodeData.results;
-    //* notifyListeners();
+    final List decodeData = json.decode(response.body);
+    products = decodeData;
+    notifyListeners();
+  }
+
+  getGroup() async {
+    var uri = Uri.parse('$baseURL/Grupo');
+    final http.Response response = await http.get(uri);
+    final List decodeDataCategory = json.decode(response.body);
+    groups = decodeDataCategory;
+    notifyListeners();
   }
 }

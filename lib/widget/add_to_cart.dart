@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
-
   const AddToCart({
     Key? key,
     required this.width,
@@ -54,15 +53,21 @@ class AddToCart extends StatelessWidget {
                 backgroundColor: Colors.green,
                 textColor: Colors.white,
                 fontSize: 14.0);
-                cart.add({
-                    'id': id,
-                    'productName': name,
-                    'productPrice': price,
-                    'quantity': 1,
-                    'image': imgPath,
-                    'category': category,
-                  }
-                );
+            cart.add({
+              'id': id,
+              'productName': name,
+              'productPrice': price,
+              'quantity': 1,
+              'image': imgPath,
+              'category': category,
+            });
+            // cart.add({
+            //   id: id,
+            //   category: category,
+            //   price: price,
+            //   name: name,
+            //   imgPath: imgPath,
+            // });
             Navigator.pop(context);
           },
           child: const Text(

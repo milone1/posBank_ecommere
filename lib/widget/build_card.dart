@@ -2,27 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 
 class BuildCard extends StatelessWidget {
-   const BuildCard({
+  const BuildCard({
     Key? key,
-    required this.name, 
-    required this.price, 
-    required this.id, 
-    required this.idProduct, 
-    required this.category, 
+    required this.name,
+    required this.price,
+    required this.id,
+    required this.idProduct,
+    required this.category,
     required this.imgPath,
   }) : super(key: key);
 
   //* final String name;
-  final String name; 
+  final String name;
   final String price;
-  final String id; 
+  final String id;
   final String idProduct;
-  final String category; 
-  final String imgPath; 
+  final String category;
+  final String imgPath;
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
@@ -44,20 +43,21 @@ class BuildCard extends StatelessWidget {
           child: Column(
             children: [
               Hero(
-                tag: 2,
+                tag: id.toString(),
                 child: Container(
                   width: 80,
                   height: 80,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(imgPath), fit: BoxFit.contain),
+                        image: AssetImage(""), fit: BoxFit.contain),
                   ),
                 ),
               ),
               Text(
-                name,
+                name.toUpperCase(),
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
-                  fontSize: 15,
+                  fontSize: 13,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFFCC8053),
                 ),
@@ -70,9 +70,10 @@ class BuildCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  child: const Text(
-                    'S/.00',
-                    style: TextStyle(
+                  child: Text(
+                    // ignore: prefer_interpolation_to_compose_strings
+                    '\$ '+price,
+                    style: const TextStyle(
                       color: Color(0xFF575E67),
                       fontSize: 15,
                     ),
@@ -85,8 +86,9 @@ class BuildCard extends StatelessWidget {
       ),
     );
   }
-  _mySheet(String name, String price, String id, String idProduct, String category,
-      String imgPath, context) {
+
+  _mySheet(String name, String price, String id, String idProduct,
+      String category, String imgPath, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     const carnes = [
@@ -131,11 +133,11 @@ class BuildCard extends StatelessWidget {
                 //* Boton Agregar
                 AddToCart(
                   width: width,
-                  name: name, 
-                  price: price, 
+                  name: name,
+                  price: price,
                   id: id,
-                  imgPath: imgPath, 
-                  idProduct: idProduct, 
+                  imgPath: imgPath,
+                  idProduct: idProduct,
                   category: category,
                 ),
               ],

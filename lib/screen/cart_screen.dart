@@ -23,35 +23,50 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final canal = Provider.of<CanalProvider>(context);
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     final cart = Provider.of<CartProvider>(context).cart;
+    print('cart');
+    print(cart.length > 0 ? 'si': 'no');
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: Column(
         children: [
-          FutureBuilder(
-            // future: cart.getData(),
-            builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
-              if (snapshot.hasData) {
-                if (snapshot.data!.isEmpty) {
-                  return const EmptyCart();
-                } else {
-                  return Expanded(
-                    child: ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        return DeleteCart(
-                          nameofproduct: snapshot.data![index].productName,
-                          imagen: snapshot.data![index].image,
-                          price: snapshot.data![index].productPrice,
-                        );
-                      },
-                    ),
-                  );
-                }
-              }
-              return const CircularCharger();
-            },
+          Expanded(
+            child: ListView.builder(
+              itemCount: cart.length,
+              itemBuilder: (_, index) => 
+                cart.length > 0 ? Text(cart[index]['id']) : const EmptyCart()  
+            ),
           ),
+          // child: ListView.builder(
+          //   itemBuilder: (BuildContext context, int index) =>
+          //   DeleteCart(
+          //     nameofproduct: cart[index].productName,
+          //     imagen: cart[index].image,
+          //     price: cart[index].productPrice,
+          //   ),
+
+          //   // future: cart.getData(),
+          //   // builder: (context, AsyncSnapshot<List<dynamic>> cart) {
+          //   //   if (cart.hasData) {
+          //   //       // return const EmptyCart();
+          //   //       return Expanded(
+          //   //         child: ListView.builder(
+          //   //           itemCount: cart.data?.length
+          //   //           itemBuilder: (context, index) {
+          //   //             return DeleteCart(
+          //   //               nameofproduct: cart[index].productName,
+          //   //               imagen: cart[index].image,
+          //   //               price: cart[index].productPrice,
+          //   //             );
+          //   //           },
+          //   //         ),
+          //   //       );
+
+          //   //   }
+          //   //   return const CircularCharger();
+          //   // },
+          // ),
           FooterOptions(width: width, canal: canal),
         ],
       ),

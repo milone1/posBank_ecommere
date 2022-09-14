@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/category_provider.dart';
+import 'package:posbank_flutter/provider/products_provider.dart';
 import 'package:posbank_flutter/utils/category.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ class ListCategory extends StatefulWidget {
 class _ListCategoryState extends State<ListCategory> {
   @override
   Widget build(BuildContext context) {
+    final groups = Provider.of<ProductsProvider>(context).groups;
     double height = MediaQuery.of(context).size.height;
     final category = Provider.of<CategoryProvider>(context);
     return SizedBox(
@@ -22,38 +24,27 @@ class _ListCategoryState extends State<ListCategory> {
       child: ListWheelScrollView(
         physics: const FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
-          //* funcion set  category in provider on change in list view
           setState(
-              () => {
-                category.setCategory(categoriesList[index].value)
-              },
-            ),
+            () => {category.setCategory(groups[index]['Descripcion'])},
+          ),
         },
-        itemExtent: 100,
         useMagnifier: true,
         magnification: 1.5,
-        children: [
-          ...List.generate(
-            categoriesList.length,
-            (index) => Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  categoriesList[index].imagen,
-                  width: 50,
-                  height: 50,
+        itemExtent: 100,
+        children: <Widget>[
+          ...groups.map(
+            (group) {
+              return Text(
+                group['Descripcion'],
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 10,
+                  color: Color(0xFFCC8053),
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  categoriesList[index].title,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: Color(0xFFCC8053),
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                )
-              ],
-            ),
+                textAlign: TextAlign.center,
+              );
+            },
           ),
         ],
       ),
