@@ -343,7 +343,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             onTap: () {
               _printer("4754 6587 7412 5698", "Oscar Melero",
                   cart.getTotalPrice(), cart);
-              cart.setPriceTotal();
+              // cart.setPriceTotal();
               Navigator.pushNamed(context, '/');
             },
             child: Container(
@@ -388,7 +388,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       child: InkWell(
         onTap: () {
           _printer(cardNumber, cardHolder, cart.getTotalPrice(), cart);
-          cart.setPriceTotal();
+          // cart.setPriceTotal();
           Navigator.pushNamed(context, '/');
         },
         child: Card(

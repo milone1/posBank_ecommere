@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:posbank_flutter/model/cart_model.dart';
 
 import 'package:provider/provider.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
-  const AddToCart({
+  AddToCart({
     Key? key,
     required this.width,
     required this.name,
@@ -27,6 +28,7 @@ class AddToCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context).cart;
+    final providerCart = Provider.of<CartProvider>(context);
     return Container(
       width: width * 0.35,
       height: 50.0,
@@ -53,21 +55,24 @@ class AddToCart extends StatelessWidget {
                 backgroundColor: Colors.green,
                 textColor: Colors.white,
                 fontSize: 14.0);
-            cart.add({
-              'id': id,
-              'productName': name,
-              'productPrice': price,
-              'quantity': 1,
-              'image': imgPath,
-              'category': category,
-            });
-            // cart.add({
-            //   id: id,
-            //   category: category,
-            //   price: price,
-            //   name: name,
-            //   imgPath: imgPath,
-            // });
+            cart.add(
+              Cart(
+                id: int.parse(id), 
+                productId: id, 
+                productName: name, 
+                initialPrice: double.parse(price), 
+                productPrice: double.parse(price), 
+                quantity: 1, 
+                unitTag: id, 
+                image: "", 
+                category: ""
+              )
+            );
+            providerCart.addTotalPrice(
+              double.parse(price.toString()
+              ),
+            );
+            providerCart.addCounter();
             Navigator.pop(context);
           },
           child: const Text(

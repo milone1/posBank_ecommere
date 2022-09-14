@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/reusable_widget.dart';
+import 'package:provider/provider.dart';
+
 
 class FooterOptions extends StatelessWidget {
   const FooterOptions({
@@ -14,6 +16,7 @@ class FooterOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -29,11 +32,11 @@ class FooterOptions extends StatelessWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const <Widget>[
+              children: <Widget>[
                 ReusableWidget(
                   title: 'IR AL CARRITO: ',
                   // ignore: prefer_interpolation_to_compose_strings
-                  value: r's/''cart.totalPrice.toString()' "0",
+                  value: cart.getTotalPrice().toString(),
                 ),
               ],
             ),

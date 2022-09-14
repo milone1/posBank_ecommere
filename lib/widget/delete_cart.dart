@@ -26,13 +26,13 @@ class DeleteCart extends StatelessWidget {
     //     double.parse(price),
     //   );
     // }
-    final basket = Provider.of<CartProvider>(context).cart;
+    // final basket = Provider.of<CartProvider>(context).cart;
     return Container(
       decoration: const BoxDecoration(
         color: Colors.red,
       ),
       child: ListView.builder(
-        itemCount: basket.length,
+        itemCount: 10,
         itemBuilder: (BuildContext context, int index) => Card(
           child: Padding(
             padding: const EdgeInsets.all(1.0),
@@ -56,7 +56,8 @@ class DeleteCart extends StatelessWidget {
                       Image.asset(
                         width: 120,
                         height: 50,
-                        basket[index].img.toString(),
+                        ""
+                        // basket[index].img.toString(),
                       ),
                       SizedBox(
                         width: 150,
@@ -72,7 +73,7 @@ class DeleteCart extends StatelessWidget {
                       ),
                       Text(
                         // ignore: prefer_interpolation_to_compose_strings
-                        "S/ " + basket[index].price.toString() + ".00",
+                        "S/ "+ ".00",
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,

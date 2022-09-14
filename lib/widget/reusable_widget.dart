@@ -21,7 +21,7 @@ class ReusableWidget extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             Text(
