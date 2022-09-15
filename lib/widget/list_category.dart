@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/provider/category_provider.dart';
 import 'package:posbank_flutter/provider/products_provider.dart';
 import 'package:posbank_flutter/utils/category.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +16,7 @@ class _ListCategoryState extends State<ListCategory> {
   Widget build(BuildContext context) {
     final groups = Provider.of<ProductsProvider>(context).groups;
     double height = MediaQuery.of(context).size.height;
-    final category = Provider.of<CategoryProvider>(context);
+    final codigoProvider = Provider.of<ProductsProvider>(context);
     return SizedBox(
       width: 150,
       height: height * 0.50,
@@ -25,7 +24,11 @@ class _ListCategoryState extends State<ListCategory> {
         physics: const FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
           setState(
-            () => {category.setCategory(groups[index]['Descripcion'])},
+            () => {
+              print(groups[index]['CodigoGrupo']),
+              codigoProvider.setCodigo(groups[index]['CodigoGrupo']),
+              codigoProvider.setCategory(groups[index]['Descripcion']),
+            },
           ),
         },
         useMagnifier: true,

@@ -3,7 +3,6 @@ import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/reusable_widget.dart';
 import 'package:provider/provider.dart';
 
-
 class FooterOptions extends StatelessWidget {
   const FooterOptions({
     Key? key,
@@ -24,7 +23,7 @@ class FooterOptions extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(
-            width: width > 700 ? width * 0.50 : width * 0.60,
+            width: width > 700 ? width * 0.70 : width * 0.70,
             height: 70.0,
             decoration: BoxDecoration(
               color: Colors.blue,
@@ -35,8 +34,8 @@ class FooterOptions extends StatelessWidget {
               children: <Widget>[
                 ReusableWidget(
                   title: 'IR AL CARRITO: ',
-                  // ignore: prefer_interpolation_to_compose_strings
-                  value: cart.getTotalPrice().toString(),
+                  value: '\$${cart.getPriceTotal()}',
+                  // value: "0",
                 ),
               ],
             ),

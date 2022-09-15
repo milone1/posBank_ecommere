@@ -3,6 +3,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 //* components
 import 'package:posbank_flutter/components/products.dart';
+import 'package:posbank_flutter/provider/products_provider.dart';
 //* screens
 import 'package:posbank_flutter/screen/screens.dart';
 //* widgets
@@ -10,7 +11,6 @@ import 'package:posbank_flutter/widget/widgets.dart';
 //* providers
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
-import 'package:posbank_flutter/provider/category_provider.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    final category = Provider.of<CategoryProvider>(context).category;
+    final category = Provider.of<ProductsProvider>(context).category;
     return Scaffold(
       body: SafeArea(
         child: Column(

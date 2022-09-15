@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 //* widgets
 import 'package:posbank_flutter/widget/widgets.dart';
 //* providers
-import 'package:posbank_flutter/provider/provider.dart';
 import 'package:provider/provider.dart';
+import 'package:posbank_flutter/provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -20,19 +20,15 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final canal = Provider.of<CanalProvider>(context);
     double width = MediaQuery.of(context).size.width;
-    final cart = Provider.of<CartProvider>(context).cart;
-
+    final cart = Provider.of<CartProvider>(context).cartList;
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (_, index) => 
-               EmptyCart() 
-            ),
-          ),
+          // ignore: prefer_is_empty
+          (cart.length < 0)
+              ? const Expanded(child: EmptyCart())
+              : const FullCart(),
           FooterOptions(width: width, canal: canal),
         ],
       ),

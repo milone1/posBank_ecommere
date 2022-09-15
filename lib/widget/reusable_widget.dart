@@ -17,7 +17,7 @@ class ReusableWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              title,
+              title.toString(),
               style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
@@ -28,7 +28,7 @@ class ReusableWidget extends StatelessWidget {
               value.toString(),
               style: const TextStyle(
                 fontSize: 48,
-                color: Colors.black,
+                color: Colors.white,
               ),
             )
           ],

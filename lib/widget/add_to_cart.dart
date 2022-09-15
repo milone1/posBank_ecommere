@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
-  AddToCart({
+  const AddToCart({
     Key? key,
     required this.width,
     required this.name,
@@ -27,8 +27,7 @@ class AddToCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context).cart;
-    final providerCart = Provider.of<CartProvider>(context);
+    final cart = Provider.of<CartProvider>(context);
     return Container(
       width: width * 0.35,
       height: 50.0,
@@ -47,32 +46,26 @@ class AddToCart extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Fluttertoast.showToast(
-                msg: "Agregado Correctamente",
-                toastLength: Toast.LENGTH_SHORT,
-                webPosition: "bottom",
-                gravity: ToastGravity.CENTER,
-                timeInSecForIosWeb: 1,
-                backgroundColor: Colors.green,
-                textColor: Colors.white,
-                fontSize: 14.0);
-            cart.add(
-              Cart(
-                id: int.parse(id), 
-                productId: id, 
-                productName: name, 
-                initialPrice: double.parse(price), 
-                productPrice: double.parse(price), 
-                quantity: 1, 
-                unitTag: id, 
-                image: "", 
-                category: ""
-              )
+              msg: "Agregado Correctamente",
+              toastLength: Toast.LENGTH_SHORT,
+              webPosition: "bottom",
+              gravity: ToastGravity.CENTER,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.green,
+              textColor: Colors.white,
+              fontSize: 14.0,
             );
-            providerCart.addTotalPrice(
-              double.parse(price.toString()
-              ),
-            );
-            providerCart.addCounter();
+            cart.setCartList({
+              'id': id,
+              'productId': id,
+              'productName': name,
+              'initialPrice': 15,
+              'productPrice': 15,
+              'quantity': 1,
+              'unitTag': id,
+              'image': imgPath,
+              'category': "",
+            });
             Navigator.pop(context);
           },
           child: const Text(

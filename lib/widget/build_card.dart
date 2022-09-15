@@ -47,9 +47,11 @@ class BuildCard extends StatelessWidget {
                 child: Container(
                   width: 80,
                   height: 80,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50.0),
                     image: DecorationImage(
-                        image: AssetImage(""), fit: BoxFit.contain),
+                        image: NetworkImage(imgPath), 
+                        fit: BoxFit.contain),
                   ),
                 ),
               ),
