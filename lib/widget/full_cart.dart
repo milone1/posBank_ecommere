@@ -39,19 +39,36 @@ class _FullCartState extends State<FullCart> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(50.0),
-                          child: Image.network(
-                            cart[index]['image'].toString(),
-                            width: 120, 
-                            height: 50
+                        Text(
+                          (index + 1).toString(),
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF575E67),
+                          ),
+                        ),
+                        Hero(
+                          tag: index,
+                          child: Container(
+                            width: 60,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100.0),
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                    cart[index]['image'],
+                                  ),
+                                  fit: BoxFit.contain),
+                            ),
                           ),
                         ),
                         SizedBox(
-                          width: 150,
+                          width: 200,
                           child: Text(
-                            cart[index]['productName'].toString(),
+                            overflow: TextOverflow.ellipsis,
+                            cart[index]['productName'].toString().toUpperCase(),
                             style: const TextStyle(
                                 fontSize: 20,
                                 color: Color(0xFFCC8053),
@@ -59,7 +76,7 @@ class _FullCartState extends State<FullCart> {
                           ),
                         ),
                         Text(
-                          cart[index]['productPrice'].toString(),
+                          '\$' + cart[index]['productPrice'].toString() + '.00',
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

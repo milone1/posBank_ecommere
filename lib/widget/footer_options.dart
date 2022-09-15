@@ -34,7 +34,7 @@ class FooterOptions extends StatelessWidget {
               children: <Widget>[
                 ReusableWidget(
                   title: 'IR AL CARRITO: ',
-                  value: '\$${cart.getPriceTotal()}',
+                  value: '\$${cart.getPriceTotal()}.00',
                   // value: "0",
                 ),
               ],

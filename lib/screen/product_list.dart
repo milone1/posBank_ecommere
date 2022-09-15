@@ -25,6 +25,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
     double height = MediaQuery.of(context).size.height;
     final category = Provider.of<ProductsProvider>(context).category;
     return Scaffold(
+      backgroundColor: const Color(0xffF2F2F2),
       body: SafeArea(
         child: Column(
           children: [
@@ -34,8 +35,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 category.toString().toUpperCase(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
+                  fontSize: 25,
+                  color: Color(0xFFCC8053),
                   fontWeight: FontWeight.bold,
                 ),
               ),

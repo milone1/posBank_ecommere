@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/products_provider.dart';
-import 'package:posbank_flutter/utils/category.dart';
 import 'package:provider/provider.dart';
 
 class ListCategory extends StatefulWidget {
@@ -25,7 +24,6 @@ class _ListCategoryState extends State<ListCategory> {
         onSelectedItemChanged: (index) => {
           setState(
             () => {
-              print(groups[index]['CodigoGrupo']),
               codigoProvider.setCodigo(groups[index]['CodigoGrupo']),
               codigoProvider.setCategory(groups[index]['Descripcion']),
             },
@@ -37,15 +35,18 @@ class _ListCategoryState extends State<ListCategory> {
         children: <Widget>[
           ...groups.map(
             (group) {
-              return Text(
-                group['Descripcion'],
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 10,
-                  color: Color(0xFFCC8053),
-                  fontWeight: FontWeight.bold,
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 50, top: 30),
+                child: Text(
+                  group['Descripcion'],
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    color: Color(0xFFCC8053),
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               );
             },
           ),

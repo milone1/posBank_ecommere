@@ -20,6 +20,7 @@ class HeaderSection extends StatelessWidget {
         const Text(
           "RESUMEN DE TU ORDEN: ",
           style: TextStyle(
+            color: Color(0xFFCC8053),
             fontSize: 40,
             fontWeight: FontWeight.bold,
           ),

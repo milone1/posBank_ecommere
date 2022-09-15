@@ -28,7 +28,7 @@ class ReusableWidget extends StatelessWidget {
               value.toString(),
               style: const TextStyle(
                 fontSize: 48,
-                color: Colors.white,
+                color: Colors.black,
               ),
             )
           ],

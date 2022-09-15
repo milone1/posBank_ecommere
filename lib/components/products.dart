@@ -21,7 +21,7 @@ class _ProductsState extends State<Products> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final products = Provider.of<ProductsProvider>(context).products;
-    
+
     return Padding(
       padding: const EdgeInsets.only(
         left: 10.0,
@@ -68,30 +68,6 @@ class _ProductsState extends State<Products> {
                         category: products[index]['Grupo'].toString(),
                         imgPath: products[index]['Surlimagen'].toString(),
                       );
-                      //  _buildCard(
-                      //   products[index]['name'],
-                      //   products[index]['price'],
-                      //   products[index]['id'],
-                      //   products[index]['idProduct'],
-                      //   products[index]['category'],
-                      //   products[index]['imgPath'],
-                      //   context,
-                      // );
-                      // } else {
-                      // List listCategory = products
-                      //     .where((element) =>
-                      //         element['category'] == category.category)
-                      //     .toList();
-                      // return _buildCard(
-                      //   listCategory[index]['name'],
-                      //   listCategory[index]['price'],
-                      //   listCategory[index]['id'],
-                      //   listCategory[index]['idProduct'],
-                      //   listCategory[index]['category'],
-                      //   listCategory[index]['imgPath'],
-                      //   context,
-                      // );
-                      // }
                     },
                   ),
                 ),

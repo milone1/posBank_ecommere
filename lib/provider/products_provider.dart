@@ -20,7 +20,6 @@ class ProductsProvider with ChangeNotifier {
   }
 
   setCodigo(String codigoGrupo) {
-    print(codigoGrupo);
     codigoGroup = codigoGrupo;
     getDataByCategori();
     notifyListeners();

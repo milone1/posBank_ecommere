@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+
 class HeadmySheet extends StatelessWidget {
-  const HeadmySheet({
-    Key? key,
-    required this.name,
-    required this.imgPath
-  }) : super(key: key);
+  const HeadmySheet({Key? key, required this.name, required this.imgPath})
+      : super(key: key);
 
   final String name;
   final String imgPath;
@@ -21,25 +19,38 @@ class HeadmySheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              //* BackButton(),
-              Image.asset(
-                imgPath,
-                height: 270,
-                width: 270,
+              const BackButton(),
+              Container(
+                  width: 220.0,
+                  height: 220.0,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage(
+                            imgPath,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
+
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                name,
-                style: const TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFCC8053),
+              SizedBox(
+                width: width * 0.50,
+                child: Text(
+                  name,
+                  maxLines: 3,
+                  style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFCC8053),
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
               SizedBox(
                 width: width * 0.30,
@@ -55,7 +66,7 @@ class HeadmySheet extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 15,
                   ),
-                  maxLines: 6,
+                  maxLines: 10,
                 ),
               ),
             ],

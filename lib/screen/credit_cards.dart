@@ -179,21 +179,18 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: const Color(0xffF2F2F2),
       body: Container(
-        color: const Color(0xFFEBEBEB),
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Column(
-              children: const <Widget>[
-                ListCarrousel(),
-              ],
-            ),
-            const SizedBox(
-              width: 50.0,
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Column(
+                children: const <Widget>[
+                  ListCarrousel(),
+                ],
+              ),
             ),
             BounceInLeft(
               duration: const Duration(
@@ -217,9 +214,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cardExpiration: "06/05",
                 cardHolder: "Oscar Melero",
                 cardNumber: "4754 6587 7412 5698"),
-            const OtherDetailsDivider(),
             HeaderSection(width: width),
-            const OtherDetailsDivider(),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -229,96 +224,13 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   child: Center(
                     child: Column(
                       children: [
-                        minimal.isEmpty
+                        false
                             ? const CircularCharger()
-                            : Expanded(
-                                child: ListView.builder(
-                                  itemCount: minimal.length,
-                                  itemBuilder: (
-                                    (context, index) => 
-                                      Card(
-                                          elevation: 10,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: ExpansionTile(
-                                            title: Row(
-                                              children: [
-                                                Image.asset(
-                                                  minimal[index]
-                                                      .image
-                                                      .toString(),
-                                                  width: 50,
-                                                  height: 50,
-                                                ),
-                                                const SizedBox(
-                                                  width: 20,
-                                                ),
-                                                Text(minimal[index]
-                                                    .productName
-                                                    .toString()),
-                                              ],
-                                            ),
-                                            subtitle: Text(
-                                              "S/${minimal[index].productPrice}.00",
-                                              textAlign: TextAlign.end,
-                                            ),
-                                            children: [
-                                              const OtherDetailsDivider(),
-                                              const Text("ESPECIFICACIONES"),
-                                              const OtherDetailsDivider(),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 5.0),
-                                                child: Column(
-                                                  children: [
-                                                    Row(
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            const Text(
-                                                                "Con Hielo "),
-                                                            const SizedBox(
-                                                              width: 5,
-                                                            ),
-                                                            Image.asset(
-                                                              "images/hielo.png",
-                                                              width: 40,
-                                                              height: 40,
-                                                            )
-                                                          ],
-                                                        ),
-                                                        const SizedBox(
-                                                          width: 20,
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            const Text(
-                                                                "En Copa"),
-                                                            Image.asset(
-                                                              "images/copa.png",
-                                                              width: 40,
-                                                              height: 40,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                            ),
-                          ),
-                        ),
+                            : const ResumeOrder(),
                       ],
                     ),
                   ),
                 ),
-                //* boton pay
                 _buttonPayToCard()
               ],
             ),
@@ -327,7 +239,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       ),
     );
   }
-
+  
   Widget _buttonPayToCard() {
     final cart = Provider.of<CartProvider>(context);
     double width = MediaQuery.of(context).size.width;
