@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:posbank_flutter/model/order_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 import 'package:posbank_flutter/provider/provider.dart';
@@ -28,6 +29,7 @@ class AddToCart extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     final cartList = Provider.of<CartProvider>(context).cartList;
+    final canal = Provider.of<CanalProvider>(context).state;
     return Container(
       width: width * 0.35,
       height: 50.0,
@@ -47,15 +49,38 @@ class AddToCart extends StatelessWidget {
           onTap: () {
             if ((cartList.where((element) => element['id'] == id).isEmpty)) {
               cart.setCartList({
-                'id': id,
-                'productId': id,
+                "local": "",
+                "tipopedido": canal,
+                "nombre": "Erick",
+                "apellido": "Milan",
+                "telefono": "995 560 456",
+                "direccion": "Av Salazar",
+                "referencia": "",
+                "correo": "emilan@gmail.com",
+                "tipodocumento": "DNI",
+                "ruc": "11111111111",
+                "razonsocial": "d",
+                "direccionClienteFacturado": "",
+                "fechaenvia": "16/09/2022",
+                "observacion": "ob",
+                "correoElectronico": "correoElectronico",
+                "estadoPago": "Facturado",
+                "ubigeo": "Ubigeo",
+                "urbanizacion": "Urbanizacion",
+                "codigoDescuento": "Codigo Descuento",
+                "detallePedido": "detalle del pedido",
+                "prepagos": "prepa",
+                "fechaEntrega": "16/09/2022",
+                "codigoOrigenVenta": "codigoOrigenVenta",
+                "id": id,
+                "productoId": id,
                 'productName': name,
-                'initialPrice': 15,
-                'productPrice': 15,
+                'initialPrice': int.parse(price),
+                'productPrice': int.parse(price),
                 'quantity': 1,
                 'unitTag': id,
                 'image': imgPath,
-                'category': "",
+                'category': category,
               });
               Fluttertoast.showToast(
                 msg: "Agregado Correctamente",
@@ -79,7 +104,7 @@ class AddToCart extends StatelessWidget {
                 fontSize: 14.0,
               );
             }
-            Navigator.pop(context);
+            // Navigator.pop(context);
           },
           child: const Text(
             "+ AGREGAR AL CARRITO",

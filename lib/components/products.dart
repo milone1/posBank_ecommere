@@ -2,11 +2,10 @@
 import 'package:flutter/material.dart';
 //* animations
 import 'package:animate_do/animate_do.dart';
+import 'package:posbank_flutter/model/order_model.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
-
-
 
 // ignore: must_be_immutable
 class Products extends StatefulWidget {
@@ -18,10 +17,9 @@ class Products extends StatefulWidget {
 class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
+    final products = Provider.of<ProductsProvider>(context).products;
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    final products = Provider.of<ProductsProvider>(context).products;
-
     return Padding(
       padding: const EdgeInsets.only(
         left: 10.0,
@@ -60,6 +58,7 @@ class _ProductsState extends State<Products> {
                     ),
                     itemBuilder: (context, index) {
                       // if (category.category == "") {
+                      // return Text("asd");
                       return BuildCard(
                         name: products[index]['Descripcion'].toString(),
                         price: products[index]['PrecioVenta'].toString(),

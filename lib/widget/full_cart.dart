@@ -60,6 +60,7 @@ class _FullCartState extends State<FullCart> {
                               borderRadius: BorderRadius.circular(100.0),
                               image: DecorationImage(
                                   image: NetworkImage(
+                                    // "",
                                     cart[index]['image'],
                                   ),
                                   fit: BoxFit.contain),
@@ -70,6 +71,7 @@ class _FullCartState extends State<FullCart> {
                           width: 200,
                           child: Text(
                             overflow: TextOverflow.ellipsis,
+                            // "",
                             cart[index]['productName'].toString().toUpperCase(),
                             style: const TextStyle(
                                 fontSize: 20,
@@ -79,6 +81,7 @@ class _FullCartState extends State<FullCart> {
                         ),
                         Text(
                           '\$${cart[index]['productPrice']}.00',
+                          // "",
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -111,6 +114,7 @@ class _FullCartState extends State<FullCart> {
                                 ),
                                 Text(
                                   cart[index]['quantity'].toString(),
+                                  // "",
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,

@@ -232,8 +232,38 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   Widget _buttonPayToCard() {
     final cart = Provider.of<CartProvider>(context);
     var post = Provider.of<ProductsProvider>(context);
-    List<Order> postPrueba = [];
     double width = MediaQuery.of(context).size.width;
+    List<Order> postPrueba = [
+      // Order(
+      //   local: ,
+      //   tipopedido: 
+      //   tipopedido, 
+      //   nombre: nombre, 
+      //   apellido: apellido, 
+      //   telefono: telefono, 
+      //   direccion: direccion, 
+      //   referencia: referencia, 
+      //   correo: correo, 
+      //   tipodocumento: 
+      //   tipodocumento, 
+      //   ruc: ruc, 
+      //   razonsocial: razonsocial, 
+      //   direccionClienteFacturado:
+      //   direccionClienteFacturado, 
+      //   fechaenvia: fechaenvia, 
+      //   observacion: observacion, 
+      //   correoElectronico: 
+      //   correoElectronico, 
+      //   estadoPago: estadoPago, 
+      //   ubigeo: ubigeo, 
+      //   urbanizacion: urbanizacion, 
+      //   codigoDescuento: codigoDescuento, 
+      //   detallePedido: detallePedido, 
+      //   prepagos: prepagos, 
+      //   fechaEntrega: fechaEntrega, 
+      //   codigoOrigenVenta: codigoOrigenVenta
+      // ),
+    ];
     return Container(
       margin: const EdgeInsets.only(top: 1),
       decoration: BoxDecoration(
@@ -268,7 +298,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                'Total:      \$${cart.getPriceTotal()}.00',
+                // 'Total:      \$${cart.getPriceTotal()}.00',
+                "",
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,

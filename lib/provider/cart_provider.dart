@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:posbank_flutter/model/order_model.dart';
 // ignore: depend_on_referenced_packages
 
 class CartProvider extends ChangeNotifier {
-  List<dynamic> cartList = [];
+  List cartList = [];
   int _counter = 0;
   int get counter => _counter;
   final double _totalPrice = 0.0;
   double get totalPrice => _totalPrice;
 
-  setCartList(Map<dynamic, dynamic> producto) {
+   setCartList(Map<String, dynamic> producto) {
     cartList.add(producto);
     notifyListeners();
   }

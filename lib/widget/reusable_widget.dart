@@ -19,20 +19,20 @@ class _ReusableWidgetState extends State<ReusableWidget> {
     final cart = Provider.of<CartProvider>(context);
     return InkWell(
       onTap: () {
-        if (cart.getPriceTotal() != 0.0) {
-          Navigator.pushNamed(context, '/credit');          
-        } else {
-          Fluttertoast.showToast(
-            msg: "Ingrese Productos!",
-            toastLength: Toast.LENGTH_SHORT,
-            webPosition: "bottom",
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 14.0,
-          );
-        }
+        // if (cart.getPriceTotal() != 0.0) {
+        //   Navigator.pushNamed(context, '/credit');          
+        // } else {
+        //   Fluttertoast.showToast(
+        //     msg: "Ingrese Productos!",
+        //     toastLength: Toast.LENGTH_SHORT,
+        //     webPosition: "bottom",
+        //     gravity: ToastGravity.CENTER,
+        //     timeInSecForIosWeb: 1,
+        //     backgroundColor: Colors.red,
+        //     textColor: Colors.white,
+        //     fontSize: 14.0,
+        //   );
+        // }
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),

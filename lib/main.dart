@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Lato'),
         //* routes of app
-        initialRoute: '/credit',
+        initialRoute: '/products',
         routes: {
           '/': (context) => const SignInScreen(),
           '/products': (context) => const ProductListScreen(),

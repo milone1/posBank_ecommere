@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:posbank_flutter/model/order_model.dart';
 
 class ProductsProvider with ChangeNotifier {
   ProductsProvider() {
@@ -11,7 +12,7 @@ class ProductsProvider with ChangeNotifier {
   }
 
   String baseURL = 'http://192.168.3.228:81/api/';
-  List products = [];
+  List<dynamic> products = [];
   List groups = [];
   String codigoGroup = "";
   String category = "CARTA";
@@ -30,7 +31,7 @@ class ProductsProvider with ChangeNotifier {
   getDataByCategori() async {
     var uri = Uri.parse('$baseURL/producto/$codigoGroup');
     final http.Response response = await http.get(uri);
-    final List decodeData = json.decode(response.body);
+    final decodeData = json.decode(response.body);
     products = decodeData;
     notifyListeners();
   }
