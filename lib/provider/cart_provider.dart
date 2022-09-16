@@ -5,7 +5,7 @@ class CartProvider extends ChangeNotifier {
   List<dynamic> cartList = [];
   int _counter = 0;
   int get counter => _counter;
-  double _totalPrice = 0.0;
+  final double _totalPrice = 0.0;
   double get totalPrice => _totalPrice;
 
   setCartList(Map<dynamic, dynamic> producto) {
@@ -13,23 +13,8 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addTotalPrice(double productPrice) {
-    _totalPrice = _totalPrice + productPrice;
-    notifyListeners();
-  }
-
-  void removeTotalPrice(double productPrice) {
-    _totalPrice = _totalPrice - productPrice;
-    notifyListeners();
-  }
-
   double getTotalPrice() {
     return _totalPrice;
-  }
-
-  void addCounter() {
-    _counter++;
-    notifyListeners();
   }
 
   void removerCounter() {
@@ -64,6 +49,7 @@ class CartProvider extends ChangeNotifier {
     Map result = cartList.fold({"productPrice": 0}, (preMap, map) {
       return {"productPrice": (preMap["productPrice"]) + (map["productPrice"])};
     });
+    notifyListeners();
     return result['productPrice'];
   }
 
@@ -73,5 +59,11 @@ class CartProvider extends ChangeNotifier {
     });
     getPriceTotal();
     notifyListeners();
+  }
+
+  clearCart() {
+    cartList = [];
+    notifyListeners();
+    return cartList;
   }
 }

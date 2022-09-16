@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
-import 'package:posbank_flutter/model/cart_model.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 // ignore: depend_on_referenced_packages
@@ -19,7 +19,6 @@ class CreditCardsPage extends StatefulWidget {
 class _CreditCardsPageState extends State<CreditCardsPage> {
   FlutterUsbPrinter flutterUsbPrinter = FlutterUsbPrinter();
   bool connected = false;
-  List<Cart> minimal = [];
 
   @override
   initState() {
@@ -27,14 +26,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     flutterUsbPrinter.connect(1155, 41014);
   }
 
-  // getData() async {
-  //   List<Cart>? auxProd = await dbHelper?.getCartList();
-  //   setState(() {
-  //     minimal = auxProd!;
-  //   });
-  // }
-
-  _printer(cardNumber, cardHolder, total, CartProvider cart) async {
+  _printer(cardNumber, cardHolder, total, list) async {
     String nombre = cardHolder.toString();
     await flutterUsbPrinter
         .printText("                                          \r\n");
@@ -96,23 +88,22 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         .printText(" PRODUCTO:   CANTIDAD:   P.UNI:    TOTAL  \r\n");
     await flutterUsbPrinter
         .printText("                                          \r\n");
-    // for (int index = 0; index < minimal.length; index++) {
-    //   String? productoName = minimal[index].productName;
-    //   int? productoCantidad = minimal[index].quantity;
-    //   await flutterUsbPrinter.printText(
-    //       // ignore: prefer_interpolation_to_compose_strings
-    //       (productoName + "                       ").substring(0, 15) +
-    //           productoCantidad.toString() +
-    //           "     " +
-    //           "S/ " +
-    //           minimal[index].initialPrice.toString() +
-    //           ".00" +
-    //           "     " +
-    //           "S/" +
-    //           minimal[index].productPrice.toString() +
-    //           ".00" +
-    //           '\r\n');
-    // }
+    for (int index = 0; index < list.length; index++) {
+      await flutterUsbPrinter.printText(
+          // ignore: prefer_interpolation_to_compose_strings
+          (list[index]['productName'] + "                       ")
+                  .substring(0, 15) +
+              list[index]['quantity'].toString() +
+              "     " +
+              "S/ " +
+              list[index]['initialPrice'].toString() +
+              ".00" +
+              "     " +
+              "S/" +
+              list[index]['productPrice'].toString() +
+              ".00" +
+              '\r\n');
+    }
     await flutterUsbPrinter
         .printText("------------------------------------------\r\n");
     await flutterUsbPrinter
@@ -176,8 +167,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    final cartList = Provider.of<CartProvider>(context).cartList;
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    print(cartList);
     return Scaffold(
       backgroundColor: const Color(0xffF2F2F2),
       body: Container(
@@ -220,13 +213,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               children: [
                 SizedBox(
                   width: width * 0.50,
-                  height: height * 0.30,
+                  height: height * 0.37,
                   child: Center(
                     child: Column(
-                      children: [
-                        false
-                            ? const CircularCharger()
-                            : const ResumeOrder(),
+                      children: const <Widget>[
+                        ResumeOrder(),
                       ],
                     ),
                   ),
@@ -239,14 +230,19 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       ),
     );
   }
-  
+
   Widget _buttonPayToCard() {
     final cart = Provider.of<CartProvider>(context);
+    var cartList = Provider.of<CartProvider>(context).cartList;
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return SizedBox(
+    return Container(
+      margin: const EdgeInsets.only(top: 1),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50.0),
+      ),
       width: width * 0.40,
-      height: height * 0.10,
+      height: 80,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -254,26 +250,26 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           InkWell(
             onTap: () {
               _printer("4754 6587 7412 5698", "Oscar Melero",
-                  cart.getTotalPrice(), cart);
-              // cart.setPriceTotal();
+                  cart.getPriceTotal(), cartList);
+              cart.clearCart();
               Navigator.pushNamed(context, '/');
             },
             child: Container(
               alignment: Alignment.center,
-              height: 55,
+              height: 50,
               decoration: BoxDecoration(
                 color: const Color(0xFF2DA1F4),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 9,
-                  ),
+                      color: Colors.grey.withOpacity(.8),
+                      blurRadius: 10.0,
+                      spreadRadius: 0.5,
+                      offset: const Offset(5.0, 5.0)),
                 ],
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                "PAGAR S/  ${cart.totalPrice}0",
+                'Total:      \$${cart.getPriceTotal()}.00',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,

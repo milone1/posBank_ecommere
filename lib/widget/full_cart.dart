@@ -16,7 +16,6 @@ class _FullCartState extends State<FullCart> {
     final cart = Provider.of<CartProvider>(context).cartList;
     final counter = Provider.of<CartProvider>(context);
     final cartFunctions = Provider.of<CartProvider>(context);
-
     return Expanded(
       child: ListView.builder(
         itemCount: cart.length,
@@ -77,7 +76,7 @@ class _FullCartState extends State<FullCart> {
                           ),
                         ),
                         Text(
-                          '\$' + cart[index]['productPrice'].toString() + '.00',
+                          '\$${cart[index]['productPrice']}.00',
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -99,7 +98,9 @@ class _FullCartState extends State<FullCart> {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    counter.removeOneItem(index);
+                                    if (cart[index]['quantity'] >= 2) {
+                                      counter.removeOneItem(index);
+                                    }
                                   },
                                   child: const Icon(
                                     Icons.remove,
@@ -116,6 +117,7 @@ class _FullCartState extends State<FullCart> {
                                 InkWell(
                                   onTap: () {
                                     counter.addOneItem(index);
+                                    setState(() {});
                                   },
                                   child: const Icon(
                                     Icons.add,
@@ -138,7 +140,8 @@ class _FullCartState extends State<FullCart> {
                                 backgroundColor: Colors.red,
                                 textColor: Colors.white,
                                 fontSize: 14.0);
-                            cartFunctions.deleteElement(cart[index]['id'].toString());
+                            cartFunctions
+                                .deleteElement(cart[index]['id'].toString());
                           },
                           child: const Icon(
                             Icons.delete,

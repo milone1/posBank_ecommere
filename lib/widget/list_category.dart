@@ -35,17 +35,22 @@ class _ListCategoryState extends State<ListCategory> {
         children: <Widget>[
           ...groups.map(
             (group) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 50, top: 30),
-                child: Text(
-                  group['Descripcion'],
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: Color(0xFFCC8053),
-                    fontWeight: FontWeight.bold,
+              return Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 50, top: 30),
+                  child: Text(
+                    group['Descripcion'],
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: Color(0xFFCC8053),
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               );
             },

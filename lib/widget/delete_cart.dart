@@ -19,14 +19,6 @@ class DeleteCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // _deleteProduct(id, price) async {
-    //   await dbHelper!.delete(id);
-    //   cart.removerCounter();
-    //   cart.removeTotalPrice(
-    //     double.parse(price),
-    //   );
-    // }
-    // final basket = Provider.of<CartProvider>(context).cart;
     return Container(
       decoration: const BoxDecoration(
         color: Colors.red,

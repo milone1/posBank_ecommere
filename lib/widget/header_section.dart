@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:posbank_flutter/screen/screens.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({
@@ -12,8 +12,29 @@ class HeaderSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        const BackButton(),
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(.8),
+                    blurRadius: 10.0,
+                    spreadRadius: 0.5,
+                    offset: const Offset(5.0, 5.0)),
+              ],
+            ),
+            child: FloatingActionButton(
+                backgroundColor: Colors.blue,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(Icons.arrow_back_ios)),
+          ),
+        ),
         SizedBox(
           width: width > 700 ? width * 0.15 : width * 0.10,
         ),

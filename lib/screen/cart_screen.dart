@@ -26,7 +26,7 @@ class _CartScreenState extends State<CartScreen> {
       child: Column(
         children: [
           // ignore: prefer_is_empty
-          (cart.length < 0)
+          cart.length == 0
               ? const Expanded(child: EmptyCart())
               : const FullCart(),
           FooterOptions(width: width, canal: canal),
