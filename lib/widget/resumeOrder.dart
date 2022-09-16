@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:provider/provider.dart';

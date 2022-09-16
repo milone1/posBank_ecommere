@@ -28,7 +28,7 @@ class BackButtonIos extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const SignInScreen()),
             );
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios
             )
         ),

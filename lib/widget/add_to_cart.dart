@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:posbank_flutter/model/cart_model.dart';
-
+// ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 

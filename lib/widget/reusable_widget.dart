@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
@@ -18,7 +17,6 @@ class _ReusableWidgetState extends State<ReusableWidget> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
-    print(cart.getPriceTotal());
     return InkWell(
       onTap: () {
         if (cart.getPriceTotal() != 0.0) {

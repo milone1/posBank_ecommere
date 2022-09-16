@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -39,5 +41,16 @@ class ProductsProvider with ChangeNotifier {
     final List decodeDataCategory = json.decode(response.body);
     groups = decodeDataCategory;
     notifyListeners();
+  }
+
+  methodPost(body) async {
+    var url = Uri.parse('$baseURL/pedido');
+    var response = await http.post(
+      url,
+      headers: {"Content-Type": "application/json"},
+      body: json.encode(body),
+    );
+    print('Response Status:  ${response.statusCode}');
+    print('Response Status:  ${response.body}');
   }
 }

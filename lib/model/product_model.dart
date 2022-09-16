@@ -14,7 +14,7 @@ class InsumoCritico {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> data = Map<String, dynamic>();
+        final Map<String, dynamic> data = <String, dynamic>{};
         data['Codigo'] = codigo;
         data['Descripcion'] = descripcion;
         data['Stock'] = stock;
@@ -45,7 +45,7 @@ class Item {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> data = Map<String, dynamic>();
+        final Map<String, dynamic> data = <String, dynamic>{};
         data['Producto'] = producto;
         data['Cantidad'] = cantidad;
         data['Fijo'] = fijo;
@@ -73,7 +73,7 @@ class Propiedad {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> data = Map<String, dynamic>();
+        final Map<String, dynamic> data = <String, dynamic>{};
         data['Propiedad'] = propiedad;
         data['Descripcion'] = descripcion;
         data['Operador'] = operador;
@@ -128,7 +128,7 @@ class Root {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> data = Map<String, dynamic>();
+        final Map<String, dynamic> data = <String, dynamic>{};
         data['EstadoProceso'] = estadoProceso;
         data['Codigo'] = codigo;
         data['Grupo'] = grupo;
@@ -139,7 +139,9 @@ class Root {
         data['Activo'] = activo;
         data['Combinacion'] = combinacion;
         data['NumCombinacion'] = numCombinacion;
+        // ignore: unnecessary_null_comparison
         data['Items'] = Item() != null ? items!.map((v) => v?.toJson()).toList() : null;
+        // ignore: unnecessary_null_comparison
         data['Propiedades'] =Propiedad() != null ? propiedades!.map((v) => v?.toJson()).toList() : null;
         data['InsumoCritico'] = insumoCritico!.toJson();
         data['TimePrepMin'] = timePrepMin;

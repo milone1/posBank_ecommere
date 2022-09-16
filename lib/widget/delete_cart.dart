@@ -1,8 +1,8 @@
+// ignore_for_file: prefer_adjacent_string_concatenation
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
-import 'package:provider/provider.dart';
 
 class DeleteCart extends StatelessWidget {
   const DeleteCart({
@@ -63,6 +63,7 @@ class DeleteCart extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                       ),
+                      // ignore: prefer_const_constructors
                       Text(
                         // ignore: prefer_interpolation_to_compose_strings
                         "S/ "+ ".00",

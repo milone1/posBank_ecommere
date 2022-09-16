@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
+import 'package:posbank_flutter/model/order_model.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 // ignore: depend_on_referenced_packages
@@ -167,10 +167,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
-    final cartList = Provider.of<CartProvider>(context).cartList;
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    print(cartList);
     return Scaffold(
       backgroundColor: const Color(0xffF2F2F2),
       body: Container(
@@ -233,9 +231,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
   Widget _buttonPayToCard() {
     final cart = Provider.of<CartProvider>(context);
-    var cartList = Provider.of<CartProvider>(context).cartList;
+    var post = Provider.of<ProductsProvider>(context);
+    List<Order> postPrueba = [];
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Container(
       margin: const EdgeInsets.only(top: 1),
       decoration: BoxDecoration(
@@ -249,10 +247,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         children: [
           InkWell(
             onTap: () {
-              _printer("4754 6587 7412 5698", "Oscar Melero",
-                  cart.getPriceTotal(), cartList);
-              cart.clearCart();
-              Navigator.pushNamed(context, '/');
+              // _printer("4754 6587 7412 5698", "Oscar Melero",
+              //     cart.getPriceTotal(), cartList);
+              // cart.clearCart();
+              post.methodPost(postPrueba);
+              // Navigator.pushNamed(context, '/');
             },
             child: Container(
               alignment: Alignment.center,
