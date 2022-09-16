@@ -61,10 +61,17 @@ class CartProvider extends ChangeNotifier {
   }
 
   getPriceTotal() {
-    Map result =
-        cartList.fold({"productPrice": 0}, (preMap, map) {
+    Map result = cartList.fold({"productPrice": 0}, (preMap, map) {
       return {"productPrice": (preMap["productPrice"]) + (map["productPrice"])};
     });
-  return result['productPrice'];
+    return result['productPrice'];
+  }
+
+  deleteElement(id) {
+    cartList.removeWhere((product) {
+      return product['id'] == id;
+    });
+    getPriceTotal();
+    notifyListeners();
   }
 }

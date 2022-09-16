@@ -15,6 +15,7 @@ class _FullCartState extends State<FullCart> {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context).cartList;
     final counter = Provider.of<CartProvider>(context);
+    final cartFunctions = Provider.of<CartProvider>(context);
 
     return Expanded(
       child: ListView.builder(
@@ -137,6 +138,7 @@ class _FullCartState extends State<FullCart> {
                                 backgroundColor: Colors.red,
                                 textColor: Colors.white,
                                 fontSize: 14.0);
+                            cartFunctions.deleteElement(cart[index]['id'].toString());
                           },
                           child: const Icon(
                             Icons.delete,

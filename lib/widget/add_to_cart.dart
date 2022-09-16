@@ -28,6 +28,7 @@ class AddToCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    final cartList = Provider.of<CartProvider>(context).cartList;
     return Container(
       width: width * 0.35,
       height: 50.0,
@@ -45,27 +46,40 @@ class AddToCart extends StatelessWidget {
       child: Center(
         child: InkWell(
           onTap: () {
-            Fluttertoast.showToast(
-              msg: "Agregado Correctamente",
-              toastLength: Toast.LENGTH_SHORT,
-              webPosition: "bottom",
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.green,
-              textColor: Colors.white,
-              fontSize: 14.0,
-            );
-            cart.setCartList({
-              'id': id,
-              'productId': id,
-              'productName': name,
-              'initialPrice': 15,
-              'productPrice': 15,
-              'quantity': 1,
-              'unitTag': id,
-              'image': imgPath,
-              'category': "",
-            });
+            if ((cartList.where((element) => element['id'] == id).isEmpty)) {
+              cart.setCartList({
+                'id': id,
+                'productId': id,
+                'productName': name,
+                'initialPrice': 15,
+                'productPrice': 15,
+                'quantity': 1,
+                'unitTag': id,
+                'image': imgPath,
+                'category': "",
+              });
+              Fluttertoast.showToast(
+                msg: "Agregado Correctamente",
+                toastLength: Toast.LENGTH_SHORT,
+                webPosition: "bottom",
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 14.0,
+              );
+            } else {
+              Fluttertoast.showToast(
+                msg: "El producto ya existe!",
+                toastLength: Toast.LENGTH_SHORT,
+                webPosition: "bottom",
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.orange,
+                textColor: Colors.white,
+                fontSize: 14.0,
+              );
+            }
             Navigator.pop(context);
           },
           child: const Text(
