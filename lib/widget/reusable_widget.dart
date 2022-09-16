@@ -30,14 +30,11 @@ class _ReusableWidgetState extends State<ReusableWidget> {
             webPosition: "bottom",
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.red,
             textColor: Colors.white,
             fontSize: 14.0,
           );
         }
-        setState(() {
-          
-        });
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),

@@ -49,7 +49,6 @@ class CartProvider extends ChangeNotifier {
     Map result = cartList.fold({"productPrice": 0}, (preMap, map) {
       return {"productPrice": (preMap["productPrice"]) + (map["productPrice"])};
     });
-    notifyListeners();
     return result['productPrice'];
   }
 
