@@ -1,7 +1,6 @@
 export 'package:posbank_flutter/widget/radio_button_properties.dart';
 export 'package:posbank_flutter/widget/back_button_ios.dart';
 export 'package:posbank_flutter/widget/canal_image.dart';
-export 'package:posbank_flutter/widget/resumeOrder.dart';
 export 'package:posbank_flutter/widget/full_cart.dart';
 export 'package:posbank_flutter/widget/header_section.dart';
 export 'package:posbank_flutter/widget/list_of_items.dart';

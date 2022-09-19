@@ -22,8 +22,7 @@ class ResumeOrder extends StatelessWidget {
                 title: Row(
                   children: [
                     Image.network(
-                      // cart[index]['image'],
-                      "",
+                      cart[index]['image'],
                       width: 50,
                       height: 50,
                     ),
@@ -31,15 +30,14 @@ class ResumeOrder extends StatelessWidget {
                       width: 20,
                     ),
                     Text(
-                      // cart[index]['productName'],
-                      "",
+                      cart[index]['productName'],
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
                 subtitle: Text(
-                  // '\$${cart[index]['productPrice']}.00',
-                  "",
+                  '\$${cart[index]['productPrice']}',
+
                   textAlign: TextAlign.end,
                 ),
                 // ignore: prefer_const_literals_to_create_immutables

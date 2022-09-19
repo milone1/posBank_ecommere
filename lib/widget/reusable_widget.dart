@@ -17,22 +17,21 @@ class _ReusableWidgetState extends State<ReusableWidget> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    print('CART PRICE TOTAL: ${cart.getPriceTotal()}');
     return InkWell(
       onTap: () {
-        if (cart.getPriceTotal() != 0.0) {
-          Navigator.pushNamed(context, '/credit');          
-        } else {
-          Fluttertoast.showToast(
-            msg: "Ingrese Productos!",
-            toastLength: Toast.LENGTH_SHORT,
-            webPosition: "bottom",
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 14.0,
-          );
-        }
+        cart.getPriceTotal() == 0
+            ? Fluttertoast.showToast(
+                msg: "Ingrese Productos!",
+                toastLength: Toast.LENGTH_SHORT,
+                webPosition: "bottom",
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 14.0,
+              )
+            : Navigator.pushNamed(context, '/credit');
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),

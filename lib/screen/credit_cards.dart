@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
 import 'package:posbank_flutter/model/order_model.dart';
 import 'package:posbank_flutter/provider/provider.dart';
+import 'package:posbank_flutter/widget/resumeOrder.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
@@ -101,7 +102,6 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               "     " +
               "S/" +
               list[index]['productPrice'].toString() +
-              ".00" +
               '\r\n');
     }
     await flutterUsbPrinter

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/provider/products_provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:checkbox_grouped/checkbox_grouped.dart';
 
 class BuildCard extends StatefulWidget {
   BuildCard(
@@ -103,8 +105,8 @@ class _BuildCardState extends State<BuildCard> {
       String category, String imgPath, List? properties, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
-    var _value = false;
+    var state = Provider.of<CartProvider>(context).state;
+    final unset = Provider.of<CartProvider>(context);
 
     showModalBottomSheet(
       isScrollControlled: true,
@@ -122,29 +124,30 @@ class _BuildCardState extends State<BuildCard> {
             child: Column(
               children: [
                 HeadmySheet(name: name, imgPath: imgPath),
-                DropdownButton(
-                  items: properties!
-                      .map((e) => e['Descripcion'] as String)
-                      .map((a) {
-                    return DropdownMenuItem(
-                      value: a,
-                      child: Row(
-                        children: [
-                          Checkbox(
-                              value: _value,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  _value = value!;
-                                });
-                              }),
-                          Text(a.toString()),
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (_) {},
-                  hint: const Text("Especificaciones"),
-                ),
+
+                // Text(state),
+                // GestureDetector(
+                //   child: Text('TOCAR ACA'),
+                //   onTap: () {
+                //     unset.setValue('HELADA');
+                //   },
+                // ),
+                // DropdownButton(
+                //   hint: const Text("Especificaciones"),
+                //   value: state,
+                //   items: properties
+                //       ?.map((value) => value['Descripcion'] as String)
+                //       .map((element) {
+                //     return DropdownMenuItem(
+                //       onTap: () {
+                //         unset.setValue(element);
+                //       },
+                //       value: element,
+                //       child: Text(element),
+                //     );
+                //   }).toList(),
+                //   onChanged: (String? value) {},
+                // ),
                 AddToCart(
                   width: width,
                   name: name,

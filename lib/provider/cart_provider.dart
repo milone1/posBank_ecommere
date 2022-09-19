@@ -8,6 +8,12 @@ class CartProvider extends ChangeNotifier {
   int get counter => _counter;
   final double _totalPrice = 0.0;
   double get totalPrice => _totalPrice;
+  String state = 'Helada';
+
+  void setValue(String newState) {
+    state = newState;
+    notifyListeners();
+  }
 
   setCartList(Map<String, dynamic> producto) {
     cartList.add(producto);

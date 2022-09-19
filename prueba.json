@@ -1,100 +1,102 @@
-{
-    "Local": "1",
-    "Tipopedido": "02",
-    "Nombre": "Julio",
-    "Apellido": "Berne",
-    "Telefono": "985241574",
-    "Direccion": "Calle Las Begonias Miraflores",
-    "Referencia": "Detras del congreso de la replublica lima - lima - peru.",
-    "Correo": "Prueba@gmail.com",
-    "Tipodocumento": "01",
-    "Ruc": "10121450254",
-    "Razonsocial": "Berne Julio SAC",
-    "DireccionClienteFacturado": "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
-    "Fechaenvia": "2016-02-03 18:45:00",
-    "Observacion": "Prueba de Obsewrvacion",
-    "CorreoElectronico": "prueba@hotmail.com",
-    "EstadoPago": "0",
-    "Ubigeo": "150101",
-    "Urbanizacion": "Lima",
-    "CodigoDescuento": "001",
-    "DetallePedido": [
-        {
-            "Item": "001",
-            "Codigoproducto": "0000275",
-            "Cantidad": 2,
-            "Lcombo": "0",
-            "Observacion": "Prueba de sistemas 1",
-            "ProductoPropiedad": [
-                {
-                    "Item": "001",
-                    "Codigoproducto": "0000275",
-                    "Codigopropiedad": "0365"
-                }
-            ]
-        },
-        {
-            "Item": "002",
-            "Codigoproducto": "0000119",
-            "Cantidad": 1,
-            "Lcombo": "0",
-            "Observacion": "Prueba de Sistemas 2"
-        },
-        {
-            "Item": "003",
-            "Codigoproducto": "0000016",
-            "Cantidad": 1,
-            "Lcombo": "1",
-            "Observacion": "prueba de sistemassssssssssssss 333",
-            "CPedido": [
-                {
-                    "Item": "003",
-                    "Itemcombo": "001",
-                    "Codigoproductocombo": "0000634",
-                    "Cantidad": 1,
-                    "Observacion": "prueba de sistemas 4"
-                },
-                {
-                    "Item": "003",
-                    "Itemcombo": "002",
-                    "Codigoproductocombo": "0000189",
-                    "Cantidad": 1,
-                    "Observacion": "prueba de sistemas 5",
-                    "ComboPropiedad": [
-                        {
-                            "Item": "003",
-                            "Itemcombo": "002",
-                            "Codigoproducto": "0000189",
-                            "Codigopropiedad": "0365"
-                        }
-                    ]
-                }
-            ],
-            "ProductoPropiedad": [
-                {
-                    "Item": "003",
-                    "Codigoproducto": "0000016",
-                    "Codigopropiedad": "0080"
-                }
-            ]
-        }
-    ],
-    "Prepagos": [
-        {
-            "Tipopago": "02",
-            "Monto": 102.23,
-            "Vuelto": 20.5,
-            "Tarjeta": "01",
-            "Numero": "1234"
-        },
-        {
-            "Tipopago": "01",
-            "Monto": 20.23,
-            "Vuelto": 0,
-            "Tarjeta": "",
-            "Numero": ""
-        }
-    ],
-    "FechaEntrega": "2016-02-04 18:45:00",
-    "CodigoOrigenVenta": "INF0001"
-}
+[
+    {
+        "Local": "1",
+        "Tipopedido": "02",
+        "Nombre": "Julio",
+        "Apellido": "Berne",
+        "Telefono": "985241574",
+        "Direccion": "Calle Las Begonias Miraflores",
+        "Referencia": "Detras del congreso de la replublica lima - lima - peru.",
+        "Correo": "Prueba@gmail.com",
+        "Tipodocumento": "01",
+        "Ruc": "10121450254",
+        "Razonsocial": "Berne Julio SAC",
+        "DireccionClienteFacturado": "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
+        "Fechaenvia": "2016-02-03 18:45:00",
+        "Observacion": "Prueba de Obsewrvacion",
+        "CorreoElectronico": "prueba@hotmail.com",
+        "EstadoPago": "0",
+        "Ubigeo": "150101",
+        "Urbanizacion": "Lima",
+        "CodigoDescuento": "001",
+        "DetallePedido": [
+            {
+                "Item": "001",
+                "Codigoproducto": "0000275",
+                "Cantidad": 2,
+                "Lcombo": "0",
+                "Observacion": "Prueba de sistemas 1",
+                "ProductoPropiedad": [
+                    {
+                        "Item": "001",
+                        "Codigoproducto": "0000275",
+                        "Codigopropiedad": "0365"
+                    }
+                ]
+            },
+            {
+                "Item": "002",
+                "Codigoproducto": "0000119",
+                "Cantidad": 1,
+                "Lcombo": "0",
+                "Observacion": "Prueba de Sistemas 2"
+            },
+            {
+                "Item": "003",
+                "Codigoproducto": "0000016",
+                "Cantidad": 1,
+                "Lcombo": "1",
+                "Observacion": "prueba de sistemassssssssssssss 333",
+                "CPedido": [
+                    {
+                        "Item": "003",
+                        "Itemcombo": "001",
+                        "Codigoproductocombo": "0000634",
+                        "Cantidad": 1,
+                        "Observacion": "prueba de sistemas 4"
+                    },
+                    {
+                        "Item": "003",
+                        "Itemcombo": "002",
+                        "Codigoproductocombo": "0000189",
+                        "Cantidad": 1,
+                        "Observacion": "prueba de sistemas 5",
+                        "ComboPropiedad": [
+                            {
+                                "Item": "003",
+                                "Itemcombo": "002",
+                                "Codigoproducto": "0000189",
+                                "Codigopropiedad": "0365"
+                            }
+                        ]
+                    }
+                ],
+                "ProductoPropiedad": [
+                    {
+                        "Item": "003",
+                        "Codigoproducto": "0000016",
+                        "Codigopropiedad": "0080"
+                    }
+                ]
+            }
+        ],
+        "Prepagos": [
+            {
+                "Tipopago": "02",
+                "Monto": 102.23,
+                "Vuelto": 20.5,
+                "Tarjeta": "01",
+                "Numero": "1234"
+            },
+            {
+                "Tipopago": "01",
+                "Monto": 20.23,
+                "Vuelto": 0,
+                "Tarjeta": "",
+                "Numero": ""
+            }
+        ],
+        "FechaEntrega": "2016-02-04 18:45:00",
+        "CodigoOrigenVenta": "INF0001"
+    }
+]

@@ -30,7 +30,7 @@ class _ButtonCanalState extends State<ButtonCanal> {
       onTap: () {
         Navigator.pushNamed(context, '/products');
         setState(
-          () => {canal.setState(value)}
+          () => {canal.setStates(value)}
         );
       },
       child: CardsCanal(width: width, img: img, title: title),

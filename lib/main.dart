@@ -23,7 +23,7 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProductsProvider(), lazy: false,),
         ChangeNotifierProvider(create: (_) => CanalProvider(), lazy: false,),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 }
