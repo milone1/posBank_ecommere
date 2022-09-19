@@ -35,7 +35,8 @@ class _FullCartState extends State<FullCart> {
                         BoxShadow(
                             color: Colors.grey.withOpacity(0.4),
                             spreadRadius: 6,
-                            blurRadius: 8),
+                            blurRadius: 8,
+                          ),
                       ],
                       color: Colors.white,
                     ),
@@ -60,7 +61,6 @@ class _FullCartState extends State<FullCart> {
                               borderRadius: BorderRadius.circular(100.0),
                               image: DecorationImage(
                                   image: NetworkImage(
-                                    // "",
                                     cart[index]['image'],
                                   ),
                                   fit: BoxFit.contain),
@@ -71,17 +71,16 @@ class _FullCartState extends State<FullCart> {
                           width: 200,
                           child: Text(
                             overflow: TextOverflow.ellipsis,
-                            // "",
                             cart[index]['productName'].toString().toUpperCase(),
                             style: const TextStyle(
                                 fontSize: 20,
                                 color: Color(0xFFCC8053),
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold,
+                              ),
                           ),
                         ),
                         Text(
-                          '\$${cart[index]['productPrice']}.00',
-                          // "",
+                          '\$${  cart[index]['productPrice']}',
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -114,7 +113,6 @@ class _FullCartState extends State<FullCart> {
                                 ),
                                 Text(
                                   cart[index]['quantity'].toString(),
-                                  // "",
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
@@ -144,7 +142,7 @@ class _FullCartState extends State<FullCart> {
                                 timeInSecForIosWeb: 1,
                                 backgroundColor: Colors.red,
                                 textColor: Colors.white,
-                                fontSize: 14.0);
+                                fontSize: 14.0);  
                             cartFunctions
                                 .deleteElement(cart[index]['id'].toString());
                           },

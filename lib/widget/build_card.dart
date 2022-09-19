@@ -3,7 +3,7 @@ import 'package:posbank_flutter/provider/products_provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
-class BuildCard extends StatelessWidget {
+class BuildCard extends StatefulWidget {
   BuildCard(
       {Key? key,
       required this.name,
@@ -25,13 +25,18 @@ class BuildCard extends StatelessWidget {
   List properties;
 
   @override
+  State<BuildCard> createState() => _BuildCardState();
+}
+
+class _BuildCardState extends State<BuildCard> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
         onTap: () {
-          _mySheet(name, price, id, idProduct, category, imgPath, properties,
-              context);
+          _mySheet(widget.name, widget.price, widget.id, widget.idProduct,
+              widget.category, widget.imgPath, widget.properties, context);
         },
         child: Container(
           decoration: BoxDecoration(
@@ -48,19 +53,20 @@ class BuildCard extends StatelessWidget {
           child: Column(
             children: [
               Hero(
-                tag: id.toString(),
+                tag: widget.id.toString(),
                 child: Container(
                   width: 80,
                   height: 80,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.0),
                     image: DecorationImage(
-                        image: NetworkImage(imgPath), fit: BoxFit.contain),
+                        image: NetworkImage(widget.imgPath),
+                        fit: BoxFit.contain),
                   ),
                 ),
               ),
               Text(
-                name.toUpperCase(),
+                widget.name.toUpperCase(),
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontSize: 13,
@@ -78,7 +84,7 @@ class BuildCard extends StatelessWidget {
                   ),
                   child: Text(
                     // ignore: prefer_interpolation_to_compose_strings
-                    '\$ ' + price,
+                    '\$ ' + widget.price,
                     style: const TextStyle(
                       color: Color(0xFF575E67),
                       fontSize: 15,
@@ -98,13 +104,7 @@ class BuildCard extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    List carnes = [
-      "Sellado",
-      "Rojo Ingles",
-      "Termino Medio",
-      "Tres Cuartos",
-      "Bien Cocido",
-    ];
+    var _value = false;
 
     showModalBottomSheet(
       isScrollControlled: true,
@@ -123,13 +123,20 @@ class BuildCard extends StatelessWidget {
               children: [
                 HeadmySheet(name: name, imgPath: imgPath),
                 DropdownButton(
-                  //
-                  items: properties!.map((e) => e['Descripcion'] as String).map((a) {
+                  items: properties!
+                      .map((e) => e['Descripcion'] as String)
+                      .map((a) {
                     return DropdownMenuItem(
                       value: a,
                       child: Row(
                         children: [
-                          Checkbox(value: false, onChanged: (_) {}),
+                          Checkbox(
+                              value: _value,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  _value = value!;
+                                });
+                              }),
                           Text(a.toString()),
                         ],
                       ),

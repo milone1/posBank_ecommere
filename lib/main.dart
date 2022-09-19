@@ -23,7 +23,7 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProductsProvider(), lazy: false,),
         ChangeNotifierProvider(create: (_) => CanalProvider(), lazy: false,),
       ],
-      child: const MyApp(),
+      child: MyApp(),
     );
   }
 }
@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Lato'),
-        //* routes of app
         initialRoute: '/products',
         routes: {
           '/': (context) => SignInScreen(),

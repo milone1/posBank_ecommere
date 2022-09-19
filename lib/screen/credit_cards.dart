@@ -231,39 +231,66 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
   Widget _buttonPayToCard() {
     final cart = Provider.of<CartProvider>(context);
+    final cartList = Provider.of<CartProvider>(context).cartList;
     var post = Provider.of<ProductsProvider>(context);
     double width = MediaQuery.of(context).size.width;
-    List<Order> postPrueba = [
-      // Order(
-      //   local: ,
-      //   tipopedido: 
-      //   tipopedido, 
-      //   nombre: nombre, 
-      //   apellido: apellido, 
-      //   telefono: telefono, 
-      //   direccion: direccion, 
-      //   referencia: referencia, 
-      //   correo: correo, 
-      //   tipodocumento: 
-      //   tipodocumento, 
-      //   ruc: ruc, 
-      //   razonsocial: razonsocial, 
-      //   direccionClienteFacturado:
-      //   direccionClienteFacturado, 
-      //   fechaenvia: fechaenvia, 
-      //   observacion: observacion, 
-      //   correoElectronico: 
-      //   correoElectronico, 
-      //   estadoPago: estadoPago, 
-      //   ubigeo: ubigeo, 
-      //   urbanizacion: urbanizacion, 
-      //   codigoDescuento: codigoDescuento, 
-      //   detallePedido: detallePedido, 
-      //   prepagos: prepagos, 
-      //   fechaEntrega: fechaEntrega, 
-      //   codigoOrigenVenta: codigoOrigenVenta
-      // ),
-    ];
+    print('Lista del carrito: $cartList');
+    Map postPrueba = {
+      "Local": "1",
+      "Tipopedido": "02",
+      "Nombre": "Julio",
+      "Apellido": "Berne",
+      "Telefono": "985241574",
+      "Direccion": "Calle Las Begonias Miraflores",
+      "Referencia": "Detras del congreso de la replublica lima - lima - peru.",
+      "Correo": "Prueba@gmail.com",
+      "Tipodocumento": "01",
+      "Ruc": "10121450254",
+      "Razonsocial": "Berne Julio SAC",
+      "DireccionClienteFacturado":
+          "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
+      "Fechaenvia": "2016-02-03 18:45:00",
+      "Observacion": "Prueba de Obsewrvacion",
+      "CorreoElectronico": "prueba@hotmail.com",
+      "EstadoPago": "0",
+      "Ubigeo": "150101",
+      "Urbanizacion": "Lima",
+      "CodigoDescuento": "001",
+      "DetallePedido": [
+        {
+          "Item": "001",
+          "Codigoproducto": "0000275",
+          "Cantidad": 2,
+          "Lcombo": "0",
+          "Observacion": "Prueba de sistemas 1",
+          "ProductoPropiedad": [
+            {
+              "Item": "001",
+              "Codigoproducto": "0000275",
+              "Codigopropiedad": "0365"
+            }
+          ]
+        },
+      ],
+      "Prepagos": [
+        {
+          "Tipopago": "02",
+          "Monto": 102.23,
+          "Vuelto": 20.5,
+          "Tarjeta": "01",
+          "Numero": "1234"
+        },
+        {
+          "Tipopago": "01",
+          "Monto": 20.23,
+          "Vuelto": 0,
+          "Tarjeta": "",
+          "Numero": ""
+        }
+      ],
+      "FechaEntrega": "2016-02-04 18:45:00",
+      "CodigoOrigenVenta": "INF0001"
+    };
     return Container(
       margin: const EdgeInsets.only(top: 1),
       decoration: BoxDecoration(
@@ -277,10 +304,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         children: [
           InkWell(
             onTap: () {
+              post.methodPost(postPrueba);
               // _printer("4754 6587 7412 5698", "Oscar Melero",
               //     cart.getPriceTotal(), cartList);
               // cart.clearCart();
-              post.methodPost(postPrueba);
               // Navigator.pushNamed(context, '/');
             },
             child: Container(
@@ -298,8 +325,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                // 'Total:      \$${cart.getPriceTotal()}.00',
-                "",
+                'Total:      \$${cart.getPriceTotal()}.00',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
