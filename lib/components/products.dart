@@ -51,14 +51,11 @@ class _ProductsState extends State<Products> {
                   height: height * 0.55,
                   child: GridView.builder(
                     itemCount: products.length,
-                    // itemCount: category.category != "" ? 10 : products.length,
                     scrollDirection: Axis.horizontal,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: width > 700 ? 5 : 4,
                     ),
                     itemBuilder: (context, index) {
-                      // if (category.category == "") {
-                      // return Text("asd");
                       return BuildCard(
                         name: products[index]['Descripcion'].toString(),
                         price: products[index]['PrecioVenta'].toString(),
@@ -66,6 +63,7 @@ class _ProductsState extends State<Products> {
                         idProduct: products[index]['Codigo'].toString(),
                         category: products[index]['Grupo'].toString(),
                         imgPath: products[index]['Surlimagen'].toString(),
+                        properties: products[index]['Propiedades'],
                       );
                     },
                   ),

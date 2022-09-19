@@ -29,7 +29,8 @@
                             "Item": "001",
                             "Codigoproducto": "0000275",
                             "Codigopropiedad": "0365"
-                            }]
+                            }
+                ]
                 }, 
                 {
                 "Item": "002",
@@ -43,7 +44,7 @@
                 "Codigoproducto": "0000016",
                 "Cantidad": 1,
                 "Lcombo": "1",
-                "Observacion": "prueba de sistemassssssssssssss 333",
+                "Observacion": "prueba de sistem 333",
                 "CPedido": [{
                         "Item": "003",
                         "Itemcombo": "001",

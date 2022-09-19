@@ -6,16 +6,18 @@ import 'package:provider/provider.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
-  const AddToCart({
-    Key? key,
-    required this.width,
-    required this.name,
-    required this.price,
-    required this.id,
-    required this.idProduct,
-    required this.category,
-    required this.imgPath,
-  }) : super(key: key);
+  AddToCart(
+      {Key? key,
+      required this.width,
+      required this.name,
+      required this.price,
+      required this.id,
+      required this.idProduct,
+      required this.category,
+      required this.imgPath
+      }
+    )
+      : super(key: key);
 
   final double width;
   final String id;
@@ -75,8 +77,8 @@ class AddToCart extends StatelessWidget {
                 "id": id,
                 "productoId": id,
                 'productName': name,
-                'initialPrice': int.parse(price),
-                'productPrice': int.parse(price),
+                'initialPrice': 12,
+                'productPrice': 12,
                 'quantity': 1,
                 'unitTag': id,
                 'image': imgPath,

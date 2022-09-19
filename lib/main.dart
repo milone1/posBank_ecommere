@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
         //* routes of app
         initialRoute: '/products',
         routes: {
-          '/': (context) => const SignInScreen(),
-          '/products': (context) => const ProductListScreen(),
-          '/credit': (context) => const CreditCardsPage(),
+          '/': (context) => SignInScreen(),
+          '/products': (context) => ProductListScreen(),
+          '/credit': (context) => CreditCardsPage(),
         },
       );
     });

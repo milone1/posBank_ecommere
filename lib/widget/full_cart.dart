@@ -104,7 +104,7 @@ class _FullCartState extends State<FullCart> {
                                 InkWell(
                                   onTap: () {
                                     if (cart[index]['quantity'] >= 2) {
-                                      counter.removeOneItem(index);
+                                      counter.addOrRemoveItem(index, 'remove');
                                     }
                                   },
                                   child: const Icon(
@@ -122,8 +122,7 @@ class _FullCartState extends State<FullCart> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    counter.addOneItem(index);
-                                    setState(() {});
+                                    counter.addOrRemoveItem(index, 'add');
                                   },
                                   child: const Icon(
                                     Icons.add,

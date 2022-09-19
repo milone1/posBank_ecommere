@@ -9,7 +9,7 @@ class CartProvider extends ChangeNotifier {
   final double _totalPrice = 0.0;
   double get totalPrice => _totalPrice;
 
-   setCartList(Map<String, dynamic> producto) {
+  setCartList(Map<String, dynamic> producto) {
     cartList.add(producto);
     notifyListeners();
   }
@@ -27,16 +27,16 @@ class CartProvider extends ChangeNotifier {
     return _counter;
   }
 
-  addOneItem(int index) {
-    cartList[index]['quantity']++;
-    getPriceProduct(index);
-    notifyListeners();
-  }
-
-  removeOneItem(int index) {
-    cartList[index]['quantity']--;
-    getPriceProduct(index);
-    notifyListeners();
+  addOrRemoveItem(index, value) {
+    if (value == 'add') {
+      cartList[index]['quantity']++;
+      getPriceProduct(index);
+      notifyListeners();
+    } else {
+      cartList[index]['quantity']--;
+      getPriceProduct(index);
+      notifyListeners();
+    }
   }
 
   getPriceProduct(int index) {
@@ -50,6 +50,7 @@ class CartProvider extends ChangeNotifier {
     Map result = cartList.fold({"productPrice": 0}, (preMap, map) {
       return {"productPrice": (preMap["productPrice"]) + (map["productPrice"])};
     });
+    notifyListeners();
     return result['productPrice'];
   }
 

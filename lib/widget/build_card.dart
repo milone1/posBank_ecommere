@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:posbank_flutter/provider/products_provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
+import 'package:provider/provider.dart';
 
 class BuildCard extends StatelessWidget {
-  const BuildCard({
-    Key? key,
-    required this.name,
-    required this.price,
-    required this.id,
-    required this.idProduct,
-    required this.category,
-    required this.imgPath,
-  }) : super(key: key);
+  BuildCard(
+      {Key? key,
+      required this.name,
+      required this.price,
+      required this.id,
+      required this.idProduct,
+      required this.category,
+      required this.imgPath,
+      required this.properties})
+      : super(key: key);
 
   //* final String name;
   final String name;
@@ -19,6 +22,7 @@ class BuildCard extends StatelessWidget {
   final String idProduct;
   final String category;
   final String imgPath;
+  List properties;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,8 @@ class BuildCard extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
         onTap: () {
-          _mySheet(name, price, id, idProduct, category, imgPath, context);
+          _mySheet(name, price, id, idProduct, category, imgPath, properties,
+              context);
         },
         child: Container(
           decoration: BoxDecoration(
@@ -50,8 +55,7 @@ class BuildCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.0),
                     image: DecorationImage(
-                        image: NetworkImage(imgPath), 
-                        fit: BoxFit.contain),
+                        image: NetworkImage(imgPath), fit: BoxFit.contain),
                   ),
                 ),
               ),
@@ -74,7 +78,7 @@ class BuildCard extends StatelessWidget {
                   ),
                   child: Text(
                     // ignore: prefer_interpolation_to_compose_strings
-                    '\$ '+price,
+                    '\$ ' + price,
                     style: const TextStyle(
                       color: Color(0xFF575E67),
                       fontSize: 15,
@@ -90,10 +94,11 @@ class BuildCard extends StatelessWidget {
   }
 
   _mySheet(String name, String price, String id, String idProduct,
-      String category, String imgPath, context) {
+      String category, String imgPath, List? properties, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    const carnes = [
+
+    List carnes = [
       "Sellado",
       "Rojo Ingles",
       "Termino Medio",
@@ -118,13 +123,14 @@ class BuildCard extends StatelessWidget {
               children: [
                 HeadmySheet(name: name, imgPath: imgPath),
                 DropdownButton(
-                  items: carnes.map((String a) {
+                  //
+                  items: properties!.map((e) => e['Descripcion'] as String).map((a) {
                     return DropdownMenuItem(
                       value: a,
                       child: Row(
                         children: [
                           Checkbox(value: false, onChanged: (_) {}),
-                          Text(a),
+                          Text(a.toString()),
                         ],
                       ),
                     );
@@ -132,7 +138,6 @@ class BuildCard extends StatelessWidget {
                   onChanged: (_) {},
                   hint: const Text("Especificaciones"),
                 ),
-                //* Boton Agregar
                 AddToCart(
                   width: width,
                   name: name,
