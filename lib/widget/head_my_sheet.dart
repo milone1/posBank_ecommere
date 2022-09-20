@@ -19,7 +19,7 @@ class HeadmySheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const BackButton(),
+              BackButton(),
               Container(
                   width: 220.0,
                   height: 220.0,
@@ -44,7 +44,7 @@ class HeadmySheet extends StatelessWidget {
                 child: Text(
                   name,
                   maxLines: 3,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFCC8053),
@@ -54,7 +54,7 @@ class HeadmySheet extends StatelessWidget {
               ),
               SizedBox(
                 width: width * 0.30,
-                child: const Text(
+                child: Text(
                   "Tiene sabor, obviamente, y podemos añadir "
                   "que tiene buen sabor, así que "
                   "probablemente resulta rico y apetitoso, "

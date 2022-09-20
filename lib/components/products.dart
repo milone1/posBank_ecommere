@@ -1,27 +1,30 @@
-// ignore_for_file: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 //* animations
 import 'package:animate_do/animate_do.dart';
-import 'package:posbank_flutter/model/order_model.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
-// ignore: must_be_immutable
 class Products extends StatefulWidget {
   const Products({Key? key}) : super(key: key);
   @override
   State<Products> createState() => _ProductsState();
+
+  void initState() {
+    initState();
+  }
 }
 
 class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<ProductsProvider>(context).products;
+    final products =
+        Provider.of<ProductsProvider>(context, listen: false).products;
+
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(
+      padding: EdgeInsets.only(
         left: 10.0,
         top: 1.0,
       ),
@@ -30,19 +33,18 @@ class _ProductsState extends State<Products> {
           LimitedBox(
             maxWidth: 350,
             child: BounceInLeft(
-              duration: const Duration(seconds: 2),
-              child: const ListCategory(),
+              duration: Duration(seconds: 2),
+              child: ListCategory(),
             ),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(
+              padding: EdgeInsets.only(
                 top: 2,
                 left: 10,
                 bottom: 10,
               ),
               child: BounceInRight(
-                // ignore: prefer_const_constructors
                 duration: Duration(
                   seconds: 2,
                 ),

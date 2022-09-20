@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:posbank_flutter/provider/cart_provider.dart';
-import 'package:posbank_flutter/provider/products_provider.dart';
-import 'package:posbank_flutter/widget/widgets.dart';
-import 'package:provider/provider.dart';
-import 'package:checkbox_grouped/checkbox_grouped.dart';
+// ignore_for_file: must_be_immutable
 
+import 'package:flutter/material.dart';
+import 'package:posbank_flutter/widget/widgets.dart';
 class BuildCard extends StatefulWidget {
   BuildCard(
       {Key? key,
@@ -17,7 +14,6 @@ class BuildCard extends StatefulWidget {
       required this.properties})
       : super(key: key);
 
-  //* final String name;
   final String name;
   final String price;
   final String id;
@@ -34,11 +30,11 @@ class _BuildCardState extends State<BuildCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: EdgeInsets.all(5.0),
       child: InkWell(
         onTap: () {
           _mySheet(widget.name, widget.price, widget.id, widget.idProduct,
-              widget.category, widget.imgPath, widget.properties, context);
+              widget.category, widget.imgPath, context);
         },
         child: Container(
           decoration: BoxDecoration(
@@ -70,14 +66,14 @@ class _BuildCardState extends State<BuildCard> {
               Text(
                 widget.name.toUpperCase(),
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFFCC8053),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
+                padding: EdgeInsets.only(
                   top: 6,
                 ),
                 child: Container(
@@ -85,9 +81,8 @@ class _BuildCardState extends State<BuildCard> {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: Text(
-                    // ignore: prefer_interpolation_to_compose_strings
                     '\$ ' + widget.price,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Color(0xFF575E67),
                       fontSize: 15,
                     ),
@@ -102,11 +97,9 @@ class _BuildCardState extends State<BuildCard> {
   }
 
   _mySheet(String name, String price, String id, String idProduct,
-      String category, String imgPath, List? properties, context) {
+      String category, String imgPath, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    var state = Provider.of<CartProvider>(context).state;
-    final unset = Provider.of<CartProvider>(context);
 
     showModalBottomSheet(
       isScrollControlled: true,
@@ -125,29 +118,8 @@ class _BuildCardState extends State<BuildCard> {
               children: [
                 HeadmySheet(name: name, imgPath: imgPath),
 
-                // Text(state),
-                // GestureDetector(
-                //   child: Text('TOCAR ACA'),
-                //   onTap: () {
-                //     unset.setValue('HELADA');
-                //   },
-                // ),
-                // DropdownButton(
-                //   hint: const Text("Especificaciones"),
-                //   value: state,
-                //   items: properties
-                //       ?.map((value) => value['Descripcion'] as String)
-                //       .map((element) {
-                //     return DropdownMenuItem(
-                //       onTap: () {
-                //         unset.setValue(element);
-                //       },
-                //       value: element,
-                //       child: Text(element),
-                //     );
-                //   }).toList(),
-                //   onChanged: (String? value) {},
-                // ),
+                Properties(),
+
                 AddToCart(
                   width: width,
                   name: name,

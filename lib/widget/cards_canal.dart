@@ -17,13 +17,13 @@ class CardsCanal extends StatelessWidget {
       padding: EdgeInsets.all(width * 0.02),
       decoration: BoxDecoration(
           color: Colors.purple.shade300,
-          borderRadius: const BorderRadius.all(
+          borderRadius: BorderRadius.all(
             Radius.circular(20),
           ),
           boxShadow: [
             BoxShadow(
               color: Colors.white.withOpacity(0.4),
-              offset: const Offset(3, 3),
+              offset: Offset(3, 3),
               spreadRadius: 8,
               blurRadius: 8,
             )

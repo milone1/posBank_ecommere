@@ -20,7 +20,7 @@ class _ListCategoryState extends State<ListCategory> {
       width: 150,
       height: height * 0.50,
       child: ListWheelScrollView(
-        physics: const FixedExtentScrollPhysics(),
+        physics: FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
           setState(
             () => {
@@ -36,15 +36,15 @@ class _ListCategoryState extends State<ListCategory> {
           ...groups.map(
             (group) {
               return Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Colors.white,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 50, top: 30),
+                  padding: EdgeInsets.only(bottom: 50, top: 30),
                   child: Text(
                     group['Descripcion'],
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 10,
                       color: Color(0xFFCC8053),
                       fontWeight: FontWeight.bold,

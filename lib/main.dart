@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+
 //* packages
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,13 +17,12 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => CartProvider(), lazy: false),
-        // lazy function charge,
         //* by default the item is only rendered when called, but the lazzy option can change that behavior
-        ChangeNotifierProvider(create: (_) => ProductsProvider(), lazy: false,),
-        ChangeNotifierProvider(create: (_) => CanalProvider(), lazy: false,),
+        ChangeNotifierProvider(create: (_) => ProductsProvider(), lazy: false),
+        ChangeNotifierProvider(create: (_) => CartProvider(), lazy: false),
+        ChangeNotifierProvider(create: (_) => CanalProvider(), lazy: false),
       ],
-      child: const MyApp(),
+      child: MyApp(),
     );
   }
 }

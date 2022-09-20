@@ -17,7 +17,7 @@ class FooterOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         border: Border(
           top: BorderSide(color: Colors.grey, width: 1),
         ),
@@ -25,9 +25,9 @@ class FooterOptions extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const BackButtonIos(),
+          BackButtonIos(),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0),
             child: Container(
               width: width > 700 ? width * 0.70 : width * 0.70,
               height: 70.0,
@@ -39,7 +39,7 @@ class FooterOptions extends StatelessWidget {
                         color: Colors.grey.withOpacity(.8),
                         blurRadius: 10.0,
                         spreadRadius: 0.5,
-                        offset: const Offset(5.0, 5.0))
+                        offset: Offset(5.0, 5.0))
                   ]),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

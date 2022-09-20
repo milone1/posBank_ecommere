@@ -7,7 +7,7 @@ class ButtonAddRemove extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(5.0),
+      margin: EdgeInsets.all(5.0),
       height: 35,
       width: 100,
       decoration: BoxDecoration(
@@ -16,7 +16,7 @@ class ButtonAddRemove extends StatelessWidget {
             BorderRadius.circular(7),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(6.0),
+        padding: EdgeInsets.all(6.0),
         child: Row(
           mainAxisAlignment:
               MainAxisAlignment.spaceBetween,
@@ -25,12 +25,12 @@ class ButtonAddRemove extends StatelessWidget {
               onTap: () {
                 
               },
-              child: const Icon(
+              child: Icon(
                 Icons.remove,
                 color: Colors.white,
               ),
             ),
-            const Text(
+            Text(
               "Qty",
               style: TextStyle(
                   fontSize: 20,
@@ -70,7 +70,7 @@ class ButtonAddRemove extends StatelessWidget {
                 //     (error, stackTrace) {},
                 //   );
               },
-              child: const Icon(
+              child: Icon(
                 Icons.add,
                 color: Colors.white,
               ),

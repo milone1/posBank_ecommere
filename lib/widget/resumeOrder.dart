@@ -1,5 +1,3 @@
-// ignore_for_file: file_names, depend_on_referenced_packages
-
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +24,7 @@ class ResumeOrder extends StatelessWidget {
                       width: 50,
                       height: 50,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 20,
                     ),
                     Text(
@@ -40,12 +38,12 @@ class ResumeOrder extends StatelessWidget {
 
                   textAlign: TextAlign.end,
                 ),
-                // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  const Text("ESPECIFICACIONES"),
+                  Text("ESPECIFICACIONES"),
                 ],
               ),
-            )),
+            )
+          ),
       ),
     );
   }

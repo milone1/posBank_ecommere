@@ -1,4 +1,3 @@
-// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 
 class CircularCharger extends StatelessWidget {
@@ -9,7 +8,7 @@ class CircularCharger extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           Text(
             "Cargando...",
             style: TextStyle(

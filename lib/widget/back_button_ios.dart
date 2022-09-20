@@ -17,18 +17,15 @@ class BackButtonIos extends StatelessWidget {
                 color: Colors.grey.withOpacity(.8),
                 blurRadius: 10.0,
                 spreadRadius: 0.5,
-                offset: const Offset(5.0, 5.0))
+                offset: Offset(5.0, 5.0))
           ]
       ),
       child: FloatingActionButton(
           backgroundColor: Colors.blue,
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SignInScreen()),
-            );
+            
           },
-          child: const Icon(
+          child: Icon(
             Icons.arrow_back_ios
             )
         ),

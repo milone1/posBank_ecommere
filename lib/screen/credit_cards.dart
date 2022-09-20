@@ -1,19 +1,15 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
-import 'package:posbank_flutter/model/order_model.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/resumeOrder.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
-// ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 
 class CreditCardsPage extends StatefulWidget {
   const CreditCardsPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _CreditCardsPageState createState() => _CreditCardsPageState();
 }
 
@@ -170,24 +166,24 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color(0xffF2F2F2),
+      backgroundColor: Color(0xffF2F2F2),
       body: Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.0),
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: EdgeInsets.only(top: 8.0),
               child: Column(
-                children: const <Widget>[
+                children: <Widget>[
                   ListCarrousel(),
                 ],
               ),
             ),
             BounceInLeft(
-              duration: const Duration(
+              duration: Duration(
                 seconds: 1,
               ),
-              child: const Text(
+              child: Text(
                 "¡INCREÍBLES OFERTAS!",
                 style: TextStyle(
                   decoration: TextDecoration.underline,
@@ -200,7 +196,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             ),
             _buildCreditCard(
                 height: height,
-                color: const Color(0xFF2DA1F4),
+                color: Color(0xFF2DA1F4),
                 cart: cart,
                 cardExpiration: "06/05",
                 cardHolder: "Oscar Melero",
@@ -214,7 +210,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                   height: height * 0.37,
                   child: Center(
                     child: Column(
-                      children: const <Widget>[
+                      children: <Widget>[
                         ResumeOrder(),
                       ],
                     ),
@@ -234,7 +230,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     final cartList = Provider.of<CartProvider>(context).cartList;
     var post = Provider.of<ProductsProvider>(context);
     double width = MediaQuery.of(context).size.width;
-    print('Lista del carrito: $cartList');
+
     Map postPrueba = {
       "Local": "1",
       "Tipopedido": "02",
@@ -292,7 +288,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       "CodigoOrigenVenta": "INF0001"
     };
     return Container(
-      margin: const EdgeInsets.only(top: 1),
+      margin: EdgeInsets.only(top: 1),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50.0),
       ),
@@ -305,28 +301,28 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           InkWell(
             onTap: () {
               post.methodPost(postPrueba);
-              // _printer("4754 6587 7412 5698", "Oscar Melero",
-              //     cart.getPriceTotal(), cartList);
-              // cart.clearCart();
-              // Navigator.pushNamed(context, '/');
+              _printer("4754 6587 7412 5698", "Oscar Melero",
+                  cart.getPriceTotal(), cartList);
+              cart.clearCart();
+              Navigator.pushNamed(context, '/');
             },
             child: Container(
               alignment: Alignment.center,
               height: 50,
               decoration: BoxDecoration(
-                color: const Color(0xFF2DA1F4),
+                color:  Color(0xFF2DA1F4),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey.withOpacity(.8),
                       blurRadius: 10.0,
                       spreadRadius: 0.5,
-                      offset: const Offset(5.0, 5.0)),
+                      offset: Offset(5.0, 5.0)),
                 ],
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
                 'Total:      \$${cart.getPriceTotal()}.00',
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -351,9 +347,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     return Spin(
       child: InkWell(
         onTap: () {
-          _printer(cardNumber, cardHolder, cart.getTotalPrice(), cart);
-          // cart.setPriceTotal();
-          Navigator.pushNamed(context, '/');
+
         },
         child: Card(
           elevation: 4.0,
@@ -363,7 +357,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           ),
           child: Container(
             height: (height < 1000 ? 200 : 300),
-            padding: const EdgeInsets.only(
+            padding: EdgeInsets.only(
                 left: 16.0, right: 16.0, bottom: 22.0, top: 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -371,10 +365,10 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               children: <Widget>[
                 _buildLogosBlock(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     cardNumber,
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.white,
                         fontSize: 21,
                         fontFamily: 'CourrierPrime'),
@@ -399,7 +393,6 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     );
   }
 
-  // Build the top row containing logos
   Row _buildLogosBlock() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -409,7 +402,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           height: 30,
           width: 28,
         ),
-        const Text(
+        Text(
           "BANCO BBVA",
           style: TextStyle(
             fontSize: 25,
@@ -426,21 +419,20 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
     );
   }
 
-// Build Column containing the cardholder and expiration information
   Column _buildDetailsBlock({required String label, required String value}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
               color: Color(0xFFCACACA),
               fontSize: 15,
               fontWeight: FontWeight.bold),
         ),
         Text(
           value,
-          style: const TextStyle(
+          style: TextStyle(
               color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
         )
       ],

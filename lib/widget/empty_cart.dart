@@ -10,7 +10,7 @@ class EmptyCart extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Column(
-        children: const <Widget>[
+        children: <Widget>[
           Image(
             fit: BoxFit.contain,
             width: 500,

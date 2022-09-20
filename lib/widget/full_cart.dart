@@ -1,7 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +23,7 @@ class _FullCartState extends State<FullCart> {
         itemBuilder: (context, index) {
           return Card(
             child: Padding(
-              padding: const EdgeInsets.all(1.0),
+              padding: EdgeInsets.all(1.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -46,7 +45,7 @@ class _FullCartState extends State<FullCart> {
                       children: [
                         Text(
                           (index + 1).toString(),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF575E67),
@@ -72,7 +71,7 @@ class _FullCartState extends State<FullCart> {
                           child: Text(
                             overflow: TextOverflow.ellipsis,
                             cart[index]['productName'].toString().toUpperCase(),
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontSize: 20,
                                 color: Color(0xFFCC8053),
                                 fontWeight: FontWeight.bold,
@@ -81,14 +80,14 @@ class _FullCartState extends State<FullCart> {
                         ),
                         Text(
                           '\$${  cart[index]['productPrice']}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF575E67),
                           ),
                         ),
                         Container(
-                          margin: const EdgeInsets.all(5.0),
+                          margin: EdgeInsets.all(5.0),
                           height: 35,
                           width: 100,
                           decoration: BoxDecoration(
@@ -96,7 +95,7 @@ class _FullCartState extends State<FullCart> {
                             borderRadius: BorderRadius.circular(7),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(6.0),
+                            padding: EdgeInsets.all(6.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -106,14 +105,14 @@ class _FullCartState extends State<FullCart> {
                                       counter.addOrRemoveItem(index, 'remove');
                                     }
                                   },
-                                  child: const Icon(
+                                  child: Icon(
                                     Icons.remove,
                                     color: Colors.white,
                                   ),
                                 ),
                                 Text(
                                   cart[index]['quantity'].toString(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white),
@@ -122,7 +121,7 @@ class _FullCartState extends State<FullCart> {
                                   onTap: () {
                                     counter.addOrRemoveItem(index, 'add');
                                   },
-                                  child: const Icon(
+                                  child: Icon(
                                     Icons.add,
                                     color: Colors.white,
                                   ),
@@ -134,19 +133,19 @@ class _FullCartState extends State<FullCart> {
                         // ignore: avoid_unnecessary_containers
                         InkWell(
                           onTap: () {
-                            Fluttertoast.showToast(
-                                msg: "Eliminado Correctamente",
-                                toastLength: Toast.LENGTH_SHORT,
-                                webPosition: "bottom",
-                                gravity: ToastGravity.CENTER,
-                                timeInSecForIosWeb: 1,
-                                backgroundColor: Colors.red,
-                                textColor: Colors.white,
-                                fontSize: 14.0);  
+                            // Fluttertoast.showToast(
+                            //     msg: "Eliminado Correctamente",
+                            //     toastLength: Toast.LENGTH_SHORT,
+                            //     webPosition: "bottom",
+                            //     gravity: ToastGravity.CENTER,
+                            //     timeInSecForIosWeb: 1,
+                            //     backgroundColor: Colors.red,
+                            //     textColor: Colors.white,
+                            //     fontSize: 14.0);  
                             cartFunctions
                                 .deleteElement(cart[index]['id'].toString());
                           },
-                          child: const Icon(
+                          child: Icon(
                             Icons.delete,
                             color: Colors.red,
                           ),

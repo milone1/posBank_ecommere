@@ -16,14 +16,14 @@ class ListCarrousel extends StatelessWidget {
       width: width * 0.75,
       height: height * 0.20,
       child: ListView(
-        children: [
-          const Padding(
+        children: <Widget>[
+           Padding(
             padding: EdgeInsets.all(1) 
           ),
           CarouselSlider(
             items: [
               Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -44,7 +44,7 @@ class ListCarrousel extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -65,7 +65,7 @@ class ListCarrousel extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -86,7 +86,7 @@ class ListCarrousel extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -112,7 +112,7 @@ class ListCarrousel extends StatelessWidget {
               autoPlay: true,
               autoPlayCurve: Curves.easeInOut,
               enlargeCenterPage: true,
-              autoPlayInterval: const Duration(seconds: 3),
+              autoPlayInterval: Duration(seconds: 3),
               scrollDirection: Axis.horizontal
             )
           )

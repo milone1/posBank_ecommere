@@ -13,7 +13,6 @@ class ListOfItems extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          // ignore: prefer_const_literals_to_create_immutables
           children: [
             Image.asset(
               "images/infomatica.png",
@@ -25,7 +24,7 @@ class ListOfItems extends StatelessWidget {
         SizedBox(
           height: height * 0.1,
         ),
-        const SizedBox(
+        SizedBox(
           height: 200.0,
         ),
         Image.asset(
@@ -33,15 +32,15 @@ class ListOfItems extends StatelessWidget {
           width: 350.0,
           height: 250.0,
         ),
-        const SizedBox(
+        SizedBox(
           height: 200.0,
         ),
-        const ButtonCanal(),
-        const SizedBox(
+        ButtonCanal(),
+        SizedBox(
           height: 150.0,
         ),
         //* line of copyrigth
-        const Text(
+        Text(
           "© Copyrigth 2022 by Infomatica",
           style: TextStyle(
               color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:posbank_flutter/model/order_model.dart';
-// ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 
@@ -31,7 +29,6 @@ class AddToCart extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     final cartList = Provider.of<CartProvider>(context).cartList;
-    final canal = Provider.of<CanalProvider>(context).state;
     return Container(
       width: width * 0.35,
       height: 50.0,
@@ -108,7 +105,7 @@ class AddToCart extends StatelessWidget {
             }
             Navigator.pop(context);
           },
-          child: const Text(
+          child: Text(
             "+ AGREGAR AL CARRITO",
             style: TextStyle(
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),

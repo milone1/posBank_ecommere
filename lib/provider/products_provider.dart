@@ -1,9 +1,6 @@
-// ignore_for_file: avoid_print
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:posbank_flutter/model/order_model.dart';
 
 class ProductsProvider with ChangeNotifier {
   ProductsProvider() {
@@ -51,7 +48,7 @@ class ProductsProvider with ChangeNotifier {
       headers: {"Content-Type": "application/json"},
       body: json.encode(body),
     );
-    print('Response Status:  ${response.statusCode}');
-    print('Response Status:  ${response.body}');
+    print('Response Status of method POST:  ${response.statusCode}');
+    print('Response Status of method POST:  ${response.body}');
   }
 }
