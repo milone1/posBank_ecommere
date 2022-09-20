@@ -35,7 +35,9 @@ class ListOfItems extends StatelessWidget {
         SizedBox(
           height: 200.0,
         ),
+        //* 
         ButtonCanal(),
+        //* 
         SizedBox(
           height: 150.0,
         ),

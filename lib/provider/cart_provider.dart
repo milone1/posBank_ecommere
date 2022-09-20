@@ -10,10 +10,6 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  double getTotalPrice() {
-    return _totalPrice;
-  }
-
   addOrRemoveItem(index, value) {
     if (value == 'add') {
       cartList[index]['quantity']++;
@@ -32,12 +28,11 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
     return cartList[index]['productPrice'];
   }
-
+  
   getPriceTotal() {
     Map result = cartList.fold({"productPrice": 0}, (preMap, map) {
       return {"productPrice": (preMap["productPrice"]) + (map["productPrice"])};
     });
-    notifyListeners();
     return result['productPrice'];
   }
 

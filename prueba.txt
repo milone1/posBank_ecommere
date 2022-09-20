@@ -1,0 +1,2 @@
+//* revisar bien el codigo hacer un proceso de seguimiento.
+//* 0xff (Color)

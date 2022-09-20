@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
@@ -28,16 +29,16 @@ class _ReusableWidgetState extends State<ReusableWidget> {
                 textColor: Colors.white,
                 fontSize: 14.0,
               )
-            : Navigator.pushNamed(context, 'pay');
+            : Navigator.pushNamed(context, '/credit');
       },
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 5),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               widget.title.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
@@ -45,7 +46,7 @@ class _ReusableWidgetState extends State<ReusableWidget> {
             ),
             Text(
               widget.value.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 48,
                 color: Colors.black87,
               ),

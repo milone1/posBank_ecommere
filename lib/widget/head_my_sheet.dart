@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:posbank_flutter/widget/back_button_ios.dart';
 
 class HeadmySheet extends StatelessWidget {
-  const HeadmySheet({Key? key, required this.name, required this.imgPath})
+  const HeadmySheet(
+    {Key? key, 
+    required this.name, 
+    required this.imgPath})
       : super(key: key);
 
   final String name;
@@ -19,7 +23,12 @@ class HeadmySheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              BackButton(),
+              Container(
+                margin: EdgeInsets.only(
+                  right: 10.0,
+                ),
+                child: BackButtonIos()
+              ),
               Container(
                   width: 220.0,
                   height: 220.0,

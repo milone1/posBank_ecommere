@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
+
 class BuildCard extends StatefulWidget {
   BuildCard(
       {Key? key,
@@ -34,7 +35,7 @@ class _BuildCardState extends State<BuildCard> {
       child: InkWell(
         onTap: () {
           _mySheet(widget.name, widget.price, widget.id, widget.idProduct,
-              widget.category, widget.imgPath, context);
+              widget.category, widget.imgPath, widget.properties, context);
         },
         child: Container(
           decoration: BoxDecoration(
@@ -97,14 +98,14 @@ class _BuildCardState extends State<BuildCard> {
   }
 
   _mySheet(String name, String price, String id, String idProduct,
-      String category, String imgPath, context) {
+      String category, String imgPath, properties, context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(32),
         ),
@@ -116,18 +117,33 @@ class _BuildCardState extends State<BuildCard> {
           child: Center(
             child: Column(
               children: [
-                HeadmySheet(name: name, imgPath: imgPath),
-
-                Properties(),
-
-                AddToCart(
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: HeadmySheet(name: name, imgPath: imgPath),
+                ),
+                SizedBox(
                   width: width,
-                  name: name,
-                  price: price,
-                  id: id,
-                  imgPath: imgPath,
-                  idProduct: idProduct,
-                  category: category,
+                  height: 70,
+                  child: Center(
+                    child: Properties(
+                      properties: properties,
+                    ),
+                  ),
+                ),
+                GridMoreProducts(),
+                Container(
+                  margin: EdgeInsets.only(
+                    top: 15.0,
+                  ),
+                  child: AddToCart(
+                    width: width,
+                    name: name,
+                    price: price,
+                    id: id,
+                    imgPath: imgPath,
+                    idProduct: idProduct,
+                    category: category,
+                  ),
                 ),
               ],
             ),
