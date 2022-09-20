@@ -22,12 +22,8 @@ class _ListCategoryState extends State<ListCategory> {
       child: ListWheelScrollView(
         physics: FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
-          setState(
-            () => {
-              codigoProvider.setCodigo(groups[index]['CodigoGrupo']),
-              codigoProvider.setCategory(groups[index]['Descripcion']),
-            },
-          ),
+          codigoProvider.setCodigo(groups[index]['CodigoGrupo']),
+          codigoProvider.setCategory(groups[index]['Descripcion']),
         },
         useMagnifier: true,
         magnification: 1.5,

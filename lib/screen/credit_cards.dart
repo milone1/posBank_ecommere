@@ -300,11 +300,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         children: [
           InkWell(
             onTap: () {
-              post.methodPost(postPrueba);
+              // post.methodPost(postPrueba);
               _printer("4754 6587 7412 5698", "Oscar Melero",
                   cart.getPriceTotal(), cartList);
               cart.clearCart();
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, 'home');
             },
             child: Container(
               alignment: Alignment.center,
@@ -321,7 +321,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                'Total:      \$${cart.getPriceTotal()}.00',
+                'Total:      \$${cart.getPriceTotal()}',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,

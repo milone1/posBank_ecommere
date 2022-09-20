@@ -3,11 +3,13 @@ import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 
 import 'package:provider/provider.dart';
+
 class ButtonCanal extends StatefulWidget {
   const ButtonCanal({super.key});
   @override
   State<ButtonCanal> createState() => _ButtonCanalState();
 }
+
 class _ButtonCanalState extends State<ButtonCanal> {
   Widget build(BuildContext context) {
     return Row(
@@ -28,10 +30,8 @@ class _ButtonCanalState extends State<ButtonCanal> {
     double width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/products');
-        setState(
-          () => {canal.setStates(value)}
-        );
+        Navigator.pushNamed(context, 'products');
+        canal.setStates(value);
       },
       child: CardsCanal(width: width, img: img, title: title),
     );

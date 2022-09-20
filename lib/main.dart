@@ -35,11 +35,11 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Lato'),
-        initialRoute: '/products',
+        initialRoute: 'products',
         routes: {
-          '/': (context) => SignInScreen(),
-          '/products': (context) => ProductListScreen(),
-          '/credit': (context) => CreditCardsPage(),
+          'home': (context) => SignInScreen(),
+          'products': (context) => ProductListScreen(),
+          'pay': (context) => CreditCardsPage(),
         },
       );
     });
