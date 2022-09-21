@@ -79,11 +79,6 @@ class _ListCategoryState extends State<ListCategory> {
     double height = MediaQuery.of(context).size.height;
     final codigoProvider = Provider.of<ProductsProvider>(context);
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
-        )
-      ),
       width: 170,
       height: height * 0.55,
       child: ListWheelScrollView.useDelegate(

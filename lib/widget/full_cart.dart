@@ -156,13 +156,13 @@ class _FullCartState extends State<FullCart> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: width,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                    ),
-                    child: cart[index]['aggregator'].length == 0 ? Text("Sin Agregadores") : AggregatorList(id : cart[index]['id'], index : index),                  
-                  ),
+                  // Container(
+                  //   width: width * 0.50,
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.red,
+                  //   ),
+                  //   child: cart[index]['aggregator'].length == 0 ? Text("Sin Agregadores") : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),                  
+                  // ),
                 ],
               ),
             ),

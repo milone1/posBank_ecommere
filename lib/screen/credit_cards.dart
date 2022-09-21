@@ -204,49 +204,52 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             HeaderSection(width: width),
             Row(
               children: [
-                Container(
-                  height: height * 0.40,
-                  width: width * 0.23,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black)),
-                  child: Image.asset(
-                    "images/banner.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      decoration:
-                          BoxDecoration(border: Border.all(color: Colors.red)),
-                      width: width * 0.50,
-                      height: height * 0.37,
-                      child: Center(
-                        child: Column(
-                          children: <Widget>[
-                            ResumeOrder(),
-                          ],
+                // Container(
+                //   height: height * 0.40,
+                //   width: width * 0.23,
+                //   decoration:
+                //       BoxDecoration(border: Border.all(color: Colors.black)),
+                //   child: Image.asset(
+                //     "images/banner.jpg",
+                //     fit: BoxFit.cover,
+                //   ),
+                // ),
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                        ),
+                        width: width * 0.90,
+                        height: height * 0.37,
+                        child: Center(
+                          child: Column(
+                            children: <Widget>[
+                              ResumeOrder(),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    _buttonPayToCard()
-                  ],
-                ),
-                Container(
-                  height: height * 0.40,
-                  width: width * 0.23,
-                  decoration:
-                      BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black,
-                        ),
-                      ),
-                  child: Image.asset(
-                    "images/banner.jpg",
-                    fit: BoxFit.cover,
+                      _buttonPayToCard()
+                    ],
                   ),
                 ),
+                // Container(
+                //   height: height * 0.40,
+                //   width: width * 0.23,
+                //   decoration:
+                //       BoxDecoration(
+                //         border: Border.all(
+                //           color: Colors.black,
+                //         ),
+                //       ),
+                //   child: Image.asset(
+                //     "images/banner.jpg",
+                //     fit: BoxFit.cover,
+                //   ),
+                // ),
               ],
             ),
           ],

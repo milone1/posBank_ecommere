@@ -57,12 +57,13 @@ class _BuildCardState extends State<BuildCard> {
                   width: 80,
                   height: 80,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      50.0,
-                    ),
+                    // borderRadius: BorderRadius.circular(
+                    //   50.0,
+                    // ),
                     image: DecorationImage(
                         image: NetworkImage(widget.imgPath),
-                        fit: BoxFit.cover),
+                        fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),

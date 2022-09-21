@@ -19,53 +19,85 @@ class GridMoreProducts extends StatelessWidget {
         'id': 1,
         'title': 'Galletas de Chocolate',
         'price': 12,
-        'images': 'images/galletasChocolate.png'
+        'images': 'images/galletasChocolate.png',
+        'qty': 1,
       },
-      {'id': 2, 'title': 'Maotai', 'price': 12, 'images': 'images/maotai.png'},
-      {'id': 3, 'title': 'Cecina', 'price': 12, 'images': 'images/cecina.png'},
+      {
+        'id': 2, 
+        'title': 'Maotai', 
+        'price': 12, 
+        'images': 'images/maotai.png',
+        'qty': 1,
+      },
+      {
+        'id': 3, 
+        'title': 'Cecina', 
+        'price': 12, 
+        'images': 'images/cecina.png',
+        'qty': 1,
+      },
       {
         'id': 4,
         'title': 'Carne molida',
         'price': 12,
-        'images': 'images/carneMolida.png'
+        'images': 'images/carneMolida.png',
+        'qty': 1,
       },
       {
         'id': 5,
         'title': 'Parrilla de carne',
         'price': 12,
-        'images': 'images/parrillaCarne.png'
+        'images': 'images/parrillaCarne.png',
+        'qty': 1,
       },
-      {'id': 6, 'title': 'Cebolla', 'price': 12, 'images': 'images/onion.png'},
+      {
+        'id': 6, 
+        'title': 'Cebolla', 
+        'price': 12, 
+        'images': 'images/onion.png',
+        'qty': 1,
+      },
       {
         'id': 7,
         'title': 'Croissant',
         'price': 12,
-        'images': 'images/croissant.png'
+        'images': 'images/croissant.png',
+        'qty': 1,
       },
-      {'id': 8, 'title': 'Kebab', 'price': 12, 'images': 'images/kebab.png'},
+      {
+        'id': 8, 
+        'title': 'Kebab', 
+        'price': 12, 
+        'images': 'images/kebab.png',
+        'qty': 1,
+      },
       {
         'id': 9,
         'title': 'Rebanada de Queso',
         'price': 12,
-        'images': 'images/cheese.png'
+        'images': 'images/cheese.png',
+        'qty': 1,
       },
       {
         'id': 10,
         'title': 'Chocolate',
         'price': 12,
-        'images': 'images/chocolate.png'
+        'images': 'images/chocolate.png',
+        'qty': 1,
       },
       {
         'id': 11,
         'title': 'Filete de Res',
         'price': 12,
-        'images': 'images/fileteRes.png'
+        'images': 'images/fileteRes.png',
+        'qty': 1,
       },
       {
         'id': 12,
         'title': 'Champiñones',
         'price': 12,
-        'images': 'images/champiñones.png'
+        'images': 'images/champiñones.png',
+        'qty': 1,
       },
     ];
 
@@ -85,24 +117,24 @@ class GridMoreProducts extends StatelessWidget {
               onTap: () {
                 if (cartList.cartList.where((element) => element['id'] == id ).length == 0) {
                   Fluttertoast.showToast(
-                    msg: "Agregue  productos al carrito",
+                    msg: "Primero agregue el producto!",
                     toastLength: Toast.LENGTH_SHORT,
                     webPosition: "bottom",
                     gravity: ToastGravity.CENTER,
                     timeInSecForIosWeb: 1,
-                    backgroundColor: Colors.yellow,
+                    backgroundColor: Colors.red,
                     textColor: Color.fromARGB(255, 177, 114, 114),
                     fontSize: 14.0,
                   );
                 } else {
                   cartList.setAggregator(moreProducts[index], id);
                   Fluttertoast.showToast(
-                    msg: "Agregar Agregador Correctamente",
+                    msg: "Agregado Correctamente",
                     toastLength: Toast.LENGTH_SHORT,
                     webPosition: "bottom",
                     gravity: ToastGravity.CENTER,
                     timeInSecForIosWeb: 1,
-                    backgroundColor: Colors.orange,
+                    backgroundColor: Colors.green,
                     textColor: Colors.white,
                     fontSize: 14.0,
                   );

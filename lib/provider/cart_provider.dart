@@ -60,4 +60,17 @@ class CartProvider extends ChangeNotifier {
     });
     notifyListeners();
   }
+
+  
+  addOrRemoveAggregator(index, value) {
+    if (value == 'add') {
+      cartList[index]['quantity']++;
+
+      notifyListeners();
+    } else {
+      cartList[index]['quantity']--;
+
+      notifyListeners();
+    }
+  }
 }
