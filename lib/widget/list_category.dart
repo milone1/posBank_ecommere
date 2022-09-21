@@ -142,47 +142,14 @@ class _ListCategoryState extends State<ListCategory> {
                             fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.center,
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
-              );
-            }),
-        // children: <Widget>[
-        //   ...groups.indexedMap(
-        //     (group, index) {
-        //       return Container(
-        //         decoration: BoxDecoration(
-        //           color: Colors.white,
-        //         ),
-        //         child: Padding(
-        //           padding: EdgeInsets.only(bottom: 50, top: 30),
-        //           child: Row(
-        //             children: [
-        //               Image.asset(
-        //                 imgs[index]['img'],
-        //                 width: 50,
-        //                 height: 50,
-        //                 fit: BoxFit.contain,
-        //               ),
-        //               Text(
-        //                 groups[index]['Descripcion'],
-        //                 overflow: TextOverflow.ellipsis,
-        //                 style: TextStyle(
-        //                   fontSize: 10,
-        //                   color: Color(0xFFCC8053),
-        //                   fontWeight: FontWeight.bold,
-        //                 ),
-        //                 textAlign: TextAlign.center,
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //       );
-        //     },
-        //   ),
-        // ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

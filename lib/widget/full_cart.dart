@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/provider.dart';
+import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
 class FullCart extends StatefulWidget {
@@ -18,6 +19,7 @@ class _FullCartState extends State<FullCart> {
     final cart = Provider.of<CartProvider>(context).cartList;
     final counter = Provider.of<CartProvider>(context);
     final cartFunctions = Provider.of<CartProvider>(context);
+    double width = MediaQuery.of(context).size.width;
     return Expanded(
       child: ListView.builder(
         itemCount: cart.length,
@@ -70,6 +72,7 @@ class _FullCartState extends State<FullCart> {
                         SizedBox(
                           width: 200,
                           child: Text(
+                            maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             cart[index]['productName'].toString().toUpperCase(),
                             style: TextStyle(
@@ -154,13 +157,11 @@ class _FullCartState extends State<FullCart> {
                     ),
                   ),
                   Container(
-                    width: 100,
+                    width: width,
                     decoration: BoxDecoration(
                       color: Colors.red,
                     ),
-                    child: Text(
-                      "AGREGADORES",
-                    ),
+                    child: cart[index]['aggregator'].length == 0 ? Text("Sin Agregadores") : AggregatorList(id : cart[index]['id'], index : index),                  
                   ),
                 ],
               ),

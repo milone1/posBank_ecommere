@@ -1,3 +1,4 @@
+export 'package:posbank_flutter/widget/aggregator_list.dart';
 export 'package:posbank_flutter/widget/grid_more_products.dart';
 export 'package:posbank_flutter/widget/properties.dart';
 export 'package:posbank_flutter/widget/back_button_ios.dart';
