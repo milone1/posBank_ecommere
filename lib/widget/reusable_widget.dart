@@ -29,7 +29,7 @@ class _ReusableWidgetState extends State<ReusableWidget> {
                 textColor: Colors.white,
                 fontSize: 14.0,
               )
-            : Navigator.pushNamed(context, '/credit');
+            : Navigator.pushNamed(context, 'pay');
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),

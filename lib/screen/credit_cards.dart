@@ -202,21 +202,48 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cardHolder: "Oscar Melero",
                 cardNumber: "4754 6587 7412 5698"),
             HeaderSection(width: width),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Row(
               children: [
-                SizedBox(
-                  width: width * 0.50,
-                  height: height * 0.37,
-                  child: Center(
-                    child: Column(
-                      children: <Widget>[
-                        ResumeOrder(),
-                      ],
+                Expanded(
+                  child: Container(
+                    height: height * 0.37,
+
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black)),
+                    child: Expanded(
+                      child: Text("IMAGEN"),
                     ),
                   ),
                 ),
-                _buttonPayToCard()
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration:
+                          BoxDecoration(border: Border.all(color: Colors.red)),
+                      width: width * 0.50,
+                      height: height * 0.37,
+                      child: Center(
+                        child: Column(
+                          children: <Widget>[
+                            ResumeOrder(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    _buttonPayToCard()
+                  ],
+                ),
+                Expanded(
+                  child: Container(
+                    height: height * 0.37,
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black)),
+                    child: Expanded(
+                      child: Text("IMAGEN"),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
@@ -300,7 +327,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         children: [
           InkWell(
             onTap: () {
-              // post.methodPost(postPrueba);
+              post.methodPost(postPrueba);
               _printer("4754 6587 7412 5698", "Oscar Melero",
                   cart.getPriceTotal(), cartList);
               cart.clearCart();
@@ -310,7 +337,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               alignment: Alignment.center,
               height: 50,
               decoration: BoxDecoration(
-                color:  Color(0xFF2DA1F4),
+                color: Color(0xFF2DA1F4),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey.withOpacity(.8),
@@ -346,9 +373,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
   }) {
     return Spin(
       child: InkWell(
-        onTap: () {
-
-        },
+        onTap: () {},
         child: Card(
           elevation: 4.0,
           color: color,
@@ -357,8 +382,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
           ),
           child: Container(
             height: (height < 1000 ? 200 : 300),
-            padding: EdgeInsets.only(
-                left: 16.0, right: 16.0, bottom: 22.0, top: 5),
+            padding:
+                EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0, top: 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
