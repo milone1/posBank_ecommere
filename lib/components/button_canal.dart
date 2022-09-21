@@ -20,7 +20,8 @@ class _ButtonCanalState extends State<ButtonCanal> {
           width: 20.0,
         ),
         _gestureDetector(
-            "Para Llevar", "ParaLlevar", "images/bug.png", context),
+            "Para Llevar", "ParaLlevar", "images/bug.png", context
+        ),
       ],
     );
   }

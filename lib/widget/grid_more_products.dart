@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:posbank_flutter/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class GridMoreProducts extends StatelessWidget {
+  const GridMoreProducts({Key? key, required this.id}) : super(key: key);
+
+  final String id;
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final cartList = Provider.of<CartProvider>(context);
 
-    List<dynamic> moreProducts = [
+    List moreProducts = [
       {
         'id': 1,
         'title': 'Galletas de Chocolate',
@@ -75,14 +83,33 @@ class GridMoreProducts extends StatelessWidget {
             padding: EdgeInsets.all(1.0),
             child: InkWell(
               onTap: () {
-
+                if (cartList.cartList.where((element) => element['id'] == id ).length == 0) {
+                  Fluttertoast.showToast(
+                    msg: "Agregue  productos al carrito",
+                    toastLength: Toast.LENGTH_SHORT,
+                    webPosition: "bottom",
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.yellow,
+                    textColor: Color.fromARGB(255, 177, 114, 114),
+                    fontSize: 14.0,
+                  );
+                } else {
+                  cartList.setAggregator(moreProducts[index], id);
+                  Fluttertoast.showToast(
+                    msg: "Agregar Agregador Correctamente",
+                    toastLength: Toast.LENGTH_SHORT,
+                    webPosition: "bottom",
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.orange,
+                    textColor: Colors.white,
+                    fontSize: 14.0,
+                  );
+                }
               },
               child: Container(
-                margin: EdgeInsets.only(
-                  right: 10.0,
-                  top: 7.0,
-                  bottom: 7.0
-                ),
+                margin: EdgeInsets.only(right: 10.0, top: 7.0, bottom: 7.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   boxShadow: [

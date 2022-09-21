@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -32,10 +33,10 @@ class _FullCartState extends State<FullCart> {
                       borderRadius: BorderRadius.circular(15.0),
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey.withOpacity(0.4),
-                            spreadRadius: 6,
-                            blurRadius: 8,
-                          ),
+                          color: Colors.grey.withOpacity(0.4),
+                          spreadRadius: 6,
+                          blurRadius: 8,
+                        ),
                       ],
                       color: Colors.white,
                     ),
@@ -72,14 +73,14 @@ class _FullCartState extends State<FullCart> {
                             overflow: TextOverflow.ellipsis,
                             cart[index]['productName'].toString().toUpperCase(),
                             style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xFFCC8053),
-                                fontWeight: FontWeight.bold,
-                              ),
+                              fontSize: 20,
+                              color: Color(0xFFCC8053),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         Text(
-                          '\$${  cart[index]['productPrice']}',
+                          '\$${cart[index]['productPrice']}',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -130,20 +131,19 @@ class _FullCartState extends State<FullCart> {
                             ),
                           ),
                         ),
-                        // ignore: avoid_unnecessary_containers
                         InkWell(
                           onTap: () {
-                            // Fluttertoast.showToast(
-                            //     msg: "Eliminado Correctamente",
-                            //     toastLength: Toast.LENGTH_SHORT,
-                            //     webPosition: "bottom",
-                            //     gravity: ToastGravity.CENTER,
-                            //     timeInSecForIosWeb: 1,
-                            //     backgroundColor: Colors.red,
-                            //     textColor: Colors.white,
-                            //     fontSize: 14.0);  
                             cartFunctions
                                 .deleteElement(cart[index]['id'].toString());
+                            Fluttertoast.showToast(
+                                msg: "Eliminado Correctamente",
+                                toastLength: Toast.LENGTH_SHORT,
+                                webPosition: "bottom",
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 14.0);
                           },
                           child: Icon(
                             Icons.delete,
@@ -152,7 +152,16 @@ class _FullCartState extends State<FullCart> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Container(
+                    width: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                    ),
+                    child: Text(
+                      "AGREGADORES",
+                    ),
+                  ),
                 ],
               ),
             ),

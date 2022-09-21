@@ -57,18 +57,21 @@ class _BuildCardState extends State<BuildCard> {
                   width: 80,
                   height: 80,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
+                    borderRadius: BorderRadius.circular(
+                      50.0,
+                    ),
                     image: DecorationImage(
                         image: NetworkImage(widget.imgPath),
-                        fit: BoxFit.contain),
+                        fit: BoxFit.cover),
                   ),
                 ),
               ),
               Text(
                 widget.name.toUpperCase(),
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 10,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFFCC8053),
                 ),
@@ -130,7 +133,7 @@ class _BuildCardState extends State<BuildCard> {
                     ),
                   ),
                 ),
-                GridMoreProducts(),
+                GridMoreProducts(id: id),
                 Container(
                   margin: EdgeInsets.only(
                     top: 15.0,

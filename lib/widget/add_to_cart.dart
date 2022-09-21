@@ -80,6 +80,7 @@ class AddToCart extends StatelessWidget {
                 'unitTag': id,
                 'image': imgPath,
                 'category': category,
+                'aggregator': [],
               });
               Fluttertoast.showToast(
                 msg: "Agregado Correctamente",

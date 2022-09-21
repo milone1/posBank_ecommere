@@ -12,7 +12,7 @@ class ProductsProvider with ChangeNotifier {
   List<dynamic> products = [];
   List groups = [];
   String codigoGroup = "";
-  String category = "CARTA";
+  String category = "Cocina";
 
   setCategory(String categorySelected) {
     category = categorySelected;

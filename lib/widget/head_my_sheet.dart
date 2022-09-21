@@ -20,7 +20,7 @@ class HeadmySheet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
@@ -51,7 +51,7 @@ class HeadmySheet extends StatelessWidget {
               SizedBox(
                 width: width * 0.50,
                 child: Text(
-                  name,
+                  name.toUpperCase(),
                   maxLines: 3,
                   style: TextStyle(
                     fontSize: 30,

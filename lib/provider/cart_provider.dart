@@ -4,7 +4,7 @@ class CartProvider extends ChangeNotifier {
   List cartList = [];
   final double _totalPrice = 0.0;
   double get totalPrice => _totalPrice;
-  
+
   setCartList(Map<String, dynamic> producto) {
     cartList.add(producto);
     notifyListeners();
@@ -28,7 +28,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
     return cartList[index]['productPrice'];
   }
-  
+
   getPriceTotal() {
     Map result = cartList.fold({"productPrice": 0}, (preMap, map) {
       return {"productPrice": (preMap["productPrice"]) + (map["productPrice"])};
@@ -48,5 +48,17 @@ class CartProvider extends ChangeNotifier {
     cartList = [];
     notifyListeners();
     return cartList;
+  }
+
+  setAggregator(Map<String, dynamic> aggregator, id) {
+    print(aggregator);
+    cartList.forEach((element) {
+      if (element['id'] == id) {
+        element['aggregator'].add(aggregator);
+      }
+      notifyListeners();
+    });
+    print(cartList);
+    notifyListeners();
   }
 }

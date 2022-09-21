@@ -204,15 +204,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
             HeaderSection(width: width),
             Row(
               children: [
-                Expanded(
-                  child: Container(
-                    height: height * 0.37,
-
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.black)),
-                    child: Expanded(
-                      child: Text("IMAGEN"),
-                    ),
+                Container(
+                  height: height * 0.40,
+                  width: width * 0.23,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
+                  child: Image.asset(
+                    "images/banner.jpg",
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Column(
@@ -234,14 +233,18 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     _buttonPayToCard()
                   ],
                 ),
-                Expanded(
-                  child: Container(
-                    height: height * 0.37,
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.black)),
-                    child: Expanded(
-                      child: Text("IMAGEN"),
-                    ),
+                Container(
+                  height: height * 0.40,
+                  width: width * 0.23,
+                  decoration:
+                      BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                      ),
+                  child: Image.asset(
+                    "images/banner.jpg",
+                    fit: BoxFit.cover,
                   ),
                 ),
               ],
