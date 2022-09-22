@@ -3,7 +3,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
-import 'package:posbank_flutter/widget/widgets.dart';
 
 class BuildCard extends StatefulWidget {
   BuildCard(
@@ -116,8 +115,9 @@ class _BuildCardState extends State<BuildCard> {
                     child: Text(
                       '\$ ' + widget.price,
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.black54,
                         fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),

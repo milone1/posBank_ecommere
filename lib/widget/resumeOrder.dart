@@ -37,7 +37,7 @@ class ResumeOrder extends StatelessWidget {
                   ],
                 ),
                 subtitle: Text(
-                  '\$${cart[index]['productPrice']}',
+                  '\$${cart[index]['productPrice'].toStringAsFixed(2)}',
 
                   textAlign: TextAlign.end,
                 ),

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/widget/back_button_ios.dart';
+// import 'package:posbank_flutter/widget/back_button_ios.dart';
 
 class HeadmySheet extends StatelessWidget {
   const HeadmySheet(
@@ -35,6 +35,7 @@ class HeadmySheet extends StatelessWidget {
                       image: DecorationImage(
                           fit: BoxFit.fill,
                           image: CachedNetworkImageProvider(
+                            scale: 1.0,
                             imgPath,
                     ),
                   ),

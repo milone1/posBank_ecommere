@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
-import 'package:posbank_flutter/widget/widgets.dart';
+// import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
 class FullCart extends StatefulWidget {
@@ -21,7 +21,6 @@ class _FullCartState extends State<FullCart> {
     final cart = Provider.of<CartProvider>(context).cartList;
     final counter = Provider.of<CartProvider>(context);
     final cartFunctions = Provider.of<CartProvider>(context);
-    double width = MediaQuery.of(context).size.width;
     return Expanded(
       child: ListView.builder(
         itemCount: cart.length,

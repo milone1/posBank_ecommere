@@ -29,7 +29,7 @@ class ButtonPay extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
-        'Total:      \$${cart.getPriceTotal()}',
+        'Total:      \$${cart.getPriceTotal().toStringAsFixed(2)}',
         style: TextStyle(
           color: Colors.white,
           fontSize: 24,

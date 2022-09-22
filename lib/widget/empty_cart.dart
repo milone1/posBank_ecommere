@@ -7,26 +7,31 @@ class EmptyCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Column(
-        children: <Widget>[
-          Image(
-            color: Colors.black87,
-            fit: BoxFit.contain,
-            width: 500,
-            height: 160,
-            image: AssetImage('images/empty_cart.png'),
-          ),
-          Text(
-            'El carrito esta vacío',
-            style: TextStyle(
-              color: Color(0xffFF9933),
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.green, 
+      ),
+      child: Align(
+        alignment: Alignment.center,
+        child: Column(
+          children: <Widget>[
+            Image(
+              color: Colors.black87,
+              fit: BoxFit.contain,
+              width: 500,
+              height: 160,
+              image: AssetImage('images/empty_cart.png'),
             ),
-          ),
-        ],
+            Text(
+              'El carrito esta vacío',
+              style: TextStyle(
+                color: Color(0xffFF9933),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

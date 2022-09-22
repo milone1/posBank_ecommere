@@ -21,8 +21,8 @@ class _ProductsState extends State<Products> {
     final products =
         Provider.of<ProductsProvider>(context).products;
 
-    final functions =
-        Provider.of<ProductsProvider>(context);
+    // final functions =
+    //     Provider.of<ProductsProvider>(context);
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
