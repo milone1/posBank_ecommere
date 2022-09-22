@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/provider.dart';
-import 'package:posbank_flutter/widget/widgets.dart';
+import 'package:posbank_flutter/widget/my_sheet.dart';
 import 'package:provider/provider.dart';
 
 class FullCart extends StatefulWidget {
@@ -151,6 +151,25 @@ class _FullCartState extends State<FullCart> {
                           child: Icon(
                             Icons.delete,
                             color: Colors.red,
+                            size: 35.0,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            mySheet(
+                                cart[index]['productName'].toString(),
+                                cart[index]['price'].toString(),
+                                cart[index]['id'].toString(),
+                                cart[index]['idProduct'].toString(),
+                                cart[index]['category'].toString(),
+                                cart[index]['image'].toString(),
+                                cart[index]['properties'] ?? [],
+                                context);
+                          },
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.green,
+                            size: 35.0,
                           ),
                         ),
                       ],
@@ -161,7 +180,7 @@ class _FullCartState extends State<FullCart> {
                   //   decoration: BoxDecoration(
                   //     color: Colors.red,
                   //   ),
-                  //   child: cart[index]['aggregator'].length == 0 ? Text("Sin Agregadores") : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),                  
+                  //   child: cart[index]['aggregator'].length == 0 ? Text("Sin Agregadores") : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),
                   // ),
                 ],
               ),

@@ -1,3 +1,7 @@
+export 'package:posbank_flutter/widget/price_card_more_products.dart';
+export 'package:posbank_flutter/widget/grid_more_products.dart';
+export 'package:posbank_flutter/widget/image_card_more_products.dart';
+export 'package:posbank_flutter/widget/title_card_more_products.dart';
 export 'package:posbank_flutter/widget/aggregator_list.dart';
 export 'package:posbank_flutter/widget/grid_more_products.dart';
 export 'package:posbank_flutter/widget/properties.dart';

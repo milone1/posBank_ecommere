@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
+import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
 class GridMoreProducts extends StatelessWidget {
@@ -23,16 +24,16 @@ class GridMoreProducts extends StatelessWidget {
         'qty': 1,
       },
       {
-        'id': 2, 
-        'title': 'Maotai', 
-        'price': 12, 
+        'id': 2,
+        'title': 'Maotai',
+        'price': 12,
         'images': 'images/maotai.png',
         'qty': 1,
       },
       {
-        'id': 3, 
-        'title': 'Cecina', 
-        'price': 12, 
+        'id': 3,
+        'title': 'Cecina',
+        'price': 12,
         'images': 'images/cecina.png',
         'qty': 1,
       },
@@ -51,9 +52,9 @@ class GridMoreProducts extends StatelessWidget {
         'qty': 1,
       },
       {
-        'id': 6, 
-        'title': 'Cebolla', 
-        'price': 12, 
+        'id': 6,
+        'title': 'Cebolla',
+        'price': 12,
         'images': 'images/onion.png',
         'qty': 1,
       },
@@ -65,9 +66,9 @@ class GridMoreProducts extends StatelessWidget {
         'qty': 1,
       },
       {
-        'id': 8, 
-        'title': 'Kebab', 
-        'price': 12, 
+        'id': 8,
+        'title': 'Kebab',
+        'price': 12,
         'images': 'images/kebab.png',
         'qty': 1,
       },
@@ -115,7 +116,10 @@ class GridMoreProducts extends StatelessWidget {
             padding: EdgeInsets.all(1.0),
             child: InkWell(
               onTap: () {
-                if (cartList.cartList.where((element) => element['id'] == id ).length == 0) {
+                if (cartList.cartList
+                        .where((element) => element['id'] == id)
+                        .length ==
+                    0) {
                   Fluttertoast.showToast(
                     msg: "Primero agregue el producto!",
                     toastLength: Toast.LENGTH_SHORT,
@@ -155,39 +159,25 @@ class GridMoreProducts extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Hero(
-                      tag: moreProducts[index]['id'].toString(),
-                      child: Image.asset(
-                        moreProducts[index]['images'],
-                        width: 120,
-                        height: 120,
-                      ),
+                    ImageCardMoreProducts(
+                      moreProducts: moreProducts,
+                      index: index,
                     ),
-                    Text(
-                      moreProducts[index]['title'],
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFCC8053),
-                      ),
+                    TitleCardMoreProducts(
+                      moreProducts: moreProducts,
+                      index: index,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 6,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Text(
-                          '\$ ' + moreProducts[index]['price'].toString(),
-                          style: TextStyle(
-                            color: Color(0xFF575E67),
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
+                    PriceCardMoreProducts(
+                      moreProducts: moreProducts,
+                      index: index,
+                    ),
+                    PriceCardMoreProducts(
+                      moreProducts: moreProducts,
+                      index: index,
+                    ),
+                    PriceCardMoreProducts(
+                      moreProducts: moreProducts,
+                      index: index,
                     ),
                   ],
                 ),
