@@ -11,7 +11,7 @@ class ProductsProvider with ChangeNotifier {
   String baseURL = 'http://192.168.3.228:81/api/';
   List<dynamic> products = [];
   List groups = [];
-  String codigoGroup = "";
+  String codigoGroup = "01";
   String category = "Cocina";
 
   setCategory(String categorySelected) {

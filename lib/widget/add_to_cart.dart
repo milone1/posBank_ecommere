@@ -41,7 +41,7 @@ class AddToCart extends StatelessWidget {
             blurRadius: 7,
           ),
         ],
-        color: Colors.blue,
+        color: Color(0xff0099DD),
       ),
       child: Center(
         child: InkWell(
@@ -107,9 +107,12 @@ class AddToCart extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Text(
-            "+ AGREGAR AL CARRITO",
+            "+  agregar al carrito".toUpperCase(),
             style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                color: Colors.white, 
+                fontSize: 20, 
+                fontWeight: FontWeight.bold,
+              ),
             textAlign: TextAlign.center,
           ),
         ),

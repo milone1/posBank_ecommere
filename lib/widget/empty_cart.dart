@@ -12,6 +12,7 @@ class EmptyCart extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image(
+            color: Colors.black87,
             fit: BoxFit.contain,
             width: 500,
             height: 160,
@@ -20,6 +21,7 @@ class EmptyCart extends StatelessWidget {
           Text(
             'El carrito esta vacío',
             style: TextStyle(
+              color: Color(0xffFF9933),
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),

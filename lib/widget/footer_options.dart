@@ -41,7 +41,7 @@ class _FooterOptionsState extends State<FooterOptions> {
                   : widget.width * 0.70,
               height: 70.0,
               decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Color(0xff0099DD),
                   borderRadius: BorderRadius.circular(15.0),
                   boxShadow: [
                     BoxShadow(

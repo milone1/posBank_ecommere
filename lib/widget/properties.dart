@@ -20,7 +20,7 @@ class _PropertiesState extends State<Properties> {
             listOfChipNames: widget.properties
                 .map((e) => e['Descripcion'] as String)
                 .toList(),
-            activeBgColorList: [Theme.of(context).primaryColor],
+            activeBgColorList: [Color(0xff0099DD)],
             inactiveBgColorList: [Colors.white],
             activeTextColorList: [Colors.white],
             inactiveTextColorList: [Theme.of(context).primaryColor],

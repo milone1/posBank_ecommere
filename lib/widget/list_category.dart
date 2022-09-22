@@ -77,18 +77,20 @@ class _ListCategoryState extends State<ListCategory> {
   Widget build(BuildContext context) {
     final groups = Provider.of<ProductsProvider>(context).groups;
     double height = MediaQuery.of(context).size.height;
-    final codigoProvider = Provider.of<ProductsProvider>(context);
+    final codecs = Provider.of<ProductsProvider>(context);
+    final category = Provider.of<ProductsProvider>(context).category;
+
     return Container(
       width: 170,
       height: height * 0.55,
       child: ListWheelScrollView.useDelegate(
         physics: FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
-          codigoProvider.setCodigo(groups[index]['CodigoGrupo']),
-          codigoProvider.setCategory(groups[index]['Descripcion']),
+          codecs.setCodigo(groups[index]['CodigoGrupo']),
+          codecs.setCategory(groups[index]['Descripcion']),
         },
         itemExtent: 70,
-        perspective: 0.004,
+        perspective: 0.001,
         magnification: 1.1,
         useMagnifier: true,
         childDelegate: ListWheelChildBuilderDelegate(
@@ -110,7 +112,7 @@ class _ListCategoryState extends State<ListCategory> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
-                      color: Colors.white,
+                      color: category == groups[index]['Descripcion'] ? Color(0xffA1C7E0) : Color(0xffF2F2F2),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.4),

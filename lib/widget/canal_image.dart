@@ -18,7 +18,7 @@ class CanalImage extends StatelessWidget {
       
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50.0),
-          boxShadow: [
+          boxShadow: [  
             BoxShadow(
                 color: Colors.grey.withOpacity(.8),
                 blurRadius: 10.0,

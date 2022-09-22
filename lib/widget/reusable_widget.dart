@@ -48,7 +48,7 @@ class _ReusableWidgetState extends State<ReusableWidget> {
               widget.value.toString(),
               style: const TextStyle(
                 fontSize: 48,
-                color: Colors.black87,
+                color: Color(0xff394C5D),
               ),
             )
           ],

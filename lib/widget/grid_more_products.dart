@@ -113,7 +113,11 @@ class GridMoreProducts extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.all(1.0),
+            padding: EdgeInsets.only(
+              top: 10,
+              bottom: 10,
+              right: 15,
+            ),
             child: InkWell(
               onTap: () {
                 if (cartList.cartList
@@ -164,14 +168,6 @@ class GridMoreProducts extends StatelessWidget {
                       index: index,
                     ),
                     TitleCardMoreProducts(
-                      moreProducts: moreProducts,
-                      index: index,
-                    ),
-                    PriceCardMoreProducts(
-                      moreProducts: moreProducts,
-                      index: index,
-                    ),
-                    PriceCardMoreProducts(
                       moreProducts: moreProducts,
                       index: index,
                     ),

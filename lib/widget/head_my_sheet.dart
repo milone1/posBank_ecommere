@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/back_button_ios.dart';
 
@@ -14,6 +15,7 @@ class HeadmySheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    print(imgPath);
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -33,10 +35,12 @@ class HeadmySheet extends StatelessWidget {
                   width: 220.0,
                   height: 220.0,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                    borderRadius: BorderRadius.circular(
+                      15.0
+                    ),
                       image: DecorationImage(
                           fit: BoxFit.fill,
-                          image: NetworkImage(
+                          image: CachedNetworkImageProvider(
                             imgPath,
                     ),
                   ),

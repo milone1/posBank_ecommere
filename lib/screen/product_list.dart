@@ -31,7 +31,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
-                  color: Color(0xFFCC8053),
+                  color: Color(0xffFF9933),
                   fontWeight: FontWeight.bold,
                 ),
               ),
