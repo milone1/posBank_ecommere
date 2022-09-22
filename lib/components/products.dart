@@ -19,7 +19,10 @@ class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
     final products =
-        Provider.of<ProductsProvider>(context, listen: false).products;
+        Provider.of<ProductsProvider>(context).products;
+
+    final functions =
+        Provider.of<ProductsProvider>(context);
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -34,6 +37,7 @@ class _ProductsState extends State<Products> {
             maxWidth: 350,
             child: BounceInLeft(
               duration: Duration(seconds: 2),
+              // child: ListCategory(onReload: () => functions.getGroup() ),
               child: ListCategory(),
             ),
           ),
@@ -55,12 +59,12 @@ class _ProductsState extends State<Products> {
                     itemCount: products.length,
                     scrollDirection: Axis.horizontal,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: width > 700 ? 5 : 4,
+                      crossAxisCount: 4,
                     ),
                     itemBuilder: (context, index) {
                       return BuildCard(
                         name: products[index]['Descripcion'].toString(),
-                        price: products[index]['PrecioVenta'].toString(),
+                        price: products[index]['PrecioVenta'].toStringAsFixed(2).toString(),
                         id: products[index]['Codigo'].toString(),
                         idProduct: products[index]['Codigo'].toString(),
                         category: products[index]['Grupo'].toString(),

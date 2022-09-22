@@ -203,6 +203,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 cardNumber: "4754 6587 7412 5698"),
             HeaderSection(width: width),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Container(
                 //   height: height * 0.40,
@@ -221,6 +222,9 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
+                          border: Border.all(
+                            color: Colors.yellow
+                          )
                         ),
                         width: width * 0.90,
                         height: height * 0.37,
@@ -339,30 +343,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
               cart.clearCart();
               Navigator.pushNamed(context, 'home');
             },
-            child: Container(
-              alignment: Alignment.center,
-              height: 50,
-              decoration: BoxDecoration(
-                color: Color(0xFF2DA1F4),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.withOpacity(.8),
-                      blurRadius: 10.0,
-                      spreadRadius: 0.5,
-                      offset: Offset(5.0, 5.0)),
-                ],
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                'Total:      \$${cart.getPriceTotal()}',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
+            child: ButtonPay(cart: cart),
           ),
         ],
       ),

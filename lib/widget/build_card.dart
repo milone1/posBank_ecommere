@@ -66,8 +66,8 @@ class _BuildCardState extends State<BuildCard> {
                       top: 5,
                       bottom: 5,
                     ),
-                    width: 120,
-                    height: 80,
+                    width: 150,
+                    height: 110,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15.0),
@@ -77,6 +77,7 @@ class _BuildCardState extends State<BuildCard> {
                       ),
                       image: DecorationImage(
                         image: CachedNetworkImageProvider(
+                          scale: 1.0,
                           cacheKey: widget.id.toString(),
                           widget.imgPath,
                         ),
@@ -115,7 +116,7 @@ class _BuildCardState extends State<BuildCard> {
                     child: Text(
                       '\$ ' + widget.price,
                       style: TextStyle(
-                        color: Color(0xFF575E67),
+                        color: Colors.black,
                         fontSize: 15,
                       ),
                     ),

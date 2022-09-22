@@ -25,17 +25,17 @@ class _ProductListScreenState extends State<ProductListScreen> {
         child: Column(
           children: [
             ListCarrousel(),
-            Center(
-              child: Text(
-                category.toString().toUpperCase(),
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Color(0xffFF9933),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            // Center(
+            //   child: Text(
+            //     category.toString().toUpperCase(),
+            //     textAlign: TextAlign.center,
+            //     style: TextStyle(
+            //       fontSize: 25,
+            //       color: Color(0xffFF9933),
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
             Products(),
             Expanded(
               child: Container(

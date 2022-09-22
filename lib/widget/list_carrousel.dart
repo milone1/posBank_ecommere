@@ -13,7 +13,7 @@ class ListCarrousel extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     Provider.of<CartProvider>(context);
     return SizedBox(
-      width: width * 0.75,
+      width: width * 0.95,
       height: height * 0.20,
       child: ListView(
         children: <Widget>[
@@ -101,6 +101,48 @@ class ListCarrousel extends StatelessWidget {
                   image: DecorationImage(
                     image: AssetImage(
                       "images/4.jpg"
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15)
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black38,
+                      offset: Offset(2.0,2.0),
+                      blurRadius: 3.0,
+                      spreadRadius: 2.0
+                    )
+                  ],
+                  image: DecorationImage(
+                    image: AssetImage(
+                      "images/5.jpg"
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15)
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black38,
+                      offset: Offset(2.0,2.0),
+                      blurRadius: 3.0,
+                      spreadRadius: 2.0
+                    )
+                  ],
+                  image: DecorationImage(
+                    image: AssetImage(
+                      "images/6.jpg"
                     ),
                     fit: BoxFit.cover,
                   ),

@@ -1,9 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
+import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
 class FullCart extends StatefulWidget {
@@ -60,9 +62,9 @@ class _FullCartState extends State<FullCart> {
                             width: 60,
                             height: 60,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100.0),
+                              borderRadius: BorderRadius.circular(15.0),
                               image: DecorationImage(
-                                  image: NetworkImage(
+                                  image: CachedNetworkImageProvider(
                                     cart[index]['image'],
                                   ),
                                   fit: BoxFit.contain),
@@ -83,7 +85,7 @@ class _FullCartState extends State<FullCart> {
                           ),
                         ),
                         Text(
-                          '\$${cart[index]['productPrice']}',
+                          '\$${cart[index]['productPrice'].toStringAsFixed(2)}',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

@@ -5,7 +5,11 @@ import 'package:posbank_flutter/provider/products_provider.dart';
 import 'package:provider/provider.dart';
 
 class ListCategory extends StatefulWidget {
-  const ListCategory({Key? key}) : super(key: key);
+  // final Function onReload;
+
+  const ListCategory({Key? key, 
+  // required this.onReload
+  }) : super(key: key);
   @override
   State<ListCategory> createState() => _ListCategoryState();
 }
@@ -73,6 +77,25 @@ extension IndexedIterable<E> on Iterable<E> {
 }
 
 class _ListCategoryState extends State<ListCategory> {
+  // final ScrollController scrollController = FixedExtentScrollController();
+  //* max sieze 840
+  @override
+  void initState() {
+    super.initState();
+    // scrollController.addListener(() {
+    //   if (scrollController.position.pixels == 840) {
+    //     widget.onReload();
+    //   }
+    //   print(scrollController.position.maxScrollExtent);
+    //   print(scrollController.position.pixels);
+    // });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final groups = Provider.of<ProductsProvider>(context).groups;
@@ -84,6 +107,7 @@ class _ListCategoryState extends State<ListCategory> {
       width: 170,
       height: height * 0.55,
       child: ListWheelScrollView.useDelegate(
+        // controller: scrollController,
         physics: FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
           codecs.setCodigo(groups[index]['CodigoGrupo']),
@@ -94,51 +118,53 @@ class _ListCategoryState extends State<ListCategory> {
         magnification: 1.1,
         useMagnifier: true,
         childDelegate: ListWheelChildBuilderDelegate(
-            childCount: groups.length,
-            builder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                  top: 0,
-                  bottom: 10,
-                  right: 5,
-                  left: 5,
-                ),
-                padding: EdgeInsets.only(
-                  top: 0,
-                  bottom: 10,
-                  right: 5,
-                  left: 5,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.0),
-                      color: category == groups[index]['Descripcion'] ? Color(0xffA1C7E0) : Color(0xffF2F2F2),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.4),
-                          spreadRadius: 5,
-                          blurRadius: 7,
+          childCount: groups.length,
+          builder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(
+                top: 0,
+                bottom: 10,
+                right: 5,
+                left: 5,
+              ),
+              padding: EdgeInsets.only(
+                top: 0,
+                bottom: 10,
+                right: 5,
+                left: 5,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: category == groups[index]['Descripcion']
+                        ? Color(0xffA1C7E0)
+                        : Color(0xffF2F2F2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.4),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                      ),
+                    ]),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        images[index]['img'],
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.contain,
+                      ),
+                      Text(
+                        groups[index]['Descripcion'],
+                        style: TextStyle(
+                          color: Color(0xFFCC8053),
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ]),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          images[index]['img'],
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.contain,
-                        ),
-                        Text(
-                          groups[index]['Descripcion'],
-                          style: TextStyle(
-                            color: Color(0xFFCC8053),
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
+                        textAlign: TextAlign.center,
                       )
                     ],
                   ),

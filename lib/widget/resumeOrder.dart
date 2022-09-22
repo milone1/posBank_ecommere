@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/provider.dart';
+import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ResumeOrder extends StatelessWidget {
@@ -8,6 +9,8 @@ class ResumeOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context).cartList;
+    double width = MediaQuery.of(context).size.width;
+
     return Expanded(
       child: ListView.builder(
         itemCount: cart.length,
@@ -39,7 +42,10 @@ class ResumeOrder extends StatelessWidget {
                   textAlign: TextAlign.end,
                 ),
                 children: [
-                  Text("ESPECIFICACIONES"),
+                  Container(
+                    width: width * 0.50,
+                    child: cart[index]['aggregator'].length == 0 ? Text("Sin Agregadores") : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),
+                  ),
                 ],
               ),
             )

@@ -26,13 +26,7 @@ class HeadmySheet extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(
-                  right: 10.0,
-                ),
-                child: BackButtonIos()
-              ),
-              Container(
-                  width: 220.0,
+                  width: 250.0,
                   height: 220.0,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(

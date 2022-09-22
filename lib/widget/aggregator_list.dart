@@ -27,6 +27,7 @@ class AggregatorList extends StatelessWidget {
         itemCount: aggregators[indexProduct]['aggregator'].length,
         itemBuilder: (context, index) {
           return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                 aggregators[indexProduct]['aggregator'][index]['images'],
@@ -76,10 +77,12 @@ class AggregatorList extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  
+                },
                 child: Icon(
                   Icons.delete,
-                  color: Colors.black,
+                  color: Colors.red,
                 ),
               ),
             ],
