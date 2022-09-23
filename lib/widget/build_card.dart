@@ -1,6 +1,8 @@
 // ignore_for_file: must_be_immutable
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
+import 'package:posbank_flutter/widget/widgets.dart';
 
 class BuildCard extends StatefulWidget {
   BuildCard(
@@ -73,8 +75,10 @@ class _BuildCardState extends State<BuildCard> {
                         bottomRight: Radius.circular(15.0),
                       ),
                       image: DecorationImage(
-                        image: NetworkImage(
+                        image: CachedNetworkImageProvider(
+                          errorListener: () => CircularCharger(),
                           scale:1,
+                          widget.imgPath.isEmpty ?  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSPBdCYi2v2gXSJfvkxRbNbJPTULS9PG8dJw&usqp=CAU' : 
                           widget.imgPath,
                         ),
                         fit: BoxFit.fill,

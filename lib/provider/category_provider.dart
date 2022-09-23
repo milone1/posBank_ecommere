@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CategoryProvider with ChangeNotifier{
-  String codigoGroup = "";
+  String codigoGroup = '';
   String category = "Todos";
 
   setCategory(String categorySelected) {

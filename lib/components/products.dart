@@ -49,7 +49,7 @@ class _ProductsState extends State<Products> {
                   height: height * 0.55,
                   child: GridView.builder(
                     physics: BouncingScrollPhysics(),
-                    itemCount: products
+                    itemCount: category.codigoGroup == '' ? products.length :  products
                         .where((element) =>
                             element['Grupo'] == category.codigoGroup)
                         .length,
@@ -58,33 +58,36 @@ class _ProductsState extends State<Products> {
                       crossAxisCount: 4,
                     ),
                     itemBuilder: (context, index) {
-                      //   category.codigoGroup == ''
-                      // ?
-                     return BuildCard(
-                        name: products[index]['Descripcion'].toString(),
-                        price: products[index]['PrecioVenta']
-                            .toStringAsFixed(2)
-                            .toString(),
-                        id: products[index]['Codigo'].toString(),
-                        idProduct: products[index]['Codigo'].toString(),
-                        category: products[index]['Grupo'].toString(),
-                        imgPath: products[index]['Surlimagen'].toString(),
-                        properties: products[index]['Propiedades'],
-                      );
-                      //     :
-                      //     List nuevaLista.add(products.where((element) =>
-                      //         element['Grupo'] == category.codigoGroup).toList());
-                      // return BuildCard(
-                      //   name: filtrando[index]['Descripcion'].toString(),
-                      //   price: filtrando[index]['PrecioVenta']
-                      //       .toStringAsFixed(2)
-                      //       .toString(),
-                      //   id: filtrando[index]['Codigo'].toString(),
-                      //   idProduct: filtrando[index]['Codigo'].toString(),
-                      //   category: filtrando[index]['Grupo'].toString(),
-                      //   imgPath: filtrando[index]['Surlimagen'].toString(),
-                      //   properties: filtrando[index]['Propiedades'],
-                      // );
+                      if (category.codigoGroup == '') {
+                        return BuildCard(
+                          name: products[index]['Descripcion'].toString(),
+                          price: products[index]['PrecioVenta']
+                              .toStringAsFixed(2)
+                              .toString(),
+                          id: products[index]['Codigo'].toString(),
+                          idProduct: products[index]['Codigo'].toString(),
+                          category: products[index]['Grupo'].toString(),
+                          imgPath: products[index]['Surlimagen'].toString(),
+                          properties: products[index]['Propiedades'],
+                        );
+                      } else {
+                        var newList = products
+                            .where((element) =>
+                                element['Grupo'] == category.codigoGroup)
+                            .toList();
+
+                        return BuildCard(
+                          name: newList[index]['Descripcion'].toString(),
+                          price: newList[index]['PrecioVenta']
+                              .toStringAsFixed(2)
+                              .toString(),
+                          id: newList[index]['Codigo'].toString(),
+                          idProduct: newList[index]['Codigo'].toString(),
+                          category: newList[index]['Grupo'].toString(),
+                          imgPath: newList[index]['Surlimagen'].toString(),
+                          properties: newList[index]['Propiedades'],
+                        );
+                      }
                     },
                   ),
                 ),
