@@ -56,7 +56,6 @@ class _FooterOptionsState extends State<FooterOptions> {
                   ReusableWidget(
                     title: 'IR AL CARRITO: ',
                     value: '\$ ${variable.getPriceTotal().toStringAsFixed(2)}',
-                    // value: '0',
                   ),
                 ],
               ),

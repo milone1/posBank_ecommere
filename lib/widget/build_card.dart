@@ -1,6 +1,4 @@
 // ignore_for_file: must_be_immutable
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
 
@@ -75,9 +73,7 @@ class _BuildCardState extends State<BuildCard> {
                         bottomRight: Radius.circular(15.0),
                       ),
                       image: DecorationImage(
-                        image: CachedNetworkImageProvider(
-                          scale: 1.0,
-                          cacheKey: widget.id.toString(),
+                        image: NetworkImage(
                           widget.imgPath,
                         ),
                         fit: BoxFit.fill,
@@ -96,7 +92,7 @@ class _BuildCardState extends State<BuildCard> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFFCC8053),
                     ),
@@ -115,7 +111,7 @@ class _BuildCardState extends State<BuildCard> {
                     child: Text(
                       '\$ ' + widget.price,
                       style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.black,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),

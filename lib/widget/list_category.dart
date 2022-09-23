@@ -5,10 +5,7 @@ import 'package:posbank_flutter/provider/products_provider.dart';
 import 'package:provider/provider.dart';
 
 class ListCategory extends StatefulWidget {
-  // final Function onReload;
-
   const ListCategory({Key? key, 
-  // required this.onReload
   }) : super(key: key);
   @override
   State<ListCategory> createState() => _ListCategoryState();
@@ -77,24 +74,6 @@ extension IndexedIterable<E> on Iterable<E> {
 }
 
 class _ListCategoryState extends State<ListCategory> {
-  // final ScrollController scrollController = FixedExtentScrollController();
-  //* max sieze 840
-  @override
-  void initState() {
-    super.initState();
-    // scrollController.addListener(() {
-    //   if (scrollController.position.pixels == 840) {
-    //     widget.onReload();
-    //   }
-    //   print(scrollController.position.maxScrollExtent);
-    //   print(scrollController.position.pixels);
-    // });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +86,6 @@ class _ListCategoryState extends State<ListCategory> {
       width: 170,
       height: height * 0.55,
       child: ListWheelScrollView.useDelegate(
-        // controller: scrollController,
         physics: FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
           codecs.setCodigo(groups[index]['CodigoGrupo']),

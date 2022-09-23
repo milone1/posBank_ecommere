@@ -1,11 +1,7 @@
-// ignore_for_file: depend_on_referenced_packages
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
-// import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
 class FullCart extends StatefulWidget {
@@ -63,7 +59,7 @@ class _FullCartState extends State<FullCart> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15.0),
                               image: DecorationImage(
-                                  image: CachedNetworkImageProvider(
+                                  image: NetworkImage(
                                     cart[index]['image'],
                                   ),
                                   fit: BoxFit.contain),
@@ -96,7 +92,7 @@ class _FullCartState extends State<FullCart> {
                           height: 35,
                           width: 100,
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Color(0xff0099DD),
                             borderRadius: BorderRadius.circular(7),
                           ),
                           child: Padding(
@@ -169,20 +165,13 @@ class _FullCartState extends State<FullCart> {
                           },
                           child: Icon(
                             Icons.edit,
-                            color: Colors.green,
+                            color: Color(0xff0099DD),
                             size: 35.0,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  // Container(
-                  //   width: width * 0.50,
-                  //   decoration: BoxDecoration(
-                  //     color: Colors.red,
-                  //   ),
-                  //   child: cart[index]['aggregator'].length == 0 ? Text("Sin Agregadores") : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),
-                  // ),
                 ],
               ),
             ),

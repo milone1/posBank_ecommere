@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
 
 class CardsCanal extends StatelessWidget {
   const CardsCanal({
     Key? key,
-    required this.width, required this.img, required this.title,
+    required this.width,
+    required this.img,
+    required this.title,
   }) : super(key: key);
 
   final double width;
@@ -16,7 +17,7 @@ class CardsCanal extends StatelessWidget {
       width: width * 0.4,
       padding: EdgeInsets.all(width * 0.02),
       decoration: BoxDecoration(
-          color: Colors.purple.shade300,
+          color: Color(0xff0099DD),
           borderRadius: BorderRadius.all(
             Radius.circular(20),
           ),
@@ -31,10 +32,22 @@ class CardsCanal extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            Image.asset(
-              img,
-              width: 100.0,
-              height: 100.0,
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.white.withOpacity(0.4),
+                      offset: Offset(3, 3),
+                      spreadRadius: 8,
+                      blurRadius: 8,
+                    )
+                  ]),
+              child: Image.asset(
+                img,
+                width: 100.0,
+                height: 100.0,
+              ),
             ),
             Text(
               title,

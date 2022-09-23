@@ -32,18 +32,15 @@ class ListOfItems extends StatelessWidget {
         SizedBox(
           height: 100.0,
         ),
-        Dance(
-          infinite: true,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            width: width,
-            height: height * 0.30,
-            child: Image.asset(
-              "images/bannerSignIn.png",
-              fit: BoxFit.cover,
-            ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+          ),
+          width: width,
+          height: height * 0.30,
+          child: Image.asset(
+            "images/bannerSignIn.png",
+            fit: BoxFit.cover,
           ),
         ),
         SizedBox(

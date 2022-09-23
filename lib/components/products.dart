@@ -9,10 +9,6 @@ class Products extends StatefulWidget {
   const Products({Key? key}) : super(key: key);
   @override
   State<Products> createState() => _ProductsState();
-
-  void initState() {
-    initState();
-  }
 }
 
 class _ProductsState extends State<Products> {
@@ -20,10 +16,6 @@ class _ProductsState extends State<Products> {
   Widget build(BuildContext context) {
     final products =
         Provider.of<ProductsProvider>(context).products;
-
-    // final functions =
-    //     Provider.of<ProductsProvider>(context);
-
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
@@ -37,7 +29,6 @@ class _ProductsState extends State<Products> {
             maxWidth: 350,
             child: BounceInLeft(
               duration: Duration(seconds: 2),
-              // child: ListCategory(onReload: () => functions.getGroup() ),
               child: ListCategory(),
             ),
           ),
@@ -56,6 +47,7 @@ class _ProductsState extends State<Products> {
                   width: width - 100,
                   height: height * 0.55,
                   child: GridView.builder(
+                    physics: BouncingScrollPhysics(),
                     itemCount: products.length,
                     scrollDirection: Axis.horizontal,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
