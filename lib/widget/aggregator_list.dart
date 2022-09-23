@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/provider/cart_provider.dart';
-import 'package:provider/provider.dart';
 
 class AggregatorList extends StatelessWidget {
   const AggregatorList({
@@ -14,80 +12,127 @@ class AggregatorList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final aggregators = Provider.of<CartProvider>(context).cartList;
-    double width = MediaQuery.of(context).size.width;
-    return Container(
-      height: 100.0,
-      decoration: BoxDecoration(
-          border: Border.all(
-        color: Colors.yellow,
-      )),
-      width: width * 0.90,
-      child: ListView.builder(
-        itemCount: aggregators[indexProduct]['aggregator'].length,
-        itemBuilder: (context, index) {
-          return Row(
+    
+    return SingleChildScrollView(
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(1.0),
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                aggregators[indexProduct]['aggregator'][index]['images'],
-                width: 50,
-                height: 50,
-              ),
-              Text(aggregators[indexProduct]['aggregator'][index]['title']),
-              Text(aggregators[indexProduct]['aggregator'][index]['qty']
-                  .toString()),
               Container(
-                margin: EdgeInsets.all(5.0),
-                height: 35,
-                width: 100,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(7),
+                  borderRadius: BorderRadius.circular(15.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      spreadRadius: 6,
+                      blurRadius: 8,
+                    ),
+                  ],
+                  color: Colors.white,
                 ),
-                child: Padding(
-                  padding: EdgeInsets.all(6.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.remove,
-                          color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Indice",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF575E67),
+                      ),
+                    ),
+                    Hero(
+                      tag: "1",
+                      child: Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.0),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuKLsLlE16QOTHYPcEVFtTjwJUYGDXXv5yDhBKUfz8vw&s",
+                              ),
+                              fit: BoxFit.contain),
                         ),
                       ),
-                      Text(
-                        aggregators[indexProduct]['aggregator'][index]['qty']
-                            .toString(),
+                    ),
+                    SizedBox(
+                      width: 200,
+                      child: Text(
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        "ProductName",
                         style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
+                          fontSize: 20,
+                          color: Color(0xFFCC8053),
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  
-                },
-                child: Icon(
-                  Icons.delete,
-                  color: Colors.red,
+                    ),
+                    Text(
+                      "ProductPrice",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF575E67),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5.0),
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(  
+                        color: Color(0xff0099DD),
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(6.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              // cart[index]['quantity'].toString(),
+                              "qty",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                        size: 35.0,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
-          );
-        },
+          ),
+        ),
       ),
     );
   }

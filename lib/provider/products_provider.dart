@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class ProductsProvider with ChangeNotifier {
   ProductsProvider() {
-    getDataByCategori();
+    getDataByCategory();
     getGroup();
   }
 
@@ -21,11 +21,11 @@ class ProductsProvider with ChangeNotifier {
 
   setCodigo(String codigoGrupo) {
     codigoGroup = codigoGrupo;
-    getDataByCategori();
+    getDataByCategory();
     notifyListeners();
   }
 
-  getDataByCategori() async {
+  getDataByCategory() async {
     var uri = Uri.parse('$baseURL/producto/$codigoGroup');
     final http.Response response = await http.get(uri);
     final decodeData = json.decode(response.body);

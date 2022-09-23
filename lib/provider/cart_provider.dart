@@ -54,9 +54,9 @@ class CartProvider extends ChangeNotifier {
     cartList.forEach((element) {
       if (element['id'] == id) {
         element['aggregator'].add(aggregator);
-        notifyListeners();
+        // notifyListeners();
       }
-      notifyListeners();
+      // notifyListeners();
     });
     notifyListeners();
   }

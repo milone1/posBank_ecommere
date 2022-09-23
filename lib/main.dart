@@ -18,9 +18,9 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         //* by default the item is only rendered when called, but the lazzy option can change that behavior
-        ChangeNotifierProvider(create: (_) => ProductsProvider(), lazy: false),
-        ChangeNotifierProvider(create: (_) => CartProvider(), lazy: false),
-        ChangeNotifierProvider(create: (_) => CanalProvider(), lazy: false),
+        ChangeNotifierProvider(create: ( context ) => ProductsProvider()),
+        ChangeNotifierProvider(create: ( context ) => CartProvider()),
+        ChangeNotifierProvider(create: ( context ) => CanalProvider()),
       ],
       child: MyApp(),
     );
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
     return Builder(builder: (BuildContext context) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: 'Lato'),
+        theme: ThemeData(fontFamily: 'Lato'), 
         initialRoute: 'home',
         routes: {
           'home': (context) => SignInScreen(),

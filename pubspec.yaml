@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^1.1.5
 
+  flutter_svg: ^1.1.5
   cupertino_icons: ^1.0.5
   chip_list: ^2.3.3+8
   carousel_slider: ^4.1.1
@@ -19,16 +19,16 @@ dependencies:
   fluttertoast: ^8.0.9
   http: ^0.13.5
   dio: ^4.0.6
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
   badges: ^2.0.3
   provider: ^6.0.3
   flutter_usb_printer: ^0.1.0+1
   checkbox_grouped: ^1.8.1
   group_radio_button: ^1.2.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
 flutter:
 

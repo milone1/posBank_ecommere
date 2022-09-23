@@ -44,7 +44,10 @@ class ResumeOrder extends StatelessWidget {
                 children: [
                   Container(
                     width: width * 0.50,
-                    child: cart[index]['aggregator'].length == 0 ? Text("Sin Agregadores") : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),
+                    child: 
+                    cart[index]['aggregator'].length == 0 ? 
+                    Text("Sin Agregadores") 
+                    : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),
                   ),
                 ],
               ),

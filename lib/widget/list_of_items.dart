@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/components/button_canal.dart';
 
@@ -7,9 +6,6 @@ class ListOfItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,17 +28,9 @@ class ListOfItems extends StatelessWidget {
         SizedBox(
           height: 100.0,
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          width: width,
-          height: height * 0.30,
-          child: Image.asset(
-            "images/bannerSignIn.png",
-            fit: BoxFit.cover,
-          ),
-        ),
+        //* BANNERS
+
+        //* BANNERS
         SizedBox(
           height: 100.0,
         ),
