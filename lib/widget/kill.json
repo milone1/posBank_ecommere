@@ -1,0 +1,58 @@
+[
+  {
+      "Local": "1",
+      "Tipopedido": "02",
+      "Nombre": "Julio",
+      "Apellido": "Berne",
+      "Telefono": "985241574",
+      "Direccion": "Calle Las Begonias Miraflores",
+      "Referencia": "Detras del congreso de la replublica lima - lima - peru.",
+      "Correo": "Prueba@gmail.com",
+      "Tipodocumento": "01",
+      "Ruc": "10121450254",
+      "Razonsocial": "Berne Julio SAC",
+      "DireccionClienteFacturado":
+          "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
+      "Fechaenvia": "2016-02-03 18:45:00",
+      "Observacion": "Prueba de Obsewrvacion",
+      "CorreoElectronico": "prueba@hotmail.com",
+      "EstadoPago": "0",
+      "Ubigeo": "150101",
+      "Urbanizacion": "Lima",
+      "CodigoDescuento": "001",
+      "DetallePedido": [
+        {
+          "Item": "001",
+          "Codigoproducto": "0000275",
+          "Cantidad": 2,
+          "Lcombo": "0",
+          "Observacion": "Prueba de sistemas 1",
+          "ProductoPropiedad": [
+            {
+              "Item": "001",
+              "Codigoproducto": "0000275",
+              "Codigopropiedad": "0365"
+            }
+          ]
+        }
+      ],
+      "Prepagos": [
+        {
+          "Tipopago": "02",
+          "Monto": 102.23,
+          "Vuelto": 20.5,
+          "Tarjeta": "01",
+          "Numero": "1234"
+        },
+        {
+          "Tipopago": "01",
+          "Monto": 20.23,
+          "Vuelto": 0,
+          "Tarjeta": "",
+          "Numero": ""
+        }
+      ],
+      "FechaEntrega": "2016-02-04 18:45:00",
+      "CodigoOrigenVenta": "INF0001"
+    }
+]

@@ -1,3 +1,4 @@
+export 'package:posbank_flutter/widget/form_pay.dart';
 export 'package:posbank_flutter/widget/button_pay.dart';
 export 'package:posbank_flutter/widget/price_card_more_products.dart';
 export 'package:posbank_flutter/widget/grid_more_products.dart';

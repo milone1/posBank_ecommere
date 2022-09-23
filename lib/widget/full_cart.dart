@@ -17,6 +17,7 @@ class _FullCartState extends State<FullCart> {
     final cart = Provider.of<CartProvider>(context).cartList;
     final counter = Provider.of<CartProvider>(context);
     final cartFunctions = Provider.of<CartProvider>(context);
+    
     return Expanded(
       child: ListView.builder(
         itemCount: cart.length,
@@ -60,8 +61,9 @@ class _FullCartState extends State<FullCart> {
                               borderRadius: BorderRadius.circular(15.0),
                               image: DecorationImage(
                                   image: NetworkImage(
-                                    scale:1,
-                                    cart[index]['image'],
+                                    scale: 1,
+                                    // "",
+                                    cart[index]['image'].toString(),
                                   ),
                                   fit: BoxFit.contain),
                             ),
@@ -70,9 +72,9 @@ class _FullCartState extends State<FullCart> {
                         SizedBox(
                           width: 200,
                           child: Text(
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
                             cart[index]['productName'].toString().toUpperCase(),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
                             style: TextStyle(
                               fontSize: 20,
                               color: Color(0xFFCC8053),
@@ -81,7 +83,7 @@ class _FullCartState extends State<FullCart> {
                           ),
                         ),
                         Text(
-                          '\$${cart[index]['productPrice'].toStringAsFixed(2)}',
+                          '\$${cart[index]['productPrice'].toStringAsFixed(2).toString()}',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

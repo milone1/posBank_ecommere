@@ -48,8 +48,8 @@ class AddToCart extends StatelessWidget {
           onTap: () {
             if ((cartList.where((element) => element['id'] == id).isEmpty)) {
               cart.setCartList({
-                // "local": "",
-                // "tipopedido": canal,
+                // "local": "01",
+                // "tipopedido": "",
                 // "nombre": "Erick",
                 // "apellido": "Milan",
                 // "telefono": "995 560 456",
