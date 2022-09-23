@@ -7,6 +7,12 @@ class SignInScreen extends StatefulWidget {
   _SignInScreenState createState() => _SignInScreenState();
 }
 
+@override
+void initState() {
+  initState();
+  imageCache.clear();
+}
+
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
@@ -19,8 +25,9 @@ class _SignInScreenState extends State<SignInScreen> {
           width: width,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/backgroundCal.gif"),
-                fit: BoxFit.fill),
+              image: NetworkImage('https://images.pexels.com/photos/784633/pexels-photo-784633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+              fit: BoxFit.cover,
+            ),
           ),
           child: SingleChildScrollView(
             child: ListOfItems(),

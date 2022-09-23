@@ -60,6 +60,7 @@ class _FullCartState extends State<FullCart> {
                               borderRadius: BorderRadius.circular(15.0),
                               image: DecorationImage(
                                   image: NetworkImage(
+                                    scale:1,
                                     cart[index]['image'],
                                   ),
                                   fit: BoxFit.contain),

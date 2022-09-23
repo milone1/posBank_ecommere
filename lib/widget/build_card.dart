@@ -74,6 +74,7 @@ class _BuildCardState extends State<BuildCard> {
                       ),
                       image: DecorationImage(
                         image: NetworkImage(
+                          scale:1,
                           widget.imgPath,
                         ),
                         fit: BoxFit.fill,

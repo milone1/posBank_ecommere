@@ -14,10 +14,11 @@ class Products extends StatefulWidget {
 class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
-    final products =
-        Provider.of<ProductsProvider>(context).products;
+    final products = Provider.of<ProductsProvider>(context).products;
+    final category = Provider.of<CategoryProvider>(context);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return Padding(
       padding: EdgeInsets.only(
         left: 10.0,
@@ -48,21 +49,42 @@ class _ProductsState extends State<Products> {
                   height: height * 0.55,
                   child: GridView.builder(
                     physics: BouncingScrollPhysics(),
-                    itemCount: products.length,
+                    itemCount: products
+                        .where((element) =>
+                            element['Grupo'] == category.codigoGroup)
+                        .length,
                     scrollDirection: Axis.horizontal,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                     ),
                     itemBuilder: (context, index) {
-                      return BuildCard(
+                      //   category.codigoGroup == ''
+                      // ?
+                     return BuildCard(
                         name: products[index]['Descripcion'].toString(),
-                        price: products[index]['PrecioVenta'].toStringAsFixed(2).toString(),
+                        price: products[index]['PrecioVenta']
+                            .toStringAsFixed(2)
+                            .toString(),
                         id: products[index]['Codigo'].toString(),
                         idProduct: products[index]['Codigo'].toString(),
                         category: products[index]['Grupo'].toString(),
                         imgPath: products[index]['Surlimagen'].toString(),
                         properties: products[index]['Propiedades'],
                       );
+                      //     :
+                      //     List nuevaLista.add(products.where((element) =>
+                      //         element['Grupo'] == category.codigoGroup).toList());
+                      // return BuildCard(
+                      //   name: filtrando[index]['Descripcion'].toString(),
+                      //   price: filtrando[index]['PrecioVenta']
+                      //       .toStringAsFixed(2)
+                      //       .toString(),
+                      //   id: filtrando[index]['Codigo'].toString(),
+                      //   idProduct: filtrando[index]['Codigo'].toString(),
+                      //   category: filtrando[index]['Grupo'].toString(),
+                      //   imgPath: filtrando[index]['Surlimagen'].toString(),
+                      //   properties: filtrando[index]['Propiedades'],
+                      // );
                     },
                   ),
                 ),
