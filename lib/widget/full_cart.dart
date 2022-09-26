@@ -14,13 +14,11 @@ class FullCart extends StatefulWidget {
 class _FullCartState extends State<FullCart> {
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context).cartList;
-    final counter = Provider.of<CartProvider>(context);
-    final cartFunctions = Provider.of<CartProvider>(context);
+    final cart = Provider.of<CartProvider>(context);
 
     return Expanded(
       child: ListView.builder(
-        itemCount: cart.length,
+        itemCount: cart.cartList.length,
         itemBuilder: (context, index) {
           return Card(
             child: Padding(
@@ -62,8 +60,7 @@ class _FullCartState extends State<FullCart> {
                               image: DecorationImage(
                                   image: NetworkImage(
                                     scale: 1,
-                                    // "",
-                                    cart[index]['image'].toString(),
+                                    cart.cartList[index]['image'].toString(),
                                   ),
                                   fit: BoxFit.contain),
                             ),
@@ -72,7 +69,7 @@ class _FullCartState extends State<FullCart> {
                         SizedBox(
                           width: 200,
                           child: Text(
-                            cart[index]['productName'].toString().toUpperCase(),
+                            cart.cartList[index]['productName'].toString().toUpperCase(),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             style: const TextStyle(
@@ -83,7 +80,7 @@ class _FullCartState extends State<FullCart> {
                           ),
                         ),
                         Text(
-                          '\$${cart[index]['productPrice'].toStringAsFixed(2).toString()}',
+                          'S/ ${cart.cartList[index]['productPrice'].toStringAsFixed(2).toString()}',
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -105,8 +102,8 @@ class _FullCartState extends State<FullCart> {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    if (cart[index]['quantity'] >= 2) {
-                                      counter.addOrRemoveItem(index, 'remove');
+                                    if (cart.cartList[index]['quantity'] >= 2) {
+                                      cart.addOrRemoveItem(index, 'remove');
                                     }
                                   },
                                   child: const Icon(
@@ -115,7 +112,7 @@ class _FullCartState extends State<FullCart> {
                                   ),
                                 ),
                                 Text(
-                                  cart[index]['quantity'].toString(),
+                                  cart.cartList[index]['quantity'].toString(),
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
@@ -123,7 +120,7 @@ class _FullCartState extends State<FullCart> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    counter.addOrRemoveItem(index, 'add');
+                                    cart.addOrRemoveItem(index, 'add');
                                   },
                                   child: const Icon(
                                     Icons.add,
@@ -136,8 +133,8 @@ class _FullCartState extends State<FullCart> {
                         ),
                         InkWell(
                           onTap: () {
-                            cartFunctions
-                                .deleteElement(cart[index]['id'].toString());
+                            cart
+                                .deleteElement(cart.cartList[index]['id'].toString());
                             Fluttertoast.showToast(
                                 msg: "Eliminado Correctamente",
                                 toastLength: Toast.LENGTH_SHORT,
@@ -157,13 +154,13 @@ class _FullCartState extends State<FullCart> {
                         InkWell(
                           onTap: () {
                             mySheet(
-                                cart[index]['productName'].toString(),
-                                cart[index]['price'].toString(),
-                                cart[index]['id'].toString(),
-                                cart[index]['idProduct'].toString(),
-                                cart[index]['category'].toString(),
-                                cart[index]['image'].toString(),
-                                cart[index]['properties'] ?? [],
+                                cart.cartList[index]['productName'].toString(),
+                                cart.cartList[index]['price'].toString(),
+                                cart.cartList[index]['id'].toString(),
+                                cart.cartList[index]['idProduct'].toString(),
+                                cart.cartList[index]['category'].toString(),
+                                cart.cartList[index]['image'].toString(),
+                                cart.cartList[index]['properties'] ?? [],
                                 context);
                           },
                           child: const Icon(

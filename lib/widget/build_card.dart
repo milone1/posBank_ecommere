@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
 
-class BuildCard extends StatefulWidget {
+class BuildCard extends StatelessWidget {
   BuildCard(
       {Key? key,
       required this.name,
@@ -23,19 +23,13 @@ class BuildCard extends StatefulWidget {
   List properties;
 
   @override
-  State<BuildCard> createState() => _BuildCardState();
-}
-
-class _BuildCardState extends State<BuildCard> {
-
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
         onTap: () {
-          mySheet(widget.name, widget.price, widget.id, widget.idProduct,
-              widget.category, widget.imgPath, widget.properties, context);
+          mySheet(name, price, id, idProduct, category, imgPath, properties,
+              context);
         },
         child: Padding(
           padding: const EdgeInsets.only(
@@ -56,31 +50,32 @@ class _BuildCardState extends State<BuildCard> {
             ),
             child: Column(
               children: [
-                Hero(
-                  tag: widget.id.toString(),
-                  child: Container(
-                    margin: const EdgeInsets.only(
-                      top: 5,
-                      bottom: 5,
-                    ),
-                    width: 150,
-                    height: 110,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(15.0),
-                        topRight: Radius.circular(15.0),
-                        bottomLeft: Radius.circular(15.0),
-                        bottomRight: Radius.circular(15.0),
-                      ),
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          scale:1,
-                          widget.imgPath.isEmpty ?  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSPBdCYi2v2gXSJfvkxRbNbJPTULS9PG8dJw&usqp=CAU' : 
-                          widget.imgPath,
+
+                Container(
+                  margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                  width: 150,
+                  height: 110,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15.0),
+                    topRight: Radius.circular(15.0),
+                    bottomLeft: Radius.circular(15.0),
+                    bottomRight: Radius.circular(15.0),
+                  )),
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: FadeInImage.assetNetwork(
+                          width: 150,
+                          height: 110,
+                          imageScale: 1,
+                          image: imgPath,
+                          placeholder: 'images/loader.gif',
+                          fit: BoxFit.fill,
                         ),
-                        fit: BoxFit.fill,
                       ),
-                    ),
+                    ],
                   ),
                 ),
 
@@ -90,7 +85,7 @@ class _BuildCardState extends State<BuildCard> {
                     left: 10,
                   ),
                   child: Text(
-                    widget.name.toUpperCase(),
+                    name.toUpperCase(),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -111,7 +106,7 @@ class _BuildCardState extends State<BuildCard> {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      '\$ ${widget.price}',
+                      'S/ $price',
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 15,

@@ -28,7 +28,7 @@ class ResumeOrder extends StatelessWidget {
                       height: 50,
                     ),
                     const SizedBox(
-                      width: 20,
+                      width: 5.0,
                     ),
                     Text(
                       cart[index]['productName'],
@@ -46,7 +46,7 @@ class ResumeOrder extends StatelessWidget {
                     width: width * 0.50,
                     child: 
                     cart[index]['aggregator'].length == 0 ? 
-                    const Text("Sin Agregadores") 
+                    const Text("")
                     : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),
                   ),
                 ],

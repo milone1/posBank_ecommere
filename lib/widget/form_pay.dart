@@ -62,7 +62,7 @@ class FormPay extends StatelessWidget {
                       ),
                     ),
                     CupertinoTextField(
-                      placeholder: 'Javivi Gamarra',
+                      placeholder: 'Juan Perez',
                     ),
                   ],
                 ),
@@ -85,7 +85,7 @@ class FormPay extends StatelessWidget {
                 height: 120,
               ),
               const SizedBox(
-                height: 100,
+                height: 70,
               ),
               Padding(
                 padding: const EdgeInsets.only(

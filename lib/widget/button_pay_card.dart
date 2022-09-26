@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, must_call_super
 
 import 'package:flutter/material.dart';
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
@@ -20,17 +20,13 @@ class ButtonPayCard extends StatefulWidget {
 
 class _ButtonPayCardState extends State<ButtonPayCard> {
   FlutterUsbPrinter flutterUsbPrinter = FlutterUsbPrinter();
-  bool connected = false;
 
   @override
   initState() {
-    super.initState();
     flutterUsbPrinter.connect(1155, 41014);
-    // postPrueba['DetallePedido'].add()
   }
 
-  _printer(cardNumber, cardHolder, total, list) async {
-    String nombre = cardHolder.toString();
+  _printer(total, list) async {
     await flutterUsbPrinter
         .printText("                                          \r\n");
     await flutterUsbPrinter
@@ -58,7 +54,7 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
     await flutterUsbPrinter
         .printText("------------------------------------------\r\n");
     await flutterUsbPrinter
-        .printText(" Cliente       : $nombre                  \r\n");
+        .printText(" Cliente       : Juan Perez               \r\n");
     await flutterUsbPrinter
         .printText(" DNI           : 54447887                 \r\n");
     await flutterUsbPrinter
@@ -100,7 +96,6 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
               "     " +
               "S/ " +
               list[index]['initialPrice'].toString() +
-              ".00" +
               "     " +
               "S/" +
               list[index]['productPrice'].toString() +
@@ -171,7 +166,7 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
     final cart = Provider.of<CartProvider>(context);
     final post = Provider.of<ProductsProvider>(context);
     double width = MediaQuery.of(context).size.width;
-    
+
     Map postPrueba = {
       "Local": "1",
       "Tipopedido": "02",
@@ -185,7 +180,7 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
       "Ruc": "10121450254",
       "Razonsocial": "Berne Julio SAC",
       "DireccionClienteFacturado":
-      "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
+          "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
       "Fechaenvia": "2016-02-03 18:45:00",
       "Observacion": "TOTEM INFOR- Prueba de Obsewrvacion",
       "CorreoElectronico": "prueba@hotmail.com",
@@ -193,8 +188,7 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
       "Ubigeo": "150101",
       "Urbanizacion": "Lima",
       "CodigoDescuento": "001",
-      "DetallePedido": [
-      ],
+      "DetallePedido": [],
       "Prepagos": [
         {
           "Tipopago": "02",
@@ -214,17 +208,22 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
       "FechaEntrega": "2016-02-04 18:45:00",
       "CodigoOrigenVenta": "INF0001"
     };
-    for(int index = 0; index < cart.cartList.length; index++) {
-      postPrueba['DetallePedido'].add({
-              "Item": '00$index'.toString(),
-              "Codigoproducto": cart.cartList[index]['id'],
-              "Cantidad": cart.cartList[index]['quantity'],
-              "Lcombo": "0",
-              "Observacion": "Prueba de sistemas 1",
-              "ProductoPropiedad": []
-            }
-        );
+
+    if (cart.cartList.isNotEmpty) {
+      for (int index = 0; index < cart.cartList.length; index++) {
+        postPrueba['DetallePedido'].add({
+          "Item": '00$index'.toString(),
+          "Codigoproducto": cart.cartList[index]['id'],
+          "Cantidad": cart.cartList[index]['quantity'],
+          "Lcombo": "0",
+          "Observacion": "Prueba de sistemas 1",
+          "ProductoPropiedad": []
+        });
+      }
+    } else {
+      print('Carrito Vacio');
     }
+
     return Container(
       margin: const EdgeInsets.only(top: 1),
       decoration: BoxDecoration(
@@ -239,10 +238,9 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
           InkWell(
             onTap: () {
               post.methodPost(postPrueba);
-              // _printer("4754 6587 7412 5698", "Oscar Melero",
-              //     cart.getPriceTotal(), cart.cartList);
-              // cart.clearCart();
-              // Navigator.pushNamed(context, 'home');
+              // _printer(cart.getPriceTotal(), cart.cartList);
+              cart.clearCart();
+              Navigator.pushNamed(context, 'home');
             },
             child: ButtonPay(cart: cart),
           ),

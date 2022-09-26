@@ -1,7 +1,6 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:posbank_flutter/components/title_pay_screen.dart';
 import 'package:posbank_flutter/widget/button_pay_card.dart';
-import 'package:posbank_flutter/widget/resume_order.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 
 class CreditCardsPage extends StatefulWidget {
@@ -24,6 +23,7 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
+
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Column(
@@ -32,55 +32,20 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 ],
               ),
             ),
-            BounceInLeft(
-              duration: const Duration(
-                seconds: 1,
-              ),
-              child: const Text(
-                "¡INCREÍBLES OFERTAS!",
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  fontSize: 50,
-                  color: Color(0xFFCC8053),
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                        ),
-                        width: width * 0.90,
-                        height: height * 0.35,
-                        child: Center(
-                          child: Column(
-                            children: const <Widget>[
-                              ResumeOrder(),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            HeaderSection(width: width),
+
+            const TitlePayScreen(),
+
             const FormPay(),
-            ButtonPayCard(
-              context: context,
-            ),
+
+            HeaderSection(width: width),
+
+            SectionResumeOrder(width: width, height: height),
+
+            ButtonPayCard( context: context ),
           ],
         ),
       ),
     );
   }
 }
+

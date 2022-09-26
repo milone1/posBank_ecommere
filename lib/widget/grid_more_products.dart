@@ -106,6 +106,7 @@ class GridMoreProducts extends StatelessWidget {
       width: width,
       height: height * 0.15,
       child: GridView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: moreProducts.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -121,7 +122,8 @@ class GridMoreProducts extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 if (cartList.cartList
-                        .where((element) => element['id'] == id).isEmpty) {
+                    .where((element) => element['id'] == id)
+                    .isEmpty) {
                   Fluttertoast.showToast(
                     msg: "Primero agregue el producto!",
                     toastLength: Toast.LENGTH_SHORT,
@@ -129,7 +131,7 @@ class GridMoreProducts extends StatelessWidget {
                     gravity: ToastGravity.CENTER,
                     timeInSecForIosWeb: 1,
                     backgroundColor: Colors.red,
-                    textColor: const Color.fromARGB(255, 177, 114, 114),
+                    textColor: Colors.white,
                     fontSize: 14.0,
                   );
                 } else {
@@ -147,7 +149,8 @@ class GridMoreProducts extends StatelessWidget {
                 }
               },
               child: Container(
-                margin: const EdgeInsets.only(right: 10.0, top: 7.0, bottom: 7.0),
+                margin:
+                    const EdgeInsets.only(right: 10.0, top: 7.0, bottom: 7.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   boxShadow: [

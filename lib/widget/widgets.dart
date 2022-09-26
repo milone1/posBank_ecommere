@@ -1,3 +1,5 @@
+export 'package:posbank_flutter/widget/section_resume_order.dart';
+export 'package:posbank_flutter/widget/resume_order.dart';
 export 'package:posbank_flutter/widget/form_pay.dart';
 export 'package:posbank_flutter/widget/button_pay.dart';
 export 'package:posbank_flutter/widget/price_card_more_products.dart';

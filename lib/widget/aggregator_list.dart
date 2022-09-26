@@ -73,7 +73,7 @@ class AggregatorList extends StatelessWidget {
                       ),
                     ),
                     const Text(
-                      "ProductPrice",
+                      "ProductPrice", 
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,

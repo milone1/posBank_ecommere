@@ -22,7 +22,7 @@ class PriceCardMoreProducts extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         child: Text(
-          '\$ ${moreProducts[index]['price']}',
+          'S/ ${moreProducts[index]['price']}',
           style: const TextStyle(
             color: Color(0xFF575E67),
             fontSize: 15,
