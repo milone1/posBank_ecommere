@@ -20,7 +20,7 @@ class _ProductsState extends State<Products> {
     double height = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         left: 10.0,
         top: 1.0,
       ),
@@ -29,32 +29,32 @@ class _ProductsState extends State<Products> {
           LimitedBox(
             maxWidth: 350,
             child: BounceInLeft(
-              duration: Duration(seconds: 2),
-              child: ListCategory(),
+              duration: const Duration(seconds: 2),
+              child: const ListCategory(),
             ),
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 top: 2,
                 left: 10,
                 bottom: 10,
               ),
               child: BounceInRight(
-                duration: Duration(
+                duration: const Duration(
                   seconds: 2,
                 ),
                 child: SizedBox(
                   width: width - 100,
                   height: height * 0.55,
                   child: GridView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: category.codigoGroup == '' ? products.length :  products
                         .where((element) =>
                             element['Grupo'] == category.codigoGroup)
                         .length,
                     scrollDirection: Axis.horizontal,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                     ),
                     itemBuilder: (context, index) {

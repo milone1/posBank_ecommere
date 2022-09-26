@@ -15,7 +15,7 @@ class TitleCardMoreProducts extends StatelessWidget {
     return Text(
       moreProducts[index]['title'],
       overflow: TextOverflow.ellipsis,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 13,
         fontWeight: FontWeight.bold,
         color: Color(0xFFCC8053),

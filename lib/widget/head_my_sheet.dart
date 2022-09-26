@@ -50,7 +50,7 @@ class HeadmySheet extends StatelessWidget {
                 child: Text(
                   name.toUpperCase(),
                   maxLines: 3,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFCC8053),
@@ -60,7 +60,7 @@ class HeadmySheet extends StatelessWidget {
               ),
               SizedBox(
                 width: width * 0.30,
-                child: Text(
+                child: const Text(
                   "Tiene sabor, obviamente, y podemos añadir "
                   "que tiene buen sabor, así que "
                   "probablemente resulta rico y apetitoso, "

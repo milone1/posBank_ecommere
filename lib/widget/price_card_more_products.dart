@@ -14,7 +14,7 @@ class PriceCardMoreProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 6,
       ),
       child: Container(
@@ -22,8 +22,8 @@ class PriceCardMoreProducts extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         child: Text(
-          '\$ ' + moreProducts[index]['price'].toString(),
-          style: TextStyle(
+          '\$ ${moreProducts[index]['price']}',
+          style: const TextStyle(
             color: Color(0xFF575E67),
             fontSize: 15,
           ),

@@ -12,7 +12,7 @@ class FormPay extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        SizedBox(
           width: width * 0.35,
           height: height * 0.25,
           child: Column(
@@ -24,13 +24,13 @@ class FormPay extends StatelessWidget {
                 height: 120,
               ),
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   right: 40.0,
                   left: 40.0,
                   bottom: 40.0,
                 ),
                 child: Column(
-                  children: [
+                  children: const [
                     Text(
                       "Ingrese numero de DNI:",
                       style: TextStyle(
@@ -46,13 +46,13 @@ class FormPay extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   right: 40.0,
                   left: 40.0,
                   bottom: 40.0,
                 ),
                 child: Column(
-                  children: [
+                  children: const [
                     Text(
                       "Ingrese Nombre: ",
                       style: TextStyle(
@@ -73,7 +73,7 @@ class FormPay extends StatelessWidget {
         SizedBox(
           width: width * 0.10,
         ),
-        Container(
+        SizedBox(
           width: width * 0.35,
           height: height * 0.25,
           child: Column(
@@ -84,17 +84,17 @@ class FormPay extends StatelessWidget {
                 width: 300,
                 height: 120,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   right: 40.0,
                   left: 40.0,
                   bottom: 40.0,
                 ),
                 child: Column(
-                  children: [
+                  children: const [
                     Text(
                       "Ingrese N° de R.U.C",
                       style: TextStyle(

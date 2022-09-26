@@ -13,7 +13,7 @@ class HeaderSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(15.0),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50.0),
@@ -22,7 +22,7 @@ class HeaderSection extends StatelessWidget {
                     color: Colors.grey.withOpacity(.8),
                     blurRadius: 10.0,
                     spreadRadius: 0.5,
-                    offset: Offset(5.0, 5.0)),
+                    offset: const Offset(5.0, 5.0)),
               ],
             ),
             child: FloatingActionButton(
@@ -30,13 +30,13 @@ class HeaderSection extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Icon(Icons.arrow_back_ios)),
+                child: const Icon(Icons.arrow_back_ios)),
           ),
         ),
         SizedBox(
           width: width > 700 ? width * 0.15 : width * 0.10,
         ),
-        Text(
+        const Text(
           "RESUMEN DE TU ORDEN: ",
           style: TextStyle(
             color: Color(0xFFCC8053),

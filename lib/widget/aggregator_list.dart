@@ -16,7 +16,7 @@ class AggregatorList extends StatelessWidget {
     return SingleChildScrollView(
       child: Card(
         child: Padding(
-          padding: EdgeInsets.all(1.0),
+          padding: const EdgeInsets.all(1.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -36,7 +36,7 @@ class AggregatorList extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Indice",
                       style: TextStyle(
                         fontSize: 16,
@@ -51,7 +51,7 @@ class AggregatorList extends StatelessWidget {
                         height: 60,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15.0),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: NetworkImage(
                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuKLsLlE16QOTHYPcEVFtTjwJUYGDXXv5yDhBKUfz8vw&s",
                               ),
@@ -59,7 +59,7 @@ class AggregatorList extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 200,
                       child: Text(
                         maxLines: 2,
@@ -72,7 +72,7 @@ class AggregatorList extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(
+                    const Text(
                       "ProductPrice",
                       style: TextStyle(
                         fontSize: 16,
@@ -81,26 +81,26 @@ class AggregatorList extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(5.0),
+                      margin: const EdgeInsets.all(5.0),
                       height: 35,
                       width: 100,
                       decoration: BoxDecoration(  
-                        color: Color(0xff0099DD),
+                        color: const Color(0xff0099DD),
                         borderRadius: BorderRadius.circular(7),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(6.0),
+                        padding: const EdgeInsets.all(6.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             InkWell(
                               onTap: () {},
-                              child: Icon(
+                              child: const Icon(
                                 Icons.remove,
                                 color: Colors.white,
                               ),
                             ),
-                            Text(
+                            const Text(
                               // cart[index]['quantity'].toString(),
                               "qty",
                               style: TextStyle(
@@ -110,6 +110,7 @@ class AggregatorList extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {},
+                              // ignore: prefer_const_constructors
                               child: Icon(
                                 Icons.add,
                                 color: Colors.white,
@@ -121,6 +122,7 @@ class AggregatorList extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {},
+                      // ignore: prefer_const_constructors
                       child: Icon(
                         Icons.delete,
                         color: Colors.red,

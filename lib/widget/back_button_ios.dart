@@ -15,14 +15,14 @@ class BackButtonIos extends StatelessWidget {
             color: Colors.grey.withOpacity(.8),
             blurRadius: 10.0,
             spreadRadius: 0.5,
-            offset: Offset(5.0, 5.0))
+            offset: const Offset(5.0, 5.0))
       ]),
       child: FloatingActionButton(
-          backgroundColor: Color(0xff0099DD), 
+          backgroundColor: const Color(0xff0099DD), 
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Icon(Icons.arrow_back_ios)),
+          child: const Icon(Icons.arrow_back_ios)),
     );
   }
 }

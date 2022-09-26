@@ -23,7 +23,7 @@ class CanalImage extends StatelessWidget {
                 color: Colors.grey.withOpacity(.8),
                 blurRadius: 10.0,
                 spreadRadius: 0.5,
-                offset: Offset(5.0, 5.0))
+                offset: const Offset(5.0, 5.0))
           ]),
       child: Image.asset(
         canal.state == "ParaSalon" ? 'images/tray.png' : 'images/bug.png',

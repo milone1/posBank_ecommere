@@ -18,19 +18,19 @@ class ButtonPay extends StatelessWidget {
       alignment: Alignment.center,
       height: 50,
       decoration: BoxDecoration(
-        color: Color(0xff0099DD),
+        color: const Color(0xff0099DD),
         boxShadow: [
           BoxShadow(
               color: Colors.grey.withOpacity(.8),
               blurRadius: 10.0,
               spreadRadius: 0.5,
-              offset: Offset(5.0, 5.0)),
+              offset: const Offset(5.0, 5.0)),
         ],
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
         'Total:      \$${cart.getPriceTotal().toStringAsFixed(2)}',
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 24,
           fontWeight: FontWeight.bold,

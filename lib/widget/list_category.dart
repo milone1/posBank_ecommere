@@ -86,11 +86,11 @@ class _ListCategoryState extends State<ListCategory> {
     final codecs = Provider.of<CategoryProvider>(context);
     final category = Provider.of<CategoryProvider>(context).category;
 
-    return Container(
+    return SizedBox(
       width: 170,
       height: height * 0.55,
       child: ListWheelScrollView.useDelegate(
-        physics: FixedExtentScrollPhysics(),
+        physics: const FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) => {
           codecs.setCodigo(groups[index]['CodigoGrupo']),
           codecs.setCategory(groups[index]['Descripcion']),
@@ -103,13 +103,13 @@ class _ListCategoryState extends State<ListCategory> {
           childCount: groups.length,
           builder: (context, index) {
             return Container(
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 top: 0,
                 bottom: 10,
                 right: 5,
                 left: 5,
               ),
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 top: 0,
                 bottom: 10,
                 right: 5,
@@ -119,8 +119,8 @@ class _ListCategoryState extends State<ListCategory> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15.0),
                     color: category == groups[index]['Descripcion']
-                        ? Color(0xffA1C7E0)
-                        : Color(0xffF2F2F2),
+                        ? const Color(0xffA1C7E0)
+                        : const Color(0xffF2F2F2),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.4),
@@ -141,7 +141,7 @@ class _ListCategoryState extends State<ListCategory> {
                       ),
                       Text(
                         groups[index]['Descripcion'],
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Color(0xFFCC8053),
                           fontSize: 14,
                           fontWeight: FontWeight.bold,

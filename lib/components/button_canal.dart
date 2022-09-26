@@ -11,12 +11,13 @@ class ButtonCanal extends StatefulWidget {
 }
 
 class _ButtonCanalState extends State<ButtonCanal> {
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _gestureDetector("Para Salon", "ParaSalon", "images/tray.png", context),
-        SizedBox(
+        const SizedBox(
           width: 20.0,
         ),
         _gestureDetector(

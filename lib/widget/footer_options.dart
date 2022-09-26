@@ -24,7 +24,7 @@ class _FooterOptionsState extends State<FooterOptions> {
       Provider.of<CartProvider>(context);
 
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(color: Colors.grey, width: 1),
         ),
@@ -32,23 +32,23 @@ class _FooterOptionsState extends State<FooterOptions> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          BackButtonIos(),
+          const BackButtonIos(),
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Container(
               width: widget.width > 700
                   ? widget.width * 0.70
                   : widget.width * 0.70,
               height: 70.0,
               decoration: BoxDecoration(
-                  color: Color(0xff0099DD),
+                  color: const Color(0xff0099DD),
                   borderRadius: BorderRadius.circular(15.0),
                   boxShadow: [
                     BoxShadow(
                         color: Colors.grey.withOpacity(.8),
                         blurRadius: 10.0,
                         spreadRadius: 0.5,
-                        offset: Offset(5.0, 5.0))
+                        offset: const Offset(5.0, 5.0))
                   ]),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

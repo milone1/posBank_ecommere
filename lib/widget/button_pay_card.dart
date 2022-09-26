@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:flutter_usb_printer/flutter_usb_printer.dart';
 import 'package:posbank_flutter/provider/provider.dart';
@@ -183,7 +185,7 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
       "Ruc": "10121450254",
       "Razonsocial": "Berne Julio SAC",
       "DireccionClienteFacturado":
-          "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
+      "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
       "Fechaenvia": "2016-02-03 18:45:00",
       "Observacion": "TOTEM INFOR- Prueba de Obsewrvacion",
       "CorreoElectronico": "prueba@hotmail.com",
@@ -192,17 +194,6 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
       "Urbanizacion": "Lima",
       "CodigoDescuento": "001",
       "DetallePedido": [
-        for (int index = 0; index == cart.cartList.length; index++)
-          {
-            {
-              "Item": '00$index'.toString(),
-              "Codigoproducto": cart.cartList[index]['id'],
-              "Cantidad": cart.cartList[index]['quantity'],
-              "Lcombo": "0",
-              "Observacion": "Prueba de sistemas 1",
-              "ProductoPropiedad": []
-            }
-          }
       ],
       "Prepagos": [
         {
@@ -223,8 +214,19 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
       "FechaEntrega": "2016-02-04 18:45:00",
       "CodigoOrigenVenta": "INF0001"
     };
+    for(int index = 0; index < cart.cartList.length; index++) {
+      postPrueba['DetallePedido'].add({
+              "Item": '00$index'.toString(),
+              "Codigoproducto": cart.cartList[index]['id'],
+              "Cantidad": cart.cartList[index]['quantity'],
+              "Lcombo": "0",
+              "Observacion": "Prueba de sistemas 1",
+              "ProductoPropiedad": []
+            }
+        );
+    }
     return Container(
-      margin: EdgeInsets.only(top: 1),
+      margin: const EdgeInsets.only(top: 1),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50.0),
       ),
@@ -236,8 +238,7 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
         children: [
           InkWell(
             onTap: () {
-              print(postPrueba);
-              // post.methodPost(postPrueba);
+              post.methodPost(postPrueba);
               // _printer("4754 6587 7412 5698", "Oscar Melero",
               //     cart.getPriceTotal(), cart.cartList);
               // cart.clearCart();

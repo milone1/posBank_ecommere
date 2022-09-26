@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
-  AddToCart(
+  const AddToCart(
       {Key? key,
       required this.width,
       required this.name,
@@ -41,7 +41,7 @@ class AddToCart extends StatelessWidget {
             blurRadius: 7,
           ),
         ],
-        color: Color(0xff0099DD),
+        color: const Color(0xff0099DD),
       ),
       child: Center(
         child: InkWell(
@@ -108,7 +108,7 @@ class AddToCart extends StatelessWidget {
           },
           child: Text(
             "+  agregar al carrito".toUpperCase(),
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white, 
                 fontSize: 20, 
                 fontWeight: FontWeight.bold,

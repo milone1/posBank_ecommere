@@ -25,23 +25,23 @@ class ListOfItems extends StatelessWidget {
           width: 350.0,
           height: 250.0,
         ),
-        SizedBox(
+        const SizedBox(
           height: 100.0,
         ),
         //* BANNERS
 
         //* BANNERS
-        SizedBox(
+        const SizedBox(
           height: 100.0,
         ),
         //*
-        ButtonCanal(),
+        const ButtonCanal(),
         //*
-        SizedBox(
+        const SizedBox(
           height: 150.0,
         ),
         //* line of copyrigth
-        Text(
+        const Text(
           "© Copyrigth 2022 by Infomatica",
           style: TextStyle(
               color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold),

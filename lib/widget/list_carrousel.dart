@@ -17,13 +17,13 @@ class ListCarrousel extends StatelessWidget {
       height: height * 0.20,
       child: ListView(
         children: <Widget>[
-           Padding(
+           const Padding(
             padding: EdgeInsets.all(1) 
           ),
           CarouselSlider(
             items: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -44,7 +44,7 @@ class ListCarrousel extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -65,7 +65,7 @@ class ListCarrousel extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -86,7 +86,7 @@ class ListCarrousel extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -107,7 +107,7 @@ class ListCarrousel extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -128,7 +128,7 @@ class ListCarrousel extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(15)
                   ),
@@ -154,7 +154,7 @@ class ListCarrousel extends StatelessWidget {
               autoPlay: true,
               autoPlayCurve: Curves.easeInOut,
               enlargeCenterPage: true,
-              autoPlayInterval: Duration(seconds: 3),
+              autoPlayInterval: const Duration(seconds: 3),
               scrollDirection: Axis.horizontal
             )
           )

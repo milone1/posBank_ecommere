@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -27,7 +29,9 @@ class ProductsProvider with ChangeNotifier {
     var uri = Uri.parse('$baseURL/Grupo');
     final http.Response response = await http.get(uri);
     final List decodeDataCategory = json.decode(response.body);
-    decodeDataCategory.forEach((element) => groups.add(element));
+    for (var element in decodeDataCategory) {
+      groups.add(element);
+    }
     notifyListeners();
   }
 

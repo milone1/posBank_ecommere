@@ -8,7 +8,7 @@ class CircularCharger extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        children: const [
           Text(
             "Cargando...",
             style: TextStyle(

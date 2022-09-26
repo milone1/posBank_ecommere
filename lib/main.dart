@@ -18,13 +18,13 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         //* by default the item is only rendered when called, but the lazzy option can change that behavior
-        ChangeNotifierProvider(create: ( _ ) => ProductsProvider()),
+        ChangeNotifierProvider(create: ( _ ) => ProductsProvider(), lazy: false,),
         ChangeNotifierProvider(create: ( _ ) => CartProvider()),
-        ChangeNotifierProvider(create: ( _ ) => CanalProvider()),
-        ChangeNotifierProvider(create: ( _ ) => CategoryProvider())
+        ChangeNotifierProvider(create: ( _ ) => CanalProvider(), lazy: false),
+        ChangeNotifierProvider(create: ( _ ) => CategoryProvider(), lazy: false)
         
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 }
@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(fontFamily: 'Lato'), 
         initialRoute: 'home',
         routes: {
-          'home': (context) => SignInScreen(),
-          'products': (context) => ProductListScreen(),
-          'pay': (context) => CreditCardsPage(),
+          'home': (context) => const SignInScreen(),
+          'products': (context) => const ProductListScreen(),
+          'pay': (context) => const CreditCardsPage(),
         },
       );
     });

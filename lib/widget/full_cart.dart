@@ -17,14 +17,14 @@ class _FullCartState extends State<FullCart> {
     final cart = Provider.of<CartProvider>(context).cartList;
     final counter = Provider.of<CartProvider>(context);
     final cartFunctions = Provider.of<CartProvider>(context);
-    
+
     return Expanded(
       child: ListView.builder(
         itemCount: cart.length,
         itemBuilder: (context, index) {
           return Card(
             child: Padding(
-              padding: EdgeInsets.all(1.0),
+              padding: const EdgeInsets.all(1.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -46,7 +46,7 @@ class _FullCartState extends State<FullCart> {
                       children: [
                         Text(
                           (index + 1).toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF575E67),
@@ -75,7 +75,7 @@ class _FullCartState extends State<FullCart> {
                             cart[index]['productName'].toString().toUpperCase(),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                               color: Color(0xFFCC8053),
                               fontWeight: FontWeight.bold,
@@ -84,22 +84,22 @@ class _FullCartState extends State<FullCart> {
                         ),
                         Text(
                           '\$${cart[index]['productPrice'].toStringAsFixed(2).toString()}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF575E67),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.all(5.0),
+                          margin: const EdgeInsets.all(5.0),
                           height: 35,
                           width: 100,
                           decoration: BoxDecoration(
-                            color: Color(0xff0099DD),
+                            color: const Color(0xff0099DD),
                             borderRadius: BorderRadius.circular(7),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(6.0),
+                            padding: const EdgeInsets.all(6.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -109,14 +109,14 @@ class _FullCartState extends State<FullCart> {
                                       counter.addOrRemoveItem(index, 'remove');
                                     }
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.remove,
                                     color: Colors.white,
                                   ),
                                 ),
                                 Text(
                                   cart[index]['quantity'].toString(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white),
@@ -125,7 +125,7 @@ class _FullCartState extends State<FullCart> {
                                   onTap: () {
                                     counter.addOrRemoveItem(index, 'add');
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.add,
                                     color: Colors.white,
                                   ),
@@ -148,7 +148,7 @@ class _FullCartState extends State<FullCart> {
                                 textColor: Colors.white,
                                 fontSize: 14.0);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.delete,
                             color: Colors.red,
                             size: 35.0,
@@ -166,7 +166,7 @@ class _FullCartState extends State<FullCart> {
                                 cart[index]['properties'] ?? [],
                                 context);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.edit,
                             color: Color(0xff0099DD),
                             size: 35.0,

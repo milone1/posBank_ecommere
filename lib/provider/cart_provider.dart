@@ -51,13 +51,13 @@ class CartProvider extends ChangeNotifier {
   }
 
   setAggregator(Map<String, dynamic> aggregator, id) {
-    cartList.forEach((element) {
+    for (var element in cartList) {
       if (element['id'] == id) {
         element['aggregator'].add(aggregator);
         // notifyListeners();
       }
       // notifyListeners();
-    });
+    }
     notifyListeners();
   }
 

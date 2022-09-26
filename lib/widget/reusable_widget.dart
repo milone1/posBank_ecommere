@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 class ReusableWidget extends StatefulWidget {
   final String title, value;
+  // ignore: use_key_in_widget_constructors
   const ReusableWidget({required this.title, required this.value});
 
   @override
@@ -37,7 +38,7 @@ class _ReusableWidgetState extends State<ReusableWidget> {
           children: [
             Text(
               widget.title.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
@@ -45,7 +46,7 @@ class _ReusableWidgetState extends State<ReusableWidget> {
             ),
             Text(
               widget.value.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 48,
                 color: Color(0xff394C5D),

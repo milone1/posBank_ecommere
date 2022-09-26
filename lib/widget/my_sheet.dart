@@ -9,7 +9,7 @@ mySheet(String name, String price, String id, String idProduct, String category,
   showModalBottomSheet(
     isScrollControlled: true,
     backgroundColor: Colors.white,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(32),
       ),
@@ -22,7 +22,7 @@ mySheet(String name, String price, String id, String idProduct, String category,
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: HeadmySheet(name: name, imgPath: imgPath),
               ),
               SizedBox(
@@ -36,7 +36,7 @@ mySheet(String name, String price, String id, String idProduct, String category,
               ),
               GridMoreProducts(id: id),
               Container(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 15.0,
                 ),
                 child: Center(
@@ -45,10 +45,10 @@ mySheet(String name, String price, String id, String idProduct, String category,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             right: 10.0,
                           ),
-                          child: BackButtonIos()),
+                          child: const BackButtonIos()),
                       AddToCart(
                         width: width,
                         name: name,

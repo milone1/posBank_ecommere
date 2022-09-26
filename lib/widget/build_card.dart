@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
-import 'package:posbank_flutter/widget/widgets.dart';
 
 class BuildCard extends StatefulWidget {
   BuildCard(
@@ -32,14 +31,14 @@ class _BuildCardState extends State<BuildCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(5.0),
       child: InkWell(
         onTap: () {
           mySheet(widget.name, widget.price, widget.id, widget.idProduct,
               widget.category, widget.imgPath, widget.properties, context);
         },
         child: Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             right: 2,
             left: 5,
           ),
@@ -60,14 +59,14 @@ class _BuildCardState extends State<BuildCard> {
                 Hero(
                   tag: widget.id.toString(),
                   child: Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       top: 5,
                       bottom: 5,
                     ),
                     width: 150,
                     height: 110,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(15.0),
                         topRight: Radius.circular(15.0),
                         bottomLeft: Radius.circular(15.0),
@@ -86,7 +85,7 @@ class _BuildCardState extends State<BuildCard> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     right: 10,
                     left: 10,
                   ),
@@ -94,7 +93,7 @@ class _BuildCardState extends State<BuildCard> {
                     widget.name.toUpperCase(),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFFCC8053),
@@ -104,7 +103,7 @@ class _BuildCardState extends State<BuildCard> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     top: 6,
                   ),
                   child: Container(
@@ -112,8 +111,8 @@ class _BuildCardState extends State<BuildCard> {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      '\$ ' + widget.price,
-                      style: TextStyle(
+                      '\$ ${widget.price}',
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,

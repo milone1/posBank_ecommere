@@ -1,15 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/button_pay_card.dart';
 import 'package:posbank_flutter/widget/resume_order.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
-import 'package:provider/provider.dart';
 
 class CreditCardsPage extends StatefulWidget {
   const CreditCardsPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CreditCardsPageState createState() => _CreditCardsPageState();
 }
 
@@ -17,28 +16,27 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color(0xffF2F2F2),
+      backgroundColor: const Color(0xffF2F2F2),
       body: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 8.0),
+              padding: const EdgeInsets.only(top: 8.0),
               child: Column(
-                children: <Widget>[
+                children: const <Widget>[
                   ListCarrousel(),
                 ],
               ),
             ),
             BounceInLeft(
-              duration: Duration(
+              duration: const Duration(
                 seconds: 1,
               ),
-              child: Text(
+              child: const Text(
                 "¡INCREÍBLES OFERTAS!",
                 style: TextStyle(
                   decoration: TextDecoration.underline,
@@ -57,14 +55,14 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                         ),
                         width: width * 0.90,
                         height: height * 0.35,
                         child: Center(
                           child: Column(
-                            children: <Widget>[
+                            children: const <Widget>[
                               ResumeOrder(),
                             ],
                           ),
@@ -75,12 +73,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
                 ),
               ],
             ),
-            Container(
-              child: HeaderSection(width: width),
-            ),
-            Container(
-              child: FormPay(),
-            ),
+            HeaderSection(width: width),
+            const FormPay(),
             ButtonPayCard(
               context: context,
             ),
