@@ -8,30 +8,30 @@ class SignInScreen extends StatefulWidget {
   // ignore: library_private_types_in_public_api
   _SignInScreenState createState() => _SignInScreenState();
 }
-
-@override
-void initState() {
-  initState();
-}
-
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(
-                  "images/background.gif",
+        body: SizedBox(
+          height: height,
+          width: width,
+          child: Stack(
+            children: [
+              SizedBox(
+                width: width,
+                height: height,
+                child: Image.asset(
+                  'images/restaurant.jpg',
+                  fit: BoxFit.fill,
                 ),
-                fit: BoxFit.fill,
               ),
-          ),
-          child: const SingleChildScrollView(
-            child: ListOfItems(),
+              const SingleChildScrollView(
+              child: ListOfItems(),
+            ),
+            ],
           ),
         ),
       ),

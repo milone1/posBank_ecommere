@@ -10,15 +10,14 @@ class EmptyCart extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Column(
-        children: const <Widget>[
-          Image(
+        children: <Widget>[
+          Image.asset(
             color: Colors.black87,
-            fit: BoxFit.contain,
+            "images/empty_cart.png",
             width: 500,
             height: 160,
-            image: AssetImage('images/empty_cart.png'),
           ),
-          Text(
+          const Text(
             'El carrito esta vacío',
             style: TextStyle(
               color: Color(0xffFF9933),

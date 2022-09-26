@@ -1,4 +1,5 @@
 // ignore_for_file: must_be_immutable
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
 
@@ -66,14 +67,22 @@ class BuildCard extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(15.0),
-                        child: FadeInImage.assetNetwork(
+                        child: CachedNetworkImage(
                           width: 150,
                           height: 110,
-                          imageScale: 1,
-                          image: imgPath,
-                          placeholder: 'images/loader.gif',
                           fit: BoxFit.fill,
+                          imageUrl:imgPath,
+                          placeholder: (context, url) =>  
+                          Image.asset('images/loader.gif'), 
                         ),
+                        // child: FadeInImage.assetNetwork(
+                        //   width: 150,
+                        //   height: 110,
+                        //   imageScale: 1,
+                        //   image: imgPath,
+                        //   placeholder: 'images/loader.gif',
+                        //   fit: BoxFit.fill,
+                        // ),
                       ),
                     ],
                   ),

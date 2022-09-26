@@ -73,4 +73,8 @@ class CartProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  getPriceOfAggregators() {
+    
+  }
 }

@@ -35,10 +35,36 @@ class ListCarrousel extends StatelessWidget {
                       spreadRadius: 2.0
                     )
                   ],
-                  image: DecorationImage(
-                    image: AssetImage(
-                      "images/1.jpg"
-                    ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    width: width * 0.90,
+                    'images/1.jpg',
+                    fit: BoxFit.cover,
+                
+                  ),
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15)
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black38,
+                      offset: Offset(2.0,2.0),
+                      blurRadius: 3.0,
+                      spreadRadius: 2.0
+                    )
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    width: width * 0.90,
+                    'images/2.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -56,11 +82,14 @@ class ListCarrousel extends StatelessWidget {
                       spreadRadius: 2.0
                     )
                   ],
-                  image: DecorationImage(
-                    image: AssetImage(
-                      "images/2.jpg"
-                    ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    width: width * 0.90,
+                    'images/3.jpg',
                     fit: BoxFit.cover,
+                
                   ),
                 ),
               ),
@@ -77,11 +106,14 @@ class ListCarrousel extends StatelessWidget {
                       spreadRadius: 2.0
                     )
                   ],
-                  image: DecorationImage(
-                    image: AssetImage(
-                      "images/3.jpg"
-                    ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    width: width * 0.90,
+                    'images/4.jpg',
                     fit: BoxFit.cover,
+                
                   ),
                 ),
               ),
@@ -98,20 +130,26 @@ class ListCarrousel extends StatelessWidget {
                       spreadRadius: 2.0
                     )
                   ],
-                  image: DecorationImage(
-                    image: AssetImage(
-                      "images/4.jpg"
-                    ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    width: width * 0.90,
+                    'images/5.jpg',
                     fit: BoxFit.cover,
+                
                   ),
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black
+                  ),
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(15)
                   ),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black38,
                       offset: Offset(2.0,2.0),
@@ -119,35 +157,18 @@ class ListCarrousel extends StatelessWidget {
                       spreadRadius: 2.0
                     )
                   ],
-                  image: DecorationImage(
-                    image: AssetImage(
-                      "images/5.jpg"
-                    ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    width: width * 0.90,
+                    'images/6.jpg',
                     fit: BoxFit.cover,
+                
                   ),
                 ),
               ),
-              Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15)
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black38,
-                      offset: Offset(2.0,2.0),
-                      blurRadius: 3.0,
-                      spreadRadius: 2.0
-                    )
-                  ],
-                  image: DecorationImage(
-                    image: AssetImage(
-                      "images/6.jpg"
-                    ),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              
             ], 
             options: CarouselOptions(
               height: 210.0,

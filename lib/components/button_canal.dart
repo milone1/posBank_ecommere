@@ -5,7 +5,8 @@ import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ButtonCanal extends StatefulWidget {
-  const ButtonCanal({super.key});
+  const ButtonCanal({Key? key}) : super(key: key);
+
   @override
   State<ButtonCanal> createState() => _ButtonCanalState();
 }

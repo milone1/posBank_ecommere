@@ -89,7 +89,6 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
         .printText("                                          \r\n");
     for (int index = 0; index < list.length; index++) {
       await flutterUsbPrinter.printText(
-          // ignore: prefer_interpolation_to_compose_strings
           (list[index]['productName'] + "                       ")
                   .substring(0, 15) +
               list[index]['quantity'].toString() +
@@ -164,65 +163,65 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
-    final post = Provider.of<ProductsProvider>(context);
+    // final post = Provider.of<ProductsProvider>(context);
     double width = MediaQuery.of(context).size.width;
 
-    Map postPrueba = {
-      "Local": "1",
-      "Tipopedido": "02",
-      "Nombre": "Julio",
-      "Apellido": "Berne",
-      "Telefono": "985241574",
-      "Direccion": "Calle Las Begonias Miraflores",
-      "Referencia": "Detras del congreso de la replublica lima - lima - peru.",
-      "Correo": "Prueba@gmail.com",
-      "Tipodocumento": "01",
-      "Ruc": "10121450254",
-      "Razonsocial": "Berne Julio SAC",
-      "DireccionClienteFacturado":
-          "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
-      "Fechaenvia": "2016-02-03 18:45:00",
-      "Observacion": "TOTEM INFOR- Prueba de Obsewrvacion",
-      "CorreoElectronico": "prueba@hotmail.com",
-      "EstadoPago": "0",
-      "Ubigeo": "150101",
-      "Urbanizacion": "Lima",
-      "CodigoDescuento": "001",
-      "DetallePedido": [],
-      "Prepagos": [
-        {
-          "Tipopago": "02",
-          "Monto": 102.23,
-          "Vuelto": 20.5,
-          "Tarjeta": "01",
-          "Numero": "1234"
-        },
-        {
-          "Tipopago": "01",
-          "Monto": 20.23,
-          "Vuelto": 0,
-          "Tarjeta": "",
-          "Numero": ""
-        }
-      ],
-      "FechaEntrega": "2016-02-04 18:45:00",
-      "CodigoOrigenVenta": "INF0001"
-    };
+    // Map postPrueba = {
+    //   "Local": "1",
+    //   "Tipopedido": "02",
+    //   "Nombre": "Julio",
+    //   "Apellido": "Berne",
+    //   "Telefono": "985241574",
+    //   "Direccion": "Calle Las Begonias Miraflores",
+    //   "Referencia": "Detras del congreso de la replublica lima - lima - peru.",
+    //   "Correo": "Prueba@gmail.com",
+    //   "Tipodocumento": "01",
+    //   "Ruc": "10121450254",
+    //   "Razonsocial": "Berne Julio SAC",
+    //   "DireccionClienteFacturado":
+    //       "Calle Las Begonias Miraflores CHORRILLOS, CHORRILLOS",
+    //   "Fechaenvia": "2016-02-03 18:45:00",
+    //   "Observacion": "TOTEM INFOR- Prueba de Obsewrvacion",
+    //   "CorreoElectronico": "prueba@hotmail.com",
+    //   "EstadoPago": "0",
+    //   "Ubigeo": "150101",
+    //   "Urbanizacion": "Lima",
+    //   "CodigoDescuento": "001",
+    //   "DetallePedido": [],
+    //   "Prepagos": [
+    //     {
+    //       "Tipopago": "02",
+    //       "Monto": 102.23,
+    //       "Vuelto": 20.5,
+    //       "Tarjeta": "01",
+    //       "Numero": "1234"
+    //     },
+    //     {
+    //       "Tipopago": "01",
+    //       "Monto": 20.23,
+    //       "Vuelto": 0,
+    //       "Tarjeta": "",
+    //       "Numero": ""
+    //     }
+    //   ],
+    //   "FechaEntrega": "2016-02-04 18:45:00",
+    //   "CodigoOrigenVenta": "INF0001"
+    // };
 
-    if (cart.cartList.isNotEmpty) {
-      for (int index = 0; index < cart.cartList.length; index++) {
-        postPrueba['DetallePedido'].add({
-          "Item": '00$index'.toString(),
-          "Codigoproducto": cart.cartList[index]['id'],
-          "Cantidad": cart.cartList[index]['quantity'],
-          "Lcombo": "0",
-          "Observacion": "Prueba de sistemas 1",
-          "ProductoPropiedad": []
-        });
-      }
-    } else {
-      print('Carrito Vacio');
-    }
+    // if (cart.cartList.isNotEmpty) {
+    //   for (int index = 0; index < cart.cartList.length; index++) {
+    //     postPrueba['DetallePedido'].add({
+    //       "Item": '00$index'.toString(),
+    //       "Codigoproducto": cart.cartList[index]['id'],
+    //       "Cantidad": cart.cartList[index]['quantity'],
+    //       "Lcombo": "0",
+    //       "Observacion": "Prueba de sistemas 1",
+    //       "ProductoPropiedad": []
+    //     });
+    //   }
+    // } else {
+    //   print('Carrito Vacio');
+    // }
 
     return Container(
       margin: const EdgeInsets.only(top: 1),
@@ -237,12 +236,13 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
         children: [
           InkWell(
             onTap: () {
-              post.methodPost(postPrueba);
-              // _printer(cart.getPriceTotal(), cart.cartList);
+              // post.methodPost(postPrueba);
+              _printer(cart.getPriceTotal(), cart.cartList);
               cart.clearCart();
               Navigator.pushNamed(context, 'home');
+              
             },
-            child: ButtonPay(cart: cart),
+            child: const ButtonPay(),
           ),
         ],
       ),

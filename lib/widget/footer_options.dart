@@ -36,9 +36,7 @@ class _FooterOptionsState extends State<FooterOptions> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Container(
-              width: widget.width > 700
-                  ? widget.width * 0.70
-                  : widget.width * 0.70,
+              width: widget.width * 0.70,
               height: 70.0,
               decoration: BoxDecoration(
                   color: const Color(0xff0099DD),

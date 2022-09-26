@@ -20,11 +20,13 @@ class CanalImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(50.0),
           boxShadow: [  
             BoxShadow(
-                color: Colors.grey.withOpacity(.8),
+                color: Colors.grey.withOpacity(0.8),
                 blurRadius: 10.0,
                 spreadRadius: 0.5,
-                offset: const Offset(5.0, 5.0))
-          ]),
+                offset: const Offset(5.0, 5.0),
+              )
+          ],
+        ),
       child: Image.asset(
         canal.state == "ParaSalon" ? 'images/tray.png' : 'images/bug.png',
         width: width * 0.10,

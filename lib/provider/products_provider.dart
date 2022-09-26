@@ -10,38 +10,53 @@ class ProductsProvider with ChangeNotifier {
     getGroup();
   }
 
-  String baseURL = 'http://192.168.3.228:81/api/';
+  String baseURL = 'http://192.168.3.228:81/api';
   List<dynamic> products = [];
   List groups = [
     {"CodigoGrupo": "", "Descripcion": "Todos", "Activo": true},
   ];
 
-
   getData() async {
-    var uri = Uri.parse('$baseURL/producto');
-    final http.Response response = await http.get(uri);
-    final decodeData = json.decode(response.body);
-    products = decodeData;
-    notifyListeners();
+    try {
+      var uri = Uri.parse('$baseURL/producto');
+      final http.Response response = await http.get(uri);
+      if (response.statusCode == 200) {
+        final decodeData = json.decode(response.body);
+        products = decodeData;
+        notifyListeners();
+      }
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 
   getGroup() async {
-    var uri = Uri.parse('$baseURL/Grupo');
-    final http.Response response = await http.get(uri);
-    final List decodeDataCategory = json.decode(response.body);
-    for (var element in decodeDataCategory) {
-      groups.add(element);
+    try {
+      var uri = Uri.parse('$baseURL/Grupo');
+      final http.Response response = await http.get(uri);
+      if (response.statusCode == 200) {
+        final List decodeDataCategory = json.decode(response.body);
+        for (var element in decodeDataCategory) {
+          groups.add(element);
+        }
+        notifyListeners();
+      }
+    } catch (e) {
+      print(e);
+      return null;
     }
-    notifyListeners();
   }
 
   methodPost(body) async {
     var url = Uri.parse('$baseURL/pedido');
-    var response = await http.post(url,
+    var response = await http.post(
+      url,
       headers: {"Content-Type": "application/json"},
       body: json.encode(body),
     );
     print('Response Status of method POST:  ${response.statusCode}');
     print('Response Status of method POST:  ${response.body}');
   }
+
 }

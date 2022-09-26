@@ -18,10 +18,10 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         //* by default the item is only rendered when called, but the lazzy option can change that behavior
-        ChangeNotifierProvider(create: ( _ ) => ProductsProvider(), lazy: false,),
-        ChangeNotifierProvider(create: ( _ ) => CartProvider()),
-        ChangeNotifierProvider(create: ( _ ) => CanalProvider(), lazy: false),
-        ChangeNotifierProvider(create: ( _ ) => CategoryProvider(), lazy: false)
+        ChangeNotifierProvider(create: ( context ) => ProductsProvider(), lazy: false),
+        ChangeNotifierProvider(create: ( context ) => CartProvider(), lazy: false),
+        ChangeNotifierProvider(create: ( context ) => CanalProvider(), lazy: false),
+        ChangeNotifierProvider(create: ( context ) => CategoryProvider(), lazy: false)
         
       ],
       child: const MyApp(),

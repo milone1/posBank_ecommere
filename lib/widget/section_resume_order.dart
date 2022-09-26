@@ -22,7 +22,8 @@ class SectionResumeOrder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
                   color: Colors.white,
                 ),
                 width: width * 0.90,
