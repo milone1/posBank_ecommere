@@ -25,6 +25,7 @@ class BuildCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
@@ -51,13 +52,12 @@ class BuildCard extends StatelessWidget {
             ),
             child: Column(
               children: [
-
                 Container(
                   margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
                   width: 150,
                   height: 110,
                   decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                      borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15.0),
                     topRight: Radius.circular(15.0),
                     bottomLeft: Radius.circular(15.0),
@@ -68,12 +68,14 @@ class BuildCard extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(15.0),
                         child: CachedNetworkImage(
+                          fadeOutDuration: const Duration(milliseconds: 0),
+                          fadeInDuration: const Duration(milliseconds: 0),
                           width: 150,
                           height: 110,
                           fit: BoxFit.fill,
-                          imageUrl:imgPath,
-                          placeholder: (context, url) =>  
-                          Image.asset('images/loader.gif'), 
+                          imageUrl: imgPath.isEmpty ? 'https://i.stack.imgur.com/WOlr3.png' : imgPath,
+                          placeholder: (context, url) =>
+                              Image.asset('images/loader.gif'),
                         ),
                         // child: FadeInImage.assetNetwork(
                         //   width: 150,
@@ -87,7 +89,6 @@ class BuildCard extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.only(
                     right: 10,
@@ -105,7 +106,6 @@ class BuildCard extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.only(
                     top: 6,

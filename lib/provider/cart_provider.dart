@@ -61,7 +61,6 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  
   addOrRemoveAggregator(index, value) {
     if (value == 'add') {
       cartList[index]['quantity']++;
@@ -74,7 +73,12 @@ class CartProvider extends ChangeNotifier {
     }
   }
 
-  getPriceOfAggregators() {
-    
-  }
+  // getPriceAggregatorStaff(int index) {
+  //   cartList[index]['aggregator'][index]['price'] = cartList[index]['aggregator'][index]
+  //           ['qty'] *
+  //       cartList[index]['aggregator'][index]['initialPrice'];
+  //   notifyListeners();
+  //   return cartList[index]['aggregator'][index]['price'];
+  // }
+
 }

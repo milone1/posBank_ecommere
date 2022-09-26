@@ -21,9 +21,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
       backgroundColor: const Color(0xffF2F2F2),
       body: Container(
         padding: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         child: ListView(
           children: [
-
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Column(
@@ -41,7 +43,8 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
             SectionResumeOrder(width: width, height: height),
 
-            ButtonPayCard( context: context ),
+            // ButtonPayCard( context: context ),
+            const ButtonPayCard( ),
           ],
         ),
       ),

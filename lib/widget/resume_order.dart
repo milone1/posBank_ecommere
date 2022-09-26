@@ -23,7 +23,7 @@ class ResumeOrder extends StatelessWidget {
                 title: Row(
                   children: [
                     Image.network(
-                      cart[index]['image'],
+                      cart[index]['image'].toString(),
                       width: 50,
                       height: 50,
                     ),
@@ -38,7 +38,7 @@ class ResumeOrder extends StatelessWidget {
                 ),
                 subtitle: Text(
                   '\$${cart[index]['productPrice'].toStringAsFixed(2)}',
-
+                  // "price",
                   textAlign: TextAlign.end,
                 ),
                 children: [
@@ -46,8 +46,9 @@ class ResumeOrder extends StatelessWidget {
                     width: width * 0.50,
                     child: 
                     cart[index]['aggregator'].length == 0 ? 
-                    const Text("")
-                    : AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index),
+                    AggregatorList(id : int.parse(cart[index]['id']), indexProduct : index)
+
+                    : const Text(""),
                   ),
                 ],
               ),

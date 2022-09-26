@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Lato'), 
-        initialRoute: 'home',
+        initialRoute: 'products',
         routes: {
           'home': (context) => const SignInScreen(),
           'products': (context) => const ProductListScreen(),
