@@ -54,21 +54,19 @@ class CartProvider extends ChangeNotifier {
     for (var element in cartList) {
       if (element['id'] == id) {
         element['aggregator'].add(aggregator);
-        // notifyListeners();
       }
-      // notifyListeners();
     }
     notifyListeners();
   }
 
   addOrRemoveAggregator(index, value) {
     if (value == 'add') {
-      cartList[index]['quantity']++;
 
+      cartList[index]['quantity']++;
       notifyListeners();
     } else {
-      cartList[index]['quantity']--;
 
+      cartList[index]['quantity']--;
       notifyListeners();
     }
   }

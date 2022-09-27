@@ -4,13 +4,10 @@ import 'package:posbank_flutter/widget/widgets.dart';
 //* providers
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:provider/provider.dart';
-class CartScreen extends StatefulWidget {
-  const CartScreen({Key? key}) : super(key: key);
-  @override
-  // ignore: library_private_types_in_public_api
-  _CartScreenState createState() => _CartScreenState();
-}
-class _CartScreenState extends State<CartScreen> {
+
+class CartScreen extends StatelessWidget {
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final canal = Provider.of<CanalProvider>(context);

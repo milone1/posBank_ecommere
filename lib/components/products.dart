@@ -4,18 +4,14 @@ import 'package:animate_do/animate_do.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
+class Products extends StatelessWidget {
+  const Products({super.key});
 
-class Products extends StatefulWidget {
-  const Products({Key? key}) : super(key: key);
-  @override
-  State<Products> createState() => _ProductsState();
-}
-
-class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<ProductsProvider>(context).products;
     final category = Provider.of<CategoryProvider>(context);
+    
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -49,12 +45,15 @@ class _ProductsState extends State<Products> {
                   height: height * 0.55,
                   child: GridView.builder(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: category.codigoGroup == '' ? products.length :  products
-                        .where((element) =>
-                            element['Grupo'] == category.codigoGroup)
-                        .length,
+                    itemCount: category.codigoGroup == ''
+                        ? products.length
+                        : products
+                            .where((element) =>
+                                element['Grupo'] == category.codigoGroup)
+                            .length,
                     scrollDirection: Axis.horizontal,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                     ),
                     itemBuilder: (context, index) {

@@ -58,7 +58,6 @@ class AggregatorList extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        // cart.getPriceAggregatorStaff(indexProduct).toStringAsFixed(2).toString(), 
                         "S/ 12.50",
                         style: TextStyle(
                           fontSize: 16,

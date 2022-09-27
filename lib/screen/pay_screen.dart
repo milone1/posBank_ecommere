@@ -3,15 +3,8 @@ import 'package:posbank_flutter/components/title_pay_screen.dart';
 import 'package:posbank_flutter/widget/button_pay_card.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 
-class CreditCardsPage extends StatefulWidget {
-  const CreditCardsPage({Key? key}) : super(key: key);
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _CreditCardsPageState createState() => _CreditCardsPageState();
-}
-
-class _CreditCardsPageState extends State<CreditCardsPage> {
+class CreditCardsPage extends StatelessWidget {
+  const CreditCardsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +36,11 @@ class _CreditCardsPageState extends State<CreditCardsPage> {
 
             SectionResumeOrder(width: width, height: height),
 
-            // ButtonPayCard( context: context ),
-            const ButtonPayCard( ),
+            const ButtonPayCard(),
+
           ],
         ),
       ),
     );
   }
 }
-

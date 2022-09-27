@@ -1,14 +1,9 @@
 // ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-class OtherDetailsDivider extends StatefulWidget {
-  const OtherDetailsDivider({Key? key}) : super(key: key);
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _OtherDetailsDividerState createState() => _OtherDetailsDividerState();
-}
-class _OtherDetailsDividerState extends State<OtherDetailsDivider> {
+class OtherDetailsDivider extends StatelessWidget {
+  const OtherDetailsDivider({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(

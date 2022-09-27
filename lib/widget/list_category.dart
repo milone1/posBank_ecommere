@@ -4,14 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/provider.dart';
 import 'package:provider/provider.dart';
 
-class ListCategory extends StatefulWidget {
-  const ListCategory({Key? key, 
-  }) : super(key: key);
-  @override
-  State<ListCategory> createState() => _ListCategoryState();
-}
-
-List images = [
+List _images = [
   {
     'id': 0,
     'img': "images/0.png",
@@ -70,22 +63,20 @@ List images = [
   },
 ];
 
-extension IndexedIterable<E> on Iterable<E> {
-  Iterable<T> indexedMap<T>(T Function(E element, int index) f) {
-    var index = 0;
-    return map((e) => f(e, index++));
-  }
+class ListCategory extends StatefulWidget {
+  const ListCategory({super.key});
+
+  @override
+  State<ListCategory> createState() => _ListCategoryState();
 }
 
 class _ListCategoryState extends State<ListCategory> {
-
   @override
   Widget build(BuildContext context) {
     final groups = Provider.of<ProductsProvider>(context).groups;
     double height = MediaQuery.of(context).size.height;
     final codecs = Provider.of<CategoryProvider>(context);
     final category = Provider.of<CategoryProvider>(context).category;
-
     return SizedBox(
       width: 170,
       height: height * 0.55,
@@ -134,7 +125,7 @@ class _ListCategoryState extends State<ListCategory> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.asset(
-                        images[index]['img'],
+                        _images[index]['img'],
                         width: 50,
                         height: 50,
                         fit: BoxFit.contain,

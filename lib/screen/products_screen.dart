@@ -6,19 +6,16 @@ import 'package:posbank_flutter/components/products.dart';
 import 'package:posbank_flutter/screen/screens.dart';
 //* widgets
 import 'package:posbank_flutter/widget/widgets.dart';
-class ProductListScreen extends StatefulWidget {
-  const ProductListScreen({Key? key}) : super(key: key);
-  @override
-  // ignore: library_private_types_in_public_api
-  _ProductListScreenState createState() => _ProductListScreenState();
-}
-class _ProductListScreenState extends State<ProductListScreen> {
+
+class ProductListScreen extends StatelessWidget {
+  const ProductListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor:  const Color(0xffF2F2F2),
+      backgroundColor: const Color(0xffF2F2F2),
       body: SafeArea(
         child: Column(
           children: [

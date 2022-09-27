@@ -12,9 +12,7 @@ class AddToCart extends StatelessWidget {
       required this.id,
       required this.idProduct,
       required this.category,
-      required this.imgPath
-      }
-    )
+      required this.imgPath})
       : super(key: key);
 
   final double width;
@@ -48,29 +46,6 @@ class AddToCart extends StatelessWidget {
           onTap: () {
             if ((cartList.where((element) => element['id'] == id).isEmpty)) {
               cart.setCartList({
-                // "local": "01",
-                // "tipopedido": "",
-                // "nombre": "Erick",
-                // "apellido": "Milan",
-                // "telefono": "995 560 456",
-                // "direccion": "Av Salazar",
-                // "referencia": "",
-                // "correo": "emilan@gmail.com",
-                // "tipodocumento": "DNI",
-                // "ruc": "11111111111",
-                // "razonsocial": "d",
-                // "direccionClienteFacturado": "",
-                // "fechaenvia": "16/09/2022",
-                // "observacion": "ob",
-                // "correoElectronico": "correoElectronico",
-                // "estadoPago": "Facturado",
-                // "ubigeo": "Ubigeo",
-                // "urbanizacion": "Urbanizacion",
-                // "codigoDescuento": "Codigo Descuento",
-                // "detallePedido": "detalle del pedido",
-                // "prepagos": "prepa",
-                // "fechaEntrega": "16/09/2022",
-                // "codigoOrigenVenta": "codigoOrigenVenta",
                 "id": id,
                 "productoId": id,
                 'productName': name,
@@ -109,10 +84,10 @@ class AddToCart extends StatelessWidget {
           child: Text(
             "+  agregar al carrito".toUpperCase(),
             style: const TextStyle(
-                color: Colors.white, 
-                fontSize: 20, 
-                fontWeight: FontWeight.bold,
-              ),
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
             textAlign: TextAlign.center,
           ),
         ),

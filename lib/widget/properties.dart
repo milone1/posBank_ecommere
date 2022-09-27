@@ -1,14 +1,12 @@
 import 'package:chip_list/chip_list.dart';
 import 'package:flutter/material.dart';
 
-class Properties extends StatefulWidget {
+class Properties extends StatelessWidget {
   const Properties({Key? key, required this.properties}) : super(key: key);
+  
   final List properties;
 
-  @override
-  State<Properties> createState() => _PropertiesState();
-}
-class _PropertiesState extends State<Properties> {
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -17,7 +15,7 @@ class _PropertiesState extends State<Properties> {
           
         },
         child: ChipList(
-            listOfChipNames: widget.properties
+            listOfChipNames: properties
                 .map((e) => e['Descripcion'] as String)
                 .toList(),
             activeBgColorList: const [Color(0xff0099DD)],

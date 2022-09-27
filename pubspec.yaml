@@ -21,10 +21,8 @@ dependencies:
   dio: ^4.0.6
   badges: ^2.0.3
   provider: ^6.0.3
-  flutter_usb_printer: ^0.1.0+1
-  checkbox_grouped: ^1.8.1
-  group_radio_button: ^1.2.0
   cached_network_image: ^3.2.1
+  flutter_usb_printer: ^0.1.0+1
 
 dev_dependencies:
   flutter_test:

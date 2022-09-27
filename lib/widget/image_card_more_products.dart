@@ -17,7 +17,7 @@ class ImageCardMoreProducts extends StatelessWidget {
       child: Image.asset(
         moreProducts[index]['images'],
         width: 130,
-        height: 100,
+        height: 90,
       ),
     );
   }

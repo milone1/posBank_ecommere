@@ -3,19 +3,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:provider/provider.dart';
 
-class ReusableWidget extends StatefulWidget {
-  final String title, value;
-  // ignore: use_key_in_widget_constructors
-  const ReusableWidget({required this.title, required this.value});
+class ReusableWidget extends StatelessWidget {
+  const ReusableWidget({Key? key, required this.title, required this.value})
+      : super(key: key);
 
-  @override
-  State<ReusableWidget> createState() => _ReusableWidgetState();
-}
+  final String title;
+  final String value;
 
-class _ReusableWidgetState extends State<ReusableWidget> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+
     return InkWell(
       onTap: () {
         cart.getPriceTotal() == 0
@@ -37,7 +35,7 @@ class _ReusableWidgetState extends State<ReusableWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              widget.title.toString(),
+              title.toString(),
               style: const TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
@@ -45,7 +43,7 @@ class _ReusableWidgetState extends State<ReusableWidget> {
               ),
             ),
             Text(
-              widget.value.toString(),
+              value.toString(),
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 48,

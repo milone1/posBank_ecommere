@@ -3,7 +3,7 @@ import 'package:posbank_flutter/provider/provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
-class FooterOptions extends StatefulWidget {
+class FooterOptions extends StatelessWidget {
   const FooterOptions({
     Key? key,
     required this.width,
@@ -14,15 +14,8 @@ class FooterOptions extends StatefulWidget {
   final CanalProvider canal;
 
   @override
-  State<FooterOptions> createState() => _FooterOptionsState();
-}
-
-class _FooterOptionsState extends State<FooterOptions> {
-  @override
   Widget build(BuildContext context) {
-    final variable =
-      Provider.of<CartProvider>(context);
-
+    final cart = Provider.of<CartProvider>(context);
     return Container(
       decoration: const BoxDecoration(
         border: Border(
@@ -36,7 +29,7 @@ class _FooterOptionsState extends State<FooterOptions> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Container(
-              width: widget.width * 0.70,
+              width: width * 0.70,
               height: 70.0,
               decoration: BoxDecoration(
                   color: const Color(0xff0099DD),
@@ -53,13 +46,13 @@ class _FooterOptionsState extends State<FooterOptions> {
                 children: [
                   ReusableWidget(
                     title: 'IR AL CARRITO: ',
-                    value: 'S/ ${variable.getPriceTotal().toStringAsFixed(2)}',
+                    value: 'S/ ${cart.getPriceTotal().toStringAsFixed(2)}',
                   ),
                 ],
               ),
             ),
           ),
-          CanalImage(canal: widget.canal, width: widget.width),
+          CanalImage(canal: canal, width: width),
         ],
       ),
     );
