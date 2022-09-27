@@ -219,7 +219,7 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50.0),
       ),
-      width: width * 0.20,
+      width: width * 0.40,
       height: 80,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +19,14 @@ class ButtonAddOrRemove extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xff0099DD),
         borderRadius: BorderRadius.circular(7),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white.withOpacity(0.4),
+            offset: const Offset(3, 3),
+            spreadRadius: 8,
+            blurRadius: 8,
+          )
+        ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(6.0),
@@ -59,5 +66,3 @@ class ButtonAddOrRemove extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/provider/canal_provider.dart';
 import 'package:provider/provider.dart';
@@ -10,118 +11,171 @@ class FormPay extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    final user = Provider.of<CanalProvider>(context);
-
-
     final textControllerDNI = TextEditingController();
     final textControllerName = TextEditingController();
     final textControllerRUC = TextEditingController();
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: width * 0.35,
-          height: height * 0.25,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                "images/id.png",
-                width: 300,
-                height: 120,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 20.0,
-                  left: 20.0,
-                  bottom: 20.0,
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      "Ingrese numero de DNI:",
-                      style: TextStyle(
-                          color: user.user.length> 3 ? Colors.red: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    TextField(
-                      onChanged: (value) => user.setUser(value),
-                      controller: textControllerDNI,
-                    ),
-                  ],
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 100.0,
+        bottom: 50.0
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    offset: const Offset(3, 3),
+                    spreadRadius: 8,
+                    blurRadius: 8,
+                  ),
+                ],
+                color: const Color(0xff0099DD),
+                border: Border.all(
+                  color: Colors.black,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 20.0,
-                  left: 20.0,
-                  bottom: 20.0,
+            width: width * 0.35,
+            height: height * 0.10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (_) {
+                        return CupertinoAlertDialog(
+                          title: const Text('Boleta'),
+                          content: Column(
+                            children: const <Widget>[
+                              Text('Ingrese su nombre: '),
+                              CupertinoTextField(
+                                placeholder: 'Juan Perez',
+                              ),
+                              SizedBox(
+                                height: 50.0,
+                              ),
+                              Text('Ingrese su número de D.N.I: '),
+                              CupertinoTextField(
+                                placeholder: '96857454',
+                              ),
+                            ],
+                          ),
+                          actions: <Widget>[
+                            CupertinoDialogAction(
+                              isDefaultAction: true,
+                              child: const Text('Pagar'),
+                              onPressed: () {
+                                print("Save");
+                              },
+                            ),
+                            CupertinoDialogAction(
+                              isDestructiveAction: true,
+                              child: const Text('Salir'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                                print("Out");
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: Image.asset(
+                    "images/id.png",
+                    width: 300,
+                    height: 120,
+                  ),
                 ),
-                child: Column(
-                  children: [
-                    Text(
-                      "Ingrese Nombre: ",
-                      style: TextStyle(
-                        color: user.user.length > 3 ? Colors.red: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    TextField(
-                      onChanged: (value) => user.setUser(value),
-                      controller: textControllerName,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        SizedBox(
-          width: width * 0.10,
-        ),
-        SizedBox(
-          width: width * 0.35,
-          height: height * 0.25,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                "images/factura.png",
-                width: 300,
-                height: 120,
-              ),
-              const SizedBox(
-                height: 70,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 40.0,
-                  left: 40.0,
-                  bottom: 40.0,
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      "Ingrese N° de R.U.C",
-                      style: TextStyle(
-                        color: user.user.length > 3 ? Colors.red: Colors.black,
-                          // color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    TextField(
-                      onChanged: (value) => user.setUser(value),
-                      controller: textControllerRUC,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          SizedBox(
+            width: width * 0.10,
           ),
-        ),
-      ],
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    offset: const Offset(3, 3),
+                    spreadRadius: 8,
+                    blurRadius: 8,
+                  ),
+                ],
+                color: const Color(0xff0099DD),
+                border: Border.all(
+                  color: Colors.black,
+                ),
+              ),
+            width: width * 0.35,
+            height: height * 0.10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    showCupertinoDialog(
+                      context: context,
+                      builder: (_) {
+                        return CupertinoAlertDialog(
+                          title: const Text('Boleta'),
+                          content: Column(
+                            children: const <Widget>[
+                              Text('Ingrese su nombre: '),
+                              CupertinoTextField(
+                                placeholder: 'Juan Perez',
+                              ),
+                              SizedBox(
+                                height: 50.0,
+                              ),
+                              Text('Ingrese su número de R.U.C: '),
+                              CupertinoTextField(
+                                placeholder: '1111111111',
+                              ),
+                            ],
+                          ),
+                          actions: <Widget>[
+                            CupertinoDialogAction(
+                              isDefaultAction: true,
+                              child: const Text('Pagar'),
+                              onPressed: () {
+                                print("Save");
+                              },
+                            ),
+                            CupertinoDialogAction(
+                              isDestructiveAction: true,
+                              child: const Text('Salir'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                                print("Out");
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: Image.asset(
+                    "images/factura.png",
+                    width: 300,
+                    height: 120,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
