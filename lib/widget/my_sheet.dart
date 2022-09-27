@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/screen/components/add_to_cart.dart';
+import 'package:posbank_flutter/components/add_to_cart.dart';
 import 'package:posbank_flutter/widget/back_button_ios.dart';
 import 'package:posbank_flutter/widget/grid_more_products.dart';
 import 'package:posbank_flutter/widget/head_my_sheet.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/screen/components/banner_title.dart';
-import 'package:posbank_flutter/screen/components/canal_state.dart';
-import 'package:posbank_flutter/screen/components/images.dart';
-import 'package:posbank_flutter/screen/components/spacer.dart';
+import 'package:posbank_flutter/components/banner_title.dart';
+import 'package:posbank_flutter/components/canal_state.dart';
+import 'package:posbank_flutter/components/images.dart';
+import 'package:posbank_flutter/components/spacer.dart';
 
 class ItemSignIn extends StatelessWidget {
   const ItemSignIn({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class ItemSignIn extends StatelessWidget {
           const SpacerBox(),
 
           CanalState(height: height, width: width),
-          
+
           Padding(
             padding: const EdgeInsets.only(
               top: 200,

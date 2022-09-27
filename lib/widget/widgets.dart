@@ -16,7 +16,7 @@ export 'package:posbank_flutter/widget/full_cart.dart';
 export 'package:posbank_flutter/widget/header_section.dart';
 export 'package:posbank_flutter/widget/build_card.dart';
 export 'package:posbank_flutter/widget/head_my_sheet.dart';
-export 'package:posbank_flutter/screen/components/add_to_cart.dart';
+export 'package:posbank_flutter/components/add_to_cart.dart';
 export 'package:posbank_flutter/widget/empty_cart.dart';
 export 'package:posbank_flutter/widget/list_category.dart';
 export 'package:posbank_flutter/widget/reusable_widget.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/screen/components/image_background.dart';
-import 'package:posbank_flutter/screen/widgets/item_sign_in.dart';
+import 'package:posbank_flutter/components/image_background.dart';
+import 'package:posbank_flutter/widget/item_sign_in.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);

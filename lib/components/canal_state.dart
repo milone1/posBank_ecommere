@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/screen/components/card_canal.dart';
+import 'package:posbank_flutter/components/card_canal.dart';
 
 class CanalState extends StatelessWidget {
   const CanalState({
@@ -29,7 +29,7 @@ class CanalState extends StatelessWidget {
           ),
           CardsCanal(
             img: 'images/bug.png', 
-            title: 'Para Salon', 
+            title: 'Para Llevar', 
             value: 'ParaLlevar', 
             width: width,
           ),
