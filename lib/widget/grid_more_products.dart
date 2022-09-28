@@ -1,22 +1,17 @@
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:posbank_flutter/provider/aggregator_provider.dart';
 import 'package:posbank_flutter/provider/cart_provider.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 import 'package:provider/provider.dart';
 
 class GridMoreProducts extends StatelessWidget {
   const GridMoreProducts({Key? key, required this.id}) : super(key: key);
-
   final String id;
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     final cartList = Provider.of<CartProvider>(context);
-
     List moreProducts = [
       {
         'id': 1,

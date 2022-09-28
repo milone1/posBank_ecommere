@@ -1,17 +1,8 @@
-import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
 class CanalProvider with ChangeNotifier {
   String state = "";
-
-  String user = "";
-
   void setStates(String newState) {
     state = newState;
-    notifyListeners();
-  }
-
-  void setUser(String name) {
-    user = name;
     notifyListeners();
   }
 }

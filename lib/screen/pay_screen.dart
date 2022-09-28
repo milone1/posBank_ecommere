@@ -30,7 +30,7 @@ class CreditCardsPage extends StatelessWidget {
               const FormPay(),
               HeaderSection(width: width),
               SectionResumeOrder(width: width, height: height),
-              const ButtonPayCard(),
+              const SingleChildScrollView(child: ButtonPayCard()),
             ],
           ),
         ),

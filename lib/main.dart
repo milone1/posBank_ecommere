@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 //* screens
 import 'package:posbank_flutter/screen/screens.dart';
 //* providers
-import 'package:posbank_flutter/provider/provider.dart';
+import 'package:posbank_flutter/provider/provider.dart'; 
 void main() {
   runApp(const AppState());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
@@ -21,8 +21,8 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: ( context ) => CategoryProvider(), lazy: false),
         ChangeNotifierProvider(create: ( context ) => ProductsProvider(), lazy: false),
         ChangeNotifierProvider(create: ( context ) => CartProvider()),
-        ChangeNotifierProvider(create: ( context ) => CanalProvider()),
-        
+	ChangeNotifierProvider(create: ( context ) => UserProvider()),
+        ChangeNotifierProvider(create: ( context ) => CanalProvider()),        
       ],
       child: const MyApp(),
     );
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Lato'), 
-        initialRoute: 'pay',
+        initialRoute: 'home',
         routes: {
           'home': (context) => const SignInScreen(),
           'products': (context) => const ProductListScreen(),

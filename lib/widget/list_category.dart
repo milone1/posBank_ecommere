@@ -63,14 +63,9 @@ List _images = [
   },
 ];
 
-class ListCategory extends StatefulWidget {
+class ListCategory extends StatelessWidget {
   const ListCategory({super.key});
 
-  @override
-  State<ListCategory> createState() => _ListCategoryState();
-}
-
-class _ListCategoryState extends State<ListCategory> {
   @override
   Widget build(BuildContext context) {
     final groups = Provider.of<ProductsProvider>(context).groups;
