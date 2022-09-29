@@ -23,9 +23,9 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
   FlutterUsbPrinter flutterUsbPrinter = FlutterUsbPrinter();
 
   _printer(name, document, total, list) async {
-    var nameParsed = name.toString();
-    var documentParsed = document.toString();
     try {
+      var nameParsed = name.toString();
+      var documentParsed = document.toString();
       await flutterUsbPrinter
           .printText("                                          \r\n");
       await flutterUsbPrinter
@@ -159,11 +159,11 @@ class _ButtonPayCardState extends State<ButtonPayCard> {
           .printText("                                          \r\n");
       await flutterUsbPrinter.close();
     } on PlatformException {
-      //response = 'Failed to get platform version.';
+      //response = 'Failed to get platform version.'
     }
   }
 // Map postPrueba = {
-  //   "Local": "1", 
+  //   "Local": "1",
   //   "Tipopedido": "02",
   //   "Nombre": "Julio",
   //   "Apellido": "Berne",
