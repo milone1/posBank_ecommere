@@ -2,7 +2,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/widget/my_sheet.dart';
-
 class BuildCard extends StatelessWidget {
   BuildCard(
       {Key? key,
@@ -14,7 +13,6 @@ class BuildCard extends StatelessWidget {
       required this.imgPath,
       required this.properties})
       : super(key: key);
-
   final String name;
   final String price;
   final String id;
@@ -22,10 +20,8 @@ class BuildCard extends StatelessWidget {
   final String category;
   final String imgPath;
   List properties;
-
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/provider/provider.dart';
-import 'package:provider/provider.dart';
+// import 'package:posbank_flutter/provider/provider.dart';
+// import 'package:provider/provider.dart';
 class HeaderSection extends StatelessWidget {
   const HeaderSection({
     Key? key,
@@ -11,7 +11,7 @@ class HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context, listen: false);
+    // final user = Provider.of<UserProvider>(context, listen: false);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
@@ -40,7 +40,7 @@ class HeaderSection extends StatelessWidget {
           width: width > 700 ? width * 0.15 : width * 0.10,
         ),
         Text(
-          '${user.user} ${user.methodPay}',
+          'Resumen de su orden'.toUpperCase(),
           style: const TextStyle(
             color: Color(0xFFCC8053),
             fontSize: 40,
