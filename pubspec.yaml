@@ -22,8 +22,9 @@ dependencies:
   badges: ^2.0.3
   provider: ^6.0.3
   cached_network_image: ^3.2.1
-  flutter_usb_printer: ^0.1.0+1
   sentry_flutter: ^6.11.1
+  flutter_pos_printer_platform: ^1.0.6
+  esc_pos_utils: ^1.1.0
 
 dev_dependencies:
   flutter_test:

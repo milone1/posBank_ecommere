@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:posbank_flutter/components/button_add_remove.dart';
-import 'package:posbank_flutter/components/button_delete_cart.dart';
+import 'package:posbank_flutter/buttons/button_add_remove.dart';
+import 'package:posbank_flutter/buttons/button_delete_cart.dart';
 import 'package:posbank_flutter/components/image_product_cart.dart';
 import 'package:posbank_flutter/components/index_product_cart.dart';
 import 'package:posbank_flutter/components/name_product_cart.dart';
 import 'package:posbank_flutter/components/price_product_cart.dart';
 import 'package:posbank_flutter/provider/provider.dart';
-import 'package:posbank_flutter/components/button_edit_cart.dart';
+import 'package:posbank_flutter/buttons/button_edit_cart.dart';
 import 'package:provider/provider.dart';
 
 class FullCart extends StatelessWidget {

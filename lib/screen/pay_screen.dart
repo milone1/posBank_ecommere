@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:posbank_flutter/components/title_pay_screen.dart';
-import 'package:posbank_flutter/widget/button_pay_card.dart';
+import 'package:posbank_flutter/buttons/button_pay_card.dart';
 import 'package:posbank_flutter/widget/widgets.dart';
 class CreditCardsPage extends StatelessWidget {
   const CreditCardsPage({super.key});
